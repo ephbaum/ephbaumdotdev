@@ -1,6 +1,8 @@
-## Brutal Theme ##
+## ephbaum dot dev ##
 
-All development & Content by Elian Van Cutsem
+Content by Eph Baum
 
-- email: hello@elian.codes
-- website: www.elian.codes
+Original brutalist theme by Elian Van Cutsem
+
+- email: eph_baum@outlook.com
+- website: ephbaum.dev

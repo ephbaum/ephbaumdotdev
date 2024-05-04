@@ -4,8 +4,8 @@ import { getCollection } from 'astro:content';
 export async function GET(context) {
   const blog = await getCollection('blog');
   return rss({
-    title: 'Brutal Blog',
-    description: 'Brutal is a theme for Astro',
+    title: 'Eph Baum Dot Dev',
+    description: 'Talking to myself to answer my own questions about tech, engineering, and working with people',
     stylesheet: false,
     site: context.site,
     items: blog.map((post) => ({
@@ -15,6 +15,6 @@ export async function GET(context) {
       link: `/blog/${post.slug}/`,
     })),
     customData: '<language>en-us</language>',
-    canonicalUrl: 'https://brutal.elian.codes',
+    canonicalUrl: 'https://ephbaum.dev',
   });
 }

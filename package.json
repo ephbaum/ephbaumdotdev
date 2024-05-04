@@ -1,14 +1,14 @@
 {
-  "name": "",
-  "version": "1.2.0",
+  "name": "eph-baum-dot-dov",
+  "version": "1.0.0",
   "type": "module",
   "packageManager": "pnpm@8.6.0",
   "author": {
-    "name": "Elian Van Cutsem",
-    "email": "hello@elian.codes",
-    "url": "https://www.elian.codes/"
+    "name": "Eph Baum",
+    "email": "eph_baum@outlook.com",
+    "url": "https://ephbaum.dev/"
   },
-  "homepage": "https://brutal.elian.codes",
+  "homepage": "https://ephbaum.dev/",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
