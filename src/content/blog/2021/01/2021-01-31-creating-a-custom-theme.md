@@ -1,6 +1,7 @@
 ---
 title: Creating a custom theme
 postSlug: themes
+slug: themes
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/6fece12b215dc2bdfad1555deff644b68daab129.png
 ogImage: ../../../../assets/img/2021/01/6fece12b215dc2bdfad1555deff644b68daab129.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/6fece12b215dc2bdfad1555deff644b68daab129.png)

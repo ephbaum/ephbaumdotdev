@@ -1,6 +1,7 @@
 ---
 title: Iteration v. Recursion
 postSlug: iteration-v-recursion
+slug: iteration-v-recursion
 pubDate: 06/24/2023 01:13 PM
 imgUrl: ../../../../assets/img/2023/06/5890503802e344127555580131845016b7758057.jpeg
 ogImage: ../../../../assets/img/2023/06/5890503802e344127555580131845016b7758057.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/06/5890503802e344127555580131845016b7758057.jpeg)

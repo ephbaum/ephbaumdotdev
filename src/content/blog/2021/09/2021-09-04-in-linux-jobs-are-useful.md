@@ -1,6 +1,7 @@
 ---
 title: In Linux, Jobs are Useful!
 postSlug: linux-jobs-are-useful
+slug: linux-jobs-are-useful
 pubDate: 09/04/2021 08:14 PM
 imgUrl: ../../../../assets/img/2021/09/42c24cb4f922b7dc9e6c089964d8079a36120830.jpeg
 ogImage: ../../../../assets/img/2021/09/42c24cb4f922b7dc9e6c089964d8079a36120830.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/09/42c24cb4f922b7dc9e6c089964d8079a36120830.jpeg)

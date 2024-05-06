@@ -1,6 +1,7 @@
 ---
 title: The Value of the Retrospective (by ChatGPT)
 postSlug: engineering-retrospectives-feat-chatgpt
+slug: engineering-retrospectives-feat-chatgpt
 pubDate: 12/10/2022 01:15 PM
 imgUrl: ../../../../assets/img/2022/12/905ef7f3b94b13529c726ea186fd6344490ef98c.jpeg
 ogImage: ../../../../assets/img/2022/12/905ef7f3b94b13529c726ea186fd6344490ef98c.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/12/905ef7f3b94b13529c726ea186fd6344490ef98c.jpeg)

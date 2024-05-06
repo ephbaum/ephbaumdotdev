@@ -1,6 +1,7 @@
 ---
 title: Apps & integrations
 postSlug: apps-integrations
+slug: apps-integrations
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/92f17323c7a569361f529db8c08631b7d17dc783.png
 ogImage: ../../../../assets/img/2021/01/92f17323c7a569361f529db8c08631b7d17dc783.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/92f17323c7a569361f529db8c08631b7d17dc783.png)

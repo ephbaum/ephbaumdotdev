@@ -1,6 +1,7 @@
 ---
 title: Welcome to Ghost
 postSlug: welcome
+slug: welcome
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/71597e732755685f73504e6ca544204efd6b9d78.png
 ogImage: ../../../../assets/img/2021/01/71597e732755685f73504e6ca544204efd6b9d78.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/71597e732755685f73504e6ca544204efd6b9d78.png)

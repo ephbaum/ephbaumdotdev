@@ -1,6 +1,7 @@
 ---
 title: Leadership - People & Process
 postSlug: leadership-people-process
+slug: leadership-people-process
 pubDate: 03/08/2021 03:35 PM
 imgUrl: ../../../../assets/img/2021/03/39c5530ed243b854e1df42b8de11652f48c502ff.jpeg
 ogImage: ../../../../assets/img/2021/03/39c5530ed243b854e1df42b8de11652f48c502ff.jpeg
@@ -11,13 +12,14 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/03/39c5530ed243b854e1df42b8de11652f48c502ff.jpeg)
 
 ### It's About the People, Stupid
 
-It’s easy to lose sight of the people element.
+It's easy to lose sight of the people element.
 
 Recently I attended a training led by [Bill Joy](https://en.wikipedia.org/wiki/Bill_Joy) who reminded us again how important it is to coach the person not the problem. This is a common trap that is remarkably difficult to avoid even after years of practice, particularly if your career path as been from being an engineering individual contributor, you're basically predisposed to try to solve problems when they are presented since that is, for intents and purposes, your job. **It's who you are!**
 

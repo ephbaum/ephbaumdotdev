@@ -1,6 +1,7 @@
 ---
 title: On Being a Capable Impostor
 postSlug: on-being-a-capable-impostor
+slug: on-being-a-capable-impostor
 pubDate: 02/07/2021 04:15 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 I've been doing some form of computer engineering or another since I was about 4 years old when I first copied a bunch of lines of BASIC out of a spiral bound systems' manual for the family RadioShack Tandy TRS 80. My father showed me how to do it and helped me debug it when it didn't work at all the first time. It's one of those fond memories I have of my father.
@@ -26,11 +28,11 @@ One of the first applications I ever built was a DOS front end for entering base
 
 These things were awful, of course.
 
-That didn’t stop me. I read manuals (which used to be made out of paper) and help files, I poked and prodded, I tried things out and eventually I got better.
+That didn't stop me. I read manuals (which used to be made out of paper) and help files, I poked and prodded, I tried things out and eventually I got better.
 
 And on and on it went.
 
-In the 90’s I was making gaming websites, forums and clan sites. In the late 90s I was making sites, building computers, and setting up networks for friends & family, and for the people those people knew.
+In the 90's I was making gaming websites, forums and clan sites. In the late 90s I was making sites, building computers, and setting up networks for friends & family, and for the people those people knew.
 
 I was getting paid.
 
@@ -40,11 +42,11 @@ The first time I made money for doing computer stuff felt pretty good.
 
 It still does decades later.
 
-That’s the thing of it, I have been doing this personally and professionally for several decades now. Typing that out makes me feel old, but it remains a true statement.
+That's the thing of it, I have been doing this personally and professionally for several decades now. Typing that out makes me feel old, but it remains a true statement.
 
 My journey from kid playing with a computer from RadioShack to Engineering Manager has been a wild adventure of trial and error, and whole lot of education.
 
-I started working at [CompUSA](https://en.wikipedia.org/wiki/CompUSA) as a kid in the 90s - I quickly, at the speed of retail, rose from cashier to customer service, to front end lead to manager. I was cross trained on the tech desk. A+. I continued with MCP+, MCSE, etc. One thing I really remember about CompUSA was [Chumbawumba’s Tub Thumper](https://youtu.be/2H5uWRjFsGc), which played incessantly. I also remember learning and learning more about how to learn.
+I started working at [CompUSA](https://en.wikipedia.org/wiki/CompUSA) as a kid in the 90s - I quickly, at the speed of retail, rose from cashier to customer service, to front end lead to manager. I was cross trained on the tech desk. A+. I continued with MCP+, MCSE, etc. One thing I really remember about CompUSA was [Chumbawumba's Tub Thumper](https://youtu.be/2H5uWRjFsGc), which played incessantly. I also remember learning and learning more about how to learn.
 
 I had CompuServe, then AOL I had a ISP's dial-up, and eventually a 56k modem, before finally broadband. I gamed online. I played a lot of games and took part in a lot of game communities.
 
@@ -52,11 +54,11 @@ I discovered how much information to which I had access at a very young age. It 
 
 ### Education
 
-Education takes on many forms, while it’s not exactly possible to obtain an education through a sheer force of will, though I sure gave it a good try.
+Education takes on many forms, while it's not exactly possible to obtain an education through a sheer force of will, though I sure gave it a good try.
 
 Being connected at an early age gave me unprecedented access to the all the knowledge of humanity. I was around for early BBSs and USENET.
 
-I’m still saddened by the eternal September.
+I'm still saddened by the eternal September.
 
 But still, I learned.
 

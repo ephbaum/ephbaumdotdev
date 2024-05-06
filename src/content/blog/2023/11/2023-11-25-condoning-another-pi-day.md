@@ -1,6 +1,7 @@
 ---
 title: Condoning Another Pi Day
 postSlug: condoning-another-pi-day
+slug: condoning-another-pi-day
 pubDate: 11/25/2023 01:34 PM
 imgUrl: ../../../../assets/img/2023/11/ae84eb9dd789555dfc8bf1f3b9cda56225e248e2.jpeg
 ogImage: ../../../../assets/img/2023/11/ae84eb9dd789555dfc8bf1f3b9cda56225e248e2.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/11/ae84eb9dd789555dfc8bf1f3b9cda56225e248e2.jpeg)

@@ -1,6 +1,7 @@
 ---
 title: WTF is Idiomatic
 postSlug: wtf-is-idiomatic
+slug: wtf-is-idiomatic
 pubDate: 10/27/2023 09:50 PM
 imgUrl: ../../../../assets/img/2023/10/9bb3bcf4aa82f34aebae411aba3cd416e9ccd341.jpeg
 ogImage: ../../../../assets/img/2023/10/9bb3bcf4aa82f34aebae411aba3cd416e9ccd341.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/10/9bb3bcf4aa82f34aebae411aba3cd416e9ccd341.jpeg)

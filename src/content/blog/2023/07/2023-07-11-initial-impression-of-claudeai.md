@@ -1,6 +1,7 @@
 ---
 title: Initial Impression of Claude.ai
 postSlug: initial-impression-of-claud-ai
+slug: initial-impression-of-claud-ai
 pubDate: 07/11/2023 10:15 PM
 imgUrl: ../../../../assets/img/2023/07/c468f1f893fd4f2526e62a270ae6d520f0745297.jpeg
 ogImage: ../../../../assets/img/2023/07/c468f1f893fd4f2526e62a270ae6d520f0745297.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/07/c468f1f893fd4f2526e62a270ae6d520f0745297.jpeg)

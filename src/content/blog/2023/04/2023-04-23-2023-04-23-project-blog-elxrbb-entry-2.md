@@ -1,6 +1,7 @@
 ---
 title: 2023-04-23 - project blog - elxrBB- Entry #2
 postSlug: 2023-04-23-project-blog-elxrbb-entry-2
+slug: 2023-04-23-project-blog-elxrbb-entry-2
 pubDate: 04/23/2023 04:13 PM
 imgUrl: ../../../../assets/img/2023/04/4ae009f5e54b7fecedd40c1f3b33b44a47008fca.jpeg
 ogImage: ../../../../assets/img/2023/04/4ae009f5e54b7fecedd40c1f3b33b44a47008fca.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/04/4ae009f5e54b7fecedd40c1f3b33b44a47008fca.jpeg)

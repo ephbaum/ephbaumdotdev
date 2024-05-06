@@ -1,6 +1,7 @@
 ---
 title: Array.prototype.diff(meaCulpa)
 postSlug: array-prototype-diff-meaculpa
+slug: array-prototype-diff-meaculpa
 pubDate: 08/23/2014 08:45 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 So, it turns out that when you go off all half-cocked all willy-nilly extending a core functionality of JavaScript it's bound to result in a hiccup now and then.

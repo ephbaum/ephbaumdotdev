@@ -1,6 +1,7 @@
 ---
 title: Playdate Group 4 Represent!
 postSlug: playdate
+slug: playdate
 pubDate: 07/15/2023 07:13 PM
 imgUrl: ../../../../assets/img/2023/07/IMG_4554.png
 ogImage: ../../../../assets/img/2023/07/IMG_4554.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/07/IMG_4554.png)

@@ -1,6 +1,7 @@
 ---
 title: My Friend Alfred
 postSlug: my-friend-alfred
+slug: my-friend-alfred
 pubDate: 06/03/2014 09:00 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 _... and the Monokai Glass Theme._

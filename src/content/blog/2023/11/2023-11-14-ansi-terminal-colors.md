@@ -1,6 +1,7 @@
 ---
 title: ANSI Terminal Colors
 postSlug: terminal-colors
+slug: terminal-colors
 pubDate: 11/14/2023 09:42 PM
 imgUrl: ../../../../assets/img/2023/11/xterm-colors-c.png
 ogImage: ../../../../assets/img/2023/11/xterm-colors-c.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/11/xterm-colors-c.png)

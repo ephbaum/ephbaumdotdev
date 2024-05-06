@@ -1,6 +1,7 @@
 ---
 title: On Falling in Love with Your Town
 postSlug: on-falling-in-love-with-your-town
+slug: on-falling-in-love-with-your-town
 pubDate: 04/25/2021 06:38 PM
 imgUrl: ../../../../assets/img/2021/04/9ee3542843bf4cf78837d720f48fddc9-1.jpg
 ogImage: ../../../../assets/img/2021/04/9ee3542843bf4cf78837d720f48fddc9-1.jpg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/04/9ee3542843bf4cf78837d720f48fddc9-1.jpg)

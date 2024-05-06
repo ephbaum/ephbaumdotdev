@@ -1,6 +1,7 @@
 ---
 title: Test Tangential Development - TTD
 postSlug: test-tangential-development-ttd
+slug: test-tangential-development-ttd
 pubDate: 02/11/2021 07:15 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 We have all heard the [TDD Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development). This is, of course, the Right Way™. I am certain that in the last decade or so I have heard TDD evangelized at least a couple times year during various conferences, meetups, podcast, talk tracks, etc.

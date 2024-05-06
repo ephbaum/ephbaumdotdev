@@ -1,6 +1,7 @@
 ---
 title: Types of Tests in Laravel
 postSlug: types-of-tests-in-laravel
+slug: types-of-tests-in-laravel
 pubDate: 03/26/2023 10:31 AM
 imgUrl: ../../../../assets/img/2023/03/399114885b61efdd579a4ca2ebd1979821f0ca96.jpeg
 ogImage: ../../../../assets/img/2023/03/399114885b61efdd579a4ca2ebd1979821f0ca96.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/03/399114885b61efdd579a4ca2ebd1979821f0ca96.jpeg)

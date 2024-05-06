@@ -1,6 +1,7 @@
 ---
 title: Having Fun at Work
 postSlug: having-fun-at-work
+slug: having-fun-at-work
 pubDate: 06/24/2014 05:30 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 This might seem completely obvious, but it's important to have fun with your work.

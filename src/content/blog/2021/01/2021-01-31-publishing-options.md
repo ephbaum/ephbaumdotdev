@@ -1,6 +1,7 @@
 ---
 title: Publishing options
 postSlug: publishing-options
+slug: publishing-options
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/c7cee9490533a164e4371cc5a1df53befbb13ed3.png
 ogImage: ../../../../assets/img/2021/01/c7cee9490533a164e4371cc5a1df53befbb13ed3.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/c7cee9490533a164e4371cc5a1df53befbb13ed3.png)
@@ -64,7 +66,7 @@ Ghost will automatically implement **structured data** for your publication usin
     }
         
 
-You can test that the structured data [schema](https://schema.org/) on your site is working as it should using [Google’s structured data tool](https://search.google.com/structured-data/testing-tool).
+You can test that the structured data [schema](https://schema.org/) on your site is working as it should using [Google's structured data tool](https://search.google.com/structured-data/testing-tool).
 
 Code injection
 --------------

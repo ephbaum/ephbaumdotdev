@@ -1,6 +1,7 @@
 ---
 title: Array.prototype.diff()
 postSlug: array-prototype-diff
+slug: array-prototype-diff
 pubDate: 06/29/2014 07:30 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 #### Update - 23 August 2014

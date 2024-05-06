@@ -1,6 +1,7 @@
 ---
 title: (How I) Use Multiple Cached Selectors with jQuery
 postSlug: how-i-use-multiple-cached-selectors-with-jquery
+slug: how-i-use-multiple-cached-selectors-with-jquery
 pubDate: 03/11/2014 05:25 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 I am embarrassed to admit how often it really happens, but I frequently forget how to use multiple cached selectors with jQuery and usually just fire a quick Google search and then kick myself when I see a Stack Overflow post like [this one](http://stackoverflow.com/questions/8526226/jquery-how-to-use-multiple-cached-elements) and immediately remember how _I_ do this.

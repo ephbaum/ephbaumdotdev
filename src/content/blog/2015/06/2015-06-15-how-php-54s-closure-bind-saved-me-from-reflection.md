@@ -1,6 +1,7 @@
 ---
 title: How PHP 5.4's Closure - -bind Saved me From Reflection
 postSlug: closure-bind-not-reflection
+slug: closure-bind-not-reflection
 pubDate: 06/15/2015 06:00 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 A few weeks ago I was faced with a problem: I needed to access private variables within a Library class in our Laravel 4 based web application. The library we're using, installed with Composer, did not offer a way to access any of its properties, instead it offered two public methods that simply returned concatenated private variable strings. I needed only one of the two elements.

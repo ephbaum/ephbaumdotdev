@@ -1,6 +1,7 @@
 ---
 title: The Power of Psychological Safety in High-Performing Teams
 postSlug: the-power-of-psychological-safety-in-high-performing-teams
+slug: the-power-of-psychological-safety-in-high-performing-teams
 pubDate: 06/06/2023 10:38 AM
 imgUrl: ../../../../assets/img/2023/06/c1f911bf1ff13d1a39351def98589c9b20df5c4b.jpeg
 ogImage: ../../../../assets/img/2023/06/c1f911bf1ff13d1a39351def98589c9b20df5c4b.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/06/c1f911bf1ff13d1a39351def98589c9b20df5c4b.jpeg)

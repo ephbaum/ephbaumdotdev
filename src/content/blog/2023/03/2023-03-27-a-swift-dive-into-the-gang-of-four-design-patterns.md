@@ -1,6 +1,7 @@
 ---
 title: A Swift Dive into the Gang of Four Design Patterns
 postSlug: a-swift-dive-into-the-gang-of-four-design-patterns
+slug: a-swift-dive-into-the-gang-of-four-design-patterns
 pubDate: 03/27/2023 06:22 PM
 imgUrl: ../../../../assets/img/2023/03/819d84793b8ae08cb193143196d191119f92e948.jpeg
 ogImage: ../../../../assets/img/2023/03/819d84793b8ae08cb193143196d191119f92e948.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/03/819d84793b8ae08cb193143196d191119f92e948.jpeg)

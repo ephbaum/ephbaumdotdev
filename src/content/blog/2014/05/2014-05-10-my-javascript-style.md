@@ -1,6 +1,7 @@
 ---
 title: (My) JavaScript Style
 postSlug: my-javascript-style
+slug: my-javascript-style
 pubDate: 05/10/2014 05:40 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 There isn't exactly a style standard for JavaScript. [Douglas Crockford](http://en.wikipedia.org/wiki/Douglas_crockford) has a good [list of conventions](http://javascript.crockford.com/code.html). The [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml) is an excellent resource and there's even a [styleguide from jQuery](http://contribute.jquery.org/style-guide/js/) that I'm not terribly fond of, especially because they so strongly recommend the use of double quotes over single quotes. However, since it seems that generally there are more standards than there are people using them. And they are almost never exactly what you want you to do as a developer. It's like the wild west. When it comes down to it, there are almost as many ways of styling JS as there are ways to write a function.

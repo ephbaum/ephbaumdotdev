@@ -1,6 +1,7 @@
 ---
 title: Thingdom JavaScript Wrapper
 postSlug: thingdom-javascript-wrapper
+slug: thingdom-javascript-wrapper
 pubDate: 01/21/2015 04:00 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 Of late I have been working working on several different projects in my day to day.

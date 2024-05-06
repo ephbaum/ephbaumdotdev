@@ -1,6 +1,7 @@
 ---
 title: Unnecessary Zoom Fatigue
 postSlug: unnecessary-zoom-fatigue
+slug: unnecessary-zoom-fatigue
 pubDate: 03/12/2021 07:05 PM
 imgUrl: ../../../../assets/img/2021/03/c0d26b5d394bc90db30ba5211aa2f4e23beb908e.jpeg
 ogImage: ../../../../assets/img/2021/03/c0d26b5d394bc90db30ba5211aa2f4e23beb908e.jpeg
@@ -11,19 +12,20 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/03/c0d26b5d394bc90db30ba5211aa2f4e23beb908e.jpeg)
 
-It happens, the [unnecessary zoom](https://twitter.com/JillKrajewski/status/1357331466221453312), and it’s pretty frustrating.
+It happens, the [unnecessary zoom](https://twitter.com/JillKrajewski/status/1357331466221453312), and it's pretty frustrating.
 
 > when it should've been an email [pic.twitter.com/C1eJFX8tyT](https://t.co/C1eJFX8tyT)[February 4, 2021](https://twitter.com/JillKrajewski/status/1357331466221453312?ref_src=twsrc%5Etfw)
 
-It’s frustrating because you can’t help but lament the sheer volume of time wasted, and not just your own, but everyone else who was pulled into the meeting with you.
+It's frustrating because you can't help but lament the sheer volume of time wasted, and not just your own, but everyone else who was pulled into the meeting with you.
 
-It’s absolutely the worst when it’s your fault and you realize it.
+It's absolutely the worst when it's your fault and you realize it.
 
-The problem is that a lot of meetings turn out to be productive. Productive meetings are magnificent. You get something akin to a high from cruising through an agenda, connecting with fellow humans, solving problems, synergizing, driving outcomes, etc. It’s an endorphin hit. It's serotonin. Magic!
+The problem is that a lot of meetings turn out to be productive. Productive meetings are magnificent. You get something akin to a high from cruising through an agenda, connecting with fellow humans, solving problems, synergizing, driving outcomes, etc. It's an endorphin hit. It's serotonin. Magic!
 
 ![spongebob magic](__GHOST_URL__/content/images/2021/03/spongebob-magic.gif)
 

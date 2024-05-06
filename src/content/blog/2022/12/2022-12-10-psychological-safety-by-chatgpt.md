@@ -1,6 +1,7 @@
 ---
 title: Psychological Safety (by ChatGPT)
 postSlug: psychological-safety-by-chatgpt
+slug: psychological-safety-by-chatgpt
 pubDate: 12/10/2022 01:05 PM
 imgUrl: ../../../../assets/img/2022/12/50caa765a70ff1710d7b12ba274461642f31ad15.jpeg
 ogImage: ../../../../assets/img/2022/12/50caa765a70ff1710d7b12ba274461642f31ad15.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/12/50caa765a70ff1710d7b12ba274461642f31ad15.jpeg)

@@ -1,6 +1,7 @@
 ---
 title: Managing admin settings
 postSlug: admin-settings
+slug: admin-settings
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/bc9db7ebb0a48651041ef748e6b2d972cd9261af.png
 ogImage: ../../../../assets/img/2021/01/bc9db7ebb0a48651041ef748e6b2d972cd9261af.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/bc9db7ebb0a48651041ef748e6b2d972cd9261af.png)

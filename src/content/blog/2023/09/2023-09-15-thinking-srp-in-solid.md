@@ -1,6 +1,7 @@
 ---
 title: Thinking S.R.P. in S.O.L.I.D.
 postSlug: thinking-srp-in-solid
+slug: thinking-srp-in-solid
 pubDate: 09/15/2023 01:20 PM
 imgUrl: ../../../../assets/img/2023/09/2727558efa4bb78f2658c48990c84e0e011b6079.jpeg
 ogImage: ../../../../assets/img/2023/09/2727558efa4bb78f2658c48990c84e0e011b6079.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/09/2727558efa4bb78f2658c48990c84e0e011b6079.jpeg)

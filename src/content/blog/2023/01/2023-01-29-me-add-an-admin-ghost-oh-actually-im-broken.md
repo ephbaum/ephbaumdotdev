@@ -1,6 +1,7 @@
 ---
 title: Me - Add An Admin, Ghost - Oh, Actually I'm Broken
 postSlug: me-add-an-admin-ghost-oh-actually-im-broken
+slug: me-add-an-admin-ghost-oh-actually-im-broken
 pubDate: 01/29/2023 04:12 PM
 imgUrl: ../../../../assets/img/2023/01/9539bf1767a10c8cbe68daca41c4e1528b9cbead.jpeg
 ogImage: ../../../../assets/img/2023/01/9539bf1767a10c8cbe68daca41c4e1528b9cbead.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/01/9539bf1767a10c8cbe68daca41c4e1528b9cbead.jpeg)

@@ -1,6 +1,7 @@
 ---
 title: Mental Health Crises Aren't Convenient
 postSlug: mental-health-crises-arent-convenient
+slug: mental-health-crises-arent-convenient
 pubDate: 03/03/2022 10:57 AM
 imgUrl: ../../../../assets/img/2022/03/8a36f3896df9b625e04a25afd34fd64a83cf02cb.jpeg
 ogImage: ../../../../assets/img/2022/03/8a36f3896df9b625e04a25afd34fd64a83cf02cb.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/03/8a36f3896df9b625e04a25afd34fd64a83cf02cb.jpeg)

@@ -1,6 +1,7 @@
 ---
 title: Writing posts with Ghost ✍️
 postSlug: the-editor
+slug: the-editor
 pubDate: 01/31/2021 05:19 PM
 imgUrl: ../../../../assets/img/2021/01/78fd155de9e22763ebe19aed0fce0148a2e19865.png
 ogImage: ../../../../assets/img/2021/01/78fd155de9e22763ebe19aed0fce0148a2e19865.png
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2021/01/78fd155de9e22763ebe19aed0fce0148a2e19865.png)
@@ -49,7 +51,7 @@ It's also possible to share links from across the web in a visual way using book
 
 Ghost: The #1 open source headless Node.js CMS
 
-The world’s most popular modern open source publishing platform. A headless Node.js CMS used by Apple, Sky News, Tinder and thousands more. MIT licensed, with 30k+ stars on Github.
+The world's most popular modern open source publishing platform. A headless Node.js CMS used by Apple, Sky News, Tinder and thousands more. MIT licensed, with 30k+ stars on Github.
 
 ![](https://ghost.org/icons/icon-512x512.png?v=188b8b6d743c6338ba2eab2e35bab4f5)Ghost
 

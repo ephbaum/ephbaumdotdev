@@ -1,6 +1,7 @@
 ---
 title: Recognizing the PNW Journey
 postSlug: went-to-the-pnw
+slug: went-to-the-pnw
 pubDate: 02/25/2021 10:46 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 Working remotely during COVID-19 has been an incredible experience, but moving more than 1,600 miles from Minnesota certainly added an interesting aspect to the whole experience. When you mesh all that with (in no particular order):
@@ -32,10 +34,10 @@ My journey to western Washington really goes back to my youth and being born in 
 
 My lovely wife and me in front of the Great Wheel at Pier 57 in 2014
 
-It's been a hell of a 6 year adventure since then, that's for sure. We’ve been through a lot together. But we made it!
+It's been a hell of a 6 year adventure since then, that's for sure. We've been through a lot together. But we made it!
 
 And now I finally have some of that time I've been looking for to post to this very blog.
 
-So, this post isn't exactly about being an Engineer or manager, rather it's about celebrating the culmination of the incredible journey I've been on for the last several years. It’s important to recognize your wins, to observe how far you’ve actually come.
+So, this post isn't exactly about being an Engineer or manager, rather it's about celebrating the culmination of the incredible journey I've been on for the last several years. It's important to recognize your wins, to observe how far you've actually come.
 
-So this post exists as a way to pat myself on the back. I worked hard to get here and now I’ve finally done it! :successkid:
+So this post exists as a way to pat myself on the back. I worked hard to get here and now I've finally done it! :successkid:

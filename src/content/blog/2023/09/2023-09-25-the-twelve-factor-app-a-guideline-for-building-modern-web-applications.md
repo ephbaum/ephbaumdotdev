@@ -1,6 +1,7 @@
 ---
 title: The Twelve-Factor App - A Guideline for Building Modern Web Applications
 postSlug: the-twelve-factor-app
+slug: the-twelve-factor-app
 pubDate: 09/25/2023 08:02 PM
 imgUrl: ../../../../assets/img/2023/09/cd8c55e9de1b081ebe023f3296caab0b2286501d.jpeg
 ogImage: ../../../../assets/img/2023/09/cd8c55e9de1b081ebe023f3296caab0b2286501d.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/09/cd8c55e9de1b081ebe023f3296caab0b2286501d.jpeg)

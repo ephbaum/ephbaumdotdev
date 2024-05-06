@@ -1,6 +1,7 @@
 ---
 title: MAMP Pro 3 + PECL + Extensions = Working MEMCACHE
 postSlug: mamp-pecl-memcache
+slug: mamp-pecl-memcache
 pubDate: 04/20/2015 07:00 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
@@ -10,6 +11,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 Through a twist of fate well beyond my control I find that I must use a development environment every day that requires MySQL, Apache, PHP and Memcached. As it happens, through various personal life choices, very probably also well beyond my control, my daily driver is a MacBook Pro and thus, through various other factors and decisions, I use MAMP Pro.

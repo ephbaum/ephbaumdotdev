@@ -1,6 +1,7 @@
 ---
 title: A Year Later - Still Burnt Out
 postSlug: a-year-later-still-burnt-out
+slug: a-year-later-still-burnt-out
 pubDate: 04/23/2023 09:36 AM
 imgUrl: ../../../../assets/img/2023/04/a32373782922ad73a6f9fe009050cde14e7d117a.jpeg
 ogImage: ../../../../assets/img/2023/04/a32373782922ad73a6f9fe009050cde14e7d117a.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/04/a32373782922ad73a6f9fe009050cde14e7d117a.jpeg)

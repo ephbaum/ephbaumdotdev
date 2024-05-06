@@ -1,6 +1,7 @@
 ---
 title: From Early Return in OOP to Control Flow in Elixir - A Transition Guide
 postSlug: from-early-return-in-oop-to-control-flow-in-elixir-a-transition-guide
+slug: from-early-return-in-oop-to-control-flow-in-elixir-a-transition-guide
 pubDate: 10/17/2023 05:48 PM
 imgUrl: ../../../../assets/img/2023/10/ea6aa6e6034a7824813a1267021269c4be1a9705.jpeg
 ogImage: ../../../../assets/img/2023/10/ea6aa6e6034a7824813a1267021269c4be1a9705.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/10/ea6aa6e6034a7824813a1267021269c4be1a9705.jpeg)

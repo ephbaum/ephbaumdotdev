@@ -1,6 +1,7 @@
 ---
 title: Ghost Blog backup to Astro markdown
 postSlug: ghost-blog-backup-to-astro-markdown
+slug: ghost-blog-backup-to-astro-markdown
 pubDate: 10/09/2023 09:59 PM
 imgUrl: ../../../../assets/img/2023/10/14b96419c1596c4eed6a61b4c2cbddc116edefb4.jpeg
 ogImage: ../../../../assets/img/2023/10/14b96419c1596c4eed6a61b4c2cbddc116edefb4.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2023/10/14b96419c1596c4eed6a61b4c2cbddc116edefb4.jpeg)

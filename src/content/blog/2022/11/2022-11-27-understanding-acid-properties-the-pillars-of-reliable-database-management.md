@@ -1,6 +1,7 @@
 ---
 title: Understanding ACID Properties - The Pillars of Reliable Database Management
 postSlug: understanding-acid
+slug: understanding-acid
 pubDate: 11/27/2022 08:05 PM
 imgUrl: ../../../../assets/img/2022/11/79e854561cc1c4e8283290869e1876312d749d08.jpeg
 ogImage: ../../../../assets/img/2022/11/79e854561cc1c4e8283290869e1876312d749d08.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/11/79e854561cc1c4e8283290869e1876312d749d08.jpeg)

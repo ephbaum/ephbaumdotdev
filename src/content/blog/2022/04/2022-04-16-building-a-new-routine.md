@@ -1,6 +1,7 @@
 ---
 title: Building a New Routine
 postSlug: building-a-new-routine
+slug: building-a-new-routine
 pubDate: 04/16/2022 05:30 PM
 imgUrl: ../../../../assets/img/2022/04/c69006df4f644df6d6a4b8e3f288bc5ef2e885d3.jpeg
 ogImage: ../../../../assets/img/2022/04/c69006df4f644df6d6a4b8e3f288bc5ef2e885d3.jpeg
@@ -11,11 +12,12 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/04/c69006df4f644df6d6a4b8e3f288bc5ef2e885d3.jpeg)
 
-There’s much that needs doing. Always.
+There's much that needs doing. Always.
 
 You could fill every moment of every day working toward any number of endeavors, and it seems almost impossible, sometimes, to stop and prioritize.
 

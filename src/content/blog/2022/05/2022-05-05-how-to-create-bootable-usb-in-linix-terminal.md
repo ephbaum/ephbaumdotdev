@@ -1,6 +1,7 @@
 ---
 title: How to Create Bootable USB in Linix Terminal
 postSlug: bootable-usb-drives
+slug: bootable-usb-drives
 pubDate: 05/05/2022 02:46 PM
 imgUrl: ../../../../assets/img/2022/05/9ba3e5f31a280eaaa446dd7d9621433fec1e3742.jpeg
 ogImage: ../../../../assets/img/2022/05/9ba3e5f31a280eaaa446dd7d9621433fec1e3742.jpeg
@@ -11,6 +12,7 @@ tags:
   - relevant-tag
 description:
   Placeholder description for imported post from Ghost Blog
+layout: ../../../../layouts/BlogPost.astro
 ---
 
 ![Featured Image](../../../../assets/img/2022/05/9ba3e5f31a280eaaa446dd7d9621433fec1e3742.jpeg)
