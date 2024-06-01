@@ -4,17 +4,28 @@ import UnoCSS from 'unocss/astro';
 
 export default defineConfig({
   // used to generate images
-  site:
-    process.env.VERCEL_ENV === 'production'
-      ? 'https://brutal.elian.codes/'
-      : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}/`
-      : 'https://localhost:3000/',
+  site: 'https://ephbaum.dev',
   trailingSlash: 'ignore',
   integrations: [sitemap(), UnoCSS({ injectReset: true })],
   vite: {
     optimizeDeps: {
       exclude: ['@resvg/resvg-js'],
+    },
+  },
+  markdown: {
+    shikiConfig: {
+      // Choose from Shiki's built-in themes (or add your own)
+      // https://shiki.style/themes
+      theme: 'catppuccin-macchiato',
+      // Add custom languages
+      // Note: Shiki has countless langs built-in, including .astro!
+      // https://shiki.style/languages
+      langs: [],
+      // Enable word wrap to prevent horizontal scrolling
+      wrap: true,
+      // Add custom transformers: https://shiki.style/guide/transformers
+      // Find common transformers: https://shiki.style/packages/transformers
+      transformers: [],
     },
   },
 });
