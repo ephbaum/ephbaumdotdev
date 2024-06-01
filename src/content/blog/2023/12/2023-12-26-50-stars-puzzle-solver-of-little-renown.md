@@ -9,9 +9,9 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - Advent of Code
 description:
-  Placeholder description for imported post from Ghost Blog
+  Join Eph Baum as they recount their journey through the Advent of Code 2023. For the first time, Eph completes all puzzles, leveraging resources like GPT-4 and Code Llama. Despite the challenges and time constraints, Eph not only stays on top of the puzzles but also lands on the top 1,000 leaderboard. Dive into this post to explore the role of generative AIs in problem-solving and the joy of coding puzzles. - GitHub Co-pilot
 layout: ../../../../layouts/BlogPost.astro
 ---
 
@@ -29,7 +29,7 @@ And to be clear: I'm still an imposter. I didn't solve them _all_ on my own. I d
 
 In a few cases I needed to look to others' solutions to gain understanding of what I was doing wrong and occasionally adapt these solutions into something I could work with to solve my own input. I did not feed problems directly to into any LLMs, something I tried to do as an experiment last year without much success. (Well, I did exactly that, but only after solving them while trying to work on documenting my work to get summaries of the problems I'd worked on.)
 
-Mostly I used generative AI as a rubber duck to great effect. [Mostly](/dont-trust-ai-an-advent-of-code-tale/).
+Mostly I used generative AI as a rubber duck to great effect. [Mostly](/blog/dont-trust-ai-an-advent-of-code-tale/).
 
 It was rather useful to treat GPT-4 like a coding partner, to let it help me produce visualizations more quickly than I would otherwise have been able to do on my own. It was nice to have Co-Pilot complete methods as I worked on them based on my comments and context.
 
@@ -41,7 +41,7 @@ This year, though, I managed to keep up quite well- even landing on the top 1,00
 
 I even found some time to work on different solutions in different languages on some of the “easier” days.
 
-I even found some time to work on different solutions in different languages on some of the “easier” days. Early on, I did most of my solutions in JavaScript but eventually switched to focusing on getting more comfortable with Python, as it's just a much easier language to work with for these sorts of puzzles. I also found myself spending a bit more time with Rust and even managed to convert a couple of solutions to Elixir. I did none of them in PHP, despite it being (or perhps beccause it is) the language of my day job.
+I even found some time to work on different solutions in different languages on some of the “easier” days. Early on, I did most of my solutions in JavaScript but eventually switched to focusing on getting more comfortable with Python, as it's just a much easier language to work with for these sorts of puzzles. I also found myself spending a bit more time with Rust and even managed to convert a couple of solutions to Elixir. I did none of them in PHP, despite it being (or perhaps _because_ it is) the language of my day job.
 
 I feel good about getting all 50 stars this season, even if I didn't solve every puzzle “on my own,” as it were. I'm sure some purists might look down on my methods, solutions, or whatever - but I still did it, and I feel accomplished.
 

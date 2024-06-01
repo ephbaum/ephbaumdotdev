@@ -9,9 +9,9 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - Advent of Code
 description:
-  Placeholder description for imported post from Ghost Blog
+  Join Eph Baum in 'Don't Trust AI - An Advent of Code Tale' as they navigate the Advent of Code 2023. Despite the December rush, Eph is determined to complete all puzzles. This post shares an intriguing incident where an AI-generated code line proves less than helpful. Eph's journey underscores the importance of verifying AI suggestions, especially when optimizing code. Dive in to explore the challenges and triumphs of coding puzzles, and the role of AI in this process. - GitHub CoPilot
 layout: ../../../../layouts/BlogPost.astro
 ---
 
