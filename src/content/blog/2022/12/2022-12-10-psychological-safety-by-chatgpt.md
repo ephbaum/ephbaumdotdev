@@ -77,4 +77,4 @@ Overall, the benefits of psychological safety are numerous and can lead to bette
 
 In summary, psychological safety is crucial for the success of any team. A workplace that fosters psychological safety allows individuals to feel comfortable expressing their thoughts and ideas without fear of judgment or retribution. This can lead to better collaboration, decision-making, and overall mental health.
 
-In particular, software engineering teams can benefit greatly from the use of retrospectives, where team members can openly discuss their thoughts and ideas and learn from past experiences. For more information on the role of psychological safety in software engineering teams, check out our [blog post](__GHOST_URL__/engineering-retrospectives-feat-chatgpt/) on the topic of retrospectives.
+In particular, software engineering teams can benefit greatly from the use of retrospectives, where team members can openly discuss their thoughts and ideas and learn from past experiences. For more information on the role of psychological safety in software engineering teams, check out our [blog post](/blog/engineering-retrospectives-feat-chatgpt/) on the topic of retrospectives.

@@ -46,31 +46,30 @@ I could use the [Chudnovsky algorithm](https://en.wikipedia.org/wiki/Chudnovsky_
 
 There's a python script in the Wiki page:
 
-    import decimal
-    
-    
-    def binary_split(a, b):
-        if b == a + 1:
-            Pab = -(6*a - 5)*(2*a - 1)*(6*a - 1)
-            Qab = 10939058860032000 * a**3
-            Rab = Pab * (545140134*a + 13591409)
-        else:
-            m = (a + b) // 2
-            Pam, Qam, Ram = binary_split(a, m)
-            Pmb, Qmb, Rmb = binary_split(m, b)
-            
-            Pab = Pam * Pmb
-            Qab = Qam * Qmb
-            Rab = Qmb * Ram + Pam * Rmb
-        return Pab, Qab, Rab
-    
-    
-    def chudnovsky(n):
-        P1n, Q1n, R1n = binary_split(1, n)
-        return (426880 * decimal.Decimal(10005).sqrt() * Q1n) / (13591409*Q1n + R1n)
-    
-    
-    print(chudnovsky(2))  # 3.141592653589793238462643384
+```python
+import decimal
+
+def binary_split(a, b):
+    if b == a + 1:
+        Pab = -(6*a - 5)*(2*a - 1)*(6*a - 1)
+        Qab = 10939058860032000 * a**3
+        Rab = Pab * (545140134*a + 13591409)
+    else:
+        m = (a + b) // 2
+        Pam, Qam, Ram = binary_split(a, m)
+        Pmb, Qmb, Rmb = binary_split(m, b)
+        
+        Pab = Pam * Pmb
+        Qab = Qam * Qmb
+        Rab = Qmb * Ram + Pam * Rmb
+    return Pab, Qab, Rab
+
+def chudnovsky(n):
+    P1n, Q1n, R1n = binary_split(1, n)
+    return (426880 * decimal.Decimal(10005).sqrt() * Q1n) / (13591409*Q1n + R1n)
+
+print(chudnovsky(2))  # 3.141592653589793238462643384
+```
 
 So, of course I could.
 
@@ -78,37 +77,39 @@ This method wouldn't yield the precision I need.
 
 You could do [something like this](https://replit.com/@ephbaum/Chudnovsky-algo-in-py#main.py) to get to a certain precision:
 
-    from decimal import Decimal, getcontext
-    import math
-    
-    def calculate_pi(precision):
-        """
-        Calculate pi using the Chudnovsky algorithm to the specified precision.
-        """
-        getcontext().prec = precision + 1  # Set precision
-        C = 426880 * Decimal(math.sqrt(10005))
-        M = 1
-        L = 13591409
-        X = 1
-        K = 6
-        S = L
-    
-        for i in range(1, precision):
-            M = (M * (K ** 3 - 16 * K)) // i ** 3 
-            L += 545140134
-            X *= -262537412640768000
-            S += Decimal(M * L) / X
-            K += 12
-    
-        pi = C / S
-        return str(pi)[:precision]
-    
-    # Calculate Pi to 100 digits
-    pi_100_digits = calculate_pi(100)
-    pi_100_digits
-    
-    pi_100000_digits = calculate_pi(100000)
-    pi_100000_digits
+```python
+from decimal import Decimal, getcontext
+import math
+
+def calculate_pi(precision):
+"""
+Calculate pi using the Chudnovsky algorithm to the specified precision.
+"""
+getcontext().prec = precision + 1  # Set precision
+C = 426880 * Decimal(math.sqrt(10005))
+M = 1
+L = 13591409
+X = 1
+K = 6
+S = L
+
+for i in range(1, precision):
+    M = (M * (K ** 3 - 16 * K)) // i ** 3 
+    L += 545140134
+    X *= -262537412640768000
+    S += Decimal(M * L) / X
+    K += 12
+
+pi = C / S
+return str(pi)[:precision]
+
+# Calculate Pi to 100 digits
+pi_100_digits = calculate_pi(100)
+pi_100_digits
+
+pi_100000_digits = calculate_pi(100000)
+pi_100000_digits
+```
 
 It's not the most efficient solution. I think I might have made repl.it mad when I tried to get 100,000 digits with the above. I gave up trying to even get to 10,000 digits in other 20 minutes of waiting.
 
@@ -138,23 +139,25 @@ My first attempt was to whip up something in Rust because I'm always looking for
 
 The code is simple:
 
-    fn find_sequence_in_url(url: &str, sequence: &str) -> Result<Option<usize>, Box<dyn std::error::Error>> {
-        let response = ureq::get(url).call()?.into_string()?;
-    
-        Ok(response.find(sequence))
+```rust
+fn find_sequence_in_url(url: &str, sequence: &str) -> Result<Option<usize>, Box<dyn std::error::Error>> {
+    let response = ureq::get(url).call()?.into_string()?;
+
+    Ok(response.find(sequence))
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let url = "https://www.mathsisfun.com/numbers/images/pi-million.txt";
+    let sequence = "1124";
+
+    match find_sequence_in_url(url, sequence)? {
+        Some(position) => println!("Sequence found at position: {}", position),
+        None => println!("Sequence not found"),
     }
-    
-    fn main() -> Result<(), Box<dyn std::error::Error>> {
-        let url = "https://www.mathsisfun.com/numbers/images/pi-million.txt";
-        let sequence = "1124";
-    
-        match find_sequence_in_url(url, sequence)? {
-            Some(position) => println!("Sequence found at position: {}", position),
-            None => println!("Sequence not found"),
-        }
-    
-        Ok(())
-    }
+
+    Ok(())
+}
+```
 
 But it's effective enough.
 

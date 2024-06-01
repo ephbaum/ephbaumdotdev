@@ -16,7 +16,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 #### Update - 23 August 2014
 
-A little [mea culpa](http://en.wiktionary.org/wiki/mea_culpa) follow up here... I had to write a [follow-up post](__GHOST_URL__/array-prototype-diff-followup/) that corrects something I missed here... [check it out](__GHOST_URL__/array-prototype-diff-followup/).
+A little [mea culpa](http://en.wiktionary.org/wiki/mea_culpa) follow up here... I had to write a [follow-up post](/blog/array-prototype-diff-followup/) that corrects something I missed here... [check it out](/blog/array-prototype-diff-followup/).
 
 #### Original article continues
 

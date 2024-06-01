@@ -37,6 +37,10 @@ Write it myself was the path I chose.
 
 Here's an embedded a [gist](https://gist.github.com/ephbaum/286b9d0c0fb9941a525d6dfdd7307b08) with some placeholders that accomplishes my goal, broadly:
 
+<script src="https://gist.github.com/ephbaum/286b9d0c0fb9941a525d6dfdd7307b08.js"></script>
+
+> (If you don't see the embed here, you can try refreshing the page. I'm not sure why Astro doesn't like to render script tages on the first pass, nor am I sure yet why this theme doesn't render MDX files)
+
 This solution isn't perfect. There are myriad improvements and optimizations possible, but it served my needs pretty well recently and I felt it was worth sharing for anyone else looking to accomplish this same goal.
 
 I think it's pretty self explanatory. It uses Turndown to convert the HTML in the JSON backup file to Markdown and then outputs each post as its own Markdown file.  

@@ -67,53 +67,61 @@ Want Some Examples?
 
 Sure you do. Let's consider two common programming problems and solve them using both iterative and recursive approaches: calculating the factorial of a number and summing the elements of an array.
 
-**1\. Factorial of a number**
+**1. Factorial of a number**
 
 The factorial of a non-negative integer _n_ is the product of all positive integers less than or equal to n. It's denoted by n!.
 
 _Iterative Approach:_
 
-    function factorial_iterative(n) {
-        let result = 1;
-        for (let i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
+```js
+function factorial_iterative(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
     }
+    return result;
+}
+```
 
 _Recursive Approach:_
 
-    function factorial_recursive(n) {
-        if (n === 0 || n === 1) {
-            return 1;
-        } else {
-            return n * factorial_recursive(n - 1);
-        }
+```js
+function factorial_recursive(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        return n * factorial_recursive(n - 1);
     }
+}
+```
 
-**2\. Summing the elements of an array**
+**2. Summing the elements of an array**
 
 This problem involves calculating the total sum of all elements in an array, as mentioned above. These two code snippets _should_ provide a reasonable illustration of the differences in behaviors between these two approaches.
 
 _Iterative Approach:_
 
-    function sum_iterative(array) {
-        let result = 0;
-        for (let i = 0; i < array.length; i++) {
-            result += array[i];
-        }
-        return result;
+```js
+function sum_iterative(array) {
+    let result = 0;
+    for (let i = 0; i < array.length; i++) {
+        result += array[i];
     }
+    return result;
+}
+```
 
 _Recursive Approach:_
 
-    function sum_recursive(array) {
-        if (array.length === 0) {
-            return 0;
-        } else {
-            return array[0] + sum_recursive(array.slice(1));
-        }
+```js
+function sum_recursive(array) {
+    if (array.length === 0) {
+        return 0;
+    } else {
+        return array[0] + sum_recursive(array.slice(1));
     }
+}
+```
 
 In both examples, you can see that the iterative solutions involve looping through a range or an array and directly updating the result, whereas the recursive solutions involve breaking the problem down into smaller sub-problems, solving them, and combining the results.
 

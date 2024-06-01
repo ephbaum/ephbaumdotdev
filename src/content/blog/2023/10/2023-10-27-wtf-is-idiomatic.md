@@ -27,34 +27,41 @@ On the other hand, "non-idiomatic" code can often resemble "writing Language A i
 
 **Pattern Matching:**
 
-    def calculate_area({:circle, radius}) do
-      :math.pi() * radius * radius
-    end
-    
+```elixir
+def calculate_area({:circle, radius}) do
+  :math.pi() * radius * radius
+end
+```
+  
 
 **Guard Clauses:**
 
-    def is_even?(n) when rem(n, 2) == 0, do: true
-    def is_even?(_), do: false
-    
+```elixir
+def is_even?(n) when rem(n, 2) == 0, do: true
+def is_even?(_), do: false
+```
+
 
 ### Non-Idiomatic Elixir Examples:
 
 **Throw/Catch for Control Flow:**
 
-    try do
-      if some_condition do
-        throw(:abort)
-      end
-    catch
-      :throw, :abort -> :error
-    end
+```elixir
+try do
+  if some_condition do
+    throw(:abort)
+  end
+catch
+  :throw, :abort -> :error
+end
+```
     
 
 **Imperative Style Loops:**
 
-    # Using recursion to mimic a 'for' loop, instead of using Enum.map/2, Enum.reduce/2, etc.
-    
+```elixir
+# Using recursion to mimic a 'for' loop, instead of using Enum.map/2, Enum.reduce/2, etc.
+```
 
 By adhering to idiomatic practices, you embrace the strengths and paradigms of the language, making it easier for others who are familiar with the language to understand and contribute to your code.
 

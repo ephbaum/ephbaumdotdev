@@ -71,10 +71,10 @@ No I need to get back to resolving that error when trying to add a user.
 
 My current working theories are:
 
-*   the email configuration is borked
-*   it's related to an issue related to the previous upgrade work I did, or something boneheaded I've done (reasonable likelihood)
-*   it's related to an error, or possibly intended behavior, related to its wanted major version upgrade (possible)
-*   it's related to that incorrectly configured port (very unlikely)
+* the email configuration is borked
+* it's related to an issue related to the previous upgrade work I did, or something boneheaded I've done (reasonable likelihood)
+* it's related to an error, or possibly intended behavior, related to its wanted major version upgrade (possible)
+* it's related to that incorrectly configured port (very unlikely)
 
 My current plan is to:
 
@@ -101,11 +101,15 @@ Ghost's documentation for Mailgun showed a property that didn't match what I had
 
 On my server, it was configured as:
 
-    "transport": "Direct"
+```json
+"transport": "Direct"
+```
 
 while their documentation directs:
 
-    "transport": "SMTP"
+```json
+"transport": "SMTP"
+```
 
 A quick update of that property and a `ghost restart` and suddenly I was able to resend the email and all was at should be (expect that I still need to upgrade this site to the latest major version).
 

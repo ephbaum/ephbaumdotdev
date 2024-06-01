@@ -16,7 +16,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 So, it turns out that when you go off all half-cocked all willy-nilly extending a core functionality of JavaScript it's bound to result in a hiccup now and then.
 
-It was, then, a few days after posting about my [new 'diff' function](__GHOST_URL__/array-prototype-diff/) that I found my JavaScript choking on exactly that function. It turns out that the issue was that I wasn't watching my data types carefully enough.
+It was, then, a few days after posting about my [new 'diff' function](/blog/array-prototype-diff/) that I found my JavaScript choking on exactly that function. It turns out that the issue was that I wasn't watching my data types carefully enough.
 
 The solution? Simply watch what you're doing!
 

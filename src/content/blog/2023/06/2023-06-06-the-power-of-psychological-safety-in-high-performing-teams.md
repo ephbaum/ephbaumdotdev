@@ -17,7 +17,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 ![Featured Image](../../../../assets/img/2023/06/c1f911bf1ff13d1a39351def98589c9b20df5c4b.jpeg)
 
-I have wanted for awhile to re-visit the topic of Psychological Safety after my [previous post](__GHOST_URL__/psychological-safety-by-chatgpt/) on the topic to create a slightly more succinct an thoughtful post. Here it is:
+I have wanted for awhile to re-visit the topic of Psychological Safety after my [previous post](/blog/psychological-safety-by-chatgpt/) on the topic to create a slightly more succinct an thoughtful post. Here it is:
 
 In the corporate world, the pursuit of high-performing teams is a top priority. Many businesses focus on acquiring top talent or creating the perfect blend of complementary skills within a team. While these are important aspects, they are not the only factors that drive a team's success. A key element that often gets overlooked is the concept of psychological safety.
 

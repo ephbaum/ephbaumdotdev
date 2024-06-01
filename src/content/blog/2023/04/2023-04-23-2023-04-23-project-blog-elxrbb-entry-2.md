@@ -41,11 +41,15 @@ The issue has been around getting the Pow library to recognize the `:username` f
 
 ChatGPT recommended that I update my `config.ex` to add:
 
-      user_id_field: :username
+```elixir
+user_id_field: :username
+```
 
 This didn't work out of the box. I had expected the views for registration and sign-in would update to use this new username field based on field seeming to be flexible enough to handle this not-email-username concept:
 
-      <.input field={f[Pow.Ecto.Schema.user_id_field(@changeset)]} type={Pow.Ecto.Schema.user_id_field(@changeset) == :email && "email" || "text"} label={Phoenix.Naming.humanize(Pow.Ecto.Schema.user_id_field(@changeset))} required />
+```elixir
+<.input field={f[Pow.Ecto.Schema.user_id_field(@changeset)]} type={Pow.Ecto.Schema.user_id_field(@changeset) == :email && "email" || "text"} label={Phoenix.Naming.humanize(Pow.Ecto.Schema.user_id_field(@changeset))} required />
+```
 
 Apparently, however, there's something I'm missing.
 

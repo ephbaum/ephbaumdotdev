@@ -28,16 +28,17 @@ First, however, a refresher, with examples, in case you're not familiar:
 
 Example: Consider a class called `FileHandler` that reads data from a file and also formats the data. This class violates the SRP because it has two responsibilities: file I/O and data formatting.
 
-    class FileHandler {
-        public function readFile($filename) {
-            // Read data from the file
-        }
-    
-        public function formatData($data) {
-            // Format the data
-        }
+```php
+class FileHandler {
+    public function readFile($filename) {
+        // Read data from the file
     }
-    
+
+    public function formatData($data) {
+        // Format the data
+    }
+}
+```
 
 To follow the SRP, you can separate these responsibilities into two classes: one for file handling and another for data formatting.
 
@@ -45,18 +46,19 @@ To follow the SRP, you can separate these responsibilities into two classes: one
 
 Example: Suppose you have a `Shape` class with a method to calculate area. To add support for new shapes like circles without modifying the `Shape` class, you can use inheritance and create a new class for each shape.
 
-    class Shape {
-        public function calculateArea() {
-            // Calculate area for a generic shape
-        }
+```php
+class Shape {
+    public function calculateArea() {
+        // Calculate area for a generic shape
     }
-    
-    class Circle extends Shape {
-        public function calculateArea() {
-            // Calculate area specifically for circles
-        }
+}
+
+class Circle extends Shape {
+    public function calculateArea() {
+        // Calculate area specifically for circles
     }
-    
+}
+```
 
 This way, you can extend functionality without altering the existing `Shape` class.
 
@@ -64,16 +66,17 @@ This way, you can extend functionality without altering the existing `Shape` cla
 
 Example: If you have a `Bird` base class with a `fly` method, derived classes like `Penguin` should be able to inherit from it without breaking expectations. Even though penguins can't fly, they can still be considered birds.
 
-    class Bird {
-        public function fly() {
-            // Common flying behavior
-        }
+```php
+class Bird {
+    public function fly() {
+        // Common flying behavior
     }
-    
-    class Penguin extends Bird {
-        // No fly method, but still inherits from Bird
-    }
-    
+}
+
+class Penguin extends Bird {
+    // No fly method, but still inherits from Bird
+}
+```
 
 Clients should be able to use `Penguin` objects wherever they expect a `Bird`.
 
@@ -81,23 +84,24 @@ Clients should be able to use `Penguin` objects wherever they expect a `Bird`.
 
 Example: Suppose you have an `Worker` interface with methods for both `work` and `takeBreak`. Some workers, like robots, don't need breaks.
 
-    interface Worker {
-        public function work();
-        public function takeBreak();
+```php
+interface Worker {
+    public function work();
+    public function takeBreak();
+}
+
+class HumanWorker implements Worker {
+    // Both work and takeBreak methods implemented
+}
+
+class RobotWorker implements Worker {
+    public function work() {
+        // Implement work behavior
     }
     
-    class HumanWorker implements Worker {
-        // Both work and takeBreak methods implemented
-    }
-    
-    class RobotWorker implements Worker {
-        public function work() {
-            // Implement work behavior
-        }
-        
-        // No need to implement takeBreak
-    }
-    
+    // No need to implement takeBreak
+}
+```
 
 Instead, create a separate `Breakable` interface for those who need breaks and implement it selectively.
 
@@ -105,28 +109,29 @@ Instead, create a separate `Breakable` interface for those who need breaks and i
 
 Example: Consider a `LightSwitch` that turns on a light. Instead of directly depending on a concrete `LightBulb` class, it depends on an abstract `Light` interface.
 
-    interface Light {
-        public function turnOn();
+```php
+interface Light {
+    public function turnOn();
+}
+
+class LightBulb implements Light {
+    public function turnOn() {
+        // Implementation to turn on a light bulb
     }
-    
-    class LightBulb implements Light {
-        public function turnOn() {
-            // Implementation to turn on a light bulb
-        }
+}
+
+class LightSwitch {
+    private $light;
+
+    public function __construct(Light $light) {
+        $this->light = $light;
     }
-    
-    class LightSwitch {
-        private $light;
-    
-        public function __construct(Light $light) {
-            $this->light = $light;
-        }
-    
-        public function flipSwitch() {
-            $this->light->turnOn();
-        }
+
+    public function flipSwitch() {
+        $this->light->turnOn();
     }
-    
+}
+```
 
 By depending on `Light` rather than a specific implementation, you can easily switch to a different type of light source without modifying `LightSwitch`.
 
@@ -145,16 +150,17 @@ In the context of a class that needs to both read a file and format data, here's
 
 Let's start with a class called `FileHandler` that reads data from a file and formats the data. Initially, this class violates SRP because it has two responsibilities: file I/O and data formatting. Here's an example of such a class:
 
-    class FileHandler {
-        public function readFile($filename) {
-            // Read data from the file
-        }
-    
-        public function formatData($data) {
-            // Format the data
-        }
+```php
+class FileHandler {
+    public function readFile($filename) {
+        // Read data from the file
     }
-    
+
+    public function formatData($data) {
+        // Format the data
+    }
+}
+```
 
 In this design, if there's a change in how data is formatted or if there are changes in the file reading logic, this single class needs to be modified. This violates SRP because it has multiple reasons to change.
 
@@ -162,18 +168,19 @@ In this design, if there's a change in how data is formatted or if there are cha
 
 To adhere to SRP, we should separate the responsibilities of file reading and data formatting into two distinct classes. For example:
 
-    class FileReader {
-        public function readFile($filename) {
-            // Read data from the file
-        }
+```php
+class FileReader {
+    public function readFile($filename) {
+        // Read data from the file
     }
-    
-    class DataFormatter {
-        public function formatData($data) {
-            // Format the data
-        }
+}
+
+class DataFormatter {
+    public function formatData($data) {
+        // Format the data
     }
-    
+}
+```
 
 Now, the `FileReader` class is responsible solely for file I/O operations, and the `DataFormatter` class is responsible exclusively for data formatting. Each class has a single responsibility and a single reason to change.
 
@@ -181,12 +188,13 @@ Now, the `FileReader` class is responsible solely for file I/O operations, and t
 
 When you need to read a file and then format the data, you can now use these two classes together:
 
-    $fileReader = new FileReader();
-    $dataFormatter = new DataFormatter();
-    
-    $data = $fileReader->readFile($filename);
-    $formattedData = $dataFormatter->formatData($data);
-    
+```php
+$fileReader = new FileReader();
+$dataFormatter = new DataFormatter();
+
+$data = $fileReader->readFile($filename);
+$formattedData = $dataFormatter->formatData($data);
+```
 
 With this separation of concerns, you can modify the file reading logic or data formatting logic independently without affecting the other component. This makes your code more maintainable and easier to extend.
 
@@ -212,23 +220,24 @@ Here's how it works:
 
 **High-Level Class (Example):**
 
-    class DataProcessingService {
-        private $fileReader;
-        private $dataFormatter;
-    
-        public function __construct(FileReader $fileReader, DataFormatter $dataFormatter) {
-            $this->fileReader = $fileReader;
-            $this->dataFormatter = $dataFormatter;
-        }
-    
-        public function processFile($filename) {
-            $data = $this->fileReader->readFile($filename);
-            $formattedData = $this->dataFormatter->formatData($data);
-    
-            // Perform additional high-level processing, e.g., save to a database.
-        }
+```php
+class DataProcessingService {
+    private $fileReader;
+    private $dataFormatter;
+
+    public function __construct(FileReader $fileReader, DataFormatter $dataFormatter) {
+        $this->fileReader = $fileReader;
+        $this->dataFormatter = $dataFormatter;
     }
-    
+
+    public function processFile($filename) {
+        $data = $this->fileReader->readFile($filename);
+        $formattedData = $this->dataFormatter->formatData($data);
+
+        // Perform additional high-level processing, e.g., save to a database.
+    }
+}
+```
 
 In this example:
 

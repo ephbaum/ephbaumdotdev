@@ -33,15 +33,17 @@ In PHP, and particularly in Laravel, early return is often employed to exit a fu
 
 Consider the following PHP example:
 
-    function validateInput(string $input): string
-    {
-        if (empty($input)) {
-        	return "Input is empty";
-        }
-        
-        // Additional validation logic
-        return "Input is valid";
-    } 
+```php
+function validateInput(string $input): string
+{
+    if (empty($input)) {
+      return "Input is empty";
+    }
+    
+    // Additional validation logic
+    return "Input is valid";
+} 
+```
 
 A contrived and simplistic example of the "Return Early Pattern"
 
@@ -54,13 +56,15 @@ The Elixir Way: No `return`, No Problem
 
 In Elixir, functions don't have `return` statements, but there are alternative paradigms to achieve similar outcomes.
 
-### 1\. Pattern Matching
+### 1. Pattern Matching
 
 Pattern matching can serve as a declarative way to specify different function behaviors based on input.
 
-    def find_element([], _target), do: false 
-    def find_element([head | tail], target) when head == target, do: true 
-    def find_element([_ | tail], target), do: find_element(tail, target) 
+```elixir
+def find_element([], _target), do: false 
+def find_element([head | tail], target) when head == target, do: true 
+def find_element([_ | tail], target), do: find_element(tail, target) 
+```
 
 Essentially overloading functions allows you to run only the logic that matches the pattern of the inputs.
 
@@ -70,51 +74,57 @@ To explain: the first clause is an "empty list" and matches when the list is emp
 
 So in practice, Elixir will execute the clause that first matches the pattern and satisfies any guard clauses. This eliminates the need for an explicit `return` statement by leveraging pattern matching and recursion for flow control.
 
-### 2\. Guard Clauses
+### 2. Guard Clauses
 
 Guard clauses enforce conditions right in the function signature, making the code clean and readable.
 
-    def is_negative?(x) when x < 0, do: true
-    def is_negative?(_), do: false
+```elixir
+def is_negative?(x) when x < 0, do: true
+def is_negative?(_), do: false
+```
 
 Here we check the value of `x` and if it's less than 0 you'll return true while the `_` "wildcard" placeholder will match anything not matched in the first clause and return `false`.
 
-### 3\. `case` or `cond` Statements
+### 3. `case` or `cond` Statements
 
 When pattern matching and guard clauses are not sufficient, `case` or `cond` statements can offer more flexibility.
 
-    def evaluate(x) do
-      case x do
-        x when x < 0 -> :negative
-        x when x > 0 -> :positive
-        _ -> :zero
-      end
-    end
+```elixir
+def evaluate(x) do
+  case x do
+    x when x < 0 -> :negative
+    x when x > 0 -> :positive
+    _ -> :zero
+  end
+end
 
-    def evaluate(x) do
-      cond do
-        x < 0 -> :negative
-        x > 0 -> :positive
-        true -> :zero
-      end
-    end
+def evaluate(x) do
+  cond do
+    x < 0 -> :negative
+    x > 0 -> :positive
+    true -> :zero
+  end
+end
+```
 
 These are, practically, the same constructs. Ultimately this code evaluates `x` and returns the appropriate atom result.
 
-### 4\. Throw and Catch
+### 4. Throw and Catch
 
 Though less idiomatic in Elixir, `throw` and `catch` can be used for early exits in certain situations. This should be used sparingly, or not-at-all.
 
-    def risky_operation(x) do
-      try do
-        if x == :dangerous_value do
-          throw(:abort)
-        end
-        {:ok, x}
-      catch
-        :throw, :abort -> {:error, :aborted}
-      end
+```elixir
+def risky_operation(x) do
+  try do
+    if x == :dangerous_value do
+      throw(:abort)
     end
+    {:ok, x}
+  catch
+    :throw, :abort -> {:error, :aborted}
+  end
+end
+```
 
 An example of throw / catch in Elixir - probably don't do this
 

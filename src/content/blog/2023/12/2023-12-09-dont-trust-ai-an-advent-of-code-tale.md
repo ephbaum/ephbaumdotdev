@@ -28,42 +28,44 @@ In this case I had refactored my _working_ part 2 code in the quest for optimiza
 
 So, without giving away too many **spoilers**, part of Day Seven's challenge was to determine the rank of card hands based on some traditional poker hands, so I had a `determineBestHand` method:
 
-    function determineBestHand(cardCounts, jokerCount) {
-      if (jokerCount === 5) {
-        return { type: 'Five of a Kind', weight: 1 };
-      }
-    
-      const frequencies = Object.values(cardCounts).sort((a, b) => b - a);
-    
-      if (frequencies[0] + jokerCount >= 5) {
-        return { type: 'Five of a Kind', weight: 1 };
-      }
-      
-      if (frequencies[0] + jokerCount >= 4) {
-        return { type: 'Four of a Kind', weight: 2 };
-      }
-    
-      if ((frequencies[0] === 3 && (frequencies[1] >= 2 || jokerCount > 0)) 
-          || (frequencies[0] === 2 && frequencies[1] === 2 && jokerCount > 0)) {
-        return { type: 'Full House', weight: 3 };
-      }
-    
-      if (frequencies[0] + jokerCount === 3) {
-        return { type: 'Three of a Kind', weight: 4 };
-      }
-    
-      if ((frequencies[0] === 2 && frequencies.length > 1)
-          || (frequencies[0] === 1 && jokerCount >0)) {
-        return { type: 'Two Pair', weight: 5 };
-      }
-    
-      if (frequencies[0] === 2 || 
-          (frequencies[0] === 1 && jokerCount >= 1)) {
-        return { type: 'One Pair', weight: 6 };
-      }
-    
-      return { type: 'High Card', weight: 7 };
-    }
+```js
+function determineBestHand(cardCounts, jokerCount) {
+  if (jokerCount === 5) {
+    return { type: 'Five of a Kind', weight: 1 };
+  }
+
+  const frequencies = Object.values(cardCounts).sort((a, b) => b - a);
+
+  if (frequencies[0] + jokerCount >= 5) {
+    return { type: 'Five of a Kind', weight: 1 };
+  }
+  
+  if (frequencies[0] + jokerCount >= 4) {
+    return { type: 'Four of a Kind', weight: 2 };
+  }
+
+  if ((frequencies[0] === 3 && (frequencies[1] >= 2 || jokerCount > 0)) 
+      || (frequencies[0] === 2 && frequencies[1] === 2 && jokerCount > 0)) {
+    return { type: 'Full House', weight: 3 };
+  }
+
+  if (frequencies[0] + jokerCount === 3) {
+    return { type: 'Three of a Kind', weight: 4 };
+  }
+
+  if ((frequencies[0] === 2 && frequencies.length > 1)
+      || (frequencies[0] === 1 && jokerCount >0)) {
+    return { type: 'Two Pair', weight: 5 };
+  }
+
+  if (frequencies[0] === 2 || 
+      (frequencies[0] === 1 && jokerCount >= 1)) {
+    return { type: 'One Pair', weight: 6 };
+  }
+
+  return { type: 'High Card', weight: 7 };
+}
+```
 
 The issue was not super obvious as a first glance. I kept missing the issue due to thinking this logic was sound, as I'd used the exact same code in the previous part's challenge with success.
 
@@ -73,9 +75,11 @@ That made the bug obvious: the condition `(frequencies[0] === 2 && frequencies.l
 
 The correct logic for 'Two Pairs' was:
 
-    if (frequencies[0] === 2 && frequencies[1] === 2) {
-      return { type: 'Two Pair', weight: 5 };
-    }
+```js
+if (frequencies[0] === 2 && frequencies[1] === 2) {
+  return { type: 'Two Pair', weight: 5 };
+}
+```
 
 🤦
 
@@ -83,10 +87,10 @@ I use generative AI now. I really like it, though it's not always helpful or acc
 
 Some things that drive me nuts about AI:
 
-*   it won't defend itself when it's right
-*   it will vehemently defend itself when it's wrong
-*   it hallucinates
-*   it's sometimes overly verbose
-*   other times it's surprisingly lazy
+* it won't defend itself when it's right
+* it will vehemently defend itself when it's wrong
+* it hallucinates
+* it's sometimes overly verbose
+* other times it's surprisingly lazy
 
 In conclusion, while AI, in forms like GitHub's Co-Pilot or Repl.it's coding assistant, offers undeniable convenience and speed in coding, it's not a panacea. As my experience with Advent of Code highlights, AI can sometimes lead us astray with its suggestions. It's a reminder that AI, at its current stage, is more of a co-pilot than an autonomous driver. It requires our expertise, vigilance, and, occasionally, our skepticism. The key is to use AI as a tool to enhance our skills, not replace them. Trust, but verify, remains a prudent approach when navigating the evolving landscape of AI in software development. As we continue to explore this symbiotic relationship, it's essential to maintain a balance between leveraging AI's efficiency and retaining our critical problem-solving abilities. After all, the true power of coding lies in the human mind's creativity and ingenuity, something no AI has yet to replicate.

@@ -70,14 +70,18 @@ Set Up the Phoenix Framework
 
 First, make sure Elixir and Phoenix are installed. Create a new Phoenix project:
 
-    mix phx.new bbforum
+```sh
+mix phx.new bbforum
+```
 
 Create the Database and Schemas
 -------------------------------
 
 We'll use Postgres for the database. Generate a User schema with name, email, password fields:
 
-    mix ecto.gen.schema Users
+```sh
+mix ecto.gen.schema Users
+```
 
 Also generate Forums, Topics, and Posts schemas with appropriate fields.
 

@@ -20,11 +20,11 @@ layout: ../../../../layouts/BlogPost.astro
 Introduction
 ------------
 
-In the realm of software development, the [Twelve-Factor App](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology) methodology onced garnered significant attention as a guide for building scalable, maintainable, and portable software-as-a-service applications.
+In the realm of software development, the [Twelve-Factor App](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology) methodology once garnered significant attention as a guide for building scalable, maintainable, and portable software-as-a-service applications.
 
 I guess.
 
-To be honest, I hadn't really thought about it specifically in some years until a recent job posting mentioned it alongside the [SOLID](__GHOST_URL__/thinking-srp-in-solid/) & [ACID](__GHOST_URL__/understanding-acid/) principles (etc.).
+To be honest, I hadn't really thought about it specifically in some years until a recent job posting mentioned it alongside the [SOLID](/blog/thinking-srp-in-solid/) & [ACID](/blog/understanding-acid/) principles (etc.).
 
 The methodology was crafted by engineers at Heroku with experience in meeting the intricate challenges that come with SaaS development. It outlines twelve principles or "factors" designed to be a blueprint for _modern_ web architectures.
 
@@ -35,73 +35,73 @@ Perhaps it will be helpful for you as well.
 The Twelve Factors
 ------------------
 
-### 1\. Codebase
+### 1. Codebase
 
 **Principle**: One codebase tracked in version control, multiple deploys
 
 **Significance**: Having a single codebase ensures uniformity and ease of collaboration. Version control systems like Git enable tracking changes and coordinating work among multiple developers.
 
-### 2\. Dependencies
+### 2. Dependencies
 
 **Principle**: Explicitly declare and isolate dependencies
 
 **Significance**: Dependencies should be explicitly declared to prevent any surprises during deployment or maintenance. This isolation simplifies troubleshooting and enhances portability.
 
-### 3\. Config
+### 3. Config
 
 **Principle**: Store configuration in the environment
 
 **Significance**: Configuration settings should be externalized from the codebase and read from the environment. This enables easy modification without code changes, providing flexibility in deployment.
 
-### 4\. Backing Services
+### 4. Backing Services
 
 **Principle**: Treat backing services as attached resources
 
 **Significance**: Whether it's a database, a messaging queue, or a caching layer, backing services should be loosely coupled to the codebase. This allows for easy replacement and upgrades without affecting the application.
 
-### 5\. Build, Release, Run
+### 5. Build, Release, Run
 
 **Principle**: Strictly separate build and run stages
 
 **Significance**: The build, release, and run stages should be distinct to minimize errors and maximize deployability. This ensures that any change goes through a well-defined pipeline before it impacts users.
 
-### 6\. Processes
+### 6. Processes
 
 **Principle**: Execute the app as one or more stateless processes
 
 **Significance**: Applications should be stateless to enable effortless scaling. State should be externalized to backing services like databases to maintain this statelessness.
 
-### 7\. Port Binding
+### 7. Port Binding
 
 **Principle**: Export services via port binding
 
 **Significance**: Applications should be self-reliant, exposing services through binding to ports. This makes them easy to containerize and deploy using modern orchestration tools.
 
-### 8\. Concurrency
+### 8. Concurrency
 
 **Principle**: Scale out via the process model
 
 **Significance**: Applications should be built to scale horizontally, meaning they can handle more traffic by adding more instances rather than upgrading a single instance's resources.
 
-### 9\. Disposability
+### 9. Disposability
 
 **Principle**: Maximize robustness with fast startup and graceful shutdown
 
 **Significance**: Applications should be designed to start quickly and shut down gracefully. This resilience enables seamless deployments and scaling operations.
 
-### 10\. Dev/Prod Parity
+### 10. Dev/Prod Parity
 
 **Principle**: Keep development, staging, and production as similar as possible
 
 **Significance**: A consistent environment across development, staging, and production minimizes surprises during deployment, making life easier for both developers and operations teams.
 
-### 11\. Logs
+### 11. Logs
 
 **Principle**: Treat logs as event streams
 
 **Significance**: Logs should be viewed as a continuous stream of events rather than static files. This enables real-time monitoring and analysis.
 
-### 12\. Admin Processes
+### 12. Admin Processes
 
 **Principle**: Run admin/management tasks as one-off processes
 
