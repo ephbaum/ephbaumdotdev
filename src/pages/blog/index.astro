@@ -13,7 +13,53 @@ const posts = await getCollection("blog").then((collection) =>
   description="Talking to myself to answer my own questions about tech, engineering, and working with people"
   pageTitle="eph baum dot dev"
 >
-  <main class="bg-green p-6">
+  <main id="blog-main-content" class="p-6">
     <BlogList posts={posts} />
   </main>
 </Layout>
+
+<script>
+  // Available colors from the brutal-ui theme
+  const colors = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "pink",
+    "purple",
+    "orange",
+    "teal",
+    "cyan",
+    "lime",
+    "emerald",
+    "fuchsia",
+    "violet",
+    "rose",
+    "sky",
+    "amber",
+  ];
+
+  // Apply random background color on page load
+  function applyRandomBackground() {
+    const mainElement = document.getElementById("blog-main-content");
+    if (mainElement) {
+      // Remove any existing background color classes
+      colors.forEach((color) => {
+        mainElement.classList.remove(`bg-${color}`);
+      });
+
+      // Add random background color
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      mainElement.classList.add(`bg-${randomColor}`);
+    }
+  }
+
+  // Apply on initial load
+  document.addEventListener("DOMContentLoaded", applyRandomBackground);
+
+  // Also apply on Astro page loads (for SPA navigation)
+  document.addEventListener("astro:page-load", applyRandomBackground);
+
+  // Listen for color change events from the palette button
+  window.addEventListener("changeColors", applyRandomBackground);
+</script>

@@ -32,9 +32,6 @@ const colors = [
   "sky",
   "amber",
 ];
-
-// Get random background color
-const randomBgColor = colors[Math.floor(Math.random() * colors.length)];
 ---
 
 <Layout
@@ -42,7 +39,7 @@ const randomBgColor = colors[Math.floor(Math.random() * colors.length)];
   pageTitle="Index | eph baum dot dev"
   description="Talking to myself to answer my own questions about tech, engineering, and working with people"
 >
-  <main class={`bg-${randomBgColor} p-6`}>
+  <main id="main-content" class="p-6">
     <MobileSocials />
     <section id="about" class="grid md:grid-cols-8 gap-8 mt-4">
       <h2 class="hidden">About Me</h2>
@@ -99,3 +96,49 @@ const randomBgColor = colors[Math.floor(Math.random() * colors.length)];
     <RecentBlogPosts />
   </main>
 </Layout>
+
+<script>
+  // Available colors from the brutal-ui theme
+  const colors = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "pink",
+    "purple",
+    "orange",
+    "teal",
+    "cyan",
+    "lime",
+    "emerald",
+    "fuchsia",
+    "violet",
+    "rose",
+    "sky",
+    "amber",
+  ];
+
+  // Apply random background color on page load
+  function applyRandomBackground() {
+    const mainElement = document.getElementById("main-content");
+    if (mainElement) {
+      // Remove any existing background color classes
+      colors.forEach((color) => {
+        mainElement.classList.remove(`bg-${color}`);
+      });
+
+      // Add random background color
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      mainElement.classList.add(`bg-${randomColor}`);
+    }
+  }
+
+  // Apply on initial load
+  document.addEventListener("DOMContentLoaded", applyRandomBackground);
+
+  // Also apply on Astro page loads (for SPA navigation)
+  document.addEventListener("astro:page-load", applyRandomBackground);
+
+  // Listen for color change events from the palette button
+  window.addEventListener("changeColors", applyRandomBackground);
+</script>

@@ -1,5 +1,5 @@
 ---
-import { Config, Button } from '@eliancodes/brutal-ui';
+import { Button } from "@eliancodes/brutal-ui";
 
 interface Props {
   authorColor?: string;
@@ -7,24 +7,12 @@ interface Props {
   publishedColor?: string;
 }
 
-const { colors } = Config;
-
-if (Astro.props.authorColor === undefined) {
-  Astro.props.authorColor =
-    colors[Math.floor(Math.random() * colors.length)];
-}
-
-if (Astro.props.publishedColor === undefined) {
-  Astro.props.publishedColor =
-    colors[Math.floor(Math.random() * colors.length)];
-}
-
 const { authorColor, content, publishedColor } = Astro.props;
 ---
 
-<style define:vars={{ authorColor, publishedColor }}>
+<style>
   .author-color {
-    color: var(--authorColor);
+    color: var(--authorColor, #ff0000);
     opacity: 0.5;
   }
 
@@ -33,7 +21,7 @@ const { authorColor, content, publishedColor } = Astro.props;
   }
 
   .published-color {
-    color: var(--publishedColor);
+    color: var(--publishedColor, #0000ff);
     opacity: 0.5;
   }
 
@@ -42,13 +30,84 @@ const { authorColor, content, publishedColor } = Astro.props;
   }
 </style>
 
-<article class='prose-slate w-sm md:w-prose md:prose poppins'>
-  <Button href='/blog/'>&larr; Back to blog</Button>
-  <h1 class='mt-8 text-2xl md:text-4xl'>{content.title}</h1>
-  <p class='published-color text-opacity-50 text-sm md:text-base'>
+<article class="prose-slate w-sm md:w-prose md:prose poppins">
+  <Button href="/blog/">&larr; Back to blog</Button>
+  <h1 class="mt-8 text-2xl md:text-4xl">{content.title}</h1>
+  <p class="published-color text-opacity-50 text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
   </p>
   <slot />
-  <p class='author-color'>Written by {content.author}</p>
-  <Button href='/blog/'>&larr; Back to blog</Button>
+  <p class="author-color">Written by {content.author}</p>
+  <Button href="/blog/">&larr; Back to blog</Button>
 </article>
+
+<script>
+  // Available colors from the brutal-ui theme
+  const colors = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "pink",
+    "purple",
+    "orange",
+    "teal",
+    "cyan",
+    "lime",
+    "emerald",
+    "fuchsia",
+    "violet",
+    "rose",
+    "sky",
+    "amber",
+  ];
+
+  // Color mappings to hex values (matching uno.config.ts)
+  const colorMap = {
+    red: "#ff0000",
+    blue: "#0000ff",
+    green: "#00ff00",
+    yellow: "#ffff00",
+    pink: "#ff69b4",
+    purple: "#800080",
+    orange: "#ffa500",
+    teal: "#008080",
+    cyan: "#00ffff",
+    lime: "#00ff00",
+    emerald: "#50c878",
+    fuchsia: "#ff00ff",
+    violet: "#8a2be2",
+    rose: "#ff69b4",
+    sky: "#87ceeb",
+    amber: "#ffbf00",
+  };
+
+  // Apply random colors on page load
+  function applyRandomColors() {
+    const article = document.querySelector("article");
+    if (article) {
+      // Generate random colors
+      const authorColor = colors[Math.floor(Math.random() * colors.length)];
+      const publishedColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Set CSS custom properties
+      article.style.setProperty(
+        "--authorColor",
+        colorMap[authorColor as keyof typeof colorMap],
+      );
+      article.style.setProperty(
+        "--publishedColor",
+        colorMap[publishedColor as keyof typeof colorMap],
+      );
+    }
+  }
+
+  // Apply on initial load
+  document.addEventListener("DOMContentLoaded", applyRandomColors);
+
+  // Also apply on Astro page loads (for SPA navigation)
+  document.addEventListener("astro:page-load", applyRandomColors);
+
+  // Listen for color change events from the palette button
+  window.addEventListener("changeColors", applyRandomColors);
+</script>

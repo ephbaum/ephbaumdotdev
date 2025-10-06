@@ -12,14 +12,15 @@
 </button>
 
 <script>
-    function reloadPage() {
-        window.location.reload();
+    function changeColors() {
+        // Dispatch a custom event to trigger color changes across the site
+        window.dispatchEvent(new CustomEvent("changeColors"));
     }
 
     document.addEventListener("DOMContentLoaded", () => {
         const colorChangeBtn = document.getElementById("color-change-btn");
         if (colorChangeBtn) {
-            colorChangeBtn.addEventListener("click", reloadPage);
+            colorChangeBtn.addEventListener("click", changeColors);
         }
     });
 
@@ -27,7 +28,7 @@
     document.addEventListener("astro:page-load", () => {
         const colorChangeBtn = document.getElementById("color-change-btn");
         if (colorChangeBtn) {
-            colorChangeBtn.addEventListener("click", reloadPage);
+            colorChangeBtn.addEventListener("click", changeColors);
         }
     });
 </script>
