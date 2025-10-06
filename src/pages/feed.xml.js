@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 export async function GET(context) {
   const blog = await getCollection('blog');
   return rss({
-    title: 'Eph Baum dot Dev',
+    title: 'eph baum dot dev',
     description: 'Talking to myself to answer my own questions about tech, engineering, and working with people',
     stylesheet: false,
     site: context.site,
