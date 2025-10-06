@@ -175,6 +175,65 @@ pnpm run build
 
 This generates optimized static files in the `dist/` directory, ready for deployment.
 
+### 🛠️ Deployment Setup Plan
+
+#### **Phase 1: Firebase Project Setup**
+- [ ] Create Firebase project for `ephbaum.dev`
+- [ ] Enable Firebase Hosting
+- [ ] Configure custom domain mapping
+- [ ] Set up Firebase service account with minimal permissions
+
+#### **Phase 2: GitHub Actions Workflow**
+- [ ] Create `.github/workflows/deploy.yml`
+- [ ] Configure GitHub Secrets:
+  - `FIREBASE_SERVICE_ACCOUNT` - Service account JSON key
+  - `FIREBASE_PROJECT_ID` - Firebase project ID
+- [ ] Set up automatic deployment on push to `main` branch
+
+#### **Phase 3: Security & Configuration**
+- [ ] Configure Firebase service account with hosting-only permissions
+- [ ] Set up proper CORS and security headers
+- [ ] Configure redirects and rewrites for SEO
+- [ ] Test deployment pipeline
+
+#### **Phase 4: Domain & SSL**
+- [ ] Configure custom domain `ephbaum.dev`
+- [ ] Set up SSL certificate (automatic with Firebase)
+- [ ] Configure DNS settings
+- [ ] Test live deployment
+
+### 🔒 Security Considerations
+
+**Why This Setup is Safe:**
+- ✅ **Static site only** - No server-side code execution
+- ✅ **Public content** - Blog posts are meant to be public
+- ✅ **No secrets in build** - Firebase tokens stored in GitHub Secrets
+- ✅ **Minimal permissions** - Service account restricted to hosting only
+- ✅ **Encrypted secrets** - GitHub Secrets are encrypted at rest
+
+**What We're Protecting:**
+- 🔐 Firebase service account credentials
+- 🔐 Project configuration
+- 🔐 Deployment tokens
+- 🔐 Any future API keys (if needed)
+
+### 📋 Deployment Workflow
+
+```mermaid
+graph LR
+    A[Push to main] --> B[GitHub Actions]
+    B --> C[Install dependencies]
+    C --> D[Build Astro site]
+    D --> E[Deploy to Firebase]
+    E --> F[Live at ephbaum.dev]
+```
+
+**Automated Process:**
+1. **Code Push** → Triggers GitHub Actions
+2. **Build** → `pnpm install` → `pnpm run build`
+3. **Deploy** → Upload `dist/` to Firebase Hosting
+4. **Live** → Site available at `ephbaum.dev`
+
 ## 🔄 Migration from Ghost
 
 This blog was migrated from Ghost CMS, which involved:
