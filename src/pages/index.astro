@@ -12,6 +12,29 @@ const builtWith = [
   { name: "UnoCSS", url: "https://unocss.dev/" },
   { name: "TypeScript", url: "https://www.typescriptlang.org/" },
 ];
+
+// Available colors from the brutal-ui theme
+const colors = [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "pink",
+  "purple",
+  "orange",
+  "teal",
+  "cyan",
+  "lime",
+  "emerald",
+  "fuchsia",
+  "violet",
+  "rose",
+  "sky",
+  "amber",
+];
+
+// Get random background color
+const randomBgColor = colors[Math.floor(Math.random() * colors.length)];
 ---
 
 <Layout
@@ -19,7 +42,7 @@ const builtWith = [
   pageTitle="Index | eph baum dot dev"
   description="Talking to myself to answer my own questions about tech, engineering, and working with people"
 >
-  <main class="bg-pink p-6">
+  <main class={`bg-${randomBgColor} p-6`}>
     <MobileSocials />
     <section id="about" class="grid md:grid-cols-8 gap-8 mt-4">
       <h2 class="hidden">About Me</h2>

@@ -1,4 +1,6 @@
 ---
+import ColorChangeButton from "../ColorChangeButton.astro";
+
 interface Props {
   pageTitle?: string;
 }
@@ -60,6 +62,9 @@ const { pageTitle } = Astro.props;
           </li>
         ))
       }
+      <li>
+        <ColorChangeButton />
+      </li>
     </ul>
   </nav>
   <nav class="md:hidden flex">

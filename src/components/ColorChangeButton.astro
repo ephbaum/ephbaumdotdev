@@ -1,0 +1,33 @@
+---
+// Color change button component
+---
+
+<button
+    id="color-change-btn"
+    class="hover:text-green hover:underline transition-all duration-150 ease-in-out"
+    title="Change theme colors"
+    aria-label="Randomize theme colors"
+>
+    <div class="i-uil-palette w-6 h-6"></div>
+</button>
+
+<script>
+    function reloadPage() {
+        window.location.reload();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const colorChangeBtn = document.getElementById("color-change-btn");
+        if (colorChangeBtn) {
+            colorChangeBtn.addEventListener("click", reloadPage);
+        }
+    });
+
+    // Also listen for Astro page loads
+    document.addEventListener("astro:page-load", () => {
+        const colorChangeBtn = document.getElementById("color-change-btn");
+        if (colorChangeBtn) {
+            colorChangeBtn.addEventListener("click", reloadPage);
+        }
+    });
+</script>
