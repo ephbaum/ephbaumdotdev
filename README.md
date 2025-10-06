@@ -9,11 +9,37 @@ A blog where I talk to myself to answer my own questions about tech, engineering
 ## 🚀 Tech Stack
 
 - **[Astro](https://astro.build/)** - Static site generator
-- **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine
+- **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine (TailwindCSS compatible)
 - **[Brutal UI](https://github.com/eliancodes/brutal-ui)** - Brutalist design system
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[pnpm](https://pnpm.io/)** - Package manager
 - **[asdf](https://asdf-vm.com/)** - Version management
+
+## 🎨 Theme Foundation
+
+This blog is built on the **[Brutal](https://github.com/eliancodes/brutal)** neobrutalist Astro theme, which provides:
+
+- **Neobrutalist Design** - Minimalistic and functional aesthetic
+- **No JavaScript by default** - Pure static generation approach
+- **UnoCSS Integration** - Utility-first CSS with TailwindCSS compatibility
+- **Built-in SEO** - Automatic sitemap, RSS feed, and image optimization
+- **16 Color Palette** - Predefined brutalist colors (red, blue, green, yellow, pink, purple, orange, teal, cyan, lime, emerald, fuchsia, violet, rose, sky, amber)
+
+### 🚀 Our Customizations & Enhancements
+
+We've significantly evolved the base theme with these improvements:
+
+| **Base Theme** | **Our Enhanced Version** | **Benefits** |
+|---|---|---|
+| Basic Astro setup | **TypeScript integration** | Full type safety and better DX |
+| Simple markdown posts | **Advanced content management** | Structured blog with tags, metadata |
+| Basic image handling | **OG image generation** | Automatic social media previews |
+| Standard RSS feed | **Enhanced RSS + sitemap** | Better SEO and content discovery |
+| Basic styling | **Custom brutalist components** | Unique design system |
+| No version management | **asdf + pnpm setup** | Consistent development environment |
+| Basic deployment | **GitHub Actions + Firebase ready** | Automated CI/CD pipeline |
+| Ghost migration | **Complete CMS migration** | Preserved content and SEO |
+| Security baseline | **Regular security updates** | Astro 4.16.19 with latest patches |
 
 ## 🛠️ Development Setup
 
@@ -46,24 +72,48 @@ A blog where I talk to myself to answer my own questions about tech, engineering
 
 ### Available Scripts
 
-- `pnpm run dev` - Start development server
-- `pnpm run build` - Build for production
-- `pnpm run preview` - Preview production build locally
-- `pnpm run astro` - Run Astro CLI commands
+Based on the original Brutal theme with our enhancements:
+
+| Command | Action | Notes |
+|---------|--------|-------|
+| `pnpm run dev` | Start local dev server at `localhost:4321` | Enhanced with TypeScript support |
+| `pnpm run build` | Build production site to `./dist/` | Includes OG image generation |
+| `pnpm run preview` | Preview build locally before deploying | Test production build |
+| `pnpm run astro` | Run Astro CLI commands | Full CLI access |
+| `pnpm run astro --help` | Get help using the Astro CLI | Documentation |
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── components/          # Reusable UI components
+│   ├── blog/          # Blog-specific components (from base theme)
+│   ├── errors/        # Error pages like 404 (from base theme)
+│   ├── generic/       # Reusable components (from base theme)
+│   ├── home/          # Homepage components (from base theme)
+│   └── layout/        # Header, footer, head sections (from base theme)
 ├── content/            # Blog posts and content
-│   └── blog/          # Markdown blog posts
+│   └── blog/          # Markdown blog posts with frontmatter
 ├── layouts/           # Page layouts
+│   ├── Default.astro  # Base layout with props system
+│   └── BlogPost.astro # Blog-specific layout
 ├── pages/             # File-based routing
 │   ├── blog/         # Blog listing and individual posts
-│   └── v1/generate/  # OG image generation
+│   ├── v1/generate/  # OG image generation (custom addition)
+│   ├── feed.xml.js   # RSS feed (from base theme)
+│   └── index.astro   # Homepage
 └── styles/           # Global styles and UnoCSS config
 ```
+
+### 🎨 Component Architecture
+
+Following the base theme's structure with our enhancements:
+
+- **`components/blog/`** - Blog listing, content, sidebar components
+- **`components/errors/`** - 404 page and error handling
+- **`components/generic/`** - Reusable components like RecentBlogPosts
+- **`components/home/`** - Homepage-specific components
+- **`components/layout/`** - BaseHead, BaseNavigation, BaseFooter
 
 ## 🎨 Features
 
@@ -75,6 +125,19 @@ src/
 - **Sitemap** - Automatic SEO sitemap generation
 - **Image Optimization** - Automatic WebP conversion and optimization
 - **TypeScript** - Full type safety throughout
+
+### 🎨 Brutalist Color System
+
+The theme includes 16 predefined brutalist colors that can be used throughout the site:
+
+**Primary Colors**: red, blue, green, yellow, pink, purple, orange, teal  
+**Secondary Colors**: cyan, lime, emerald, fuchsia, violet, rose, sky, amber
+
+These colors are used in:
+- Background sections (`bg-pink`, `bg-green`, `bg-blue`, etc.)
+- Component styling
+- Page layouts and visual hierarchy
+- Maintaining the brutalist aesthetic
 
 ## 📝 Content Management
 
