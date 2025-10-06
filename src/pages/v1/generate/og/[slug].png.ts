@@ -23,7 +23,7 @@ export function getStaticPaths() {
 }
 
 // @TODO: Correct localhost link
-export const GET: APIRoute = async ({ params, props }) => {
+export const GET: APIRoute = async ({ props }) => {
   const title = props.title.trim() ?? 'Blogpost';
   const description = props.description ?? null;
   const html = toReactElement(`
@@ -67,7 +67,7 @@ export const GET: APIRoute = async ({ params, props }) => {
   const pngData = resvg.render();
   const pngBuffer = pngData.asPng();
 
-  return new Response(pngBuffer, {
+  return new Response(new Uint8Array(pngBuffer), {
     headers: {
       'content-type': 'image/png',
     },
