@@ -120,11 +120,8 @@ const colors = [
 
   // Listen for color change events from the palette button
   window.addEventListener("changeColors", () => {
-    console.log("🎨 Color change event received!");
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
-    } else {
-      console.error("❌ BrutalColorSystem not found!");
     }
   });
 </script>

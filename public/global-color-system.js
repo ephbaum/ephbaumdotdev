@@ -86,9 +86,8 @@ function applyMainBackgroundColors() {
 function applyCardColors() {
   // Target the specific card containers on the homepage
   const cardContainers = document.querySelectorAll('.col-span-4, .col-span-2');
-  console.log(`Found ${cardContainers.length} card containers to color`);
 
-  cardContainers.forEach((container, index) => {
+  cardContainers.forEach((container) => {
     // Find the card element within each container
     const card = container.querySelector('div, section, article') || container;
 
@@ -102,15 +101,12 @@ function applyCardColors() {
       card.classList.remove(`bg-${color}`, `border-${color}`);
     });
 
-    // Apply new random color for each card
+    // Apply new random color for each card (background only, keep borders black)
     const cardColor = colors[Math.floor(Math.random() * colors.length)];
-    card.classList.add(`bg-${cardColor}`, `border-${cardColor}`);
+    card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
     card.style.backgroundColor = colorMap[cardColor];
-    card.style.borderColor = colorMap[cardColor];
-
-    console.log(`Card container ${index + 1} colored with: ${cardColor} (${colorMap[cardColor]})`);
   });
 }
 
@@ -119,27 +115,24 @@ function applyButtonColors() {
   const buttons = document.querySelectorAll('[data-brutal-button]');
   const pills = document.querySelectorAll('[data-brutal-pill]');
 
-  console.log(`Found ${buttons.length} buttons and ${pills.length} pills to color`);
-
-  [...buttons, ...pills].forEach((element, index) => {
+  [...buttons, ...pills].forEach((element) => {
     // Remove existing color classes
     colors.forEach((color) => {
       element.classList.remove(`bg-${color}`, `text-${color}`, `border-${color}`);
     });
 
-    // For buttons, only apply border color, not background color (background only on hover)
+    // Also remove any existing inline border color styles
+    element.style.borderColor = '';
+
+    // For buttons, no default colors (background only on hover, borders stay black)
     if (element.hasAttribute('data-brutal-button')) {
-      const elementColor = colors[Math.floor(Math.random() * colors.length)];
-      element.classList.add(`border-${elementColor}`);
-      element.style.borderColor = colorMap[elementColor];
-      console.log(`Button ${index + 1} border colored with: ${elementColor} (${colorMap[elementColor]})`);
+      // Explicitly set border to black to override any existing border colors
+      element.style.borderColor = '#000000';
     } else {
-      // For pills, apply both background and border colors
+      // For pills, apply background color only (borders stay black)
       const elementColor = colors[Math.floor(Math.random() * colors.length)];
-      element.classList.add(`bg-${elementColor}`, `border-${elementColor}`);
+      element.classList.add(`bg-${elementColor}`);
       element.style.backgroundColor = colorMap[elementColor];
-      element.style.borderColor = colorMap[elementColor];
-      console.log(`Pill ${index + 1} colored with: ${elementColor} (${colorMap[elementColor]})`);
     }
   });
 }
@@ -161,7 +154,6 @@ function applyHoverEffects() {
     // Add new random hover class
     const hoverColor = colors[Math.floor(Math.random() * colors.length)];
     element.classList.add(`hover:bg-${hoverColor}`);
-    console.log(`Hover effect applied: hover:bg-${hoverColor}`);
   });
 
   // Apply hover text colors to header navigation links (no background)
@@ -194,26 +186,12 @@ function applySpecialElementColors() {
 
 // Main function to apply all color changes
 function applyAllColors() {
-  console.log('🎨 Applying all colors...');
   initializeColors();
-  console.log('Current colors:', currentColors);
-
   applyMainBackgroundColors();
-  console.log('✅ Main backgrounds applied');
-
   applyCardColors();
-  console.log('✅ Card colors applied');
-
   applyButtonColors();
-  console.log('✅ Button colors applied');
-
   applyHoverEffects();
-  console.log('✅ Hover effects applied');
-
   applySpecialElementColors();
-  console.log('✅ Special elements applied');
-
-  console.log('🎨 All colors applied successfully!');
 }
 
 // Export functions for use in other scripts

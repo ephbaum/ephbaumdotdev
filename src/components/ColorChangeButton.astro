@@ -14,9 +14,6 @@
 
 <script>
     function changeColors() {
-        console.log(
-            "🎨 Palette button clicked! Dispatching changeColors event...",
-        );
         // Dispatch a custom event to trigger color changes across the site
         window.dispatchEvent(new CustomEvent("changeColors"));
     }
