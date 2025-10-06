@@ -27,7 +27,7 @@ It's absolutely the worst when it's your fault and you realize it.
 
 The problem is that a lot of meetings turn out to be productive. Productive meetings are magnificent. You get something akin to a high from cruising through an agenda, connecting with fellow humans, solving problems, synergizing, driving outcomes, etc. It's an endorphin hit. It's serotonin. Magic!
 
-![spongebob magic](__GHOST_URL__/content/images/2021/03/spongebob-magic.gif)
+![spongebob magic](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
 
 SpongeBob Magic Gif
 

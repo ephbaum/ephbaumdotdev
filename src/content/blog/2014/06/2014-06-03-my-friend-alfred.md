@@ -16,7 +16,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 _... and the Monokai Glass Theme._
 
-![](__GHOST_URL__/content/images/2021/02/image.png)
+![](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
 
 Alfred Logo
 
@@ -80,13 +80,13 @@ Very similar to a Windows machine's `[Win+L]`.
 
 I am nothing if not a lover of all things visual. I want my User Experience to be pretty all the time. And, my favorite visual theme for most everything is '[Monokai](https://www.google.com/images?q=monokai%20theme)'. This, of course, that means that I needed Alfred to be Monokai Themed as well and since I didn't find one that had been created the way I wanted it to be, I made my own:
 
-![](__GHOST_URL__/content/images/2021/02/image-1.png)
+![](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
 
 Alfred Preferences Showing Monokai Glass Theme
 
 And it looks especially handsome with the '[Blur](http://www.alfredforum.com/topic/289-cheeky-little-transparency-blur-hack-for-themes/)' hack that you can do:
 
-![](__GHOST_URL__/content/images/2021/02/image-2.png)
+![](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
 
 Alfred with Monokai Glass Theme and Blur Hack
 
