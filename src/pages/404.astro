@@ -16,48 +16,26 @@ import ErrorPage from "@components/errors/404.astro";
   </main>
 </Layout>
 
+<script src="/global-color-system.js" is:inline></script>
 <script>
-  // Available colors from the brutal-ui theme
-  const colors = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "pink",
-    "purple",
-    "orange",
-    "teal",
-    "cyan",
-    "lime",
-    "emerald",
-    "fuchsia",
-    "violet",
-    "rose",
-    "sky",
-    "amber",
-  ];
-
-  // Apply random background color on page load
-  function applyRandomBackground() {
-    const mainElement = document.getElementById("error-main-content");
-    if (mainElement) {
-      // Remove any existing background color classes
-      colors.forEach((color) => {
-        mainElement.classList.remove(`bg-${color}`);
-      });
-
-      // Add random background color
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      mainElement.classList.add(`bg-${randomColor}`);
+  // Apply colors on initial load
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
     }
-  }
-
-  // Apply on initial load
-  document.addEventListener("DOMContentLoaded", applyRandomBackground);
+  });
 
   // Also apply on Astro page loads (for SPA navigation)
-  document.addEventListener("astro:page-load", applyRandomBackground);
+  document.addEventListener("astro:page-load", () => {
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
+    }
+  });
 
   // Listen for color change events from the palette button
-  window.addEventListener("changeColors", applyRandomBackground);
+  window.addEventListener("changeColors", () => {
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
+    }
+  });
 </script>

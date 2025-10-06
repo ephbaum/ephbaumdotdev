@@ -7,12 +7,16 @@
     class="hover:text-green hover:underline transition-all duration-150 ease-in-out"
     title="Change theme colors"
     aria-label="Randomize theme colors"
+    data-brutal-hover
 >
     <div class="i-uil-palette w-6 h-6"></div>
 </button>
 
 <script>
     function changeColors() {
+        console.log(
+            "🎨 Palette button clicked! Dispatching changeColors event...",
+        );
         // Dispatch a custom event to trigger color changes across the site
         window.dispatchEvent(new CustomEvent("changeColors"));
     }

@@ -31,74 +31,36 @@ const { authorColor, content, publishedColor } = Astro.props;
 </style>
 
 <article class="prose-slate w-sm md:w-prose md:prose poppins">
-  <Button href="/blog/">&larr; Back to blog</Button>
+  <Button href="/blog/" data-brutal-button data-brutal-hover>
+    &larr; Back to blog
+  </Button>
   <h1 class="mt-8 text-2xl md:text-4xl">{content.title}</h1>
   <p class="published-color text-opacity-50 text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
   </p>
   <slot />
   <p class="author-color">Written by {content.author}</p>
-  <Button href="/blog/">&larr; Back to blog</Button>
+  <Button href="/blog/" data-brutal-button data-brutal-hover>
+    &larr; Back to blog
+  </Button>
 </article>
 
+<script src="/global-color-system.js" is:inline></script>
 <script>
-  // Available colors from the brutal-ui theme
-  const colors = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "pink",
-    "purple",
-    "orange",
-    "teal",
-    "cyan",
-    "lime",
-    "emerald",
-    "fuchsia",
-    "violet",
-    "rose",
-    "sky",
-    "amber",
-  ];
-
-  // Color mappings to hex values (matching uno.config.ts)
-  const colorMap = {
-    red: "#ff0000",
-    blue: "#0000ff",
-    green: "#00ff00",
-    yellow: "#ffff00",
-    pink: "#ff69b4",
-    purple: "#800080",
-    orange: "#ffa500",
-    teal: "#008080",
-    cyan: "#00ffff",
-    lime: "#00ff00",
-    emerald: "#50c878",
-    fuchsia: "#ff00ff",
-    violet: "#8a2be2",
-    rose: "#ff69b4",
-    sky: "#87ceeb",
-    amber: "#ffbf00",
-  };
-
-  // Apply random colors on page load
+  // Apply random colors for author and published text
   function applyRandomColors() {
     const article = document.querySelector("article");
-    if (article) {
+    if (article && window.BrutalColorSystem) {
+      const colors = window.BrutalColorSystem.colors;
+      const colorMap = window.BrutalColorSystem.colorMap;
+
       // Generate random colors
       const authorColor = colors[Math.floor(Math.random() * colors.length)];
       const publishedColor = colors[Math.floor(Math.random() * colors.length)];
 
       // Set CSS custom properties
-      article.style.setProperty(
-        "--authorColor",
-        colorMap[authorColor as keyof typeof colorMap],
-      );
-      article.style.setProperty(
-        "--publishedColor",
-        colorMap[publishedColor as keyof typeof colorMap],
-      );
+      article.style.setProperty("--authorColor", colorMap[authorColor]);
+      article.style.setProperty("--publishedColor", colorMap[publishedColor]);
     }
   }
 

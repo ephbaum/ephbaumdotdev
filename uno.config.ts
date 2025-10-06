@@ -48,5 +48,17 @@ export default defineConfig({
     'text-red', 'text-blue', 'text-green', 'text-yellow', 'text-pink', 'text-purple',
     'text-orange', 'text-teal', 'text-cyan', 'text-lime', 'text-emerald', 'text-fuchsia',
     'text-violet', 'text-rose', 'text-sky', 'text-amber',
+    // Ensure all border color classes are generated
+    'border-red', 'border-blue', 'border-green', 'border-yellow', 'border-pink', 'border-purple',
+    'border-orange', 'border-teal', 'border-cyan', 'border-lime', 'border-emerald', 'border-fuchsia',
+    'border-violet', 'border-rose', 'border-sky', 'border-amber',
+    // Ensure all hover background color classes are generated
+    'hover:bg-red', 'hover:bg-blue', 'hover:bg-green', 'hover:bg-yellow', 'hover:bg-pink', 'hover:bg-purple',
+    'hover:bg-orange', 'hover:bg-teal', 'hover:bg-cyan', 'hover:bg-lime', 'hover:bg-emerald', 'hover:bg-fuchsia',
+    'hover:bg-violet', 'hover:bg-rose', 'hover:bg-sky', 'hover:bg-amber',
+    // Ensure all hover text color classes are generated
+    'hover:text-red', 'hover:text-blue', 'hover:text-green', 'hover:text-yellow', 'hover:text-pink', 'hover:text-purple',
+    'hover:text-orange', 'hover:text-teal', 'hover:text-cyan', 'hover:text-lime', 'hover:text-emerald', 'hover:text-fuchsia',
+    'hover:text-violet', 'hover:text-rose', 'hover:text-sky', 'hover:text-amber',
   ],
 });

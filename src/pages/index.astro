@@ -44,7 +44,7 @@ const colors = [
     <section id="about" class="grid md:grid-cols-8 gap-8 mt-4">
       <h2 class="hidden">About Me</h2>
       <div class="col-span-4">
-        <Card>
+        <Card data-brutal-card>
           <div class="flex flex-col justify-between items-start gap-4">
             <p class="mt-4 outfit text-xl md:text-3xl lg:text-5xl">
               I'm Eph Baum
@@ -54,21 +54,26 @@ const colors = [
               I talk to myself to answer my own questions about tech,
               engineering, and working with people.
             </p>
-            <Button target={"_self"} href="/blog/">
+            <Button
+              target={"_self"}
+              href="/blog/"
+              data-brutal-button
+              data-brutal-hover
+            >
               Check out the blog &rarr;
             </Button>
           </div>
         </Card>
       </div>
       <div class="col-span-2">
-        <Card>
+        <Card data-brutal-card>
           <h2 class="text-xl md:text-2xl lg:text-4xl mb-8 dm-serif">
             This space intentionally left blank
           </h2>
         </Card>
       </div>
       <div class="col-span-2">
-        <Card>
+        <Card data-brutal-card>
           <h2 class="text-xl md:text-2xl lg:text-4xl mb-4 dm-serif">
             This site built with:
           </h2>
@@ -76,7 +81,7 @@ const colors = [
             {
               builtWith.map((item) => (
                 <li>
-                  <Pill>
+                  <Pill data-brutal-pill data-brutal-hover>
                     <a
                       class="sanchez"
                       href={item.url}
@@ -97,48 +102,29 @@ const colors = [
   </main>
 </Layout>
 
+<script src="/global-color-system.js" is:inline></script>
 <script>
-  // Available colors from the brutal-ui theme
-  const colors = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "pink",
-    "purple",
-    "orange",
-    "teal",
-    "cyan",
-    "lime",
-    "emerald",
-    "fuchsia",
-    "violet",
-    "rose",
-    "sky",
-    "amber",
-  ];
-
-  // Apply random background color on page load
-  function applyRandomBackground() {
-    const mainElement = document.getElementById("main-content");
-    if (mainElement) {
-      // Remove any existing background color classes
-      colors.forEach((color) => {
-        mainElement.classList.remove(`bg-${color}`);
-      });
-
-      // Add random background color
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      mainElement.classList.add(`bg-${randomColor}`);
+  // Apply colors on initial load
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
     }
-  }
-
-  // Apply on initial load
-  document.addEventListener("DOMContentLoaded", applyRandomBackground);
+  });
 
   // Also apply on Astro page loads (for SPA navigation)
-  document.addEventListener("astro:page-load", applyRandomBackground);
+  document.addEventListener("astro:page-load", () => {
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
+    }
+  });
 
   // Listen for color change events from the palette button
-  window.addEventListener("changeColors", applyRandomBackground);
+  window.addEventListener("changeColors", () => {
+    console.log("🎨 Color change event received!");
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
+    } else {
+      console.error("❌ BrutalColorSystem not found!");
+    }
+  });
 </script>
