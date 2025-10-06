@@ -2,6 +2,8 @@ MIT License
 
 Copyright (c) 2024 Eph Baum
 
+## Software License
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -19,3 +21,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Content License
+
+**IMPORTANT**: This license applies only to the software code, configuration files, and documentation. 
+
+**All blog content, articles, and written material on this site are copyrighted by Eph Baum and are NOT covered by this MIT license.** The content includes but is not limited to:
+- Blog posts and articles
+- Personal writings and opinions
+- Original images and graphics created by the author
+- Any other creative content
+
+**Third-Party Content**: Any copyrighted material from third parties (images, quotes, references, etc.) used on this site is used under fair use standards for commentary, criticism, education, and news reporting purposes.
+
+**Usage Rights**: You may not reproduce, distribute, or use the blog content without explicit written permission from the copyright holder.

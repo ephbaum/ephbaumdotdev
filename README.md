@@ -193,9 +193,23 @@ This is a personal blog, but suggestions and improvements are welcome:
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+## 📄 License & Copyright
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Software License
+This project's code, configuration files, and documentation are licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Content Copyright
+**IMPORTANT**: All blog content, articles, and written material on this site are copyrighted by Eph Baum and are NOT covered by the MIT license. This includes:
+- Blog posts and articles
+- Personal writings and opinions  
+- Original images and graphics created by the author
+- Any other creative content
+
+### Third-Party Content
+Any copyrighted material from third parties (images, quotes, references, etc.) used on this site is used under fair use standards for commentary, criticism, education, and news reporting purposes.
+
+### Usage Rights
+You may not reproduce, distribute, or use the blog content without explicit written permission from the copyright holder.
 
 ## 🔗 Links
 
