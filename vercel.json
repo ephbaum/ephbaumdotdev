@@ -9,5 +9,12 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
+    ],
+    "redirects": [
+        {
+            "source": "www.ephbaum.dev/(.*)",
+            "destination": "https://ephbaum.dev/$1",
+            "permanent": true
+        }
     ]
 }
