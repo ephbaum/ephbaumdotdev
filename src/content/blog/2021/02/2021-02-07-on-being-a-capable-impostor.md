@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From TRS-80 BASIC to Engineering Manager—embrace your journey as a 'capable impostor' in the tech world. An honest reflection on self-taught success, imposter syndrome, and why 'Light Blue Collar' work deserves the same respect as any skilled trade."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

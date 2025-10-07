@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When you need to highlight new feed items but don't want to Google the solution—build your own Array.prototype.diff() method. A fun problem-solving approach to comparing arrays, complete with real-world examples of long-polling feeds and the satisfaction of solving it yourself."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

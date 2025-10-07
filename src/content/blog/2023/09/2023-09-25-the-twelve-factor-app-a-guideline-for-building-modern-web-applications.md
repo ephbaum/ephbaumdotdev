@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From Heroku's playbook to modern cloud deployment—rediscover the Twelve-Factor App methodology that still shapes how we build scalable web applications today. A practical guide to the principles that make your apps portable, maintainable, and cloud-ready."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "The 23 design patterns that shaped modern software development—a comprehensive guide to the Gang of Four patterns. From Singleton to Visitor, learn when and how to apply these time-tested solutions to build more maintainable, flexible code."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

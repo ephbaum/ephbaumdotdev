@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Organize your Ghost content like a pro—from sensible tagging to dynamic routing that gives you complete control. Learn how to create content categories, private tags, custom URLs, and the advanced routing that makes your publication truly unique."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From Docker containers to 40-mile backpacking trips—discover how engineering principles apply to building life-changing routines. A goal-oriented approach to hiking, health, and personal development that treats life improvement like any other engineering challenge worth solving."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

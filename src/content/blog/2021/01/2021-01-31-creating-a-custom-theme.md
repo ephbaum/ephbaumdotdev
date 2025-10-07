@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Build custom Ghost themes with Handlebars—from the marketplace to creating your own from scratch. A developer's guide to theme development, templating, and the tools you need to create the perfect publishing experience for your content."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

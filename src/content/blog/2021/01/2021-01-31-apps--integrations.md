@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Connect Ghost to your entire workflow—from Zapier automations to custom API integrations that make publishing seamless. Discover how to build custom publishing apps, set up webhooks, and leverage the robust JSON API that powers everything from email lists to ecommerce stores."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

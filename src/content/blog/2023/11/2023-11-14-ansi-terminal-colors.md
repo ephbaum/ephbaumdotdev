@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Stop googling terminal color codes every time you want to add some flair to your scripts. This comprehensive ANSI color reference has everything you need—from basic 16 colors to the full 256-color palette—with visual swatches and hex codes to make your terminal pop."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

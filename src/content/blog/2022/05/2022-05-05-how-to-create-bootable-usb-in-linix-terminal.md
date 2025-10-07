@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Stop forgetting how to create bootable USB drives—here's the Linux terminal method that's actually easier than Rufus or Balena Etcher. A quick reference guide with the essential dd command and troubleshooting steps for when you need to boot from USB in a hurry."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

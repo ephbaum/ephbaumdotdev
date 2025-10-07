@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When burnout hits like a German compound word—an honest account of executive dysfunction, decision paralysis, and the terrifying reality of professional exhaustion. A raw reflection on the cost of success, the Seattle Freeze, and the impossible choice between health and capitalism."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

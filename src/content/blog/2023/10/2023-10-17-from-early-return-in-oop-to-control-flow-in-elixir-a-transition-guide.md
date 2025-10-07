@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Missing the 'return' keyword in Elixir? Learn how to ditch early returns for pattern matching, guard clauses, and functional control flow. A practical guide for OOP developers transitioning to Elixir's elegant approach to handling different code paths."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

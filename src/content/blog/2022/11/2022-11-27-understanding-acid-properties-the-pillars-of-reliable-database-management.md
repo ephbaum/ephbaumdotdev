@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Atomicity, Consistency, Isolation, Durability—master the four pillars that keep your database transactions rock-solid. A comprehensive guide to ACID properties with real-world examples, from bank transfers to flight bookings, that every developer needs to understand."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

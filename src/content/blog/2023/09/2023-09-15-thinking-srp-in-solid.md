@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "How can a class do 'one thing' when it needs to coordinate multiple components? A deep dive into the Single Responsibility Principle with real examples, showing how to separate concerns without creating a mess of tiny classes that do nothing."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

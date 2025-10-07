@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When that meeting should have been an email—discover the four causes of Zoom fatigue and how to avoid unnecessary video calls that drain your energy. A Stanford-backed guide to reducing cognitive load, excessive eye contact, and the constant self-view that's making us all exhausted."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

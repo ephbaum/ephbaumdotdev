@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Master Ghost admin settings—from private sites to team roles and user permissions. A complete guide to managing Contributors, Authors, Editors, and Administrators, plus how to keep your site secure while building your publishing team."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

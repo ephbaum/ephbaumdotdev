@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Stop Googling how to use multiple cached jQuery selectors—here's the method that actually makes sense. A practical guide to combining cached selectors without the performance pitfalls of .add(), complete with real-world examples and the gotchas you need to watch out for."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

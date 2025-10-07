@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When ChatGPT writes your blog post about psychological safety—discover the fascinating, flawed, and surprisingly human-like output of early AI writing. A raw look at AI-generated content on team dynamics, complete with the author's honest assessment of ChatGPT's capabilities and limitations."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

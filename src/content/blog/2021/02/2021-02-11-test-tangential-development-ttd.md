@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When TDD feels like it's getting in your way—discover Test Tangential Development, the pragmatic approach to testing that works when requirements are unclear and you're flying by the seat of your pants. A realistic take on when to let testing follow your development instead of driving it."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

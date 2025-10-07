@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When pie for breakfast, lunch, and dinner isn't enough—discover why 11/24 is secretly another Pi Day hiding in the infinite digits of π. A mathematical adventure proving that every day can be a celebration of both dessert and irrational numbers."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

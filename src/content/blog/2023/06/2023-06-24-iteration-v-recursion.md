@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "For loops vs. function calls that call themselves—when should you choose iteration over recursion? A practical guide to understanding these fundamental programming concepts with real examples, performance considerations, and when each approach shines."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Stop exiting from mysql and Ctrl+C'ing your tail -f commands—master Linux job control with jobs, bg, and fg. A CLI ninja's guide to multitasking in the terminal, complete with real-world debugging scenarios that will change how you work."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

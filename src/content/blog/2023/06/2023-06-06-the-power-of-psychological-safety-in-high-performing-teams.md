@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Why Google's best teams aren't made of the smartest people—they're made of people who feel safe to fail. Discover how psychological safety transforms teams from good to great, with actionable insights from Project Aristotle and real-world leadership strategies."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

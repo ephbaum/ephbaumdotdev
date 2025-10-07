@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "One year after stepping down from management to escape burnout—the recovery journey continues. An honest reflection on lingering symptoms, building a mindfulness toolbox, and why healing from professional burnout is anything but linear."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

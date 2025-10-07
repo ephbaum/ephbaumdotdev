@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From Arduino to WordPress—discover how Thingdom's JavaScript wrapper can mobile-enable any project in just four lines of code. A developer's guide to the IoT platform that connects everything from Raspberry Pi to web apps, complete with CodePen examples and real-world use cases."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From AI prompt to 1,000-word blog post in minutes—explore the early days of ChatGPT as a writing partner. A fascinating experiment in AI-assisted content creation, complete with the full conversation and honest assessment of whether we're on the cusp of a new frontier."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

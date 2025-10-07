@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - Advent of Code
-description:
-  Join Eph Baum as they recount their journey through the Advent of Code 2023. For the first time, Eph completes all puzzles, leveraging resources like GPT-4 and Code Llama. Despite the challenges and time constraints, Eph not only stays on top of the puzzles but also lands on the top 1,000 leaderboard. Dive into this post to explore the role of generative AIs in problem-solving and the joy of coding puzzles. - GitHub Co-pilot
+description: "From coding puzzle dropout to 50-star champion—discover how AI became the ultimate coding partner for completing Advent of Code 2023. A celebration of persistence, imposter syndrome, and the surprising ways generative AI can help you level up your problem-solving game."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

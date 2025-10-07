@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From unit tests to browser automation—master the Laravel testing ecosystem with this comprehensive guide. Learn when to use PHPUnit, Feature tests, Dusk, and E2E testing to build robust, reliable applications that won't break in production."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

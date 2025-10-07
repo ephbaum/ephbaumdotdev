@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "When ChatGPT runs out of queries and you're stuck debugging Pow authentication—welcome to the reality of AI-assisted development. A frustrating follow-up to the elxrBB project, featuring username vs. email struggles, terrible AI-generated blog posts, and the decision to pivot away from perfectionism."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

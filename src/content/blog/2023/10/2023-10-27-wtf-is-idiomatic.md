@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Ever been told your code isn't 'idiomatic' and wondered what that even means? This quick explainer breaks down idiomatic vs non-idiomatic code with real Elixir examples—because writing Python in Elixir syntax just doesn't cut it."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

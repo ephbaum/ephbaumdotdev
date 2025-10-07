@@ -10,8 +10,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "Building an Elixir forum with ChatGPT as your coding partner—what could go wrong? The inaugural entry of the elxrBB project chronicles the early days of AI-assisted development, complete with setup struggles, asdf discoveries, and the reality of working with GPT-4's limitations."
 layout: ../../../../layouts/BlogPost.astro
 ---
 

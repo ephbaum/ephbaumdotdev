@@ -9,8 +9,7 @@ featured: false
 draft: false
 tags:
   - relevant-tag
-description:
-  Placeholder description for imported post from Ghost Blog
+description: "From Minnesota to the Pacific Northwest—celebrate the 1,600-mile journey that led to finally achieving your dreams. A victory lap through remote work, team management, corporate acquisitions, and the sweet satisfaction of making it to the PNW after years of planning."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
