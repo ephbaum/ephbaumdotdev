@@ -15,7 +15,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 I've been doing some form of computer engineering or another since I was about 4 years old when I first copied a bunch of lines of BASIC out of a spiral bound systems' manual for the family RadioShack Tandy TRS 80. My father showed me how to do it and helped me debug it when it didn't work at all the first time. It's one of those fond memories I have of my father.
 
-![A TRS-80 sits with monitor and tape deck drive sits on a small kitchen table next to manuals and cassettes. In the background is a space heater and curtains](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![A TRS-80 sits with monitor and tape deck drive sits on a small kitchen table next to manuals and cassettes. In the background is a space heater and curtains](../../../../assets/img/2021/02/image-3.png)
 
 TRS 80 - Internet sourced image of a model similar to the one I had as a kid as I have no pictures of the one we had. I can still picture it in my head, though.
 

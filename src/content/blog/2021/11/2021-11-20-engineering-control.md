@@ -32,7 +32,7 @@ I was talking with JLo about feeling overwhelmed with my current inability to pr
 
 He offered his mental heuristic, which I chicken scratched out here:
 
-![A 2x2 or “Four Box” - left label says important, bottom label says urgent - each box read, from right to left first the top row and then the bottom: Defer, Do, Don't Do, Delegate](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![A 2x2 or "Four Box" - left label says important, bottom label says urgent - each box read, from right to left first the top row and then the bottom: Defer, Do, Don't Do, Delegate](../../../../assets/img/2021/11/5239e826afa84e8b83458a0ec723efde.jpg)
 
 Important v. Urgent
 

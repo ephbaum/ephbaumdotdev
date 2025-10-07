@@ -28,7 +28,7 @@ Stray too far outside of optimal conditions and TDD feels like it's just getting
 
 Often in the engineering world you're under resourced and flying by the seat of your pants. You don't have an architect, business analyst, project manager, or anyone else available to provide you with bullet proof and extremely clear requirements. A common reality is that you are asked by _someone_ in the business to do _something_ to make a client happy. If you're lucky this thing hasn't already promised to the client with a timeline that is so woefully inaccurate as to possibly push the limits on your poker face when presented.
 
-![In a room filled with flames and smoke an oblivious little dog in a hat sits at a table next to a coffee cup. The caption reads "This Is Fine". Grabbed from memgenerator.net](https://via.placeholder.com/400x300/cccccc/666666?text=This+Is+Fine)
+![In a room filled with flames and smoke an oblivious little dog in a hat sits at a table next to a coffee cup. The caption reads "This Is Fine". Grabbed from memgenerator.net](../../../../assets/img/2021/02/image-4.png)
 
 This is fine.
 

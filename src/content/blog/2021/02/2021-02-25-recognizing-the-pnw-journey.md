@@ -29,7 +29,7 @@ You'd be surprised the stuff you learn when you're just minding your business, w
 
 My journey to western Washington really goes back to my youth and being born in California, I have always been drawn back west since being moved to the Midwest. But the serious effort starts after Manda and I took our 4th anniversary trip to Seattle in 2014. I'd been working, commuting, for a mature corporation that was, on average, a two hour round trip each day, and often more like 3+ hours in the Winter. That's the year my wife and I decided we wanted to get out of Minnesota and head west. It's also the year I decided to agressively seek remote work  
 
-![Manda and I in front of the Great Wheel at Pier 57](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![Manda and I in front of the Great Wheel at Pier 57](../../../../assets/img/2021/02/FA362562-04AB-4715-A2C7-7CF55A5EFBD3.jpeg)
 
 My lovely wife and me in front of the Great Wheel at Pier 57 in 2014
 

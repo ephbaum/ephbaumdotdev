@@ -53,7 +53,7 @@ That's not the end of it, either. There are other ferries, the hood canal bridge
 
 ### Living is Believing
 
-![Greetings from the State of Washington](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![Greetings from the State of Washington](../../../../assets/img/2021/04/9ee3542843bf4cf78837d720f48fddc9.jpg)
 
 Greetings from the State of Washington
 
@@ -69,11 +69,11 @@ We are truly falling in love with this town and it's absolutely fantastic.
 
 From our porch and living room we are able to see the Olympics though a small gap between a neighbor's house and their garage just up the street. Of course from all over this town you can see mountains, from the Cascades in the East to the nearby Olympics just to the West, and of course Mt. Rainier to the south east.
 
-![Mt. Ranier from 6th & Veneta](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![Mt. Ranier from 6th & Veneta](../../../../assets/img/2021/04/89523510d98a43ee9d685c459225ffe6.jpg)
 
 Mt. Rainier
 
-![The Cascades from near PSNS](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![The Cascades from near PSNS](../../../../assets/img/2021/04/0e2f9dbf2f5c44caa13c5892ae601dcd.jpg)
 
 The Olympics
 
@@ -96,7 +96,7 @@ Before we bought our house we looked at a place in Port Orchard on a hill well a
 
 Much of Port Orchard's business selection is fantastic. Their retail and fast food selection is similar to what you can find in Silverdale. Because of how things are laid out - it's about a wash to drive up to Silverdale from Bremerton compared to into the same store, should it exist, in Port Orchard.
 
-![Lovely Items for Sale in Port Orchard](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![Lovely Items for Sale in Port Orchard](../../../../assets/img/2021/04/f8ab3fcfdd044c7890960cbf384c2d56.jpg)
 
 Amazing Shopping Awaits
 
@@ -116,7 +116,7 @@ I'm finding that there's so much opportunity around this area, especially where 
 
 One of Bremerton's strange charms is all the cats. I am no stranger to feral cat communities. We've even cared for a few feral cats in our time together. The feral cat communities here are very present. To the point that I think I could easily film a low budget horror film just from walking around this town with my iPhone on a gimbal.
 
-![Kitty on a Bench in a Garden](https://via.placeholder.com/400x300/cccccc/666666?text=Image)
+![Kitty on a Bench in a Garden](../../../../assets/img/2021/04/07fdbebd2c61417bb28c99415e6c43b0.jpg)
 
 Cats 'round here are intense AF
 
