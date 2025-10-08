@@ -3,8 +3,8 @@ title: "Migrating from Ghost CMS to Astro: A Complete Journey"
 postSlug: migrating-from-ghost-cms-to-astro
 slug: migrating-from-ghost-cms-to-astro
 pubDate: 10/07/2025 12:00 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
-ogImage: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/2025/10/ghost-to-astro-migration.png"
+ogImage: "../../../../assets/img/2025/10/ghost-to-astro-migration.png"
 author: Eph Baum
 featured: false
 draft: true
@@ -19,7 +19,7 @@ description: "The complete 17-month journey of migrating from Ghost CMS to Astro
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-![Featured Image](../../../../assets/img/ephbaum_dot_dev.png)
+![Ghost to Astro Migation Image](../../../../assets/img/2025/10/ghost-to-astro-migration.png)
 
 After years of running my personal blog on Ghost CMS hosted on Digital Ocean, I finally made the decision to migrate to a modern static site generator. This post documents the complete journey from Ghost CMS to Astro, hosted on Vercel.
 
