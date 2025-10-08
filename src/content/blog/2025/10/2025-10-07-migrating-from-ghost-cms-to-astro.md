@@ -38,11 +38,26 @@ The decision to migrate wasn't made lightly. Ghost CMS had served me well for ye
 The migration involved several key phases:
 
 1. **Content Export**: Extracting all posts, pages, and metadata from Ghost
-2. **Image Migration**: Preserving all original images and their relationships
-3. **Template Conversion**: Converting Ghost themes to Astro components
-4. **Deployment Setup**: Configuring Vercel for static site hosting
-5. **SEO Preservation**: Maintaining all URLs and meta data
-6. **Final Cleanup**: Restoring placeholder images and ensuring everything works
+2. **Backup Conversion Script**: Creating a custom script to convert Ghost backup JSON to markdown files
+3. **Image Migration**: Preserving all original images and their relationships
+4. **Template Conversion**: Converting Ghost themes to Astro components
+5. **Deployment Setup**: Configuring Vercel for static site hosting
+6. **SEO Preservation**: Maintaining all URLs and meta data
+7. **Final Cleanup**: Restoring placeholder images and ensuring everything works
+
+## The Ghost Backup Conversion Script
+
+One of the most critical components of the migration was creating a custom script to convert the Ghost backup JSON export into properly formatted markdown files. This script handled:
+
+- **JSON Parsing**: Extracting all blog posts, pages, and metadata from the Ghost backup
+- **Markdown Generation**: Converting HTML content to clean markdown format
+- **Frontmatter Creation**: Generating proper YAML frontmatter with all necessary fields
+- **Image URL Mapping**: Converting Ghost image URLs to local asset references
+- **Slug Generation**: Creating URL-friendly slugs from post titles
+- **Date Formatting**: Converting Ghost timestamps to readable date formats
+- **Tag Processing**: Extracting and formatting post tags and categories
+
+This script was essential for automating the conversion of dozens of blog posts, ensuring consistency in formatting and preventing manual errors that would have been time-consuming to fix later.
 
 ## The Final Mile: Image Restoration
 
