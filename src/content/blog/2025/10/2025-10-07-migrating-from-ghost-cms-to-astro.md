@@ -1,9 +1,10 @@
 ---
-title: Migrating from Ghost CMS to Astro: A Complete Journey
+title: "Migrating from Ghost CMS to Astro: A Complete Journey"
 postSlug: migrating-from-ghost-cms-to-astro
 slug: migrating-from-ghost-cms-to-astro
 pubDate: 10/07/2025 12:00 PM
 imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+ogImage: "../../../../assets/img/ephbaum_dot_dev.png"
 author: Eph Baum
 featured: false
 draft: true
