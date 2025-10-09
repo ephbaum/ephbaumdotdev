@@ -24,8 +24,20 @@
   --secondary: var(--sys-color-black);
 }
 
+/* Force light mode to prevent dark mode from breaking brutalist design */
 html {
+  color-scheme: light only;
   scroll-behavior: smooth;
+}
+
+/* Prevent browser dark mode from inverting colors */
+@media (prefers-color-scheme: dark) {
+
+  html,
+  body {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
 }
 
 ::-webkit-scrollbar {
