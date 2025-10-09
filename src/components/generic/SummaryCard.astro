@@ -12,8 +12,19 @@ interface Props {
 const { title, imgAlt, imgSrc, description } = Astro.props;
 ---
 
+<style>
+  .title-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+    max-height: calc(1.3em * 3);
+  }
+</style>
+
 <Card color="white" data-brutal-card>
-  <h3 class="poppins text-lg md:text-xl">{title}</h3>
+  <h3 class="poppins text-lg md:text-xl title-clamp">{title}</h3>
   <div class="rounded-lg border-3 border-black my-4 h-56">
     <Image
       src={imgSrc}
