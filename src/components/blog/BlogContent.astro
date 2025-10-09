@@ -13,20 +13,30 @@ const { authorColor, content, publishedColor } = Astro.props;
 <style>
   .author-color {
     color: var(--authorColor, #ff0000);
-    opacity: 0.5;
+    background-color: var(--authorBgColor, #ffffff);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 2px solid #000000;
+    display: inline-block;
+    font-weight: 600;
   }
 
   .author-color:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
 
   .published-color {
     color: var(--publishedColor, #0000ff);
-    opacity: 0.5;
+    background-color: var(--publishedBgColor, #ffffff);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 2px solid #000000;
+    display: inline-block;
+    font-weight: 600;
   }
 
   .published-color:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
 </style>
 
@@ -40,27 +50,45 @@ const { authorColor, content, publishedColor } = Astro.props;
   </p>
   <slot />
   <p class="author-color">Written by {content.author}</p>
-  <Button href="/blog/" data-brutal-button data-brutal-hover>
-    &larr; Back to blog
-  </Button>
+  <div class="mt-6">
+    <Button href="/blog/" data-brutal-button data-brutal-hover>
+      &larr; Back to blog
+    </Button>
+  </div>
 </article>
 
 <script src="/global-color-system.js" is:inline></script>
 <script>
-  // Apply random colors for author and published text
+  // Apply random colors for author and published text with contrasting backgrounds
   function applyRandomColors() {
     const article = document.querySelector("article");
     if (article && window.BrutalColorSystem) {
       const colors = window.BrutalColorSystem.colors;
       const colorMap = window.BrutalColorSystem.colorMap;
 
-      // Generate random colors
+      // Generate random colors for text
       const authorColor = colors[Math.floor(Math.random() * colors.length)];
       const publishedColor = colors[Math.floor(Math.random() * colors.length)];
 
+      // Generate contrasting background colors (avoid same color as text)
+      let authorBgColor = colors[Math.floor(Math.random() * colors.length)];
+      while (authorBgColor === authorColor) {
+        authorBgColor = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      let publishedBgColor = colors[Math.floor(Math.random() * colors.length)];
+      while (publishedBgColor === publishedColor) {
+        publishedBgColor = colors[Math.floor(Math.random() * colors.length)];
+      }
+
       // Set CSS custom properties
       article.style.setProperty("--authorColor", colorMap[authorColor]);
+      article.style.setProperty("--authorBgColor", colorMap[authorBgColor]);
       article.style.setProperty("--publishedColor", colorMap[publishedColor]);
+      article.style.setProperty(
+        "--publishedBgColor",
+        colorMap[publishedBgColor],
+      );
     }
   }
 
