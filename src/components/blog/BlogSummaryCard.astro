@@ -25,12 +25,12 @@ const { post } = Astro.props;
 
   <div class="hidden sm:inline-block">
     <p class="poppins mt-2">tags:</p>
-    <div class="flex justify-between items-center">
-      <ul class="flex gap-4 mt-2">
+    <div class="flex justify-between items-start">
+      <ul class="flex gap-4 mt-2 flex-wrap justify-center">
         {
           post.data.tags.map((tag) => {
             return (
-              <li>
+              <li class="whitespace-nowrap">
                 <a class="sanchez" href={`/blog/tags/${tag.toLowerCase()}/`}>
                   <Pill data-brutal-pill data-brutal-hover>
                     {tag}
