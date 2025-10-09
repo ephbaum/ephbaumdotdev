@@ -45,3 +45,7 @@ This solution isn't perfect. There are myriad improvements and optimizations pos
 I think it's pretty self explanatory. It uses Turndown to convert the HTML in the JSON backup file to Markdown and then outputs each post as its own Markdown file.  
   
 Good luck and feel free to reach out if you have any questions.
+
+---
+
+**Update (October 2025)**: This script was successfully used to complete the full migration from Ghost CMS to Astro! You can read about the complete 2-year migration journey in my follow-up post: "[Migrating from Ghost CMS to Astro: A Complete Journey](https://ephbaum.dev/blog/migrating-from-ghost-cms-to-astro)".
