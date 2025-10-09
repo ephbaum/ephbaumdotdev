@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - leadership
+  - management
+  - process
+  - people-management
 description: "It's about the people, stupid—learn how to coach the person, not the problem, and build processes that actually protect your team from constant interruptions. A leadership guide to managing external distractions, implementing service desks, and creating the structure your engineers desperately need."
 layout: ../../../../layouts/BlogPost.astro
 ---

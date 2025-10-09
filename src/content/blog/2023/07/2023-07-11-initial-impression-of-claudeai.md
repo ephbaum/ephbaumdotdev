@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ai
+  - claude
+  - artificial-intelligence
+  - review
 description: "Claude.ai vs. ChatGPT—which AI assistant reigns supreme for Elixir development? A hands-on comparison of Anthropic's new AI tool, complete with real conversation examples and honest thoughts on its potential for building Phoenix applications."
 layout: ../../../../layouts/BlogPost.astro
 ---

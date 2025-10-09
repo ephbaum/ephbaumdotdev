@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - psychological-safety
+  - team-management
+  - leadership
+  - ai-generated
 description: "When ChatGPT writes your blog post about psychological safety—discover the fascinating, flawed, and surprisingly human-like output of early AI writing. A raw look at AI-generated content on team dynamics, complete with the author's honest assessment of ChatGPT's capabilities and limitations."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - playdate
+  - gaming
+  - personal
+  - community
 description: "From doodling sprites to compiling games—discover the joy of game development on the Playdate handheld. A first-hand account of diving into Panic's excellent SDK, complete with hardware impressions, charging quirks, and the surprisingly low barrier to entry for indie game creation."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - pi-day
+  - mathematics
+  - humor
+  - personal
 description: "When pie for breakfast, lunch, and dinner isn't enough—discover why 11/24 is secretly another Pi Day hiding in the infinite digits of π. A mathematical adventure proving that every day can be a celebration of both dessert and irrational numbers."
 layout: ../../../../layouts/BlogPost.astro
 ---

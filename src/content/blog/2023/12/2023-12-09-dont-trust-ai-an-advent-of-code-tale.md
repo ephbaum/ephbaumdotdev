@@ -9,7 +9,9 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - Advent of Code
+  - advent-of-code
+  - ai
+  - gpt
 description: "When AI gives you a 'helpful' code suggestion that breaks your Advent of Code solution—trust but verify. A cautionary tale about the perils of blindly accepting AI-generated code, complete with debugging war stories and lessons learned from the 2023 coding challenge."
 layout: ../../../../layouts/BlogPost.astro
 ---

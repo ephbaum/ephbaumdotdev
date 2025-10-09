@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - mental-health
+  - crisis-management
+  - personal
+  - workplace
 description: "When burnout becomes a mental health crisis and FMLA is your only lifeline—a raw account of executive dysfunction, HR navigation, and the reality of taking leave when you can't function. An honest look at the system that's supposed to protect workers during their darkest moments."
 layout: ../../../../layouts/BlogPost.astro
 ---

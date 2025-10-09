@@ -8,7 +8,9 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - javascript
+  - coding-style
+  - best-practices
 description: "When JavaScript style guides are as wild as the Wild West—establish your own coding conventions that actually work. A developer's personal style guide covering brackets, comments, variable declarations, and the eternal debate over single vs. double quotes in the JavaScript wilderness."
 layout: ../../../../layouts/BlogPost.astro
 ---

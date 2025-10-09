@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - remote-work
+  - zoom-fatigue
+  - productivity
+  - meetings
 description: "When that meeting should have been an email—discover the four causes of Zoom fatigue and how to avoid unnecessary video calls that drain your energy. A Stanford-backed guide to reducing cognitive load, excessive eye contact, and the constant self-view that's making us all exhausted."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -8,7 +8,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - css
+  - frontend
+  - visual-effects
+  - tutorial
 description: "When you need indicators but want them to look amazing—create semi-skeumorphic CSS LEDs that actually glow. A CodePen showcase of beautiful LED-style indicators that prove CSS can be both functional and visually stunning without any JavaScript required."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - german
+  - language
+  - humor
+  - personal
 description: "When burnout hits like a German compound word—an honest account of executive dysfunction, decision paralysis, and the terrifying reality of professional exhaustion. A raw reflection on the cost of success, the Seattle Freeze, and the impossible choice between health and capitalism."
 layout: ../../../../layouts/BlogPost.astro
 ---

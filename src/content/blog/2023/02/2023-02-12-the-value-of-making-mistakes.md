@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - mistakes
+  - learning
+  - personal-development
+  - growth
 description: "When your database migration breaks the UI and you learn more than you ever wanted to know about polymorphic relationships—embrace the chaos. A developer's reflection on why mistakes are the best teachers and how to build resilience through planned failure."
 layout: ../../../../layouts/BlogPost.astro
 ---

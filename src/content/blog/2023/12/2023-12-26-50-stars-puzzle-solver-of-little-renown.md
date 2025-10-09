@@ -9,7 +9,9 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - Advent of Code
+  - advent-of-code
+  - ai
+  - gpt
 description: "From coding puzzle dropout to 50-star champion—discover how AI became the ultimate coding partner for completing Advent of Code 2023. A celebration of persistence, imposter syndrome, and the surprising ways generative AI can help you level up your problem-solving game."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -8,7 +8,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - javascript
+  - arrays
+  - prototype
+  - follow-up
 description: "When extending JavaScript's core functionality goes wrong—learn from the Array.prototype.diff() mea culpa. A follow-up to the original diff method that adds proper type checking with instanceof, because sometimes you need to watch your data types more carefully."
 layout: ../../../../layouts/BlogPost.astro
 ---

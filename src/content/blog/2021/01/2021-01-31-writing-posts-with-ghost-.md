@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ghost-cms
+  - writing
+  - editor
+  - tutorial
 description: "Master the Ghost editor—from markdown shortcuts to dynamic content cards that make publishing effortless. A comprehensive guide to rich media, image optimization, galleries, and the visual editor that turns writing into a delightful experience."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ghost-cms
+  - publishing
+  - seo
+  - tutorial
 description: "Optimize your Ghost content for maximum reach—from feature images to structured data and social media cards. A complete guide to publishing options, SEO optimization, custom meta data, and the code injection tools that give you complete control over your content."
 layout: ../../../../layouts/BlogPost.astro
 ---

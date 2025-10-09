@@ -9,7 +9,11 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - migration
+  - astro
+  - ghost-cms
+  - nodejs
+  - tutorial
 description: "Tired of paying for Ghost hosting? Learn how to migrate your blog to Astro with a custom Node.js script that converts Ghost backups to markdown. Complete with working code, Turndown integration, and the satisfaction of taking control of your content."
 layout: ../../../../layouts/BlogPost.astro
 ---

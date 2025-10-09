@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - design-patterns
+  - gang-of-four
+  - swift
+  - object-oriented-programming
 description: "The 23 design patterns that shaped modern software development—a comprehensive guide to the Gang of Four patterns. From Singleton to Visitor, learn when and how to apply these time-tested solutions to build more maintainable, flexible code."
 layout: ../../../../layouts/BlogPost.astro
 ---

@@ -8,7 +8,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - coffee
+  - cold-brew
+  - tutorial
+  - lifestyle
 description: "Stop spending $5 a day on Starbucks cold brew—master the art of making liquid gold at home with this developer's guide to cold brewing. Complete with Costco bean recommendations, 24-hour brewing process, and the Clever Dripper setup that keeps you caffeinated without breaking the budget."
 layout: ../../../../layouts/BlogPost.astro
 ---

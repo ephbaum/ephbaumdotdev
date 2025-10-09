@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - software-architecture
+  - twelve-factor-app
+  - cloud-deployment
+  - best-practices
 description: "From Heroku's playbook to modern cloud deployment—rediscover the Twelve-Factor App methodology that still shapes how we build scalable web applications today. A practical guide to the principles that make your apps portable, maintainable, and cloud-ready."
 layout: ../../../../layouts/BlogPost.astro
 ---

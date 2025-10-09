@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - linux
+  - jobs
+  - command-line
+  - productivity
 description: "Stop exiting from mysql and Ctrl+C'ing your tail -f commands—master Linux job control with jobs, bg, and fg. A CLI ninja's guide to multitasking in the terminal, complete with real-world debugging scenarios that will change how you work."
 layout: ../../../../layouts/BlogPost.astro
 ---

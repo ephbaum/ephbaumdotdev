@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - database
+  - acid
+  - transactions
+  - data-integrity
 description: "Atomicity, Consistency, Isolation, Durability—master the four pillars that keep your database transactions rock-solid. A comprehensive guide to ACID properties with real-world examples, from bank transfers to flight bookings, that every developer needs to understand."
 layout: ../../../../layouts/BlogPost.astro
 ---

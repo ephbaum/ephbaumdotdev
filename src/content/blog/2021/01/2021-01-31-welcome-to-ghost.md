@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ghost-cms
+  - introduction
+  - cms
+  - tutorial
 description: "Welcome to Ghost—the open source publishing platform designed for ambitious, professional publishers. Discover how this Node.js CMS powers everything from personal blogs to enterprise publications, complete with customization options and the community that makes it all possible."
 layout: ../../../../layouts/BlogPost.astro
 ---

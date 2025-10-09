@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ghost-cms
+  - troubleshooting
+  - admin
+  - bug-fix
 description: "When adding a Ghost admin user breaks your entire blog—a sysadmin's tale of configuration chaos. Follow the debugging journey from mysterious 'copyError is not a function' to nginx 502 errors, all because of a simple Mailgun transport setting."
 layout: ../../../../layouts/BlogPost.astro
 ---

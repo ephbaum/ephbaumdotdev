@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - solid
+  - design-patterns
+  - object-oriented-programming
+  - best-practices
 description: "How can a class do 'one thing' when it needs to coordinate multiple components? A deep dive into the Single Responsibility Principle with real examples, showing how to separate concerns without creating a mess of tiny classes that do nothing."
 layout: ../../../../layouts/BlogPost.astro
 ---

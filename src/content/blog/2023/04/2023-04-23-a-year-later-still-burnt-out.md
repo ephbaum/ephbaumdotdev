@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - burnout
+  - mental-health
+  - career
+  - personal
 description: "One year after stepping down from management to escape burnout—the recovery journey continues. An honest reflection on lingering symptoms, building a mindfulness toolbox, and why healing from professional burnout is anything but linear."
 layout: ../../../../layouts/BlogPost.astro
 ---

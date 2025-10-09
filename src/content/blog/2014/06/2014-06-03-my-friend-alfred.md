@@ -8,7 +8,11 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - productivity
+  - mac
+  - alfred
+  - workflow
+  - tools
 description: "If you're a Mac user and not using Alfred—you're missing out on the ultimate productivity tool. A love letter to the PowerPack that saves hundreds of keystrokes daily, complete with custom Monokai Glass theme, SVN workflows, and the keyboard shortcuts that make everything faster."
 layout: ../../../../layouts/BlogPost.astro
 ---

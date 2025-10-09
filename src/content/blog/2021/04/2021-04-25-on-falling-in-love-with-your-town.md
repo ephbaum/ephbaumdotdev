@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - bremerton
+  - pnw
+  - lifestyle
+  - personal
 description: "From years of planning to finally falling in love with Bremerton—discover the magic of finding your perfect place to call home. A love letter to Kitsap County, complete with mountain views, ferry adventures, feral cats, and the walkable lifestyle that makes every day feel like a small-town dream."
 layout: ../../../../layouts/BlogPost.astro
 ---

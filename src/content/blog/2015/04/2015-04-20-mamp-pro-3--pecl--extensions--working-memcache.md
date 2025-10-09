@@ -8,7 +8,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - php
+  - mamp
+  - memcache
+  - development-environment
 description: "When MAMP Pro needs memcache extensions but the GitHub repos aren't keeping up—learn how to compile PECL extensions yourself. A complete guide to setting up MAMP's build environment, configuring PHP paths, and installing memcache without breaking your development workflow."
 layout: ../../../../layouts/BlogPost.astro
 ---

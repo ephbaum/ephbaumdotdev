@@ -8,7 +8,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - workplace
+  - fun
+  - culture
+  - personal
 description: "When your boss wants links to stand out—deliver exactly what they asked for with glorious CSS animations. A lighthearted reminder that having fun at work sometimes means creating the most ridiculous blinking, rainbow-striped links that will make everyone laugh."
 layout: ../../../../layouts/BlogPost.astro
 ---

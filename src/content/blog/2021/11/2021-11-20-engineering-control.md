@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - engineering-management
+  - prioritization
+  - productivity
+  - leadership
 description: "When overwhelm hits and you're drowning in urgent vs. important decisions—learn how to engineer control back into your work life. A practical framework for managing the chaos of modern engineering management, complete with the four-box prioritization model that actually works."
 layout: ../../../../layouts/BlogPost.astro
 ---

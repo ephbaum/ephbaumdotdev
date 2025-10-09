@@ -9,7 +9,10 @@ author: Eph Baum
 featured: false
 draft: false
 tags:
-  - relevant-tag
+  - ghost-cms
+  - content-management
+  - tutorial
+  - organization
 description: "Organize your Ghost content like a pro—from sensible tagging to dynamic routing that gives you complete control. Learn how to create content categories, private tags, custom URLs, and the advanced routing that makes your publication truly unique."
 layout: ../../../../layouts/BlogPost.astro
 ---
