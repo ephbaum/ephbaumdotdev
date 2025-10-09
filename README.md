@@ -37,7 +37,7 @@ We've significantly evolved the base theme with these improvements:
 | Standard RSS feed | **Enhanced RSS + sitemap** | Better SEO and content discovery |
 | Basic styling | **Custom brutalist components** | Unique design system |
 | No version management | **asdf + pnpm setup** | Consistent development environment |
-| Basic deployment | **GitHub Actions + Firebase ready** | Automated CI/CD pipeline |
+| Basic deployment | **GitHub Actions + Vercel ready** | Automated CI/CD pipeline |
 | Ghost migration | **Complete CMS migration** | Preserved content and SEO |
 | Security baseline | **Regular security updates** | Astro 4.16.19 with latest patches |
 
@@ -81,6 +81,7 @@ Based on the original Brutal theme with our enhancements:
 | `pnpm run preview` | Preview build locally before deploying | Test production build |
 | `pnpm run astro` | Run Astro CLI commands | Full CLI access |
 | `pnpm run astro --help` | Get help using the Astro CLI | Documentation |
+| `pnpm run new-post` | Create a new blog post with frontmatter | Interactive script for content creation |
 
 ## 📁 Project Structure
 
@@ -94,6 +95,7 @@ src/
 │   └── layout/        # Header, footer, head sections (from base theme)
 ├── content/            # Blog posts and content
 │   └── blog/          # Markdown blog posts with frontmatter
+│       └── YYYY/MM/   # Organized by year and month
 ├── layouts/           # Page layouts
 │   ├── Default.astro  # Base layout with props system
 │   └── BlogPost.astro # Blog-specific layout
@@ -141,12 +143,37 @@ These colors are used in:
 
 ## 📝 Content Management
 
-Blog posts are written in Markdown and stored in `src/content/blog/`. Each post includes:
+### Creating New Blog Posts
 
-- Frontmatter with metadata (title, date, tags, etc.)
-- Markdown content
-- Automatic OG image generation
-- SEO optimization
+Use the interactive blog post creation tool:
+
+```bash
+pnpm run new-post
+```
+
+This script will prompt you for:
+- **Title** - The blog post title
+- **Description** - SEO description for the post
+- **Tags** - Comma-separated tags (defaults to 'general' if none provided)
+- **Date/Time** - Publication date (defaults to current time if not specified)
+- **Draft Status** - Whether the post should be marked as draft
+
+The script automatically:
+- ✅ **Generates slug** from the title (URL-friendly format)
+- ✅ **Creates directory structure** by year/month (`src/content/blog/YYYY/MM/`)
+- ✅ **Generates frontmatter** with all required metadata
+- ✅ **Sets up file structure** with proper image paths and layout
+- ✅ **Provides template content** with introduction, main content, and conclusion sections
+
+### Blog Post Structure
+
+Blog posts are written in Markdown and stored in `src/content/blog/YYYY/MM/`. Each post includes:
+
+- **Frontmatter** with metadata (title, date, tags, author, etc.)
+- **Markdown content** with template structure
+- **Automatic OG image generation** for social media
+- **SEO optimization** with proper meta tags
+- **Draft support** for work-in-progress posts
 
 ## 🔒 Security
 
@@ -159,12 +186,12 @@ This project is regularly updated to address security vulnerabilities:
 
 ## 🚀 Deployment
 
-### GitHub Actions + Firebase Hosting
+### GitHub Actions + Vercel
 
 The site is designed to be deployed as a static site using:
 
 1. **GitHub Actions** - Automated CI/CD pipeline
-2. **Firebase Hosting** - Fast, global CDN
+2. **Vercel** - Fast, global CDN with edge functions
 3. **Custom Domain** - `ephbaum.dev`
 
 ### Build Process
@@ -175,44 +202,44 @@ pnpm run build
 
 This generates optimized static files in the `dist/` directory, ready for deployment.
 
-### 🛠️ Deployment Setup Plan
+### 🛠️ Deployment Setup
 
-#### **Phase 1: Firebase Project Setup**
-- [ ] Create Firebase project for `ephbaum.dev`
-- [ ] Enable Firebase Hosting
-- [ ] Configure custom domain mapping
-- [ ] Set up Firebase service account with minimal permissions
+The site is currently deployed using:
 
-#### **Phase 2: GitHub Actions Workflow**
-- [ ] Create `.github/workflows/deploy.yml`
-- [ ] Configure GitHub Secrets:
-  - `FIREBASE_SERVICE_ACCOUNT` - Service account JSON key
-  - `FIREBASE_PROJECT_ID` - Firebase project ID
-- [ ] Set up automatic deployment on push to `main` branch
+#### **Vercel Configuration**
+- ✅ **Vercel Project** - Connected to GitHub repository
+- ✅ **Custom Domain** - `ephbaum.dev` with automatic SSL
+- ✅ **Build Configuration** - `vercel.json` with Astro framework detection
+- ✅ **Automatic Deployments** - Deploys on every push to `main` branch
 
-#### **Phase 3: Security & Configuration**
-- [ ] Configure Firebase service account with hosting-only permissions
-- [ ] Set up proper CORS and security headers
-- [ ] Configure redirects and rewrites for SEO
-- [ ] Test deployment pipeline
+#### **GitHub Actions Workflow**
+- ✅ **Workflow File** - `.github/workflows/deploy-vercel.yml`
+- ✅ **GitHub Secrets** configured:
+  - `VERCEL_TOKEN` - Vercel authentication token
+  - `VERCEL_ORG_ID` - Vercel organization ID
+  - `VERCEL_PROJECT_ID` - Vercel project ID
+- ✅ **Automated Process** - Builds and deploys on push to `main`
+- ✅ **Preview Deployments** - Automatic preview URLs for pull requests
 
-#### **Phase 4: Domain & SSL**
-- [ ] Configure custom domain `ephbaum.dev`
-- [ ] Set up SSL certificate (automatic with Firebase)
-- [ ] Configure DNS settings
-- [ ] Test live deployment
+#### **Preview Deployments**
+When you create a pull request, Vercel automatically:
+- 🚀 **Builds and deploys** your changes to a unique preview URL
+- 🔗 **Comments on the PR** with the preview deployment link
+- 🧪 **Provides isolated testing** environment identical to production
+- 👥 **Enables collaboration** - reviewers can test changes live before merging
+- 🗑️ **Auto-cleanup** - preview deployments are removed when PR is closed
 
 ### 🔒 Security Considerations
 
 **Why This Setup is Safe:**
 - ✅ **Static site only** - No server-side code execution
 - ✅ **Public content** - Blog posts are meant to be public
-- ✅ **No secrets in build** - Firebase tokens stored in GitHub Secrets
-- ✅ **Minimal permissions** - Service account restricted to hosting only
+- ✅ **No secrets in build** - Vercel tokens stored in GitHub Secrets
+- ✅ **Minimal permissions** - Vercel tokens restricted to project deployment
 - ✅ **Encrypted secrets** - GitHub Secrets are encrypted at rest
 
 **What We're Protecting:**
-- 🔐 Firebase service account credentials
+- 🔐 Vercel authentication tokens
 - 🔐 Project configuration
 - 🔐 Deployment tokens
 - 🔐 Any future API keys (if needed)
@@ -220,19 +247,23 @@ This generates optimized static files in the `dist/` directory, ready for deploy
 ### 📋 Deployment Workflow
 
 ```mermaid
-graph LR
+graph TD
     A[Push to main] --> B[GitHub Actions]
-    B --> C[Install dependencies]
-    C --> D[Build Astro site]
-    D --> E[Deploy to Firebase]
-    E --> F[Live at ephbaum.dev]
+    C[Create Pull Request] --> B
+    B --> D[Install dependencies]
+    D --> E[Build Astro site]
+    E --> F{Deployment Type}
+    F -->|Main branch| G[Deploy to Production]
+    F -->|PR branch| H[Deploy Preview]
+    G --> I[Live at ephbaum.dev]
+    H --> J[Preview URL in PR comment]
 ```
 
 **Automated Process:**
-1. **Code Push** → Triggers GitHub Actions
-2. **Build** → `pnpm install` → `pnpm run build`
-3. **Deploy** → Upload `dist/` to Firebase Hosting
-4. **Live** → Site available at `ephbaum.dev`
+1. **Code Push/PR** → Triggers GitHub Actions
+2. **Build** → `npm ci` → `npm run build`
+3. **Deploy** → Deploy to Vercel using Vercel Action
+4. **Result** → Production site at `ephbaum.dev` OR preview URL for PRs
 
 ## 🔄 Migration from Ghost
 
@@ -278,4 +309,4 @@ You may not reproduce, distribute, or use the blog content without explicit writ
 
 ---
 
-*Built with ❤️ using Astro and deployed with Firebase*
+*Built with ❤️ using Astro and deployed with Vercel*
