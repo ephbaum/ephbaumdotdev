@@ -1,20 +1,20 @@
 ---
-name: Feature request
-about: Suggest an idea to Brutal
+name: Feature request (Story)
+about: Suggest an idea for this blog
 title: ''
 labels: enhancement
-assignees: ElianCodes
+assignees: ephbaum
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
+**As a <blank>**
 
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+What's your role in this?
 
-**Describe the solution you'd like**
+**I would like <blank>**
 
 A clear and concise description of what you want to happen.
 
-**Additional context**
+**So that <blank>**
 
-Add any other context or screenshots about the feature request here.
+Add any other context or screenshots about the feature request here, give me a why.

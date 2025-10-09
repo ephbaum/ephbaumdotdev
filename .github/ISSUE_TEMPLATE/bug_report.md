@@ -3,16 +3,15 @@ name: Bug report
 about: Create a report to help improve Brutal
 title: ''
 labels: bug
-assignees: ElianCodes
+assignees: ephbaum 
 
 ---
 
 **Describe the bug**
+Describe the bug
 
-<!-- A clear and concise description of what the bug is. -->
-
-**Minimal example**
-Link to minimal example: <!-- eg: StackBlitz -->
+**Steps to Reproduce**
+Without this you're unlikely to get a response.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
