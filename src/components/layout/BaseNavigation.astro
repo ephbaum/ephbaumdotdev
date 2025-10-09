@@ -7,7 +7,7 @@ interface Props {
 
 const navigationItems = [
   { name: "Home", url: "/" },
-  { name: "Blog", url: "/blog/" },
+  { name: "DevBlog", url: "/blog/" },
 ];
 
 const socialIcons = [
@@ -20,6 +20,11 @@ const socialIcons = [
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/ephbaum",
     icon: "i-uil-linkedin-alt",
+  },
+  {
+    name: "Personal Blog",
+    url: "https://ephwords.com",
+    icon: "i-uil-file-edit-alt",
   },
   { name: "RSS", url: "/feed.xml", icon: "i-uil-rss" },
 ];
@@ -70,7 +75,7 @@ const { pageTitle } = Astro.props;
   <nav class="md:hidden flex">
     <h2 class="hidden">Mobile Navigation</h2>
     <ul>
-      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/blog/">DevBlog</a></li>
     </ul>
   </nav>
 </header>
