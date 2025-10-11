@@ -70,5 +70,11 @@ const { title, description, ogImage } = Astro.props;
     )
   }
 
+  <!-- Vercel Analytics -->
+  <script>
+    import { inject } from "@vercel/analytics";
+    inject();
+  </script>
+
   <slot />
 </head>
