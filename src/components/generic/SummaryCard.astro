@@ -9,6 +9,9 @@ interface Props {
 }
 
 const { title, imgAlt, imgSrc, description } = Astro.props;
+
+// Convert relative path to absolute path for browser
+const cleanPath = imgSrc.replace(/^\.\.\/\.\.\/\.\.\/\.\.\//, '/');
 ---
 
 <style>
@@ -26,7 +29,7 @@ const { title, imgAlt, imgSrc, description } = Astro.props;
   <h3 class="poppins text-lg md:text-xl title-clamp">{title}</h3>
   <div class="rounded-lg border-3 border-black my-4 h-56">
     <img
-      src={imgSrc}
+      src={cleanPath}
       alt={imgAlt}
       class="rounded h-full w-full object-cover"
     />
