@@ -1,10 +1,9 @@
 ---
 import { Card } from "@eliancodes/brutal-ui";
-import { Image } from "astro:assets";
 
 interface Props {
   title: string;
-  imgSrc: ImageMetadata;
+  imgSrc: string;
   imgAlt: string;
   description: string;
 }
@@ -26,11 +25,9 @@ const { title, imgAlt, imgSrc, description } = Astro.props;
 <Card color="white" data-brutal-card>
   <h3 class="poppins text-lg md:text-xl title-clamp">{title}</h3>
   <div class="rounded-lg border-3 border-black my-4 h-56">
-    <Image
+    <img
       src={imgSrc}
       alt={imgAlt}
-      width={800}
-      height={400}
       class="rounded h-full w-full object-cover"
     />
   </div>
