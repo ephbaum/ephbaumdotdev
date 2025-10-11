@@ -43,7 +43,11 @@ const { backToTop = false } = Astro.props;
       Modified version of the Brutal theme for Astro - originally by <a
         href="https://www.elian.codes/"
         target="_blank"
-        class="text-blue">ElianCodes</a
+        class="text-blue"
+        data-analytics-footer-link
+        data-link-type="external"
+        data-link-destination="elian.codes"
+        data-link-url="https://www.elian.codes/">ElianCodes</a
       >
     </p>
     <p class="flex items-center gap-2">
@@ -52,6 +56,10 @@ const { backToTop = false } = Astro.props;
         href="https://github.com/ephbaum/ephbaumdotdev"
         target="_blank"
         class="text-blue flex items-center gap-2 hover:underline"
+        data-analytics-footer-link
+        data-link-type="external"
+        data-link-destination="github"
+        data-link-url="https://github.com/ephbaum/ephbaumdotdev"
       >
         View source on GitHub
       </a>
@@ -91,5 +99,25 @@ const { backToTop = false } = Astro.props;
     });
 
     window.addEventListener("scroll", toggleBackToTopButton);
+
+    // Track footer link clicks
+    const footerLinks = document.querySelectorAll('[data-analytics-footer-link]');
+    footerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if ((window as any).trackEvent) {
+          const linkType = link.getAttribute('data-link-type');
+          const linkDestination = link.getAttribute('data-link-destination');
+          const linkUrl = link.getAttribute('data-link-url');
+          
+          (window as any).trackEvent('footer_link_click', {
+            action: 'click_footer_link',
+            component: 'footer',
+            link_type: linkType,
+            link_destination: linkDestination,
+            link_url: linkUrl
+          });
+        }
+      });
+    });
   });
 </script>

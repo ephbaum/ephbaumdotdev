@@ -28,6 +28,8 @@ const { title, description, ogImage } = Astro.props;
     rel="alternate"
     href="https://ephbaum.dev/blog.xml"
     type="application/rss+xml"
+    data-analytics-rss-feed
+    data-feed-url="https://ephbaum.dev/blog.xml"
   />
 
   <meta name="title" content={`${title} | eph baum dot dev`} />
@@ -70,13 +72,28 @@ const { title, description, ogImage } = Astro.props;
     )
   }
 
-  <!-- Vercel Analytics - only in production -->
-  {import.meta.env.MODE === 'production' && (
-    <script>
-      import { inject } from "@vercel/analytics";
-      inject();
-    </script>
-  )}
+  <!-- Analytics Tracking Function -->
+  <script src="/analytics.js" is:inline></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Track RSS feed clicks
+      const rssLinks = document.querySelectorAll('[data-analytics-rss-feed]');
+      rssLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          if ((window as any).trackEvent) {
+            const feedUrl = link.getAttribute('data-feed-url');
+            
+            (window as any).trackEvent('rss_feed_click', {
+              action: 'subscribe_rss',
+              component: 'rss_link',
+              feed_url: feedUrl
+            });
+          }
+        });
+      });
+    });
+  </script>
 
   <slot />
 </head>

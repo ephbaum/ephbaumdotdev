@@ -245,13 +245,15 @@ function applyAllColors() {
 
   // Track color application with analytics
   if (typeof window !== 'undefined') {
-    // Track with Vercel Analytics
-    if (window.va && typeof window.va === 'function') {
-      try {
-        window.va('event', 'color_scheme_applied');
-      } catch (error) {
-        console.warn('Vercel Analytics tracking failed:', error);
-      }
+    // Determine if this is the initial load or a color change
+    const isInitialLoad = !window.colorSchemeInitialized;
+    const eventName = isInitialLoad ? 'color_scheme_initialized' : 'color_scheme_applied';
+    const action = isInitialLoad ? 'initialize_colors' : 'apply_colors';
+    const source = isInitialLoad ? 'page_load' : 'user_interaction';
+
+    // Mark as initialized after first load
+    if (isInitialLoad) {
+      window.colorSchemeInitialized = true;
     }
 
     // Track with Umami Analytics
@@ -259,28 +261,32 @@ function applyAllColors() {
       try {
         // Try newer API first (umami.track)
         if (typeof window.umami.track === 'function') {
-          window.umami.track('color_scheme_applied', {
-            action: 'apply_colors',
+          window.umami.track(eventName, {
+            action: action,
             component: 'color_system',
             colors: currentColors ? {
               primary: currentColors.primary,
               secondary: currentColors.secondary,
               accent: currentColors.accent,
               hover: currentColors.hover
-            } : null
+            } : null,
+            source: source,
+            page_url: window.location.pathname
           });
         }
         // Fallback to older API (umami as function)
         else if (typeof window.umami === 'function') {
-          window.umami('color_scheme_applied', {
-            action: 'apply_colors',
+          window.umami(eventName, {
+            action: action,
             component: 'color_system',
             colors: currentColors ? {
               primary: currentColors.primary,
               secondary: currentColors.secondary,
               accent: currentColors.accent,
               hover: currentColors.hover
-            } : null
+            } : null,
+            source: source,
+            page_url: window.location.pathname
           });
         }
       } catch (error) {

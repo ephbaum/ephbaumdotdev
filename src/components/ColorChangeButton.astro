@@ -16,11 +16,6 @@
     function changeColors() {
         // Track color palette interaction with analytics
         if (typeof window !== "undefined") {
-            // Track with Vercel Analytics
-            if (window.va) {
-                window.va("event", "color_palette_click");
-            }
-
             // Track with Umami Analytics
             if ((window as any).umami) {
                 try {

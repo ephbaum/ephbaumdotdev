@@ -18,7 +18,16 @@ const { post } = Astro.props;
   description={post.data.description}
 >
   <div class="flex justify-end my-4">
-    <Button href={`/blog/${post.slug}/`} data-brutal-button data-brutal-hover>
+    <Button 
+      href={`/blog/${post.slug}/`} 
+      data-brutal-button 
+      data-brutal-hover
+      data-analytics-blog-post
+      data-post-slug={post.slug}
+      data-post-title={post.data.title}
+      data-post-date={post.data.pubDate}
+      data-post-tags={JSON.stringify(post.data.tags)}
+    >
       Read post &rarr;
     </Button>
   </div>
@@ -31,7 +40,14 @@ const { post } = Astro.props;
           post.data.tags.map((tag) => {
             return (
               <li class="whitespace-nowrap">
-                <a class="sanchez" href={`/blog/tags/${tag.toLowerCase()}/`}>
+                <a 
+                  class="sanchez" 
+                  href={`/blog/tags/${tag.toLowerCase()}/`}
+                  data-analytics-blog-tag
+                  data-tag-name={tag}
+                  data-tag-url={`/blog/tags/${tag.toLowerCase()}/`}
+                  data-source-page="blog_index"
+                >
                   <Pill data-brutal-pill data-brutal-hover>
                     {tag}
                   </Pill>
@@ -54,3 +70,49 @@ const { post } = Astro.props;
     </div>
   </div>
 </SummaryCard>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Track blog post clicks
+    const blogPostLinks = document.querySelectorAll('[data-analytics-blog-post]');
+    blogPostLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if ((window as any).trackEvent) {
+          const postSlug = link.getAttribute('data-post-slug');
+          const postTitle = link.getAttribute('data-post-title');
+          const postDate = link.getAttribute('data-post-date');
+          const postTags = JSON.parse(link.getAttribute('data-post-tags') || '[]');
+          
+          (window as any).trackEvent('blog_post_click', {
+            action: 'view_post',
+            component: 'blog_post_link',
+            post_slug: postSlug,
+            post_title: postTitle,
+            post_date: postDate,
+            post_tags: postTags
+          });
+        }
+      });
+    });
+
+    // Track blog tag clicks
+    const blogTagLinks = document.querySelectorAll('[data-analytics-blog-tag]');
+    blogTagLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if ((window as any).trackEvent) {
+          const tagName = link.getAttribute('data-tag-name');
+          const tagUrl = link.getAttribute('data-tag-url');
+          const sourcePage = link.getAttribute('data-source-page');
+          
+          (window as any).trackEvent('blog_tag_click', {
+            action: 'filter_by_tag',
+            component: 'blog_tag_link',
+            tag_name: tagName,
+            tag_url: tagUrl,
+            source_page: sourcePage
+          });
+        }
+      });
+    });
+  });
+</script>
