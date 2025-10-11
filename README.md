@@ -90,6 +90,10 @@ Based on the original Brutal theme with our enhancements:
 
 ```
 src/
+├── assets/             # Astro asset pipeline (processed images)
+│   └── img/           # Images processed by Astro (optimized, WebP conversion)
+│                      # Used by: Blog post imgUrl fields, <Image> component
+│                      # Example: ../../../../assets/img/ephbaum_dot_dev.png
 ├── components/          # Reusable UI components
 │   ├── blog/          # Blog-specific components (from base theme)
 │   ├── errors/        # Error pages like 404 (from base theme)
@@ -108,7 +112,36 @@ src/
 │   ├── feed.xml.js   # RSS feed (from base theme)
 │   └── index.astro   # Homepage
 └── styles/           # Global styles and UnoCSS config
+
+public/
+└── img/               # Static assets (served as-is, no processing)
+                       # Used by: Direct URLs, OG image generation
+                       # Access: /img/filename.png or readFileSync
 ```
+
+### 📷 Image Asset Management
+
+Understanding where to place images:
+
+**`src/assets/img/`** - **Astro Asset Pipeline**
+- ✅ Images processed by Astro's build system
+- ✅ Automatic optimization, resizing, and WebP conversion
+- ✅ Used in content collections (`imgUrl` fields)
+- ✅ Used with Astro's `<Image>` component
+- ✅ Import in code: `import img from '@assets/img/photo.png'`
+- ❌ Cannot be read with `readFileSync` at build time
+
+**`public/img/`** - **Static Assets**
+- ✅ Served directly without processing
+- ✅ Direct URL access: `/img/photo.png`
+- ✅ Can be read with `readFileSync` (OG image generation)
+- ✅ Predictable paths for external references
+- ❌ No automatic optimization
+- ❌ Not processed by Astro's asset pipeline
+
+**Example:** The avatar `ephbaum_dot_dev.png` exists in both locations:
+- `src/assets/img/ephbaum_dot_dev.png` - Used by blog posts (optimized by Astro)
+- `public/img/ephbaum_dot_dev.png` - Used by OG image generation (read as-is)
 
 ### 🎨 Component Architecture
 
