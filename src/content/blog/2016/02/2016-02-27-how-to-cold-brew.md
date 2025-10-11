@@ -3,7 +3,7 @@ title: How to - Cold Brew
 postSlug: developer-rocket-fuel
 slug: developer-rocket-fuel
 pubDate: 02/27/2016 12:00 AM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

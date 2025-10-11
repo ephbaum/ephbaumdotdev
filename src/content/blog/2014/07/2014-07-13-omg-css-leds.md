@@ -3,7 +3,7 @@ title: OMG CSS LEDs!!!
 postSlug: omg-css-leds
 slug: omg-css-leds
 pubDate: 07/13/2014 06:20 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

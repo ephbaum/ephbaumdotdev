@@ -14,7 +14,7 @@ const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
 // Read the logo image from the local filesystem and convert to base64 data URI
 // Use process.cwd() to get the project root, which works both in dev and build
-const logoPath = join(process.cwd(), 'public/img/ephbaum_dot_dev.png');
+const logoPath = join(process.cwd(), 'public/img/ephbaum_avatar_200_200.png');
 const logoBuffer = readFileSync(logoPath);
 const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
 

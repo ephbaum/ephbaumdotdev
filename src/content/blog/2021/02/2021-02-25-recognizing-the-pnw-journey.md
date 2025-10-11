@@ -3,7 +3,7 @@ title: Recognizing the PNW Journey
 postSlug: went-to-the-pnw
 slug: went-to-the-pnw
 pubDate: 02/25/2021 10:46 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

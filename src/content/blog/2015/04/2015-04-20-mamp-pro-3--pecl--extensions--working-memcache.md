@@ -3,7 +3,7 @@ title: MAMP Pro 3 + PECL + Extensions = Working MEMCACHE
 postSlug: mamp-pecl-memcache
 slug: mamp-pecl-memcache
 pubDate: 04/20/2015 07:00 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

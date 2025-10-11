@@ -3,7 +3,7 @@ title: (My) JavaScript Style
 postSlug: my-javascript-style
 slug: my-javascript-style
 pubDate: 05/10/2014 05:40 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

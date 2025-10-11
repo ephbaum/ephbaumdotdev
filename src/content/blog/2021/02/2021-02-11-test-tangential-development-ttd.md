@@ -3,7 +3,7 @@ title: Test Tangential Development - TTD
 postSlug: test-tangential-development-ttd
 slug: test-tangential-development-ttd
 pubDate: 02/11/2021 07:15 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

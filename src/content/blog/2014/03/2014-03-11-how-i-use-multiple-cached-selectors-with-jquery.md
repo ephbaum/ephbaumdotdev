@@ -3,7 +3,7 @@ title: (How I) Use Multiple Cached Selectors with jQuery
 postSlug: how-i-use-multiple-cached-selectors-with-jquery
 slug: how-i-use-multiple-cached-selectors-with-jquery
 pubDate: 03/11/2014 05:25 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

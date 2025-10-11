@@ -3,7 +3,7 @@ title: Having Fun at Work
 postSlug: having-fun-at-work
 slug: having-fun-at-work
 pubDate: 06/24/2014 05:30 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

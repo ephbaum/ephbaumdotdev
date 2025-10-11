@@ -112,8 +112,8 @@ title: "${title}"
 postSlug: ${slug}
 slug: ${slug}
 pubDate: ${pubDate}
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
-ogImage: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
+ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: ${isDraft}
@@ -123,7 +123,7 @@ description: "${description}"
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-![Featured Image](../../../../assets/img/ephbaum_dot_dev.png)
+![Featured Image](../../../../assets/img/ephbaum_avatar_800_400.png)
 
 Your blog post content goes here...
 

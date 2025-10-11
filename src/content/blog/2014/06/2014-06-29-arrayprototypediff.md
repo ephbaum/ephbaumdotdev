@@ -3,7 +3,7 @@ title: Array.prototype.diff()
 postSlug: array-prototype-diff
 slug: array-prototype-diff
 pubDate: 06/29/2014 07:30 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

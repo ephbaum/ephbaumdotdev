@@ -3,7 +3,7 @@ title: My Friend Alfred
 postSlug: my-friend-alfred
 slug: my-friend-alfred
 pubDate: 06/03/2014 09:00 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

@@ -3,7 +3,7 @@ title: Thingdom JavaScript Wrapper
 postSlug: thingdom-javascript-wrapper
 slug: thingdom-javascript-wrapper
 pubDate: 01/21/2015 04:00 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

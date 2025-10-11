@@ -3,7 +3,7 @@ title: How PHP 5.4's Closure - -bind Saved me From Reflection
 postSlug: closure-bind-not-reflection
 slug: closure-bind-not-reflection
 pubDate: 06/15/2015 06:00 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false

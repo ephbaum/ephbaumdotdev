@@ -3,7 +3,7 @@ title: On Being a Capable Impostor
 postSlug: on-being-a-capable-impostor
 slug: on-being-a-capable-impostor
 pubDate: 02/07/2021 04:15 PM
-imgUrl: "../../../../assets/img/ephbaum_dot_dev.png"
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
 author: Eph Baum
 featured: false
 draft: false
