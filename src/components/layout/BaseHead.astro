@@ -1,6 +1,6 @@
 ---
 import LocalFont from "../generic/LocalFont.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -56,12 +56,13 @@ const { title, description, ogImage } = Astro.props;
 
   <title>{title} | eph baum dot dev</title>
 
-  <ViewTransitions />
+  <ClientRouter />
 
   <!-- Umami Analytics -->
   {
     import.meta.env.PUBLIC_UMAMI_WEBSITE_ID && (
       <script
+        is:inline
         defer
         src={
           import.meta.env.PUBLIC_UMAMI_SCRIPT_URL ||
@@ -76,26 +77,28 @@ const { title, description, ogImage } = Astro.props;
   <script src="/analytics.js" is:inline></script>
 
   <!-- Vercel Speed Insights -->
-  {import.meta.env.MODE === 'production' && (
-    <script>
-      import { injectSpeedInsights } from '@vercel/speed-insights';
-      injectSpeedInsights();
-    </script>
-  )}
+  {
+    import.meta.env.MODE === "production" && (
+      <script>
+        import {injectSpeedInsights} from '@vercel/speed-insights';
+        injectSpeedInsights();
+      </script>
+    )
+  }
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Track RSS feed clicks
-      const rssLinks = document.querySelectorAll('[data-analytics-rss-feed]');
-      rssLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+      const rssLinks = document.querySelectorAll("[data-analytics-rss-feed]");
+      rssLinks.forEach((link) => {
+        link.addEventListener("click", () => {
           if ((window as any).trackEvent) {
-            const feedUrl = link.getAttribute('data-feed-url');
-            
-            (window as any).trackEvent('rss_feed_click', {
-              action: 'subscribe_rss',
-              component: 'rss_link',
-              feed_url: feedUrl
+            const feedUrl = link.getAttribute("data-feed-url");
+
+            (window as any).trackEvent("rss_feed_click", {
+              action: "subscribe_rss",
+              component: "rss_link",
+              feed_url: feedUrl,
             });
           }
         });

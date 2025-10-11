@@ -65,7 +65,11 @@ const { pageTitle } = Astro.props;
               target="_blank"
               title={`'See @EphBaum on ${item.name}`}
               data-analytics-external-link
-              data-destination-domain={item.url.startsWith('http') ? new URL(item.url).hostname : 'internal'}
+              data-destination-domain={
+                item.url.startsWith("http")
+                  ? new URL(item.url).hostname
+                  : "internal"
+              }
               data-destination-url={item.url}
               data-source-context="header"
             >
@@ -90,38 +94,42 @@ const { pageTitle } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Track menu navigation clicks
-    const menuNavLinks = document.querySelectorAll('[data-analytics-menu-nav]');
-    menuNavLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    const menuNavLinks = document.querySelectorAll("[data-analytics-menu-nav]");
+    menuNavLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if ((window as any).trackEvent) {
-          const destination = link.getAttribute('data-destination');
-          const destinationUrl = link.getAttribute('data-destination-url');
-          
-          (window as any).trackEvent('menu_navigation', {
-            action: 'navigate',
-            component: 'main_navigation',
+          const destination = link.getAttribute("data-destination");
+          const destinationUrl = link.getAttribute("data-destination-url");
+
+          (window as any).trackEvent("menu_navigation", {
+            action: "navigate",
+            component: "main_navigation",
             destination: destination,
-            destination_url: destinationUrl
+            destination_url: destinationUrl,
           });
         }
       });
     });
 
     // Track external link clicks
-    const externalLinks = document.querySelectorAll('[data-analytics-external-link]');
-    externalLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    const externalLinks = document.querySelectorAll(
+      "[data-analytics-external-link]",
+    );
+    externalLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if ((window as any).trackEvent) {
-          const destinationDomain = link.getAttribute('data-destination-domain');
-          const destinationUrl = link.getAttribute('data-destination-url');
-          const sourceContext = link.getAttribute('data-source-context');
-          
-          (window as any).trackEvent('external_link_click', {
-            action: 'click_external_link',
-            component: 'content_link',
+          const destinationDomain = link.getAttribute(
+            "data-destination-domain",
+          );
+          const destinationUrl = link.getAttribute("data-destination-url");
+          const sourceContext = link.getAttribute("data-source-context");
+
+          (window as any).trackEvent("external_link_click", {
+            action: "click_external_link",
+            component: "content_link",
             destination_domain: destinationDomain,
             destination_url: destinationUrl,
-            source_context: sourceContext
+            source_context: sourceContext,
           });
         }
       });
