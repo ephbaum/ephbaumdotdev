@@ -74,7 +74,14 @@ Analytics data is available in the Vercel project dashboard under the "Analytics
 - Unique visitors
 - Performance metrics
 - Deployment-related insights
+- Custom events (color palette interactions)
 - 30-day data retention (free tier)
+
+### Custom Event Tracking
+Both analytics systems track custom events for user interactions:
+- **Color Palette Clicks**: When users click the color palette button
+- **Color Scheme Applications**: When new color schemes are applied to the site
+- **Event Data**: Includes action type, component, and color information
 
 Both systems provide anonymized and privacy-focused data collection.
 
@@ -132,6 +139,32 @@ Both analytics systems are implemented in `src/components/layout/BaseHead.astro`
 - **Environment-based**: Uses Astro's `import.meta.env` for Umami configuration
 - **Performance Optimized**: Both use non-blocking loading strategies
 - **Redundancy**: Backup analytics system ensures data continuity
+- **Custom Events**: Tracks user interactions like color palette usage
+
+### Custom Event Tracking Implementation
+The color palette system includes custom event tracking:
+
+```javascript
+// Track color palette button clicks
+window.va.track('color_palette_click', {
+  action: 'change_colors',
+  component: 'color_palette_button'
+});
+
+// Track color scheme applications
+window.va.track('color_scheme_applied', {
+  action: 'apply_colors',
+  component: 'color_system',
+  colors: {
+    primary: currentColors.primary,
+    secondary: currentColors.secondary,
+    accent: currentColors.accent,
+    hover: currentColors.hover
+  }
+});
+```
+
+Both Vercel Analytics and Umami Analytics receive the same event data for comprehensive tracking.
 
 ## Troubleshooting
 

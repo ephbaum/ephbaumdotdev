@@ -14,6 +14,22 @@
 
 <script>
     function changeColors() {
+        // Track color palette interaction with analytics
+        if (typeof window !== "undefined") {
+            // Track with Vercel Analytics
+            if (window.va) {
+                window.va("event", "color_palette_click");
+            }
+
+            // Track with Umami Analytics
+            if ((window as any).umami) {
+                (window as any).umami("color_palette_click", {
+                    action: "change_colors",
+                    component: "color_palette_button",
+                });
+            }
+        }
+
         // Dispatch a custom event to trigger color changes across the site
         window.dispatchEvent(new CustomEvent("changeColors"));
     }

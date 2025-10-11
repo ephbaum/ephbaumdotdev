@@ -192,6 +192,28 @@ function applyAllColors() {
   applyButtonColors();
   applyHoverEffects();
   applySpecialElementColors();
+
+  // Track color application with analytics
+  if (typeof window !== 'undefined') {
+    // Track with Vercel Analytics
+    if (window.va) {
+      window.va('event', 'color_scheme_applied');
+    }
+
+    // Track with Umami Analytics
+    if (window.umami) {
+      window.umami('color_scheme_applied', {
+        action: 'apply_colors',
+        component: 'color_system',
+        colors: {
+          primary: currentColors.primary,
+          secondary: currentColors.secondary,
+          accent: currentColors.accent,
+          hover: currentColors.hover
+        }
+      });
+    }
+  }
 }
 
 // Export functions for use in other scripts
