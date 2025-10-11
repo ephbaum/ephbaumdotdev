@@ -129,7 +129,7 @@ Following the base theme's structure with our enhancements:
 - **Sitemap** - Automatic SEO sitemap generation
 - **Image Optimization** - Automatic WebP conversion and optimization
 - **TypeScript** - Full type safety throughout
-- **Dual Analytics** - Umami Cloud + Vercel Web Analytics integration
+- **Comprehensive Analytics** - Umami Analytics + Vercel Speed Insights
 - **Automated Deployment** - GitHub Actions + Vercel CI/CD
 - **Content Migration** - Complete Ghost CMS to Astro migration
 
@@ -270,29 +270,37 @@ graph TD
 3. **Deploy** → Deploy to Vercel using Vercel Action
 4. **Result** → Production site at `ephbaum.dev` OR preview URL for PRs
 
-## 📊 Analytics Setup
+## 📊 Analytics & Performance Monitoring
 
-This project includes dual analytics integration for comprehensive website insights:
+This project includes comprehensive analytics and performance monitoring:
 
-### Umami Cloud Analytics
+### Umami Analytics
+- **Custom Event Tracking**: Blog clicks, navigation, external links, color interactions
 - **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
 - **Long-term data**: Extended data retention
 - **External dashboard**: Dedicated analytics interface
 - **Free forever**: No usage limits
 
-### Vercel Web Analytics
+### Vercel Speed Insights
+- **Core Web Vitals**: Tracks LCP, FID, CLS, FCP, TTFB
+- **Real User Monitoring**: Performance data from actual users
 - **Built-in dashboard**: Integrated with Vercel project dashboard
-- **Deployment insights**: Performance and deployment metrics
-- **Free tier**: Up to 50k events/month for hobby projects
-- **30-day retention**: Recent data focus
+- **Production only**: Automatically enabled when deployed to Vercel
+- **Privacy compliant**: No personal data collected
+
+### Tracked Events
+- **Blog Interactions**: Post clicks, tag clicks
+- **Navigation**: Menu navigation, footer links
+- **External Links**: Social media and external site clicks
+- **RSS Feed**: Feed subscription tracking
+- **Color System**: Palette clicks and color scheme changes
 
 ### Configuration
+- **Umami**: Configured via `PUBLIC_UMAMI_WEBSITE_ID` environment variable
+- **Speed Insights**: Automatically enabled in production deployments
+- **Cost-effective**: Umami for events, Speed Insights for performance
 
-- **Umami**: Configured via environment variables, only loads in production
-- **Vercel**: Automatically enabled when deployed to Vercel
-- **Dual tracking**: Both systems run simultaneously for comprehensive insights
-
-See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical implementation details.
+See [ANALYTICS_EVENTS.md](ANALYTICS_EVENTS.md) for detailed implementation and [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical setup.
 
 ## 🔄 Migration from Ghost
 
@@ -333,7 +341,8 @@ You may not reproduce, distribute, or use the blog content without explicit writ
 ## 📋 Documentation
 
 - **Project Status**: [PROJECT_STATUS.md](PROJECT_STATUS.md) - Comprehensive project overview
-- **Analytics Setup**: [UMAMI_SETUP.md](UMAMI_SETUP.md) - Umami configuration guide
+- **Analytics Setup**: [ANALYTICS_EVENTS.md](ANALYTICS_EVENTS.md) - Complete analytics implementation guide
+- **Umami Configuration**: [UMAMI_SETUP.md](UMAMI_SETUP.md) - Umami technical setup
 - **Theme Documentation**: [BRUTAL_THEME_README.md](BRUTAL_THEME_README.md) - Base theme information
 
 ## 🔗 Links
