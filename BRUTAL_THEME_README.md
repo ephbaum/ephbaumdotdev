@@ -6,6 +6,21 @@ The theme has no JavaScript integration out of the box, but can always be added 
 
 This template is based on [my own personal website](<https://www.elian.codes/>), with some more generic things added.
 
+## 🚀 Enhanced Version
+
+This is Eph Baum's personal blog, which is a heavily modified version of the Brutal theme with significant improvements:
+
+- **TypeScript Integration** - Full type safety throughout
+- **Umami Analytics** - Privacy-focused analytics integration
+- **Advanced Content Management** - Structured blog with tags, metadata
+- **OG Image Generation** - Automatic social media previews
+- **Enhanced SEO** - Improved sitemap and RSS feeds
+- **Custom Brutalist Components** - Unique design system
+- **Automated CI/CD** - GitHub Actions + Vercel deployment
+- **Ghost CMS Migration** - Complete content migration from Ghost
+
+**Note**: This is primarily a personal blog, but the enhanced theme is available for others who want a more feature-rich brutalist blog setup.
+
 ## Usage
 
 You can bootstrap a new Astro project using Brutal with the following command:
@@ -64,6 +79,19 @@ The RSS feed is automatically generated from the Markdown files in the `src/cont
 The RSS will output to `https://example.com/feed.xml` by default. You can change this, by renaming `src/pages/feed.xml.js`.
 
 ### Image
+
+### Analytics
+
+This enhanced version includes Umami analytics integration for privacy-focused website analytics:
+
+- **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
+- **Lightweight**: Minimal impact on page performance
+- **Real-time**: See visitor data in real-time
+- **Self-hostable**: Can be hosted on your own infrastructure
+
+The analytics script is conditionally loaded based on environment variables and only runs in production environments.
+
+See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical implementation details.
 
 ## Components
 

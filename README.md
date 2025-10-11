@@ -6,6 +6,8 @@ A personal blog built with Astro and a brutalist theme, migrated from Ghost CMS 
 
 A blog where I talk to myself to answer my own questions about tech, engineering, and working with people. This site was migrated from a Ghost blog running on Digital Ocean to a static Astro site for better performance, lower costs, and easier maintenance.
 
+This is a heavily modified version of the [Brutal](https://github.com/eliancodes/brutal) neobrutalist Astro theme, customized for my personal use but available for others who want a more feature-rich brutalist blog setup.
+
 ## 🚀 Tech Stack
 
 - **[Astro](https://astro.build/)** - Static site generator
@@ -17,7 +19,7 @@ A blog where I talk to myself to answer my own questions about tech, engineering
 
 ## 🎨 Theme Foundation
 
-This blog is built on the **[Brutal](https://github.com/eliancodes/brutal)** neobrutalist Astro theme, which provides:
+This blog is built on the **[Brutal](https://github.com/eliancodes/brutal)** neobrutalist Astro theme by [Elian Codes](https://www.elian.codes/), which provides:
 
 - **Neobrutalist Design** - Minimalistic and functional aesthetic
 - **No JavaScript by default** - Pure static generation approach
@@ -25,11 +27,11 @@ This blog is built on the **[Brutal](https://github.com/eliancodes/brutal)** neo
 - **Built-in SEO** - Automatic sitemap, RSS feed, and image optimization
 - **16 Color Palette** - Predefined brutalist colors (red, blue, green, yellow, pink, purple, orange, teal, cyan, lime, emerald, fuchsia, violet, rose, sky, amber)
 
-### 🚀 Our Customizations & Enhancements
+### 🚀 My Customizations & Enhancements
 
-We've significantly evolved the base theme with these improvements:
+I've significantly evolved the base theme with these improvements:
 
-| **Base Theme** | **Our Enhanced Version** | **Benefits** |
+| **Base Theme** | **My Enhanced Version** | **Benefits** |
 |---|---|---|
 | Basic Astro setup | **TypeScript integration** | Full type safety and better DX |
 | Simple markdown posts | **Advanced content management** | Structured blog with tags, metadata |
@@ -127,6 +129,9 @@ Following the base theme's structure with our enhancements:
 - **Sitemap** - Automatic SEO sitemap generation
 - **Image Optimization** - Automatic WebP conversion and optimization
 - **TypeScript** - Full type safety throughout
+- **Umami Analytics** - Privacy-focused analytics integration
+- **Automated Deployment** - GitHub Actions + Vercel CI/CD
+- **Content Migration** - Complete Ghost CMS to Astro migration
 
 ### 🎨 Brutalist Color System
 
@@ -265,6 +270,20 @@ graph TD
 3. **Deploy** → Deploy to Vercel using Vercel Action
 4. **Result** → Production site at `ephbaum.dev` OR preview URL for PRs
 
+## 📊 Analytics Setup
+
+This project includes Umami analytics integration for privacy-focused website analytics:
+
+- **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
+- **Lightweight**: Minimal impact on page performance  
+- **Real-time**: See visitor data in real-time
+- **Self-hostable**: Can be hosted on your own infrastructure
+- **Configured**: Ready to use with your Umami Cloud instance
+
+### Configuration
+
+Analytics is configured via environment variables and only loads in production. See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical details.
+
 ## 🔄 Migration from Ghost
 
 This blog was migrated from Ghost CMS, which involved:
@@ -300,6 +319,12 @@ Any copyrighted material from third parties (images, quotes, references, etc.) u
 
 ### Usage Rights
 You may not reproduce, distribute, or use the blog content without explicit written permission from the copyright holder.
+
+## 📋 Documentation
+
+- **Project Status**: [PROJECT_STATUS.md](PROJECT_STATUS.md) - Comprehensive project overview
+- **Analytics Setup**: [UMAMI_SETUP.md](UMAMI_SETUP.md) - Umami configuration guide
+- **Theme Documentation**: [BRUTAL_THEME_README.md](BRUTAL_THEME_README.md) - Base theme information
 
 ## 🔗 Links
 
