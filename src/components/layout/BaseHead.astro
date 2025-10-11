@@ -71,7 +71,7 @@ const { title, description, ogImage } = Astro.props;
   }
 
   <!-- Vercel Analytics - only in production -->
-  {import.meta.env.PROD && (
+  {import.meta.env.MODE === 'production' && (
     <script>
       import { inject } from "@vercel/analytics";
       inject();
