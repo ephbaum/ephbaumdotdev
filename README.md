@@ -129,7 +129,7 @@ Following the base theme's structure with our enhancements:
 - **Sitemap** - Automatic SEO sitemap generation
 - **Image Optimization** - Automatic WebP conversion and optimization
 - **TypeScript** - Full type safety throughout
-- **Umami Analytics** - Privacy-focused analytics integration
+- **Dual Analytics** - Umami Cloud + Vercel Web Analytics integration
 - **Automated Deployment** - GitHub Actions + Vercel CI/CD
 - **Content Migration** - Complete Ghost CMS to Astro migration
 
@@ -272,17 +272,27 @@ graph TD
 
 ## 📊 Analytics Setup
 
-This project includes Umami analytics integration for privacy-focused website analytics:
+This project includes dual analytics integration for comprehensive website insights:
 
+### Umami Cloud Analytics
 - **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
-- **Lightweight**: Minimal impact on page performance  
-- **Real-time**: See visitor data in real-time
-- **Self-hostable**: Can be hosted on your own infrastructure
-- **Configured**: Ready to use with your Umami Cloud instance
+- **Long-term data**: Extended data retention
+- **External dashboard**: Dedicated analytics interface
+- **Free forever**: No usage limits
+
+### Vercel Web Analytics
+- **Built-in dashboard**: Integrated with Vercel project dashboard
+- **Deployment insights**: Performance and deployment metrics
+- **Free tier**: Up to 50k events/month for hobby projects
+- **30-day retention**: Recent data focus
 
 ### Configuration
 
-Analytics is configured via environment variables and only loads in production. See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical details.
+- **Umami**: Configured via environment variables, only loads in production
+- **Vercel**: Automatically enabled when deployed to Vercel
+- **Dual tracking**: Both systems run simultaneously for comprehensive insights
+
+See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical implementation details.
 
 ## 🔄 Migration from Ghost
 

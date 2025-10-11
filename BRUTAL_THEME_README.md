@@ -11,7 +11,7 @@ This template is based on [my own personal website](<https://www.elian.codes/>),
 This is Eph Baum's personal blog, which is a heavily modified version of the Brutal theme with significant improvements:
 
 - **TypeScript Integration** - Full type safety throughout
-- **Umami Analytics** - Privacy-focused analytics integration
+- **Dual Analytics** - Umami Cloud + Vercel Web Analytics integration
 - **Advanced Content Management** - Structured blog with tags, metadata
 - **OG Image Generation** - Automatic social media previews
 - **Enhanced SEO** - Improved sitemap and RSS feeds
@@ -82,14 +82,21 @@ The RSS will output to `https://example.com/feed.xml` by default. You can change
 
 ### Analytics
 
-This enhanced version includes Umami analytics integration for privacy-focused website analytics:
+This enhanced version includes dual analytics integration for comprehensive website insights:
 
+#### Umami Cloud Analytics
 - **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
-- **Lightweight**: Minimal impact on page performance
-- **Real-time**: See visitor data in real-time
-- **Self-hostable**: Can be hosted on your own infrastructure
+- **Long-term data**: Extended data retention
+- **External dashboard**: Dedicated analytics interface
+- **Free forever**: No usage limits
 
-The analytics script is conditionally loaded based on environment variables and only runs in production environments.
+#### Vercel Web Analytics
+- **Built-in dashboard**: Integrated with Vercel project dashboard
+- **Deployment insights**: Performance and deployment metrics
+- **Free tier**: Up to 50k events/month for hobby projects
+- **30-day retention**: Recent data focus
+
+Both analytics systems run simultaneously, providing redundancy and different perspectives on website performance.
 
 See [UMAMI_SETUP.md](UMAMI_SETUP.md) for technical implementation details.
 

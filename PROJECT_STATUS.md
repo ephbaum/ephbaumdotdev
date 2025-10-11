@@ -27,9 +27,10 @@ This Astro-based blog is fully functional and deployed at [ephbaum.dev](https://
 - ✅ **Static Generation** - Fast, secure, and SEO-friendly
 
 ### Analytics & Monitoring
-- ✅ **Umami Analytics** - Privacy-focused analytics integration
+- ✅ **Dual Analytics** - Umami Cloud + Vercel Web Analytics integration
 - ✅ **Environment Configuration** - Flexible setup for different environments
 - ✅ **Performance Monitoring** - Real-time visitor tracking
+- ✅ **Redundancy** - Backup analytics system for data continuity
 
 ### Deployment & CI/CD
 - ✅ **Vercel Deployment** - Production deployment with custom domain
@@ -71,12 +72,12 @@ This Astro-based blog is fully functional and deployed at [ephbaum.dev](https://
 
 ## 🚀 Recent Enhancements
 
-### Umami Analytics Integration (Latest)
-- Privacy-first analytics with no cookies
-- GDPR compliant tracking
-- Real-time visitor data
-- Conditional loading based on environment variables
-- Support for both cloud and self-hosted instances
+### Dual Analytics Integration (Latest)
+- **Umami Cloud**: Privacy-first analytics with no cookies, GDPR compliant, real-time visitor data
+- **Vercel Web Analytics**: Built-in dashboard integration, deployment insights, free tier up to 50k events/month
+- **Redundancy**: Both systems run simultaneously for comprehensive insights
+- **Conditional Loading**: Umami loads based on environment variables, Vercel loads automatically on deployment
+- **Performance**: Both systems use non-blocking loading strategies
 
 ### Content Migration
 - Complete Ghost CMS to Astro migration
