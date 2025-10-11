@@ -3,12 +3,20 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { html as toReactElement } from 'satori-html';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 // @TODO: Find a public link or add the font to the project
 const fontFile = await fetch(
   'https://og-playground.vercel.app/inter-latin-ext-700-normal.woff'
 );
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
+
+// Read the logo image from the local filesystem and convert to base64 data URI
+// Use process.cwd() to get the project root, which works both in dev and build
+const logoPath = join(process.cwd(), 'public/img/ephbaum_dot_dev.png');
+const logoBuffer = readFileSync(logoPath);
+const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
 
 const height = 630;
 const width = 1200;
@@ -22,7 +30,6 @@ export function getStaticPaths() {
   }));
 }
 
-// @TODO: Correct localhost link
 export const GET: APIRoute = async ({ props }) => {
   const title = props.title.trim() ?? 'Blogpost';
   const description = props.description ?? null;
@@ -35,7 +42,7 @@ export const GET: APIRoute = async ({ props }) => {
             <p style="font-size: 48px;">eph baum dot dev</p>
             <p style="font-size: 38px;">${title}</p>
           </div>
-          <img src="http://localhost:4321/img/ephbaum_dot_dev.png" width="200px" height="200px" style="border: 3px solid black; border-radius: 0.5rem;" />
+          <img src="${logoBase64}" style="width: 200px; height: 200px; border: 3px solid black; border-radius: 0.5rem;" />
         </div>
         <div style="display: flex;">
           <p style="font-size: 24px;">${description}</p>

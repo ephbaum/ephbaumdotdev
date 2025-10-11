@@ -2,6 +2,8 @@ import { Resvg, type ResvgRenderOptions } from '@resvg/resvg-js';
 import type { APIRoute } from 'astro';
 import satori from 'satori';
 import { html as toReactElement } from 'satori-html';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 // @TODO: Find a public link or add the font to the project
 const fontFile = await fetch(
@@ -10,10 +12,15 @@ const fontFile = await fetch(
 
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
+// Read the logo image from the local filesystem and convert to base64 data URI
+// Use process.cwd() to get the project root, which works both in dev and build
+const logoPath = join(process.cwd(), 'public/img/ephbaum_dot_dev.png');
+const logoBuffer = readFileSync(logoPath);
+const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
+
 const height = 630;
 const width = 1200;
 
-// @TODO: Correct localhost link
 export const GET: APIRoute = async () => {
   const link = 'https://ephbaum.dev';
   const html = toReactElement(`
@@ -27,7 +34,7 @@ export const GET: APIRoute = async () => {
         </div>
         <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: -2rem;">
           <p style="font-size: 32px">${link}</p>
-          <img src="http://localhost:4321/img/ephbaum_dot_dev.png" width="200px" height="200px" style="border: 3px solid black; border-radius: 0.5rem;" />
+          <img src="${logoBase64}" style="width: 200px; height: 200px; border: 3px solid black; border-radius: 0.5rem;" />
         </div>
       </div>
     </div>
