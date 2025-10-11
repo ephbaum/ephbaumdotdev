@@ -201,18 +201,34 @@ function applyAllColors() {
     }
 
     // Track with Umami Analytics
-    if (window.umami && typeof window.umami === 'function') {
+    if (window.umami) {
       try {
-        window.umami('color_scheme_applied', {
-          action: 'apply_colors',
-          component: 'color_system',
-          colors: {
-            primary: currentColors.primary,
-            secondary: currentColors.secondary,
-            accent: currentColors.accent,
-            hover: currentColors.hover
-          }
-        });
+        // Try newer API first (umami.track)
+        if (typeof window.umami.track === 'function') {
+          window.umami.track('color_scheme_applied', {
+            action: 'apply_colors',
+            component: 'color_system',
+            colors: {
+              primary: currentColors.primary,
+              secondary: currentColors.secondary,
+              accent: currentColors.accent,
+              hover: currentColors.hover
+            }
+          });
+        }
+        // Fallback to older API (umami as function)
+        else if (typeof window.umami === 'function') {
+          window.umami('color_scheme_applied', {
+            action: 'apply_colors',
+            component: 'color_system',
+            colors: {
+              primary: currentColors.primary,
+              secondary: currentColors.secondary,
+              accent: currentColors.accent,
+              hover: currentColors.hover
+            }
+          });
+        }
       } catch (error) {
         console.warn('Umami tracking failed:', error);
       }

@@ -22,12 +22,22 @@
             }
 
             // Track with Umami Analytics
-            if ((window as any).umami && typeof (window as any).umami === 'function') {
+            if ((window as any).umami) {
                 try {
-                    (window as any).umami("color_palette_click", {
-                        action: "change_colors",
-                        component: "color_palette_button",
-                    });
+                    // Try newer API first (umami.track)
+                    if (typeof (window as any).umami.track === 'function') {
+                        (window as any).umami.track("color_palette_click", {
+                            action: "change_colors",
+                            component: "color_palette_button",
+                        });
+                    }
+                    // Fallback to older API (umami as function)
+                    else if (typeof (window as any).umami === 'function') {
+                        (window as any).umami("color_palette_click", {
+                            action: "change_colors",
+                            component: "color_palette_button",
+                        });
+                    }
                 } catch (error) {
                     console.warn('Umami tracking failed:', error);
                 }
