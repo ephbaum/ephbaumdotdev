@@ -201,17 +201,21 @@ function applyAllColors() {
     }
 
     // Track with Umami Analytics
-    if (window.umami) {
-      window.umami('color_scheme_applied', {
-        action: 'apply_colors',
-        component: 'color_system',
-        colors: {
-          primary: currentColors.primary,
-          secondary: currentColors.secondary,
-          accent: currentColors.accent,
-          hover: currentColors.hover
-        }
-      });
+    if (window.umami && typeof window.umami === 'function') {
+      try {
+        window.umami('color_scheme_applied', {
+          action: 'apply_colors',
+          component: 'color_system',
+          colors: {
+            primary: currentColors.primary,
+            secondary: currentColors.secondary,
+            accent: currentColors.accent,
+            hover: currentColors.hover
+          }
+        });
+      } catch (error) {
+        console.warn('Umami tracking failed:', error);
+      }
     }
   }
 }

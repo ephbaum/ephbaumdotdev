@@ -22,11 +22,15 @@
             }
 
             // Track with Umami Analytics
-            if ((window as any).umami) {
-                (window as any).umami("color_palette_click", {
-                    action: "change_colors",
-                    component: "color_palette_button",
-                });
+            if ((window as any).umami && typeof (window as any).umami === 'function') {
+                try {
+                    (window as any).umami("color_palette_click", {
+                        action: "change_colors",
+                        component: "color_palette_button",
+                    });
+                } catch (error) {
+                    console.warn('Umami tracking failed:', error);
+                }
             }
         }
 
