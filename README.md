@@ -10,12 +10,13 @@ This is a heavily modified version of the [Brutal](https://github.com/eliancodes
 
 ## 🚀 Tech Stack
 
-- **[Astro](https://astro.build/)** - Static site generator
-- **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine (TailwindCSS compatible)
+- **[Astro](https://astro.build/)** - Static site generator with optimized asset pipeline
+- **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine with `@unocss/preset-wind3` (Tailwind v3 compatible)
 - **[Brutal UI](https://github.com/eliancodes/brutal-ui)** - Brutalist design system
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[pnpm](https://pnpm.io/)** - Package manager
-- **[asdf](https://asdf-vm.com/)** - Version management
+- **[TypeScript](https://www.typescriptlang.org/)** - Full type safety
+- **[pnpm](https://pnpm.io/)** v10.12.4 - Fast, disk space efficient package manager
+- **[asdf](https://asdf-vm.com/)** - Version management for Node.js and pnpm
+- **[Sharp](https://sharp.pixelplumbing.com/)** - High-performance image processing for OG images
 
 ## 🎨 Theme Foundation
 
@@ -124,14 +125,15 @@ Following the base theme's structure with our enhancements:
 - **Static Site Generation** - Fast, secure, and SEO-friendly
 - **Brutalist Design** - Bold, functional, and distinctive UI
 - **Responsive Layout** - Works on all devices
-- **OG Image Generation** - Automatic social media previews
+- **OG Image Generation** - Automatic social media previews using local filesystem (no external dependencies)
 - **RSS Feed** - `/feed.xml` for subscribers
 - **Sitemap** - Automatic SEO sitemap generation
-- **Image Optimization** - Automatic WebP conversion and optimization
-- **TypeScript** - Full type safety throughout
+- **Image Optimization** - Automatic WebP conversion and optimization with Sharp
+- **TypeScript** - Full type safety with zero errors/warnings
 - **Comprehensive Analytics** - Umami Analytics + Vercel Speed Insights
 - **Automated Deployment** - GitHub Actions + Vercel CI/CD
 - **Content Migration** - Complete Ghost CMS to Astro migration
+- **Build Optimization** - Clean build with 0 errors, 0 warnings, optimized dependencies
 
 ### 🎨 Brutalist Color System
 
