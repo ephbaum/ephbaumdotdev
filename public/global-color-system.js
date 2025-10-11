@@ -51,6 +51,11 @@ let currentColors = {
 
 // Initialize colors
 function initializeColors() {
+  if (!colors || colors.length === 0) {
+    console.warn('Colors array is not defined or empty');
+    return;
+  }
+
   currentColors = {
     primary: colors[Math.floor(Math.random() * colors.length)],
     secondary: colors[Math.floor(Math.random() * colors.length)],
@@ -87,6 +92,13 @@ function applyCardColors() {
   // Target the specific card containers on the homepage
   const cardContainers = document.querySelectorAll('.col-span-4, .col-span-2');
 
+  // Target blog post cards specifically
+  const blogCards = document.querySelectorAll('[data-brutal-card]');
+
+  // Target the Recent Blog Posts card
+  const recentBlogPostsCard = document.querySelectorAll('[data-recent-blog-posts]');
+
+  // Process homepage card containers
   cardContainers.forEach((container) => {
     // Find the card element within each container
     const card = container.querySelector('div, section, article') || container;
@@ -102,6 +114,41 @@ function applyCardColors() {
     });
 
     // Apply new random color for each card (background only, keep borders black)
+    const cardColor = colors[Math.floor(Math.random() * colors.length)];
+    card.classList.add(`bg-${cardColor}`);
+
+    // Also apply the color directly as inline style to override any CSS specificity issues
+    card.style.backgroundColor = colorMap[cardColor];
+  });
+
+  // Process blog post cards separately to avoid conflicts
+  blogCards.forEach((card) => {
+    // Skip if it's a button or pill
+    if (card.hasAttribute('data-brutal-button') || card.hasAttribute('data-brutal-pill')) {
+      return;
+    }
+
+    // Remove existing color classes
+    colors.forEach((color) => {
+      card.classList.remove(`bg-${color}`, `border-${color}`);
+    });
+
+    // Apply new random color for each card (background only, keep borders black)
+    const cardColor = colors[Math.floor(Math.random() * colors.length)];
+    card.classList.add(`bg-${cardColor}`);
+
+    // Also apply the color directly as inline style to override any CSS specificity issues
+    card.style.backgroundColor = colorMap[cardColor];
+  });
+
+  // Process Recent Blog Posts card
+  recentBlogPostsCard.forEach((card) => {
+    // Remove existing color classes
+    colors.forEach((color) => {
+      card.classList.remove(`bg-${color}`, `border-${color}`);
+    });
+
+    // Apply new random color for the card (background only, keep borders black)
     const cardColor = colors[Math.floor(Math.random() * colors.length)];
     card.classList.add(`bg-${cardColor}`);
 
@@ -196,8 +243,12 @@ function applyAllColors() {
   // Track color application with analytics
   if (typeof window !== 'undefined') {
     // Track with Vercel Analytics
-    if (window.va) {
-      window.va('event', 'color_scheme_applied');
+    if (window.va && typeof window.va === 'function') {
+      try {
+        window.va('event', 'color_scheme_applied');
+      } catch (error) {
+        console.warn('Vercel Analytics tracking failed:', error);
+      }
     }
 
     // Track with Umami Analytics
@@ -208,12 +259,12 @@ function applyAllColors() {
           window.umami.track('color_scheme_applied', {
             action: 'apply_colors',
             component: 'color_system',
-            colors: {
+            colors: currentColors ? {
               primary: currentColors.primary,
               secondary: currentColors.secondary,
               accent: currentColors.accent,
               hover: currentColors.hover
-            }
+            } : null
           });
         }
         // Fallback to older API (umami as function)
@@ -221,12 +272,12 @@ function applyAllColors() {
           window.umami('color_scheme_applied', {
             action: 'apply_colors',
             component: 'color_system',
-            colors: {
+            colors: currentColors ? {
               primary: currentColors.primary,
               secondary: currentColors.secondary,
               accent: currentColors.accent,
               hover: currentColors.hover
-            }
+            } : null
           });
         }
       } catch (error) {
