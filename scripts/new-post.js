@@ -4,12 +4,35 @@ import { createInterface } from 'readline';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const rl = createInterface({
+// Parse command-line arguments
+function parseArgs() {
+    const args = process.argv.slice(2);
+    const parsed = {};
+
+    for (let i = 0; i < args.length; i++) {
+        if (args[i].startsWith('--')) {
+            const key = args[i].slice(2);
+            const value = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true;
+            parsed[key] = value;
+            if (value !== true) i++;
+        }
+    }
+
+    return parsed;
+}
+
+const cliArgs = parseArgs();
+const isInteractive = Object.keys(cliArgs).length === 0 || cliArgs.help;
+
+const rl = isInteractive ? createInterface({
     input: process.stdin,
     output: process.stdout
-});
+}) : null;
 
 function question(prompt) {
+    if (!isInteractive) {
+        throw new Error('Cannot prompt in non-interactive mode');
+    }
     return new Promise((resolve) => {
         rl.question(prompt, resolve);
     });
@@ -39,56 +62,119 @@ function slugify(text) {
 }
 
 async function main() {
+    // Show help if requested
+    if (cliArgs.help) {
+        console.log(`
+📝 Blog Post Generator
+
+Usage:
+  Interactive mode:
+    pnpm run new-post
+
+  CLI mode:
+    pnpm run new-post --title "Your Title" --description "Your description" [options]
+
+Options:
+  --title          Post title (required in CLI mode)
+  --description    Post description (required in CLI mode)
+  --tags           Comma-separated tags (default: "general")
+  --date           Date in YYYY-MM-DD format (default: today)
+  --draft          Set to draft (default: false)
+  --help           Show this help message
+
+Examples:
+  pnpm run new-post --title "My Post" --description "A great post" --tags "ai,tech"
+  pnpm run new-post --title "Draft Post" --description "WIP" --draft true
+        `);
+        process.exit(0);
+    }
+
     console.log('📝 Creating a new blog post...\n');
 
     try {
-        // Get title
-        const title = await question('Title: ');
-        if (!title.trim()) {
-            console.log('❌ Title is required!');
-            process.exit(1);
-        }
+        let title, description, tags, date, isDraft;
 
-        // Get description
-        const description = await question('Description: ');
-        if (!description.trim()) {
-            console.log('❌ Description is required!');
-            process.exit(1);
-        }
+        // CLI mode - use command-line arguments
+        if (!isInteractive) {
+            title = cliArgs.title;
+            description = cliArgs.description;
 
-        // Get tags
-        const tagsInput = await question('Tags (comma-separated): ');
-        const tags = tagsInput
-            .split(',')
-            .map(tag => tag.trim())
-            .filter(tag => tag.length > 0);
+            if (!title || !description) {
+                console.log('❌ --title and --description are required in CLI mode!');
+                console.log('   Run with --help for usage information.');
+                process.exit(1);
+            }
 
-        // Ensure we always have at least one tag
-        if (tags.length === 0) {
-            tags.push('general');
-        }
+            // Parse tags
+            const tagsInput = cliArgs.tags || 'general';
+            tags = tagsInput
+                .split(',')
+                .map(tag => tag.trim())
+                .filter(tag => tag.length > 0);
 
-        // Get date/time
-        const dateInput = await question('Date/Time (YYYY-MM-DD HH:MM AM/PM) or press Enter for now: ');
-        let date;
-
-        if (dateInput.trim()) {
-            try {
-                date = new Date(dateInput);
+            // Parse date
+            if (cliArgs.date) {
+                date = new Date(cliArgs.date);
                 if (isNaN(date.getTime())) {
-                    throw new Error('Invalid date');
+                    console.log('❌ Invalid date format. Using current date/time.');
+                    date = new Date();
                 }
-            } catch (error) {
-                console.log('❌ Invalid date format. Using current date/time.');
+            } else {
                 date = new Date();
             }
-        } else {
-            date = new Date();
-        }
 
-        // Get draft status
-        const draftInput = await question('Draft? (y/N): ');
-        const isDraft = draftInput.toLowerCase().startsWith('y');
+            // Parse draft status
+            isDraft = cliArgs.draft === 'true' || cliArgs.draft === true;
+
+        } else {
+            // Interactive mode - prompt for input
+            // Get title
+            title = await question('Title: ');
+            if (!title.trim()) {
+                console.log('❌ Title is required!');
+                process.exit(1);
+            }
+
+            // Get description
+            description = await question('Description: ');
+            if (!description.trim()) {
+                console.log('❌ Description is required!');
+                process.exit(1);
+            }
+
+            // Get tags
+            const tagsInput = await question('Tags (comma-separated): ');
+            tags = tagsInput
+                .split(',')
+                .map(tag => tag.trim())
+                .filter(tag => tag.length > 0);
+
+            // Ensure we always have at least one tag
+            if (tags.length === 0) {
+                tags.push('general');
+            }
+
+            // Get date/time
+            const dateInput = await question('Date/Time (YYYY-MM-DD HH:MM AM/PM) or press Enter for now: ');
+
+            if (dateInput.trim()) {
+                try {
+                    date = new Date(dateInput);
+                    if (isNaN(date.getTime())) {
+                        throw new Error('Invalid date');
+                    }
+                } catch (error) {
+                    console.log('❌ Invalid date format. Using current date/time.');
+                    date = new Date();
+                }
+            } else {
+                date = new Date();
+            }
+
+            // Get draft status
+            const draftInput = await question('Draft? (y/N): ');
+            isDraft = draftInput.toLowerCase().startsWith('y');
+        }
 
         // Generate slug and filename
         const slug = slugify(title);
@@ -155,7 +241,9 @@ Wrap up your thoughts here.
         console.error('❌ Error creating blog post:', error.message);
         process.exit(1);
     } finally {
-        rl.close();
+        if (rl) {
+            rl.close();
+        }
     }
 }
 
