@@ -11,7 +11,7 @@ interface Props {
 const { title, imgAlt, imgSrc, description } = Astro.props;
 
 // Convert relative path to absolute path for browser
-const cleanPath = imgSrc.replace(/^\.\.\/\.\.\/\.\.\/\.\.\//, '/');
+const cleanPath = imgSrc.replace(/^\.\.\/\.\.\/\.\.\/\.\.\/assets\/img\//, '/img/');
 ---
 
 <style>
