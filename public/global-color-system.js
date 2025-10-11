@@ -142,7 +142,10 @@ function applyCardColors() {
   });
 
   // Process Recent Blog Posts card
-  recentBlogPostsCard.forEach((card) => {
+  recentBlogPostsCard.forEach((wrapper) => {
+    // Find the Card component inside the wrapper
+    const card = wrapper.querySelector('div, section, article') || wrapper;
+
     // Remove existing color classes
     colors.forEach((color) => {
       card.classList.remove(`bg-${color}`, `border-${color}`);

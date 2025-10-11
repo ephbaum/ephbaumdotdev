@@ -16,7 +16,8 @@ const posts = await getCollection('blog').then((posts) =>
 ---
 
 <section class='mt-8'>
-  <Card data-recent-blog-posts>
+  <div data-recent-blog-posts>
+    <Card>
     <div class='flex justify-between items-start'>
       <h2 class='text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif'>
         Recent Blogposts
@@ -29,5 +30,6 @@ const posts = await getCollection('blog').then((posts) =>
       </div>
     </div>
     <BlogList posts={posts} />
-  </Card>
+    </Card>
+  </div>
 </section>
