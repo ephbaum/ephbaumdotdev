@@ -1,19 +1,19 @@
 import {
   defineConfig,
   presetIcons,
-  presetWind,
   presetTypography,
 } from 'unocss';
+import presetWind3 from '@unocss/preset-wind3';
 
 export default defineConfig({
   presets: [
-    presetWind(),
+    presetWind3(),
     presetIcons({
       collections: {
         logos: () =>
-          import('@iconify-json/logos/icons.json').then((i) => i.default),
+          import('@iconify-json/logos/icons.json').then((i) => i.default as any),
         uil: () =>
-          import('@iconify-json/uil/icons.json').then((l) => l.default),
+          import('@iconify-json/uil/icons.json').then((l) => l.default as any),
       },
     }),
     presetTypography(),
