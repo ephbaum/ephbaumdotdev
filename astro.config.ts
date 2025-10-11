@@ -7,6 +7,9 @@ export default defineConfig({
   site: 'https://ephbaum.dev',
   trailingSlash: 'ignore',
   integrations: [sitemap(), UnoCSS({ injectReset: true })],
+  legacy: {
+    collections: true,
+  },
   vite: {
     optimizeDeps: {
       exclude: ['@resvg/resvg-js'],
