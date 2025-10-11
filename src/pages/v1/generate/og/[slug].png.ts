@@ -21,6 +21,26 @@ const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
 const height = 630;
 const width = 1200;
 
+// Brutalist color palette
+const colors = [
+  '#ff0000', // red
+  '#0000ff', // blue
+  '#00ff00', // green
+  '#ffff00', // yellow
+  '#ff69b4', // pink
+  '#800080', // purple
+  '#ffa500', // orange
+  '#008080', // teal
+  '#00ffff', // cyan
+  '#00ff00', // lime
+  '#50c878', // emerald
+  '#ff00ff', // fuchsia
+  '#8a2be2', // violet
+  '#ff69b4', // rose
+  '#87ceeb', // sky
+  '#ffbf00', // amber
+];
+
 const posts = await getCollection('blog');
 
 export function getStaticPaths() {
@@ -33,16 +53,19 @@ export function getStaticPaths() {
 export const GET: APIRoute = async ({ props }) => {
   const title = props.title.trim() ?? 'Blogpost';
   const description = props.description ?? null;
+
+  // Pick a random color based on title (deterministic so same post always gets same color)
+  const colorIndex = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
+  const bgColor = colors[colorIndex];
+
   const html = toReactElement(`
-  <div style="background-color: white; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
-    <div style="display:flex; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
-      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; filter: drop-shadow()">
-        <div style="display: flex; justify-content: space-between;">
-          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <p style="font-size: 48px;">eph baum dot dev</p>
-            <p style="font-size: 38px;">${title}</p>
-          </div>
-          <img src="${logoBase64}" style="width: 200px; height: 200px; border: 3px solid black; border-radius: 0.5rem;" />
+  <div style="background-color: ${bgColor}; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
+    <div style="display:flex; position: relative; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
+      <img src="${logoBase64}" style="position: absolute; top: -2rem; right: -2rem; width: 150px; height: 150px;" />
+      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-right: 11rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <p style="font-size: 48px;">eph baum dot dev</p>
+          <p style="font-size: 38px;">${title}</p>
         </div>
         <div style="display: flex;">
           <p style="font-size: 24px;">${description}</p>

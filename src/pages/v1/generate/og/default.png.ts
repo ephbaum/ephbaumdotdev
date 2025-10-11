@@ -21,20 +21,44 @@ const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
 const height = 630;
 const width = 1200;
 
+// Brutalist color palette
+const colors = [
+  '#ff0000', // red
+  '#0000ff', // blue
+  '#00ff00', // green
+  '#ffff00', // yellow
+  '#ff69b4', // pink
+  '#800080', // purple
+  '#ffa500', // orange
+  '#008080', // teal
+  '#00ffff', // cyan
+  '#00ff00', // lime
+  '#50c878', // emerald
+  '#ff00ff', // fuchsia
+  '#8a2be2', // violet
+  '#ff69b4', // rose
+  '#87ceeb', // sky
+  '#ffbf00', // amber
+];
+
 export const GET: APIRoute = async () => {
   const link = 'https://ephbaum.dev';
+
+  // Pick a random color for each request (will be same after build)
+  const bgColor = colors[Math.floor(Math.random() * colors.length)];
+
   const html = toReactElement(`
-  <div style="background-color: white; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
-    <div style="display:flex; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
-      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; filter: drop-shadow()">
+  <div style="background-color: ${bgColor}; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
+    <div style="display:flex; position: relative; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
+      <img src="${logoBase64}" style="position: absolute; top: -2rem; right: -2rem; width: 150px; height: 150px;" />
+      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-right: 11rem;">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">  
           <p style="font-size: 48px;">eph baum dot dev</p>
           <p style="font-size: 38px;">Eph Words</p>
           <p style="font-size: 38px;">A blog about tech and engineering</p>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: -2rem;">
+        <div style="display: flex;">
           <p style="font-size: 32px">${link}</p>
-          <img src="${logoBase64}" style="width: 200px; height: 200px; border: 3px solid black; border-radius: 0.5rem;" />
         </div>
       </div>
     </div>
