@@ -218,9 +218,10 @@ For each event:
 ## Current Analytics Setup
 
 - **Umami Analytics**: Privacy-focused analytics with comprehensive custom event tracking
-- **Cost-effective**: Single analytics system to avoid additional charges
+- **Vercel Speed Insights**: Performance monitoring and Core Web Vitals tracking
+- **Cost-effective**: Umami-only for custom events, Speed Insights for performance
 - **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
-- **Comprehensive**: All user interactions tracked with detailed metadata
+- **Comprehensive**: All user interactions and performance metrics tracked
 
 ## Implemented Events Summary
 
@@ -250,3 +251,21 @@ Each event includes:
 - **Action Details**: What the user did
 
 All events are sent to your Umami dashboard for comprehensive analytics insights!
+
+## Performance Monitoring
+
+### Vercel Speed Insights
+- **Core Web Vitals**: Tracks LCP, FID, CLS, and other performance metrics
+- **Real User Monitoring**: Collects performance data from actual users
+- **Production Only**: Automatically enabled when deployed to Vercel
+- **Privacy Compliant**: No personal data collected, only performance metrics
+- **Dashboard**: View performance data in your Vercel project dashboard
+
+### Performance Metrics Tracked
+- **Largest Contentful Paint (LCP)**: Loading performance
+- **First Input Delay (FID)**: Interactivity
+- **Cumulative Layout Shift (CLS)**: Visual stability
+- **First Contentful Paint (FCP)**: Perceived loading speed
+- **Time to First Byte (TTFB)**: Server response time
+
+Speed Insights provides valuable performance data to help optimize your site's user experience!

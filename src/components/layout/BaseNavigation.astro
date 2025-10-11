@@ -65,7 +65,7 @@ const { pageTitle } = Astro.props;
               target="_blank"
               title={`'See @EphBaum on ${item.name}`}
               data-analytics-external-link
-              data-destination-domain={new URL(item.url).hostname}
+              data-destination-domain={item.url.startsWith('http') ? new URL(item.url).hostname : 'internal'}
               data-destination-url={item.url}
               data-source-context="header"
             >

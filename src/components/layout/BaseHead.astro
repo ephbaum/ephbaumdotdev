@@ -75,6 +75,14 @@ const { title, description, ogImage } = Astro.props;
   <!-- Analytics Tracking Function -->
   <script src="/analytics.js" is:inline></script>
 
+  <!-- Vercel Speed Insights -->
+  {import.meta.env.MODE === 'production' && (
+    <script>
+      import { injectSpeedInsights } from '@vercel/speed-insights';
+      injectSpeedInsights();
+    </script>
+  )}
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Track RSS feed clicks
