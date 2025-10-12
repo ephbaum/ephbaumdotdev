@@ -86,12 +86,16 @@ async function processImage(imagePath) {
             return;
         }
 
-        // Strip metadata but keep orientation
-        const processed = await image
-            .withMetadata({
-                orientation: metadata.orientation
-            })
-            .toBuffer();
+    // Strip ALL metadata
+    // Apply rotation based on EXIF orientation first, then strip everything
+    let processedImage = image;
+    
+    if (metadata.orientation) {
+      processedImage = processedImage.rotate();
+    }
+    
+    const processed = await processedImage
+      .toBuffer();
 
         // Write back
         writeFileSync(imagePath, processed);
