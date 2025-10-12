@@ -5,6 +5,7 @@ import MobileSocials from "@components/home/MobileSocials.astro";
 import { Pill } from "@eliancodes/brutal-ui";
 import { Button } from "@eliancodes/brutal-ui";
 import { Card } from "@eliancodes/brutal-ui";
+import avatar from "@assets/img/ephbaum_avatar_400_400.png";
 
 const builtWith = [
   { name: "Theme", url: "https://github.com/eliancodes/brutal" },
@@ -47,9 +48,14 @@ const builtWith = [
       </div>
       <div class="col-span-2">
         <Card data-brutal-card>
-          <h2 class="text-xl md:text-2xl lg:text-4xl mb-8 dm-serif">
-            This space intentionally left blank
-          </h2>
+          <div class="flex items-center justify-center w-full h-full">
+            <img
+              src={avatar.src}
+              alt="Eph Baum Avatar"
+              class="w-full h-auto object-contain"
+              style="filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));"
+            />
+          </div>
         </Card>
       </div>
       <div class="col-span-2">
