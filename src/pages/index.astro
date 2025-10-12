@@ -8,10 +8,11 @@ import { Card } from "@eliancodes/brutal-ui";
 import avatar from "@assets/img/ephbaum_avatar_400_400.png";
 
 const builtWith = [
-  { name: "Theme", url: "https://github.com/eliancodes/brutal" },
+  { name: "Brutal Theme", url: "https://github.com/eliancodes/brutal" },
   { name: "Astro", url: "https://astro.build/" },
   { name: "UnoCSS", url: "https://unocss.dev/" },
   { name: "TypeScript", url: "https://www.typescriptlang.org/" },
+  { name: "Vercel", url: "https://vercel.com/" },
 ];
 ---
 
@@ -60,9 +61,11 @@ const builtWith = [
       </div>
       <div class="col-span-2">
         <Card data-brutal-card>
-          <h2 class="text-xl md:text-2xl lg:text-4xl mb-4 dm-serif">
-            This site built with:
-          </h2>
+          <h3
+            class="text-lg md:text-xl lg:text-2xl mb-4 dm-serif flex items-center gap-2"
+          >
+            Made with <span class="i-uil-heart w-5 h-5"></span> using:
+          </h3>
           <ul class="flex gap-4 flex-wrap">
             {
               builtWith.map((item) => (
