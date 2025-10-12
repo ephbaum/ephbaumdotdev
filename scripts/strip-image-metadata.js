@@ -55,18 +55,18 @@ async function stripMetadata(imagePath) {
         if (metadata.iptc) console.log('    - IPTC data');
         if (metadata.icc) console.log('    - ICC color profile (will be preserved)');
 
-    // Strip ALL metadata
-    // We rotate the image if needed based on orientation, then strip everything
-    let processedImage = image;
-    
-    // Apply rotation based on EXIF orientation, then strip the EXIF
-    if (metadata.orientation) {
-      processedImage = processedImage.rotate();
-    }
-    
-    // Strip all metadata completely
-    const processed = await processedImage
-      .toBuffer();
+        // Strip ALL metadata
+        // We rotate the image if needed based on orientation, then strip everything
+        let processedImage = image;
+
+        // Apply rotation based on EXIF orientation, then strip the EXIF
+        if (metadata.orientation) {
+            processedImage = processedImage.rotate();
+        }
+
+        // Strip all metadata completely
+        const processed = await processedImage
+            .toBuffer();
 
         // Write back to the same file
         writeFileSync(fullPath, processed);
