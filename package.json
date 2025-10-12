@@ -15,7 +15,11 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new-post": "node scripts/new-post.js"
+    "new-post": "node scripts/new-post.js",
+    "strip-metadata": "node scripts/strip-image-metadata.js",
+    "check-metadata": "node scripts/check-image-metadata.js",
+    "bulk-strip-metadata": "node scripts/bulk-strip-metadata.js",
+    "bulk-add-copyright": "node scripts/bulk-add-copyright.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",

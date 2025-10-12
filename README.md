@@ -85,6 +85,10 @@ Based on the original Brutal theme with our enhancements:
 | `pnpm run astro` | Run Astro CLI commands | Full CLI access |
 | `pnpm run astro --help` | Get help using the Astro CLI | Documentation |
 | `pnpm run new-post` | Create a new blog post with frontmatter | Interactive script for content creation |
+| `pnpm run check-metadata <image>` | Check what metadata exists in an image | Shows what will be stripped on commit |
+| `pnpm run strip-metadata <image>` | Strip EXIF metadata from an image | Removes GPS, camera data; keeps orientation |
+| `pnpm run bulk-strip-metadata [--dry-run]` | Strip metadata from ALL images | One-time cleanup of existing images |
+| `pnpm run bulk-add-copyright [--dry-run]` | Add copyright to ALL images | Alternative: Strip + add your copyright |
 
 ## 📁 Project Structure
 
@@ -142,6 +146,55 @@ Understanding where to place images:
 **Example:** The avatar `ephbaum_dot_dev.png` exists in both locations:
 - `src/assets/img/ephbaum_dot_dev.png` - Used by blog posts (optimized by Astro)
 - `public/img/ephbaum_dot_dev.png` - Used by OG image generation (read as-is)
+
+### 🔒 Image Privacy & Metadata
+
+> 📖 **Full Documentation:**
+> - [IMAGE_METADATA_GUIDE.md](IMAGE_METADATA_GUIDE.md) - What gets stripped and why
+> - [COPYRIGHT_STRATEGY.md](COPYRIGHT_STRATEGY.md) - Strip everything vs. add copyright
+
+**Automated EXIF Stripping on Commit**
+
+A git pre-commit hook automatically strips EXIF metadata (GPS location, camera info, timestamps) from all staged images before they're committed. This ensures:
+- No sensitive location data in git history
+- Smaller repository size
+- Privacy protection
+
+**How it works:**
+1. Stage an image: `git add src/assets/img/photo.jpg`
+2. Commit: `git commit -m "Add photo"`
+3. Hook automatically strips metadata and re-stages the clean image
+4. Only clean images get committed
+
+**Requirements:**
+- Install `exiftool`: 
+  - Ubuntu/Debian: `sudo apt-get install libimage-exiftool-perl`
+  - macOS: `brew install exiftool`
+- Or use the built-in Sharp script: `pnpm run strip-metadata <image-path>`
+
+**Check and strip manually:**
+```bash
+# First, check what metadata exists
+pnpm run check-metadata src/assets/img/2025/10/photo.jpg
+
+# Then strip if needed (using Sharp - already in project dependencies)
+pnpm run strip-metadata src/assets/img/2025/10/photo.jpg
+
+# Or skip the hook for a specific commit
+git commit --no-verify
+```
+
+**What's preserved:**
+- Image orientation (prevents rotated images)
+- ICC color profiles (for color accuracy)
+
+**What's removed:**
+- GPS location data
+- Camera make/model/settings
+- Copyright information
+- Creation timestamps
+- Software used
+- All other EXIF/IPTC/XMP data
 
 ### 🎨 Component Architecture
 
