@@ -1,0 +1,16 @@
+dist/
+node_modules/
+.astro/
+pnpm-lock.yaml
+package-lock.json
+*.md
+*.jpg
+*.png
+*.jpeg
+*.gif
+*.webp
+*.svg
+public/
+
+
+
