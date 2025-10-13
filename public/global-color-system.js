@@ -49,6 +49,23 @@ let currentColors = {
   hover: null,
 };
 
+// Disco mode state
+let discoMode = false;
+let discoInterval = null;
+
+// Click tracking for rapid-click detection
+let clickTimestamps = [];
+
+// Helper function to get a random color different from excluded colors
+function getRandomColorExcluding(excludedColors = []) {
+  const availableColors = colors.filter(color => !excludedColors.includes(color));
+  if (availableColors.length === 0) {
+    // If all colors are excluded, just return a random color
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+  return availableColors[Math.floor(Math.random() * availableColors.length)];
+}
+
 // Initialize colors
 function initializeColors() {
   if (!colors || colors.length === 0) {
@@ -87,6 +104,26 @@ function applyMainBackgroundColors() {
   });
 }
 
+// Helper function to get parent's background color
+function getParentBackgroundColor(element) {
+  let parent = element.parentElement;
+  while (parent) {
+    const bgColor = window.getComputedStyle(parent).backgroundColor;
+    // Check if it's one of our known colors
+    for (const [colorName, colorHex] of Object.entries(colorMap)) {
+      const rgbMatch = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (rgbMatch) {
+        const rgb = `#${parseInt(rgbMatch[1]).toString(16).padStart(2, '0')}${parseInt(rgbMatch[2]).toString(16).padStart(2, '0')}${parseInt(rgbMatch[3]).toString(16).padStart(2, '0')}`;
+        if (rgb.toLowerCase() === colorHex.toLowerCase()) {
+          return colorName;
+        }
+      }
+    }
+    parent = parent.parentElement;
+  }
+  return null;
+}
+
 // Apply colors to cards (each card gets its own random color)
 function applyCardColors() {
   // Target the specific card containers on the homepage
@@ -113,8 +150,9 @@ function applyCardColors() {
       card.classList.remove(`bg-${color}`, `border-${color}`);
     });
 
-    // Apply new random color for each card (background only, keep borders black)
-    const cardColor = colors[Math.floor(Math.random() * colors.length)];
+    // Get parent background color and avoid using it
+    const parentColor = getParentBackgroundColor(card);
+    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -133,8 +171,9 @@ function applyCardColors() {
       card.classList.remove(`bg-${color}`, `border-${color}`);
     });
 
-    // Apply new random color for each card (background only, keep borders black)
-    const cardColor = colors[Math.floor(Math.random() * colors.length)];
+    // Get parent background color and avoid using it
+    const parentColor = getParentBackgroundColor(card);
+    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -151,8 +190,9 @@ function applyCardColors() {
       card.classList.remove(`bg-${color}`, `border-${color}`);
     });
 
-    // Apply new random color for the card (background only, keep borders black)
-    const cardColor = colors[Math.floor(Math.random() * colors.length)];
+    // Get parent background color and avoid using it
+    const parentColor = getParentBackgroundColor(card);
+    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -296,6 +336,153 @@ function applyAllColors() {
   }
 }
 
+// Disco mode functions
+function startDiscoMode() {
+  if (discoMode) return; // Already in disco mode
+
+  discoMode = true;
+  console.log('🕺 DISCO MODE ACTIVATED! 🕺');
+
+  // Show a fun notification
+  showDiscoNotification('🕺 DISCO MODE ACTIVATED! 🕺<br>Click the palette button again to stop');
+
+  // Change colors every 200ms for a groovy effect
+  discoInterval = setInterval(() => {
+    applyAllColors();
+  }, 200);
+
+  // Track disco mode activation
+  if (window.umami) {
+    try {
+      if (typeof window.umami.track === 'function') {
+        window.umami.track('disco_mode_activated', {
+          action: 'activate_disco_mode',
+          component: 'color_system'
+        });
+      }
+    } catch (error) {
+      console.warn('Umami tracking failed:', error);
+    }
+  }
+}
+
+function stopDiscoMode() {
+  if (!discoMode) return;
+
+  discoMode = false;
+  console.log('🛑 Disco mode stopped');
+
+  // Show notification
+  showDiscoNotification('🛑 Disco mode stopped');
+
+  if (discoInterval) {
+    clearInterval(discoInterval);
+    discoInterval = null;
+  }
+
+  // Track disco mode deactivation
+  if (window.umami) {
+    try {
+      if (typeof window.umami.track === 'function') {
+        window.umami.track('disco_mode_deactivated', {
+          action: 'deactivate_disco_mode',
+          component: 'color_system'
+        });
+      }
+    } catch (error) {
+      console.warn('Umami tracking failed:', error);
+    }
+  }
+}
+
+// Show a temporary notification
+function showDiscoNotification(message) {
+  // Remove any existing notification
+  const existing = document.getElementById('disco-notification');
+  if (existing) {
+    existing.remove();
+  }
+
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.id = 'disco-notification';
+  notification.innerHTML = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    padding: 2rem 3rem;
+    border: 4px solid black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10000;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+    animation: disco-bounce 0.3s ease-in-out;
+  `;
+
+  // Add animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes disco-bounce {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  document.body.appendChild(notification);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.style.transition = 'opacity 0.3s';
+    notification.style.opacity = '0';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+function toggleDiscoMode() {
+  if (discoMode) {
+    stopDiscoMode();
+  } else {
+    startDiscoMode();
+  }
+}
+
+// Rapid-click detection
+function trackColorButtonClick() {
+  const now = Date.now();
+  clickTimestamps.push(now);
+
+  // Remove clicks older than 1 second
+  clickTimestamps = clickTimestamps.filter(timestamp => now - timestamp <= 1000);
+
+  // Check if we have 5 clicks within 1 second
+  if (clickTimestamps.length >= 5) {
+    toggleDiscoMode();
+    clickTimestamps = []; // Reset click tracking
+  }
+}
+
+// Konami code detection
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+      toggleDiscoMode();
+      konamiIndex = 0; // Reset
+    }
+  } else {
+    konamiIndex = 0; // Reset if wrong key
+  }
+});
+
 // Export functions for use in other scripts
 window.BrutalColorSystem = {
   applyAllColors,
@@ -304,7 +491,12 @@ window.BrutalColorSystem = {
   applyButtonColors,
   applyHoverEffects,
   applySpecialElementColors,
+  startDiscoMode,
+  stopDiscoMode,
+  toggleDiscoMode,
+  trackColorButtonClick,
   colors,
   colorMap,
   currentColors: () => currentColors,
+  isDiscoMode: () => discoMode,
 };
