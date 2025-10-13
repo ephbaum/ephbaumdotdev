@@ -7,9 +7,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 // @TODO: Find a public link or add the font to the project
-const fontFile = await fetch(
-  'https://og-playground.vercel.app/inter-latin-ext-700-normal.woff'
-);
+const fontFile = await fetch('https://og-playground.vercel.app/inter-latin-ext-700-normal.woff');
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
 // Read the logo image from the local filesystem and convert to base64 data URI
@@ -55,7 +53,9 @@ export const GET: APIRoute = async ({ props }) => {
   const description = props.description ?? null;
 
   // Pick a random color based on title (deterministic so same post always gets same color)
-  const colorIndex = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
+  const colorIndex =
+    title.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0), 0) %
+    colors.length;
   const bgColor = colors[colorIndex];
 
   const html = toReactElement(`
