@@ -1,6 +1,6 @@
 ---
-import LocalFont from "../generic/LocalFont.astro";
-import { ClientRouter } from "astro:transitions";
+import LocalFont from '../generic/LocalFont.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -11,7 +11,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL("/v1/generate/og/default.png", Astro.url);
+  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.url);
 }
 
 const { title, description, ogImage } = Astro.props;
@@ -64,10 +64,7 @@ const { title, description, ogImage } = Astro.props;
       <script
         is:inline
         defer
-        src={
-          import.meta.env.PUBLIC_UMAMI_SCRIPT_URL ||
-          "https://cloud.umami.is/script.js"
-        }
+        src={import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'}
         data-website-id={import.meta.env.PUBLIC_UMAMI_WEBSITE_ID}
       />
     )
@@ -78,26 +75,25 @@ const { title, description, ogImage } = Astro.props;
 
   <!-- Vercel Speed Insights -->
   {
-    import.meta.env.MODE === "production" && (
+    import.meta.env.MODE === 'production' && (
       <script>
-        import {injectSpeedInsights} from '@vercel/speed-insights';
-        injectSpeedInsights();
+        import {injectSpeedInsights} from '@vercel/speed-insights'; injectSpeedInsights();
       </script>
     )
   }
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       // Track RSS feed clicks
-      const rssLinks = document.querySelectorAll("[data-analytics-rss-feed]");
+      const rssLinks = document.querySelectorAll('[data-analytics-rss-feed]');
       rssLinks.forEach((link) => {
-        link.addEventListener("click", () => {
+        link.addEventListener('click', () => {
           if ((window as any).trackEvent) {
-            const feedUrl = link.getAttribute("data-feed-url");
+            const feedUrl = link.getAttribute('data-feed-url');
 
-            (window as any).trackEvent("rss_feed_click", {
-              action: "subscribe_rss",
-              component: "rss_link",
+            (window as any).trackEvent('rss_feed_click', {
+              action: 'subscribe_rss',
+              component: 'rss_link',
               feed_url: feedUrl,
             });
           }

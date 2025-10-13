@@ -1,18 +1,18 @@
 ---
-import Layout from "@layouts/Default.astro";
-import RecentBlogPosts from "@components/generic/RecentBlogPosts.astro";
-import MobileSocials from "@components/home/MobileSocials.astro";
-import { Pill } from "@eliancodes/brutal-ui";
-import { Button } from "@eliancodes/brutal-ui";
-import { Card } from "@eliancodes/brutal-ui";
-import avatar from "@assets/img/ephbaum_avatar_400_400.png";
+import Layout from '@layouts/Default.astro';
+import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
+import MobileSocials from '@components/home/MobileSocials.astro';
+import { Pill } from '@eliancodes/brutal-ui';
+import { Button } from '@eliancodes/brutal-ui';
+import { Card } from '@eliancodes/brutal-ui';
+import avatar from '@assets/img/ephbaum_avatar_400_400.png';
 
 const builtWith = [
-  { name: "Brutal Theme", url: "https://github.com/eliancodes/brutal" },
-  { name: "Astro", url: "https://astro.build/" },
-  { name: "UnoCSS", url: "https://unocss.dev/" },
-  { name: "TypeScript", url: "https://www.typescriptlang.org/" },
-  { name: "Vercel", url: "https://vercel.com/" },
+  { name: 'Brutal Theme', url: 'https://github.com/eliancodes/brutal' },
+  { name: 'Astro', url: 'https://astro.build/' },
+  { name: 'UnoCSS', url: 'https://unocss.dev/' },
+  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+  { name: 'Vercel', url: 'https://vercel.com/' },
 ];
 ---
 
@@ -28,20 +28,12 @@ const builtWith = [
       <div class="col-span-4">
         <Card data-brutal-card>
           <div class="flex flex-col justify-between items-start gap-4">
-            <p class="mt-4 outfit text-xl md:text-3xl lg:text-5xl">
-              I'm Eph Baum
-            </p>
+            <p class="mt-4 outfit text-xl md:text-3xl lg:text-5xl">I'm Eph Baum</p>
             <p class="mt-1 outfit text-size-s md:text-size-md lg:text-size-xl">
-              I play make pretend as a software engineer. This is my blog where
-              I talk to myself to answer my own questions about tech,
-              engineering, and working with people.
+              I play make pretend as a software engineer. This is my blog where I talk to myself to
+              answer my own questions about tech, engineering, and working with people.
             </p>
-            <Button
-              target={"_self"}
-              href="/blog/"
-              data-brutal-button
-              data-brutal-hover
-            >
+            <Button target={'_self'} href="/blog/" data-brutal-button data-brutal-hover>
               Check out the blog &rarr;
             </Button>
           </div>
@@ -65,8 +57,7 @@ const builtWith = [
             class="text-lg md:text-xl lg:text-2xl mb-4 dm-serif flex flex-wrap items-center gap-2"
           >
             <span class="whitespace-nowrap"
-              >Made with <span
-                class="i-uil-heart w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 inline-block"
+              >Made with <span class="i-uil-heart w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 inline-block"
               ></span></span
             >
             <span>using:</span>
@@ -76,12 +67,7 @@ const builtWith = [
               builtWith.map((item) => (
                 <li>
                   <Pill data-brutal-pill data-brutal-hover>
-                    <a
-                      class="sanchez"
-                      href={item.url}
-                      target="_blank"
-                      title={`Go to ${item.name}`}
-                    >
+                    <a class="sanchez" href={item.url} target="_blank" title={`Go to ${item.name}`}>
                       {item.name}
                     </a>
                   </Pill>
@@ -99,21 +85,21 @@ const builtWith = [
 <script src="/global-color-system.js" is:inline></script>
 <script>
   // Apply colors on initial load
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }
   });
 
   // Also apply on Astro page loads (for SPA navigation)
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }
   });
 
   // Listen for color change events from the palette button
-  window.addEventListener("changeColors", () => {
+  window.addEventListener('changeColors', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }

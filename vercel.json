@@ -1,20 +1,20 @@
 {
-    "buildCommand": "pnpm run build",
-    "outputDirectory": "dist",
-    "framework": "astro",
-    "installCommand": "pnpm install",
-    "devCommand": "pnpm run dev",
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ],
-    "redirects": [
-        {
-            "source": "www.ephbaum.dev/(.*)",
-            "destination": "https://ephbaum.dev/$1",
-            "permanent": true
-        }
-    ]
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "framework": "astro",
+  "installCommand": "pnpm install",
+  "devCommand": "pnpm run dev",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "www.ephbaum.dev/(.*)",
+      "destination": "https://ephbaum.dev/$1",
+      "permanent": true
+    }
+  ]
 }

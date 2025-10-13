@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Pill } from "@eliancodes/brutal-ui";
-import SummaryCard from "../generic/SummaryCard.astro";
-import { Button } from "@eliancodes/brutal-ui";
+import type { CollectionEntry } from 'astro:content';
+import { Pill } from '@eliancodes/brutal-ui';
+import SummaryCard from '../generic/SummaryCard.astro';
+import { Button } from '@eliancodes/brutal-ui';
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
@@ -72,24 +72,20 @@ const { post } = Astro.props;
 </SummaryCard>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Track blog post clicks
-    const blogPostLinks = document.querySelectorAll(
-      "[data-analytics-blog-post]",
-    );
+    const blogPostLinks = document.querySelectorAll('[data-analytics-blog-post]');
     blogPostLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener('click', () => {
         if ((window as any).trackEvent) {
-          const postSlug = link.getAttribute("data-post-slug");
-          const postTitle = link.getAttribute("data-post-title");
-          const postDate = link.getAttribute("data-post-date");
-          const postTags = JSON.parse(
-            link.getAttribute("data-post-tags") || "[]",
-          );
+          const postSlug = link.getAttribute('data-post-slug');
+          const postTitle = link.getAttribute('data-post-title');
+          const postDate = link.getAttribute('data-post-date');
+          const postTags = JSON.parse(link.getAttribute('data-post-tags') || '[]');
 
-          (window as any).trackEvent("blog_post_click", {
-            action: "view_post",
-            component: "blog_post_link",
+          (window as any).trackEvent('blog_post_click', {
+            action: 'view_post',
+            component: 'blog_post_link',
             post_slug: postSlug,
             post_title: postTitle,
             post_date: postDate,
@@ -100,17 +96,17 @@ const { post } = Astro.props;
     });
 
     // Track blog tag clicks
-    const blogTagLinks = document.querySelectorAll("[data-analytics-blog-tag]");
+    const blogTagLinks = document.querySelectorAll('[data-analytics-blog-tag]');
     blogTagLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener('click', () => {
         if ((window as any).trackEvent) {
-          const tagName = link.getAttribute("data-tag-name");
-          const tagUrl = link.getAttribute("data-tag-url");
-          const sourcePage = link.getAttribute("data-source-page");
+          const tagName = link.getAttribute('data-tag-name');
+          const tagUrl = link.getAttribute('data-tag-url');
+          const sourcePage = link.getAttribute('data-source-page');
 
-          (window as any).trackEvent("blog_tag_click", {
-            action: "filter_by_tag",
-            component: "blog_tag_link",
+          (window as any).trackEvent('blog_tag_click', {
+            action: 'filter_by_tag',
+            component: 'blog_tag_link',
             tag_name: tagName,
             tag_url: tagUrl,
             source_page: sourcePage,

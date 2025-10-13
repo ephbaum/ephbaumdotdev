@@ -1,5 +1,5 @@
 ---
-import { Button } from "@eliancodes/brutal-ui";
+import { Button } from '@eliancodes/brutal-ui';
 
 interface Props {
   content: any;
@@ -39,9 +39,7 @@ const { content } = Astro.props;
 </style>
 
 <article class="prose-slate w-sm md:w-prose md:prose poppins">
-  <Button href="/blog/" data-brutal-button data-brutal-hover>
-    &larr; Back to blog
-  </Button>
+  <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   <h1 class="mt-8 text-2xl md:text-4xl">{content.title}</h1>
   <p class="published-color text-opacity-50 text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
@@ -49,9 +47,7 @@ const { content } = Astro.props;
   <slot />
   <p class="author-color">Written by {content.author}</p>
   <div class="mt-6">
-    <Button href="/blog/" data-brutal-button data-brutal-hover>
-      &larr; Back to blog
-    </Button>
+    <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   </div>
 </article>
 
@@ -59,7 +55,7 @@ const { content } = Astro.props;
 <script>
   // Apply random colors for author and published text with contrasting backgrounds
   function applyRandomColors() {
-    const article = document.querySelector("article");
+    const article = document.querySelector('article');
     if (article && window.BrutalColorSystem) {
       const colors = window.BrutalColorSystem.colors;
       const colorMap = window.BrutalColorSystem.colorMap;
@@ -80,22 +76,19 @@ const { content } = Astro.props;
       }
 
       // Set CSS custom properties
-      article.style.setProperty("--authorColor", colorMap[authorColor]);
-      article.style.setProperty("--authorBgColor", colorMap[authorBgColor]);
-      article.style.setProperty("--publishedColor", colorMap[publishedColor]);
-      article.style.setProperty(
-        "--publishedBgColor",
-        colorMap[publishedBgColor],
-      );
+      article.style.setProperty('--authorColor', colorMap[authorColor]);
+      article.style.setProperty('--authorBgColor', colorMap[authorBgColor]);
+      article.style.setProperty('--publishedColor', colorMap[publishedColor]);
+      article.style.setProperty('--publishedBgColor', colorMap[publishedBgColor]);
     }
   }
 
   // Apply on initial load
-  document.addEventListener("DOMContentLoaded", applyRandomColors);
+  document.addEventListener('DOMContentLoaded', applyRandomColors);
 
   // Also apply on Astro page loads (for SPA navigation)
-  document.addEventListener("astro:page-load", applyRandomColors);
+  document.addEventListener('astro:page-load', applyRandomColors);
 
   // Listen for color change events from the palette button
-  window.addEventListener("changeColors", applyRandomColors);
+  window.addEventListener('changeColors', applyRandomColors);
 </script>

@@ -6,9 +6,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 // @TODO: Find a public link or add the font to the project
-const fontFile = await fetch(
-  'https://og-playground.vercel.app/inter-latin-ext-700-normal.woff'
-);
+const fontFile = await fetch('https://og-playground.vercel.app/inter-latin-ext-700-normal.woff');
 
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 

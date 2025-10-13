@@ -3,76 +3,72 @@
 ---
 
 <button
-    class="color-change-btn hover:text-green hover:underline transition-all duration-150 ease-in-out"
-    title="Change theme colors"
-    aria-label="Randomize theme colors"
-    data-brutal-hover
+  class="color-change-btn hover:text-green hover:underline transition-all duration-150 ease-in-out"
+  title="Change theme colors"
+  aria-label="Randomize theme colors"
+  data-brutal-hover
 >
-    <div class="i-uil-palette w-6 h-6"></div>
+  <div class="i-uil-palette w-6 h-6"></div>
 </button>
 
 <script>
-    function changeColors() {
-        // Check if disco mode is active
-        const colorSystem = (window as any).BrutalColorSystem;
-        if (
-            colorSystem &&
-            colorSystem.isDiscoMode &&
-            colorSystem.isDiscoMode()
-        ) {
-            // If disco mode is active, stop it
-            if (colorSystem.stopDiscoMode) {
-                colorSystem.stopDiscoMode();
-            }
-            return; // Don't change colors manually when stopping disco mode
-        }
-
-        // Track rapid clicks for disco mode activation
-        if (colorSystem && colorSystem.trackColorButtonClick) {
-            colorSystem.trackColorButtonClick();
-        }
-
-        // Track color palette interaction with analytics
-        if (typeof window !== "undefined") {
-            // Track with Umami Analytics
-            if ((window as any).umami) {
-                try {
-                    // Try newer API first (umami.track)
-                    if (typeof (window as any).umami.track === "function") {
-                        (window as any).umami.track("color_palette_click", {
-                            action: "change_colors",
-                            component: "color_palette_button",
-                        });
-                    }
-                    // Fallback to older API (umami as function)
-                    else if (typeof (window as any).umami === "function") {
-                        (window as any).umami("color_palette_click", {
-                            action: "change_colors",
-                            component: "color_palette_button",
-                        });
-                    }
-                } catch (error) {
-                    console.warn("Umami tracking failed:", error);
-                }
-            }
-        }
-
-        // Dispatch a custom event to trigger color changes across the site
-        window.dispatchEvent(new CustomEvent("changeColors"));
+  function changeColors() {
+    // Check if disco mode is active
+    const colorSystem = (window as any).BrutalColorSystem;
+    if (colorSystem && colorSystem.isDiscoMode && colorSystem.isDiscoMode()) {
+      // If disco mode is active, stop it
+      if (colorSystem.stopDiscoMode) {
+        colorSystem.stopDiscoMode();
+      }
+      return; // Don't change colors manually when stopping disco mode
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const colorChangeBtns = document.querySelectorAll(".color-change-btn");
-        colorChangeBtns.forEach((btn) => {
-            btn.addEventListener("click", changeColors);
-        });
-    });
+    // Track rapid clicks for disco mode activation
+    if (colorSystem && colorSystem.trackColorButtonClick) {
+      colorSystem.trackColorButtonClick();
+    }
 
-    // Also listen for Astro page loads
-    document.addEventListener("astro:page-load", () => {
-        const colorChangeBtns = document.querySelectorAll(".color-change-btn");
-        colorChangeBtns.forEach((btn) => {
-            btn.addEventListener("click", changeColors);
-        });
+    // Track color palette interaction with analytics
+    if (typeof window !== 'undefined') {
+      // Track with Umami Analytics
+      if ((window as any).umami) {
+        try {
+          // Try newer API first (umami.track)
+          if (typeof (window as any).umami.track === 'function') {
+            (window as any).umami.track('color_palette_click', {
+              action: 'change_colors',
+              component: 'color_palette_button',
+            });
+          }
+          // Fallback to older API (umami as function)
+          else if (typeof (window as any).umami === 'function') {
+            (window as any).umami('color_palette_click', {
+              action: 'change_colors',
+              component: 'color_palette_button',
+            });
+          }
+        } catch (error) {
+          console.warn('Umami tracking failed:', error);
+        }
+      }
+    }
+
+    // Dispatch a custom event to trigger color changes across the site
+    window.dispatchEvent(new CustomEvent('changeColors'));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const colorChangeBtns = document.querySelectorAll('.color-change-btn');
+    colorChangeBtns.forEach((btn) => {
+      btn.addEventListener('click', changeColors);
     });
+  });
+
+  // Also listen for Astro page loads
+  document.addEventListener('astro:page-load', () => {
+    const colorChangeBtns = document.querySelectorAll('.color-change-btn');
+    colorChangeBtns.forEach((btn) => {
+      btn.addEventListener('click', changeColors);
+    });
+  });
 </script>

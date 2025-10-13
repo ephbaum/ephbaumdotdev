@@ -1,11 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@layouts/Default.astro";
-import BlogList from "@components/blog/BlogList.astro";
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Default.astro';
+import BlogList from '@components/blog/BlogList.astro';
 
-const posts = await getCollection("blog").then((collection) =>
-  collection.reverse(),
-);
+const posts = await getCollection('blog').then((collection) => collection.reverse());
 ---
 
 <Layout
@@ -21,21 +19,21 @@ const posts = await getCollection("blog").then((collection) =>
 <script src="/global-color-system.js" is:inline></script>
 <script>
   // Apply colors on initial load
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }
   });
 
   // Also apply on Astro page loads (for SPA navigation)
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }
   });
 
   // Listen for color change events from the palette button
-  window.addEventListener("changeColors", () => {
+  window.addEventListener('changeColors', () => {
     if (window.BrutalColorSystem) {
       window.BrutalColorSystem.applyAllColors();
     }

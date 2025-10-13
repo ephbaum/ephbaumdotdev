@@ -1,44 +1,44 @@
 ---
-import ColorChangeButton from "../ColorChangeButton.astro";
+import ColorChangeButton from '../ColorChangeButton.astro';
 
 interface Props {
   pageTitle?: string;
 }
 
 const navigationItems = [
-  { name: "Home", url: "/", icon: "i-uil-home", title: "Go to Home" },
+  { name: 'Home', url: '/', icon: 'i-uil-home', title: 'Go to Home' },
   {
-    name: "Posts",
-    url: "/blog/",
-    icon: "i-uil-newspaper",
+    name: 'Posts',
+    url: '/blog/',
+    icon: 'i-uil-newspaper',
     title: "View this blog's posts",
   },
 ];
 
 const socialIcons = [
   {
-    name: "GitHub",
-    url: "https://github.com/ephbaum",
-    icon: "i-uil-github-alt",
-    title: "See @EphBaum on GitHub",
+    name: 'GitHub',
+    url: 'https://github.com/ephbaum',
+    icon: 'i-uil-github-alt',
+    title: 'See @EphBaum on GitHub',
   },
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ephbaum",
-    icon: "i-uil-linkedin-alt",
-    title: "See @EphBaum on LinkedIn",
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/ephbaum',
+    icon: 'i-uil-linkedin-alt',
+    title: 'See @EphBaum on LinkedIn',
   },
   {
-    name: "Personal Blog",
-    url: "https://ephwords.com",
-    icon: "i-uil-file-edit-alt",
-    title: "Read other Eph words",
+    name: 'Personal Blog',
+    url: 'https://ephwords.com',
+    icon: 'i-uil-file-edit-alt',
+    title: 'Read other Eph words',
   },
   {
-    name: "Buy Me a Kombucha",
-    url: "https://buymeacoffee.com/ephbaum",
-    icon: "i-uil-coffee",
-    title: "Buy Eph a Kombucha",
+    name: 'Buy Me a Kombucha',
+    url: 'https://buymeacoffee.com/ephbaum',
+    icon: 'i-uil-coffee',
+    title: 'Buy Eph a Kombucha',
   },
 ];
 
@@ -64,7 +64,7 @@ const { pageTitle } = Astro.props;
               data-destination={item.name.toLowerCase()}
               data-destination-url={item.url}
             >
-              <div class:list={[item.icon, "w-6 h-6"]} />
+              <div class:list={[item.icon, 'w-6 h-6']} />
             </a>
           </li>
         ))
@@ -79,14 +79,12 @@ const { pageTitle } = Astro.props;
               title={item.title}
               data-analytics-external-link
               data-destination-domain={
-                item.url.startsWith("http")
-                  ? new URL(item.url).hostname
-                  : "internal"
+                item.url.startsWith('http') ? new URL(item.url).hostname : 'internal'
               }
               data-destination-url={item.url}
               data-source-context="header"
             >
-              <div class:list={[item.icon, "w-6 h-6"]} />
+              <div class:list={[item.icon, 'w-6 h-6']} />
             </a>
           </li>
         ))
@@ -125,18 +123,18 @@ const { pageTitle } = Astro.props;
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Track menu navigation clicks
-    const menuNavLinks = document.querySelectorAll("[data-analytics-menu-nav]");
+    const menuNavLinks = document.querySelectorAll('[data-analytics-menu-nav]');
     menuNavLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener('click', () => {
         if ((window as any).trackEvent) {
-          const destination = link.getAttribute("data-destination");
-          const destinationUrl = link.getAttribute("data-destination-url");
+          const destination = link.getAttribute('data-destination');
+          const destinationUrl = link.getAttribute('data-destination-url');
 
-          (window as any).trackEvent("menu_navigation", {
-            action: "navigate",
-            component: "main_navigation",
+          (window as any).trackEvent('menu_navigation', {
+            action: 'navigate',
+            component: 'main_navigation',
             destination: destination,
             destination_url: destinationUrl,
           });
@@ -145,21 +143,17 @@ const { pageTitle } = Astro.props;
     });
 
     // Track external link clicks
-    const externalLinks = document.querySelectorAll(
-      "[data-analytics-external-link]",
-    );
+    const externalLinks = document.querySelectorAll('[data-analytics-external-link]');
     externalLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener('click', () => {
         if ((window as any).trackEvent) {
-          const destinationDomain = link.getAttribute(
-            "data-destination-domain",
-          );
-          const destinationUrl = link.getAttribute("data-destination-url");
-          const sourceContext = link.getAttribute("data-source-context");
+          const destinationDomain = link.getAttribute('data-destination-domain');
+          const destinationUrl = link.getAttribute('data-destination-url');
+          const sourceContext = link.getAttribute('data-source-context');
 
-          (window as any).trackEvent("external_link_click", {
-            action: "click_external_link",
-            component: "content_link",
+          (window as any).trackEvent('external_link_click', {
+            action: 'click_external_link',
+            component: 'content_link',
             destination_domain: destinationDomain,
             destination_url: destinationUrl,
             source_context: sourceContext,

@@ -16,7 +16,7 @@
 :root {
   /* ---- ⚫️ Colors ⚪️ ---- */
   /* Base Tokens */
-  --sys-color-white: #FFFFFF;
+  --sys-color-white: #ffffff;
   --sys-color-black: #000000;
 
   /* Theme Tokens */
@@ -32,10 +32,9 @@ html {
 
 /* Prevent browser dark mode from inverting colors */
 @media (prefers-color-scheme: dark) {
-
   html,
   body {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #000000;
   }
 }
@@ -46,10 +45,28 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(45deg, var(--secondary) 25%, transparent 25%, transparent 75%, var(--secondary) 75%, var(--secondary)), linear-gradient(45deg, var(--secondary) 25%, transparent 25%, transparent 75%, var(--secondary) 75%, var(--secondary));
+  background:
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    ),
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    );
   background-color: var(--primary);
   background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-position:
+    0 0,
+    2px 2px;
   width: 10px;
   border-left: 3px solid var(--secondary);
 }
@@ -70,9 +87,18 @@ html {
 }
 
 ::-webkit-scrollbar-button:vertical:start {
-  background: linear-gradient(45deg, var(--secondary) 25%, transparent 25%, transparent 75%, var(--secondary) 75%, var(--secondary));
+  background: linear-gradient(
+    45deg,
+    var(--secondary) 25%,
+    transparent 25%,
+    transparent 75%,
+    var(--secondary) 75%,
+    var(--secondary)
+  );
   background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-position:
+    0 0,
+    2px 2px;
   border: 2px solid var(--secondary);
   border-bottom: none;
 }
@@ -147,17 +173,34 @@ html {
   height: 23.38px;
 }
 
-
 .window-pane::-webkit-scrollbar {
   width: 22px;
   background-color: var(--primary);
 }
 
 .window-pane::-webkit-scrollbar-track {
-  background: linear-gradient(45deg, var(--secondary) 25%, transparent 25%, transparent 75%, var(--secondary) 75%, var(--secondary)), linear-gradient(45deg, var(--secondary) 25%, transparent 25%, transparent 75%, var(--secondary) 75%, var(--secondary));
+  background:
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    ),
+    linear-gradient(
+      45deg,
+      var(--secondary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary)
+    );
   background-color: var(--primary);
   background-size: 4px 4px;
-  background-position: 0 0, 2px 2px;
+  background-position:
+    0 0,
+    2px 2px;
   width: 10px;
   border-left: 4px solid var(--secondary);
 }

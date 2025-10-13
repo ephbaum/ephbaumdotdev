@@ -11,7 +11,7 @@ const { backToTop = false } = Astro.props;
     <button
       class:list={[
         backToTop ? `backToTop` : null,
-        "transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow",
+        'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
       ]}
     >
       <svg
@@ -23,11 +23,7 @@ const { backToTop = false } = Astro.props;
         stroke-width="1.5"
         stroke="currentColor"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="m4.5 15.75 7.5-7.5 7.5 7.5"
-        />
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
       </svg>
     </button>
   )
@@ -101,46 +97,44 @@ const { backToTop = false } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     // Update copyright year
-    const currentYearElement = document.getElementById("current-year");
+    const currentYearElement = document.getElementById('current-year');
     if (currentYearElement) {
       currentYearElement.textContent = new Date().getFullYear().toString();
     }
 
-    const backToTop = document.querySelector(".backToTop");
+    const backToTop = document.querySelector('.backToTop');
 
     const toggleBackToTopButton = () => {
       if (window.scrollY > 250) {
-        backToTop?.classList.add("active");
+        backToTop?.classList.add('active');
       } else {
-        backToTop?.classList.remove("active");
+        backToTop?.classList.remove('active');
       }
     };
 
-    backToTop?.addEventListener("click", () => {
+    backToTop?.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     });
 
-    window.addEventListener("scroll", toggleBackToTopButton);
+    window.addEventListener('scroll', toggleBackToTopButton);
 
     // Track footer link clicks
-    const footerLinks = document.querySelectorAll(
-      "[data-analytics-footer-link]",
-    );
+    const footerLinks = document.querySelectorAll('[data-analytics-footer-link]');
     footerLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener('click', () => {
         if ((window as any).trackEvent) {
-          const linkType = link.getAttribute("data-link-type");
-          const linkDestination = link.getAttribute("data-link-destination");
-          const linkUrl = link.getAttribute("data-link-url");
+          const linkType = link.getAttribute('data-link-type');
+          const linkDestination = link.getAttribute('data-link-destination');
+          const linkUrl = link.getAttribute('data-link-url');
 
-          (window as any).trackEvent("footer_link_click", {
-            action: "click_footer_link",
-            component: "footer",
+          (window as any).trackEvent('footer_link_click', {
+            action: 'click_footer_link',
+            component: 'footer',
             link_type: linkType,
             link_destination: linkDestination,
             link_url: linkUrl,

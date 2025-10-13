@@ -1,28 +1,28 @@
 ---
 const socials = [
   {
-    name: "GitHub",
-    url: "https://github.com/ephbaum",
-    icon: "i-uil-github",
-    title: "See @EphBaum on GitHub",
+    name: 'GitHub',
+    url: 'https://github.com/ephbaum',
+    icon: 'i-uil-github',
+    title: 'See @EphBaum on GitHub',
   },
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ephbaum",
-    icon: "i-uil-linkedin",
-    title: "See @EphBaum on LinkedIn",
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/ephbaum',
+    icon: 'i-uil-linkedin',
+    title: 'See @EphBaum on LinkedIn',
   },
   {
-    name: "Personal Blog",
-    url: "https://ephwords.com",
-    icon: "i-uil-file-edit-alt",
-    title: "Read other Eph words",
+    name: 'Personal Blog',
+    url: 'https://ephwords.com',
+    icon: 'i-uil-file-edit-alt',
+    title: 'Read other Eph words',
   },
   {
-    name: "Buy Me a Kombucha",
-    url: "https://buymeacoffee.com/ephbaum",
-    icon: "i-uil-coffee",
-    title: "Buy Eph a Kombucha",
+    name: 'Buy Me a Kombucha',
+    url: 'https://buymeacoffee.com/ephbaum',
+    icon: 'i-uil-coffee',
+    title: 'Buy Eph a Kombucha',
   },
 ];
 ---
@@ -34,7 +34,7 @@ const socials = [
       socials.map((item) => (
         <li class="bg-white px-3 py-2 border-black border-2 rounded card-shadow">
           <a href={item.url} target="_blank" title={item.title}>
-            <div class:list={[item.icon, "w-6 h-6"]} />
+            <div class:list={[item.icon, 'w-6 h-6']} />
           </a>
         </li>
       ))
