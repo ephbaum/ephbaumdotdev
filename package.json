@@ -25,20 +25,20 @@
     "check:fix": "astro check && npm run lint:fix && npm run format"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.12",
+    "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@eliancodes/brutal-ui": "^0.2.6",
     "@unocss/astro": "^66.5.3",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.14.4",
+    "astro": "^5.15.1",
     "astro-font": "^1.1.0",
     "satori": "^0.18.3",
     "satori-html": "^0.3.2",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@iconify-json/logos": "^1.2.9",
     "@iconify-json/uil": "^1.2.3",
     "@resvg/resvg-js": "^2.6.2",

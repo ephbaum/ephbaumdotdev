@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/rss':
-        specifier: ^4.0.12
-        version: 4.0.12
+        specifier: ^4.0.13
+        version: 4.0.13
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
@@ -27,8 +27,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       astro:
-        specifier: ^5.14.4
-        version: 5.14.4(@types/node@24.7.1)(jiti@2.6.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1)
+        specifier: ^5.15.1
+        version: 5.15.1(@types/node@24.7.1)(jiti@2.6.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1)
       astro-font:
         specifier: ^1.1.0
         version: 1.1.0
@@ -43,8 +43,8 @@ importers:
         version: 5.9.3
     devDependencies:
       '@astrojs/check':
-        specifier: ^0.9.4
-        version: 0.9.4(prettier-plugin-astro@0.12.3)(prettier@3.6.2)(typescript@5.9.3)
+        specifier: ^0.9.5
+        version: 0.9.5(prettier-plugin-astro@0.12.3)(prettier@3.6.2)(typescript@5.9.3)
       '@iconify-json/logos':
         specifier: ^1.2.9
         version: 1.2.9
@@ -93,8 +93,8 @@ packages:
   '@antfu/utils@9.3.0':
     resolution: {integrity: sha512-9hFT4RauhcUzqOE4f1+frMKLZrgNog5b06I7VmZQV1BkvwvqrbC8EBZf3L1eEL2AKb6rNKjER0sEvJiSP1FXEA==}
 
-  '@astrojs/check@0.9.4':
-    resolution: {integrity: sha512-IOheHwCtpUfvogHHsvu0AbeRZEnjJg3MopdLddkJE70mULItS/Vh37BHcI00mcOJcH1vhD3odbpvWokpxam7xA==}
+  '@astrojs/check@0.9.5':
+    resolution: {integrity: sha512-88vc8n2eJ1Oua74yXSGo/8ABMeypfQPGEzuoAx2awL9Ju8cE6tZ2Rz9jVx5hIExHK5gKVhpxfZj4WXm7e32g1w==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -127,8 +127,8 @@ packages:
     resolution: {integrity: sha512-q8VwfU/fDZNoDOf+r7jUnMC2//H2l0TuQ6FkGJL8vD8nw/q5KiL3DS1KKBI3QhI9UQhpJ5dc7AtqfbXWuOgLCQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/rss@4.0.12':
-    resolution: {integrity: sha512-O5yyxHuDVb6DQ6VLOrbUVFSm+NpObulPxjs6XT9q3tC+RoKbN4HXMZLpv0LvXd1qdAjzVgJ1NFD+zKHJNDXikw==}
+  '@astrojs/rss@4.0.13':
+    resolution: {integrity: sha512-ugW4DmGn8kgfl8/qecU3EcKCAuEBrZqY7eYfa6at0sY7HGEwRdzsOafLE437RwDMP2ZuxfKnCNABs99YVhX0kg==}
 
   '@astrojs/sitemap@3.6.0':
     resolution: {integrity: sha512-4aHkvcOZBWJigRmMIAJwRQXBS+ayoP5z40OklTXYXhUDhwusz+DyDl+nSshY6y9DvkVEavwNcFO8FD81iGhXjg==}
@@ -1209,8 +1209,8 @@ packages:
   astro-font@1.1.0:
     resolution: {integrity: sha512-hj1A0MkaJTeaArBpf1m9s4Nxu1Bn9h0QiEPeR9Dfjle25pT4CH4higzuadWzCRSvhGO2SzbM11YwZEF+cmLDxg==}
 
-  astro@5.14.4:
-    resolution: {integrity: sha512-yqgMAO2Whi9GmZkByyiPcG7CiiPr0Me0iBSorMa6M0g+wQk/ewnIqUyr7T/uFCPTQndoKwucnYFTrf0yfb0urw==}
+  astro@5.15.1:
+    resolution: {integrity: sha512-VM679M1qxOjGo6q3vKYDNDddkALGgMopG93IwbEXd3Buc2xVLuuPj4HNziNugSbPQx5S6UReMp5uzw10EJN81A==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3422,7 +3422,7 @@ snapshots:
 
   '@antfu/utils@9.3.0': {}
 
-  '@astrojs/check@0.9.4(prettier-plugin-astro@0.12.3)(prettier@3.6.2)(typescript@5.9.3)':
+  '@astrojs/check@0.9.5(prettier-plugin-astro@0.12.3)(prettier@3.6.2)(typescript@5.9.3)':
     dependencies:
       '@astrojs/language-server': 2.15.4(prettier-plugin-astro@0.12.3)(prettier@3.6.2)(typescript@5.9.3)
       chokidar: 4.0.3
@@ -3495,10 +3495,10 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/rss@4.0.12':
+  '@astrojs/rss@4.0.13':
     dependencies:
       fast-xml-parser: 5.3.0
-      kleur: 4.1.5
+      picocolors: 1.1.1
 
   '@astrojs/sitemap@3.6.0':
     dependencies:
@@ -4618,7 +4618,7 @@ snapshots:
 
   astro-font@1.1.0: {}
 
-  astro@5.14.4(@types/node@24.7.1)(jiti@2.6.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.15.1(@types/node@24.7.1)(jiti@2.6.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.4
@@ -4652,7 +4652,6 @@ snapshots:
       http-cache-semantics: 4.2.0
       import-meta-resolve: 4.2.0
       js-yaml: 4.1.0
-      kleur: 4.1.5
       magic-string: 0.30.19
       magicast: 0.3.5
       mrmime: 2.0.1
@@ -4660,6 +4659,7 @@ snapshots:
       p-limit: 6.2.0
       p-queue: 8.1.1
       package-manager-detector: 1.4.0
+      picocolors: 1.1.1
       picomatch: 4.0.3
       prompts: 2.4.2
       rehype: 13.0.2
