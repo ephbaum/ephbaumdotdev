@@ -1,6 +1,21 @@
 // Global Color System for Dynamic UI Components
 // This script manages colors across all components and pages
 
+// Load contrast utilities
+if (typeof window.ContrastUtils === 'undefined') {
+  console.warn('ContrastUtils not loaded. Loading contrast-utils.js...');
+  const script = document.createElement('script');
+  script.src = '/contrast-utils.js';
+  script.onload = () => {
+    console.log('ContrastUtils loaded successfully');
+    // Re-initialize colors after contrast utils are loaded
+    if (window.BrutalColorSystem) {
+      window.BrutalColorSystem.applyAllColors();
+    }
+  };
+  document.head.appendChild(script);
+}
+
 // Available colors from the brutal-ui theme
 const colors = [
   "red",
@@ -66,6 +81,21 @@ function getRandomColorExcluding(excludedColors = []) {
   return availableColors[Math.floor(Math.random() * availableColors.length)];
 }
 
+// Helper function to get a random accessible background color
+function getRandomAccessibleColorExcluding(excludedColors = []) {
+  if (typeof window.ContrastUtils === 'undefined') {
+    console.warn('ContrastUtils not available, falling back to regular color selection');
+    return getRandomColorExcluding(excludedColors);
+  }
+  
+  try {
+    return window.ContrastUtils.getRandomAccessibleBackground(colors, colorMap, excludedColors);
+  } catch (error) {
+    console.warn('Error getting accessible color, falling back to regular selection:', error);
+    return getRandomColorExcluding(excludedColors);
+  }
+}
+
 // Initialize colors
 function initializeColors() {
   if (!colors || colors.length === 0) {
@@ -98,7 +128,7 @@ function applyMainBackgroundColors() {
       });
 
       // Add new random background color (changes on each palette button click)
-      const mainBgColor = colors[Math.floor(Math.random() * colors.length)];
+      const mainBgColor = getRandomAccessibleColorExcluding();
       element.classList.add(`bg-${mainBgColor}`);
     }
   });
@@ -152,7 +182,7 @@ function applyCardColors() {
 
     // Get parent background color and avoid using it
     const parentColor = getParentBackgroundColor(card);
-    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
+    const cardColor = getRandomAccessibleColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -173,7 +203,7 @@ function applyCardColors() {
 
     // Get parent background color and avoid using it
     const parentColor = getParentBackgroundColor(card);
-    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
+    const cardColor = getRandomAccessibleColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -192,7 +222,7 @@ function applyCardColors() {
 
     // Get parent background color and avoid using it
     const parentColor = getParentBackgroundColor(card);
-    const cardColor = getRandomColorExcluding(parentColor ? [parentColor] : []);
+    const cardColor = getRandomAccessibleColorExcluding(parentColor ? [parentColor] : []);
     card.classList.add(`bg-${cardColor}`);
 
     // Also apply the color directly as inline style to override any CSS specificity issues
@@ -220,7 +250,7 @@ function applyButtonColors() {
       element.style.borderColor = '#000000';
     } else {
       // For pills, apply background color only (borders stay black)
-      const elementColor = colors[Math.floor(Math.random() * colors.length)];
+      const elementColor = getRandomAccessibleColorExcluding();
       element.classList.add(`bg-${elementColor}`);
       element.style.backgroundColor = colorMap[elementColor];
     }
@@ -242,7 +272,7 @@ function applyHoverEffects() {
     });
 
     // Add new random hover class
-    const hoverColor = colors[Math.floor(Math.random() * colors.length)];
+    const hoverColor = getRandomAccessibleColorExcluding();
     element.classList.add(`hover:bg-${hoverColor}`);
   });
 
@@ -274,12 +304,36 @@ function applySpecialElementColors() {
   });
 }
 
+// Apply colors to footer links
+function applyFooterColors() {
+  const footer = document.querySelector('[data-brutal-footer]');
+  if (!footer) return;
+
+  // Get all links in the footer
+  const footerLinks = footer.querySelectorAll('a');
+  
+  footerLinks.forEach((link) => {
+    // Remove existing color classes
+    colors.forEach((color) => {
+      link.classList.remove(`text-${color}`);
+    });
+
+    // Get an accessible color for the link text
+    const linkColor = getRandomAccessibleColorExcluding();
+    link.classList.add(`text-${linkColor}`);
+    
+    // Also apply the color directly as inline style to override any CSS specificity issues
+    link.style.color = colorMap[linkColor];
+  });
+}
+
 // Main function to apply all color changes
 function applyAllColors() {
   initializeColors();
   applyMainBackgroundColors();
   applyCardColors();
   applyButtonColors();
+  applyFooterColors();
   applyHoverEffects();
   applySpecialElementColors();
 
@@ -489,6 +543,7 @@ window.BrutalColorSystem = {
   applyMainBackgroundColors,
   applyCardColors,
   applyButtonColors,
+  applyFooterColors,
   applyHoverEffects,
   applySpecialElementColors,
   startDiscoMode,

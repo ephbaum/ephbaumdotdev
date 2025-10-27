@@ -39,6 +39,90 @@ html {
   }
 }
 
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  /* Override all dynamic colors with high contrast alternatives */
+  html,
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Ensure all text is black on white */
+  * {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Ensure icons are visible in high contrast */
+  [class*='i-uil-'],
+  [class*='i-'],
+  svg,
+  .icon {
+    color: #000000 !important;
+    background-color: #000000 !important;
+    fill: #000000 !important;
+    stroke: #000000 !important;
+  }
+
+  /* Keep borders for structure */
+  [data-brutal-card],
+  [data-brutal-button],
+  [data-brutal-pill] {
+    border: 2px solid #000000 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hover states for high contrast */
+  [data-brutal-button]:hover,
+  [data-brutal-pill]:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Hover states for icons */
+  a:hover [class*='i-uil-'],
+  a:hover [class*='i-'],
+  a:hover svg,
+  a:hover .icon {
+    color: #ffffff !important;
+    background-color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Override any inline styles that might interfere */
+  .author-color,
+  .published-color {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+  }
+
+  /* Ensure links are visible */
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  a:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Footer links in high contrast */
+  [data-brutal-footer] a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  [data-brutal-footer] a:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 22px;
   background-color: var(--primary);

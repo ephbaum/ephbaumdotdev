@@ -51,35 +51,48 @@ const { content } = Astro.props;
   </div>
 </article>
 
+<script src="/contrast-utils.js" is:inline></script>
 <script src="/global-color-system.js" is:inline></script>
 <script>
-  // Apply random colors for author and published text with contrasting backgrounds
+  // Apply accessible colors for author and published text with contrasting backgrounds
   function applyRandomColors() {
     const article = document.querySelector('article');
-    if (article && window.BrutalColorSystem) {
+
+    // Wait for utilities to load if they're not available yet
+    if (!window.BrutalColorSystem || !(window as any).ContrastUtils) {
+      // Try again after a short delay
+      setTimeout(applyRandomColors, 100);
+      return;
+    }
+
+    if (article) {
       const colors = window.BrutalColorSystem.colors;
       const colorMap = window.BrutalColorSystem.colorMap;
 
-      // Generate random colors for text
-      const authorColor = colors[Math.floor(Math.random() * colors.length)];
-      const publishedColor = colors[Math.floor(Math.random() * colors.length)];
+      try {
+        // Get accessible color pairs for author and published badges
+        const authorPair = (window as any).ContrastUtils.getRandomAccessibleTextPair(
+          colors,
+          colorMap
+        );
+        const publishedPair = (window as any).ContrastUtils.getRandomAccessibleTextPair(
+          colors,
+          colorMap
+        );
 
-      // Generate contrasting background colors (avoid same color as text)
-      let authorBgColor = colors[Math.floor(Math.random() * colors.length)];
-      while (authorBgColor === authorColor) {
-        authorBgColor = colors[Math.floor(Math.random() * colors.length)];
+        // Set CSS custom properties with accessible colors
+        article.style.setProperty('--authorColor', authorPair.foreground);
+        article.style.setProperty('--authorBgColor', authorPair.background);
+        article.style.setProperty('--publishedColor', publishedPair.foreground);
+        article.style.setProperty('--publishedBgColor', publishedPair.background);
+      } catch (error) {
+        console.warn('Error applying accessible colors, falling back to default:', error);
+        // Fallback to black on white
+        article.style.setProperty('--authorColor', '#000000');
+        article.style.setProperty('--authorBgColor', '#ffffff');
+        article.style.setProperty('--publishedColor', '#000000');
+        article.style.setProperty('--publishedBgColor', '#ffffff');
       }
-
-      let publishedBgColor = colors[Math.floor(Math.random() * colors.length)];
-      while (publishedBgColor === publishedColor) {
-        publishedBgColor = colors[Math.floor(Math.random() * colors.length)];
-      }
-
-      // Set CSS custom properties
-      article.style.setProperty('--authorColor', colorMap[authorColor]);
-      article.style.setProperty('--authorBgColor', colorMap[authorBgColor]);
-      article.style.setProperty('--publishedColor', colorMap[publishedColor]);
-      article.style.setProperty('--publishedBgColor', colorMap[publishedBgColor]);
     }
   }
 
