@@ -2,7 +2,7 @@
 title: "Building Horror Movie Season: A Journey in AI-Augmented Development"
 postSlug: building-horror-movie-season-a-journey-in-ai-augmented-development
 slug: building-horror-movie-season-a-journey-in-ai-augmented-development
-pubDate: 10/26/2025 8:20 PM
+pubDate: 10/26/2025 11:20 AM
 imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
