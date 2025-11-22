@@ -14,7 +14,7 @@ This is a heavily modified version of the [Brutal](https://github.com/eliancodes
 - **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine with `@unocss/preset-wind3` (Tailwind v3 compatible)
 - **[Brutal UI](https://github.com/eliancodes/brutal-ui)** - Brutalist design system
 - **[TypeScript](https://www.typescriptlang.org/)** - Full type safety
-- **[pnpm](https://pnpm.io/)** v10.12.4 - Fast, disk space efficient package manager
+- **[pnpm](https://pnpm.io/)** v10.23.0 - Fast, disk space efficient package manager
 - **[asdf](https://asdf-vm.com/)** - Version management for Node.js and pnpm
 - **[Sharp](https://sharp.pixelplumbing.com/)** - High-performance image processing for OG images
 
