@@ -7,12 +7,12 @@ import { join } from 'path';
 
 const { values: args } = parseArgs({
   options: {
-    title:       { type: 'string' },
+    title: { type: 'string' },
     description: { type: 'string' },
-    tags:        { type: 'string' },
-    date:        { type: 'string' },
-    draft:       { type: 'boolean', default: false },
-    help:        { type: 'boolean', default: false },
+    tags: { type: 'string' },
+    date: { type: 'string' },
+    draft: { type: 'boolean', default: false },
+    help: { type: 'boolean', default: false },
   },
   allowPositionals: true,
 });
@@ -34,16 +34,17 @@ Options:
 }
 
 function formatDate(date) {
-  const year  = date.getFullYear();
+  const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day   = String(date.getDate()).padStart(2, '0');
-  const mins  = String(date.getMinutes()).padStart(2, '0');
-  const ampm  = date.getHours() >= 12 ? 'PM' : 'AM';
+  const day = String(date.getDate()).padStart(2, '0');
+  const mins = String(date.getMinutes()).padStart(2, '0');
+  const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
   const hours = date.getHours() % 12 || 12;
   return {
     filename: `${year}-${month}-${day}`,
-    pubDate:  `${month}/${day}/${year} ${hours}:${mins} ${ampm}`,
-    year, month,
+    pubDate: `${month}/${day}/${year} ${hours}:${mins} ${ampm}`,
+    year,
+    month,
   };
 }
 
@@ -57,12 +58,15 @@ function slugify(text) {
 }
 
 function parseTags(input) {
-  const tags = (input || '').split(',').map(t => t.trim()).filter(Boolean);
+  const tags = (input || '')
+    .split(',')
+    .map((t) => t.trim())
+    .filter(Boolean);
   return tags.length ? tags : ['general'];
 }
 
 async function prompt(rl, question) {
-  return new Promise(resolve => rl.question(question, resolve));
+  return new Promise((resolve) => rl.question(question, resolve));
 }
 
 async function main() {
@@ -70,11 +74,11 @@ async function main() {
 
   if (args.title) {
     // CLI mode
-    title       = args.title;
+    title = args.title;
     description = args.description || '';
-    tags        = parseTags(args.tags);
-    isDraft     = args.draft;
-    date        = args.date ? new Date(args.date) : new Date();
+    tags = parseTags(args.tags);
+    isDraft = args.draft;
+    date = args.date ? new Date(args.date) : new Date();
     if (isNaN(date.getTime())) {
       console.error('Invalid date format, using today.');
       date = new Date();
@@ -84,10 +88,13 @@ async function main() {
     const rl = createInterface({ input: process.stdin, output: process.stdout });
     try {
       title = (await prompt(rl, 'Title: ')).trim();
-      if (!title) { console.error('Title is required.'); process.exit(1); }
+      if (!title) {
+        console.error('Title is required.');
+        process.exit(1);
+      }
 
       description = (await prompt(rl, 'Description (optional): ')).trim();
-      tags        = parseTags(await prompt(rl, 'Tags (comma-separated): '));
+      tags = parseTags(await prompt(rl, 'Tags (comma-separated): '));
 
       const dateInput = (await prompt(rl, 'Date YYYY-MM-DD (Enter for today): ')).trim();
       date = dateInput ? new Date(dateInput) : new Date();
@@ -125,7 +132,7 @@ author: Eph Baum
 featured: false
 draft: ${isDraft}
 tags:
-${tags.map(t => `  - ${t}`).join('\n')}
+${tags.map((t) => `  - ${t}`).join('\n')}
 description: "${description}"
 layout: ../../../../layouts/BlogPost.astro
 ---
@@ -136,4 +143,7 @@ layout: ../../../../layouts/BlogPost.astro
   console.log(`Created: ${filePath}`);
 }
 
-main().catch(e => { console.error(e.message); process.exit(1); });
+main().catch((e) => {
+  console.error(e.message);
+  process.exit(1);
+});
