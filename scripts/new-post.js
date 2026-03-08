@@ -1,202 +1,120 @@
 #!/usr/bin/env node
 
+import { parseArgs } from 'util';
 import { createInterface } from 'readline';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 
-// Parse command-line arguments
-function parseArgs() {
-  const args = process.argv.slice(2);
-  const parsed = {};
+const { values: args } = parseArgs({
+  options: {
+    title:       { type: 'string' },
+    description: { type: 'string' },
+    tags:        { type: 'string' },
+    date:        { type: 'string' },
+    draft:       { type: 'boolean', default: false },
+    help:        { type: 'boolean', default: false },
+  },
+  allowPositionals: true,
+});
 
-  for (let i = 0; i < args.length; i++) {
-    if (args[i].startsWith('--')) {
-      const key = args[i].slice(2);
-      const value = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true;
-      parsed[key] = value;
-      if (value !== true) i++;
-    }
-  }
+if (args.help) {
+  console.log(`
+Usage:
+  pnpm new:post                                    # interactive
+  pnpm new:post --title "My Post" [options]        # CLI
 
-  return parsed;
-}
-
-const cliArgs = parseArgs();
-const isInteractive = Object.keys(cliArgs).length === 0 || cliArgs.help;
-
-const rl = isInteractive
-  ? createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    })
-  : null;
-
-function question(prompt) {
-  if (!isInteractive) {
-    throw new Error('Cannot prompt in non-interactive mode');
-  }
-  return new Promise((resolve) => {
-    rl.question(prompt, resolve);
-  });
+Options:
+  --title          Post title (required)
+  --description    Post description (optional)
+  --tags           Comma-separated tags (default: "general")
+  --date           YYYY-MM-DD (default: today)
+  --draft          Mark as draft
+`);
+  process.exit(0);
 }
 
 function formatDate(date) {
-  const year = date.getFullYear();
+  const year  = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-  const displayHours = date.getHours() % 12 || 12;
-
+  const day   = String(date.getDate()).padStart(2, '0');
+  const mins  = String(date.getMinutes()).padStart(2, '0');
+  const ampm  = date.getHours() >= 12 ? 'PM' : 'AM';
+  const hours = date.getHours() % 12 || 12;
   return {
     filename: `${year}-${month}-${day}`,
-    pubDate: `${month}/${day}/${year} ${displayHours}:${minutes} ${ampm}`,
+    pubDate:  `${month}/${day}/${year} ${hours}:${mins} ${ampm}`,
+    year, month,
   };
 }
 
 function slugify(text) {
   return text
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
     .trim();
 }
 
+function parseTags(input) {
+  const tags = (input || '').split(',').map(t => t.trim()).filter(Boolean);
+  return tags.length ? tags : ['general'];
+}
+
+async function prompt(rl, question) {
+  return new Promise(resolve => rl.question(question, resolve));
+}
+
 async function main() {
-  // Show help if requested
-  if (cliArgs.help) {
-    console.log(`
-📝 Blog Post Generator
+  let title, description, tags, date, isDraft;
 
-Usage:
-  Interactive mode:
-    pnpm run new-post
+  if (args.title) {
+    // CLI mode
+    title       = args.title;
+    description = args.description || '';
+    tags        = parseTags(args.tags);
+    isDraft     = args.draft;
+    date        = args.date ? new Date(args.date) : new Date();
+    if (isNaN(date.getTime())) {
+      console.error('Invalid date format, using today.');
+      date = new Date();
+    }
+  } else {
+    // Interactive mode
+    const rl = createInterface({ input: process.stdin, output: process.stdout });
+    try {
+      title = (await prompt(rl, 'Title: ')).trim();
+      if (!title) { console.error('Title is required.'); process.exit(1); }
 
-  CLI mode:
-    pnpm run new-post --title "Your Title" --description "Your description" [options]
+      description = (await prompt(rl, 'Description (optional): ')).trim();
+      tags        = parseTags(await prompt(rl, 'Tags (comma-separated): '));
 
-Options:
-  --title          Post title (required in CLI mode)
-  --description    Post description (required in CLI mode)
-  --tags           Comma-separated tags (default: "general")
-  --date           Date in YYYY-MM-DD format (default: today)
-  --draft          Set to draft (default: false)
-  --help           Show this help message
+      const dateInput = (await prompt(rl, 'Date YYYY-MM-DD (Enter for today): ')).trim();
+      date = dateInput ? new Date(dateInput) : new Date();
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date, using today.');
+        date = new Date();
+      }
 
-Examples:
-  pnpm run new-post --title "My Post" --description "A great post" --tags "ai,tech"
-  pnpm run new-post --title "Draft Post" --description "WIP" --draft true
-        `);
-    process.exit(0);
+      const draftInput = (await prompt(rl, 'Draft? (y/N): ')).trim();
+      isDraft = draftInput.toLowerCase().startsWith('y');
+    } finally {
+      rl.close();
+    }
   }
 
-  console.log('📝 Creating a new blog post...\n');
+  const slug = slugify(title);
+  const { filename, pubDate, year, month } = formatDate(date);
+  const filePath = join('src', 'content', 'blog', String(year), month, `${filename}-${slug}.md`);
 
-  try {
-    let title, description, tags, date, isDraft;
+  mkdirSync(join('src', 'content', 'blog', String(year), month), { recursive: true });
 
-    // CLI mode - use command-line arguments
-    if (!isInteractive) {
-      title = cliArgs.title;
-      description = cliArgs.description;
+  if (existsSync(filePath)) {
+    console.error(`File already exists: ${filePath}`);
+    process.exit(1);
+  }
 
-      if (!title || !description) {
-        console.log('❌ --title and --description are required in CLI mode!');
-        console.log('   Run with --help for usage information.');
-        process.exit(1);
-      }
-
-      // Parse tags
-      const tagsInput = cliArgs.tags || 'general';
-      tags = tagsInput
-        .split(',')
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0);
-
-      // Parse date
-      if (cliArgs.date) {
-        date = new Date(cliArgs.date);
-        if (isNaN(date.getTime())) {
-          console.log('❌ Invalid date format. Using current date/time.');
-          date = new Date();
-        }
-      } else {
-        date = new Date();
-      }
-
-      // Parse draft status
-      isDraft = cliArgs.draft === 'true' || cliArgs.draft === true;
-    } else {
-      // Interactive mode - prompt for input
-      // Get title
-      title = await question('Title: ');
-      if (!title.trim()) {
-        console.log('❌ Title is required!');
-        process.exit(1);
-      }
-
-      // Get description
-      description = await question('Description: ');
-      if (!description.trim()) {
-        console.log('❌ Description is required!');
-        process.exit(1);
-      }
-
-      // Get tags
-      const tagsInput = await question('Tags (comma-separated): ');
-      tags = tagsInput
-        .split(',')
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0);
-
-      // Ensure we always have at least one tag
-      if (tags.length === 0) {
-        tags.push('general');
-      }
-
-      // Get date/time
-      const dateInput = await question(
-        'Date/Time (YYYY-MM-DD HH:MM AM/PM) or press Enter for now: '
-      );
-
-      if (dateInput.trim()) {
-        try {
-          date = new Date(dateInput);
-          if (isNaN(date.getTime())) {
-            throw new Error('Invalid date');
-          }
-        } catch (error) {
-          console.log('❌ Invalid date format. Using current date/time.');
-          date = new Date();
-        }
-      } else {
-        date = new Date();
-      }
-
-      // Get draft status
-      const draftInput = await question('Draft? (y/N): ');
-      isDraft = draftInput.toLowerCase().startsWith('y');
-    }
-
-    // Generate slug and filename
-    const slug = slugify(title);
-    const { filename, pubDate } = formatDate(date);
-    const fullFilename = `${filename}-${slug}.md`;
-
-    // Create directory structure
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const dirPath = join('src', 'content', 'blog', year.toString(), month);
-
-    if (!existsSync(dirPath)) {
-      mkdirSync(dirPath, { recursive: true });
-    }
-
-    const filePath = join(dirPath, fullFilename);
-
-    // Generate frontmatter
-    const frontmatter = `---
+  const frontmatter = `---
 title: "${title}"
 postSlug: ${slug}
 slug: ${slug}
@@ -207,46 +125,15 @@ author: Eph Baum
 featured: false
 draft: ${isDraft}
 tags:
-${tags.map((tag) => `  - ${tag}`).join('\n')}
+${tags.map(t => `  - ${t}`).join('\n')}
 description: "${description}"
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-![Featured Image](../../../../assets/img/ephbaum_avatar_800_400.png)
-
-Your blog post content goes here...
-
-## Introduction
-
-Start writing your post here.
-
-## Main Content
-
-Add your main content sections here.
-
-## Conclusion
-
-Wrap up your thoughts here.
 `;
 
-    // Write the file
-    writeFileSync(filePath, frontmatter);
-
-    console.log(`\n✅ Blog post created successfully!`);
-    console.log(`📁 Location: ${filePath}`);
-    console.log(`🔗 Slug: ${slug}`);
-    console.log(`📅 Date: ${pubDate}`);
-    console.log(`📝 Draft: ${isDraft ? 'Yes' : 'No'}`);
-    console.log(`🏷️  Tags: ${tags.join(', ')}`);
-    console.log(`\n💡 Tip: Edit the file to add your content and images!`);
-  } catch (error) {
-    console.error('❌ Error creating blog post:', error.message);
-    process.exit(1);
-  } finally {
-    if (rl) {
-      rl.close();
-    }
-  }
+  writeFileSync(filePath, frontmatter);
+  console.log(`Created: ${filePath}`);
 }
 
-main();
+main().catch(e => { console.error(e.message); process.exit(1); });

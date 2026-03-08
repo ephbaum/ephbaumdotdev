@@ -15,7 +15,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new-post": "node scripts/new-post.js",
+    "new:post": "node scripts/new-post.js",
     "astro:check": "astro check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
