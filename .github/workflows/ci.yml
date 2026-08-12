@@ -1,4 +1,8 @@
-name: Deploy to Vercel
+name: CI
+
+# Build gate only. Deployment is owned by Vercel's Git integration, which
+# builds this repo directly — this workflow just verifies that a push or pull
+# request still type-checks and builds before it gets there.
 
 on:
   push:
@@ -7,7 +11,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,12 +46,3 @@ jobs:
 
       - name: Build site
         run: pnpm run build
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          scope: ${{ secrets.VERCEL_ORG_ID }}
