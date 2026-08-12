@@ -5,10 +5,9 @@ import { html as toReactElement } from 'satori-html';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// @TODO: Find a public link or add the font to the project
-const fontFile = await fetch('https://og-playground.vercel.app/inter-latin-ext-700-normal.woff');
-
-const fontData: ArrayBuffer = await fontFile.arrayBuffer();
+// Read the OG font from the local filesystem so the build never depends on a
+// third-party host being reachable at build time.
+const fontData = readFileSync(join(process.cwd(), 'public/fonts/outfit.ttf'));
 
 // Read the logo image from the local filesystem and convert to base64 data URI
 // Use process.cwd() to get the project root, which works both in dev and build
@@ -66,7 +65,7 @@ export const GET: APIRoute = async () => {
   const svg = await satori(html, {
     fonts: [
       {
-        name: 'Inter Latin',
+        name: 'Outfit',
         data: fontData,
         style: 'normal',
       },
