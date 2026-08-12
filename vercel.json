@@ -4,15 +4,15 @@
   "framework": "astro",
   "installCommand": "pnpm install",
   "devCommand": "pnpm run dev",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
   "redirects": [
     {
-      "source": "www.ephbaum.dev/(.*)",
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ephbaum.dev"
+        }
+      ],
       "destination": "https://ephbaum.dev/$1",
       "permanent": true
     }
