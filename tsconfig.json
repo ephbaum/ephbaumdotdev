@@ -9,5 +9,10 @@
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"]
     }
-  }
+  },
+  // Overrides astro/tsconfigs/base, so "dist" has to be carried forward here.
+  // eslint.config.js is tooling config rather than site source, and several of
+  // the ESLint packages it imports ship no type declarations — type-checking it
+  // only produces implicit-any noise.
+  "exclude": ["dist", "eslint.config.js"]
 }
