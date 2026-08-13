@@ -20,7 +20,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 [Horror Movie Season](https://horrormovieseason.com) hands out badges — a three-day streak, a seven-day streak, a themed badge for a week of vampire movies, a challenge for thirty-one films in one October. I wrote about [building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/) last year. The detail I glossed over then is the one this post turns on: the browser writes straight to Firestore, with no backend API in between for normal writes.
 
-That last part is what makes this story possible. Because the browser is the one writing, award badges are granted optimistically, client-side, the instant you qualify — no spinner, no round trip. And because I don't trust the browser with the final word, a Cloud Function trigger fires on every write to a movie document and re-validates that user's awards against a second, independent implementation of the same rules.
+That last part is what makes this story possible. Because the browser is the one writing, award badges are granted optimistically, client-side, the instant you qualify — no spinner, no round trip. And because I don't trust the browser with the final word, a Cloud Function trigger fires on every write to a movie document and re-validates that user's awards. For a long stretch, it did that against a second, independent implementation of the same rules.
 
 Two implementations of one rule, running on different machines, one of them holding delete authority over the other's output. That sentence is the whole postmortem. Everything below is just what happens when you don't notice you've built it.
 
@@ -72,7 +72,7 @@ Next write from the browser: no badge on the user's account, client optimistical
 
 ## The fix, and why the order of operations is the actual lesson
 
-There's an unmerged branch that fixes this properly, and the order it does things in is the part worth internalizing more than any individual diff. It doesn't start by tightening the validator. It starts by fixing what the *producer* — the client — attaches as evidence, replacing "most recent N movies" with a shared function that locates the actual run of consecutive days a milestone can be traced to, identically on both sides. Only after that does it fix the self-healing step to compute "already held" from the *post-removal* survivors, so a revoked badge becomes eligible for correct re-detection in the same pass instead of waiting for the next write. Only *after both of those* does it strengthen `validateStreakAward` from a presence check into something that actually checks consecutive days.
+The fix has since landed, and the order it did things in is the part worth internalizing more than any individual diff. It didn't start by tightening the validator. It started by fixing what the *producer* — the client — attaches as evidence, replacing "most recent N movies" with a function that locates the actual run of consecutive days a milestone can be traced to. That function is now a single implementation compiled into both the browser bundle and the deployed trigger, rather than two copies kept in agreement by hand. Only after that did it fix the self-healing step to compute "already held" from the *post-removal* survivors, so a revoked badge becomes eligible for correct re-detection in the same pass instead of waiting for the next write. Only *after both of those* did it strengthen `validateStreakAward` from a presence check into something that actually checks consecutive days.
 
 Do those in the opposite order — strengthen the validator first — and you get the exact bug this post is about, just with better production values.
 
@@ -108,8 +108,10 @@ Drafted in the horror_movie_season repo and moved here. Written for readers with
 access to that repository, so every bug and change is described in prose rather than
 linked. The counterpoint section in each post is deliberate and load-bearing.
 
-- "There's an unmerged branch that fixes this properly" is stale — the fix has merged. Shift to past tense.
-- The fix-order argument (producer, then repair, then strictness) still holds and is the durable part of the post.
+- Updated for the merged fix: the branch language is gone, and the shared-function detail
+  reflects one implementation compiled into both targets rather than two kept in step.
+- The fix-order argument (producer, then repair, then strictness) is unchanged and remains
+  the durable part of the post.
 
 imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
 are still to come.
