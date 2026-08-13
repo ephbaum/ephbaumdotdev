@@ -51,7 +51,8 @@ ls node_modules/@oxc-parser/    # must NOT be empty
 | `pnpm run astro:check` | Type-check only, no build |
 | `pnpm run lint` / `lint:fix` | ESLint |
 | `pnpm run format` / `format:check` | Prettier |
-| `pnpm run check` | `astro check` + lint + format check |
+| `pnpm run quotes:check` / `quotes:fix` | Curly quotes in Markdown — report, or straighten in place |
+| `pnpm run check` | `astro check` + lint + format check + quote check |
 | `pnpm run check:fix` | Same, but writes fixes |
 | `pnpm new:post` | Scaffold a blog post (interactive, or `--title "..."`; `--help` for flags) |
 
@@ -118,6 +119,37 @@ existing posts, and `pnpm new:post` still writes it, but nothing reads it.
 **Sort posts explicitly.** The content layer orders entries by `id` — the flat
 slug — so the `.reverse()` that used to yield newest-first (via path order) is
 now reverse-alphabetical. Use `getPostsNewestFirst()` from `@utils/posts`.
+
+### Straight quotes only
+
+<!-- straight-quotes:off -->
+
+Markdown source is ASCII-quoted. `'` and `"`, never `‘ ’ “ ”`.
+
+<!-- straight-quotes:on -->
+
+This is enforced — `pnpm run check` fails on curly quotes, and so does CI. Run
+`pnpm run quotes:fix` (also the first step of `pnpm run check:fix`) to
+straighten them.
+
+The rule exists because the writing side of this blog has moved through a Ghost
+web editor on macOS and Joplin on iOS, both of which substitute curly quotes
+silently. They render identically, so they only ever surface later as a diff
+touching a character nobody typed. Prettier does not normalise prose
+punctuation, so nothing else in the toolchain catches them.
+
+Only quote characters are coerced. Dashes, ellipses, guillemets (`« » ‹ ›`) and
+prime marks (`′ ″`) are left alone — deliberate punctuation or units, not editor
+substitutions.
+
+A file that genuinely needs the banned characters — this section, say — can
+exempt a region by wrapping it in `<!-- straight-quotes:off -->` and
+`<!-- straight-quotes:on -->` comments.
+
+Note this governs **source**, not output: the Markdown processor still applies
+typographic quotes when rendering, so the published HTML has curly quotes by
+design. Straightening the source changed nothing in the built output — verified
+across all 215 pages.
 
 ### Where images go
 

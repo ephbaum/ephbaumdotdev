@@ -45,7 +45,7 @@ So far, though I'm not far in the process, it's been pretty accurate.  It's at 
 
 FWIW - Ultimately I settled on [asdf](https://asdf-vm.com/) - it feels almost like cheating, tbh - if you're not familiar, you might want to check it out 😅
 
-I can't make too many judgements yet, but I'm broadly feeling positive and excited about this project. I'll admit, however, I have already considered pivoting toward what feels like a more relevant idea: a “buy nothing” marketplace platform using an event-driven architecture (ooh: ✨✨)
+I can't make too many judgements yet, but I'm broadly feeling positive and excited about this project. I'll admit, however, I have already considered pivoting toward what feels like a more relevant idea: a "buy nothing" marketplace platform using an event-driven architecture (ooh: ✨✨)
 
 Anyway, let me close by pointing out that GPT-4 clearly isn't [AGI](https://en.m.wikipedia.org/wiki/Artificial_general_intelligence). It makes a lot of dumb repeated mistakes, its memory is terrible, it makes things up, and sometimes just seems dumb\*, however, it's definitely a powerful technology. The more time with it I spend, the more impressed I become.
 

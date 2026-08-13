@@ -84,7 +84,7 @@ if (frequencies[0] === 2 && frequencies[1] === 2) {
 
 🤦
 
-I use generative AI now. I really like it, though it's not always helpful or accurate. I've been using GitHub's Co-Pilot for a while and it's mostly useful in saving me from typing out repetitive and basic code like `for` loops or `switch` or `match` statements. In short: I think I'm still smarter than “AI”. Co-Pilot Chat and [ChatGPT](https://openai.com/chatgpt) are still helpful in reasoning through problems sometimes- it's like [rubberducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) without having to waste a real person's time.
+I use generative AI now. I really like it, though it's not always helpful or accurate. I've been using GitHub's Co-Pilot for a while and it's mostly useful in saving me from typing out repetitive and basic code like `for` loops or `switch` or `match` statements. In short: I think I'm still smarter than "AI". Co-Pilot Chat and [ChatGPT](https://openai.com/chatgpt) are still helpful in reasoning through problems sometimes- it's like [rubberducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) without having to waste a real person's time.
 
 Some things that drive me nuts about AI:
 

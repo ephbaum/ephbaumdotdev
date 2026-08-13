@@ -58,5 +58,11 @@ jobs:
       - name: Check formatting
         run: pnpm run format:check
 
+      # Editors on the writing side of this blog (Ghost's web editor, Joplin on
+      # iOS) substitute curly quotes silently. Prettier does not touch prose
+      # punctuation, so without this a pasted post lands them in the source.
+      - name: Check for curly quotes
+        run: pnpm run quotes:check
+
       - name: Build site
         run: pnpm run build

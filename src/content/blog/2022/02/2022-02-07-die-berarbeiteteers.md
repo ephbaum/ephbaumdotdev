@@ -21,7 +21,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 ### The overwork exhaustion
 
-It turns out there's a German word for when your burnout is from working too much. I find that I am not suffering from such a burnout, exactly. Mine is more a “too much across too many things for too long” sort of burn out. I love that if a word for such a condition does not exist in German, it could be crafted.
+It turns out there's a German word for when your burnout is from working too much. I find that I am not suffering from such a burnout, exactly. Mine is more a "too much across too many things for too long" sort of burn out. I love that if a word for such a condition does not exist in German, it could be crafted.
 
 The German language allows for a variety of words to be crafted by simply smashing together other words. For example: _überleben_ means "survive" and its words are _über_ meaning over or above and _leben_ meaning life.
 
@@ -49,11 +49,11 @@ That's not including dealing with things like the a recently totaled car and the
 
 And all of this is on the heels of a Chapter 13 bankruptcy due to medical bills and previous health issues, custody issues, selling a house, several moves, and extreme saving just to make it to the PNW.
 
-I'm good at my role, so good that I was given an award of recognition for “technology excellence” by my peers and organization. That event triggered new anxieties and challenges for me to be so publicly visible in front of more than one thousand employees while dealing with feeling burnt out, anxious, and generally struggling.
+I'm good at my role, so good that I was given an award of recognition for "technology excellence" by my peers and organization. That event triggered new anxieties and challenges for me to be so publicly visible in front of more than one thousand employees while dealing with feeling burnt out, anxious, and generally struggling.
 
 Being recognized comes on the heels of working with my leadership to split up the projects that my team was juggling moving them all closer to projects and teams where they belong, which is something I'd been requesting for some time. Prior to this most recent reorganization my team and I were responsible for a array of somewhat dissimilar systems that were all connected to different areas of the orgs in different ways and only shared some similarities at the stack / framework level. Moving things around made the most sense for a variety of reasons, but it meant that my team was being split apart.
 
-A colleague kept reminding me, as they watched me descend into this burnout, that I'd made it. “Get to the chopper,” he told me, using one of many military references for which he's fond of using to draw comparisons between business and military operations. He was right, of course, I'd made it - but at what cost?
+A colleague kept reminding me, as they watched me descend into this burnout, that I'd made it. "Get to the chopper," he told me, using one of many military references for which he's fond of using to draw comparisons between business and military operations. He was right, of course, I'd made it - but at what cost?
 
 #### I'm... okay?
 
