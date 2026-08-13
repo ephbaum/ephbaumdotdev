@@ -25,15 +25,15 @@
     "check:fix": "astro check && pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.15",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@eliancodes/brutal-ui": "^0.2.6",
-    "@unocss/astro": "^66.6.6",
+    "@unocss/astro": "^66.7.5",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "astro": "^5.18.0",
-    "astro-font": "^1.1.0",
-    "satori": "^0.18.4",
+    "astro-font": "^1.2.0",
+    "satori": "^0.29.0",
     "satori-html": "^0.3.2",
     "typescript": "^5.9.3"
   },
@@ -44,7 +44,7 @@
     "@iconify-json/uil": "^1.2.3",
     "@resvg/resvg-js": "^2.6.2",
     "@typescript-eslint/parser": "^8.66.0",
-    "@unocss/reset": "^66.6.6",
+    "@unocss/reset": "^66.7.5",
     "eslint": "^9.8.0",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -52,7 +52,7 @@
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.35.3",
-    "unocss": "^66.6.6",
+    "unocss": "^66.7.5",
     "vite": "^6.4.1"
   },
   "overrides": {
