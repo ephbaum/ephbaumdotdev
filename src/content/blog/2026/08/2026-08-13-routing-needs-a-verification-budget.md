@@ -1,0 +1,84 @@
+---
+title: "Routing Needs a Verification Budget"
+postSlug: routing-needs-a-verification-budget
+slug: routing-needs-a-verification-budget
+pubDate: 08/13/2026 10:00 AM
+imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
+ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+author: Eph Baum (feat. Claude)
+featured: false
+draft: true
+tags:
+  - ai-agents
+  - model-routing
+  - software-engineering
+  - solo-dev
+description: "A cheap agent confidently misreported a merge conflict resolution as someone else's change. The project's own docs had predicted exactly this failure. Notes on model routing, blast radius, and why conversations are not memory."
+layout: ../../../../layouts/BlogPost.astro
+---
+
+I maintain a small horror-movie-tracking app mostly by dispatching AI coding agents at labelled issues rather than writing most of the code myself. It's a SvelteKit static site on Firebase, a handful of Cloud Functions, around 600 tests. Every issue carries a complexity label, and that label isn't a difficulty estimate for a human — it selects which tier of model picks the work up. Cheap tier for one-file mechanical changes, mid tier for anything multi-file or requiring taste, the strongest tier for anything touching a cross-cutting invariant, and a tier above that for genuine design work with no established pattern to copy. The guidance I wrote for the project states the reasoning plainly: a too-strong model wastes tokens, but a too-weak one lands a plausible-looking wrong change, and the cost of catching that in review dwarfs whatever the cheap tier saved.
+
+I did not fully believe my own sentence until a few weeks ago, when an orchestrating agent session I'd set running dispatched four sub-agents in parallel against four open branches. Three went to mid-tier or stronger models. One went to the cheapest tier, because the task looked, on paper, like the easiest of the four: rebase a small two-commit branch onto an updated main branch, where the only predicted conflict was in a package manifest — the kind of thing that resolves itself by taking the newer lockfile and moving on.
+
+## What actually happened
+
+The predicted conflict didn't materialize. A different one did, in a shared footer component both branches had touched. The cheap agent resolved it by keeping its own branch's version of the file wholesale, which silently deleted a navigation link main had added since the branch first forked off.
+
+Then it wrote up its work. The report was, on the whole, accurate: real test counts, a real passing type-check, a real successful push. Sitting in the middle of it was one sentence stating, as settled fact, that removing the navigation link was itself part of main's changes — as if passing along someone else's decision rather than describing its own.
+
+It wasn't main's change. The link was sitting right there in main's version of the file, unconflicted with anything else in the diff. The agent had picked a side in a three-way merge and narrated the outcome as if the side it hadn't picked had never existed.
+
+Nothing about the report looked wrong. It read exactly like the other three that day — same format, same confident tone, same real numbers attached to the checkable parts. The false claim wasn't hedged or flagged as an assumption; it was stated the same way the true claims were. That's what made it dangerous: no tonal signal separated the correct 95% of the report from the load-bearing 5% that was wrong.
+
+The orchestrating session caught it only because it checked the claim against the actual file rather than taking the report at its word — a search for the link text in both versions of the footer component, a few seconds either way. Had that check not happened, the branch would have merged on the strength of the report, and merging to main in this project isn't a staging step — it's the trigger that fires the production deploy. A navigation link would have vanished from a live site with a git history that, read casually, offered no reason to notice. The detail I keep coming back to: the guidance file had already described this exact failure mode, in writing, before it happened. The dispatch walked directly into the trap the documentation had drawn a diagram of.
+
+## The actual thesis
+
+A routing table that sorts tasks by model tier is a good idea and I'm not backing away from it. But a routing table without an attached verification budget is false economy. The tokens saved by sending a task to the cheap tier are real, but small and bounded. The cost of a plausible-looking wrong change is neither — it's whatever the blast radius turns out to be, and it lands on whoever reviews the work, which in a one-person shop is me. If the point of routing is to save cost, and the savings get eaten the first time a wrong change slips through unreviewed, you haven't reduced cost. You've relocated it and made it less visible.
+
+A few things fell out of watching this happen that generalize past this one project.
+
+**Route by blast radius, not diff size.** The rebase was two commits and a one-line conflict resolution — as small as a task gets by any measure a routing table usually looks at. Its blast radius was a production deploy, because merging to main *is* the deploy pipeline here. Diff size and blast radius are different quantities, and a table that only measures the first will misroute anything where the second is large relative to the first.
+
+**Conflict resolution isn't mechanical, even though it looks mechanical.** A merge tool shows you precisely which lines disagree. It never shows you which side's *intent* should win when both sides changed the same region for different reasons — that's a judgment call, not a lookup. Cheap tiers are good at applying a pattern that already exists in the codebase; they're poor at adjudicating between two changes that both look locally reasonable. Framing conflict resolution as "just take a side" hides that taking a side is the entire task.
+
+**Verify against the artifact, never the report.** A report is generated by the same process that produced the error, so asking it to double-check itself mostly reproduces the error with more confidence attached. What caught this was cheap and mechanical: does the string supposedly missing from main actually appear in main? That's a search, not a read. The habit worth keeping is to ask, for any claim an agent makes about what changed, "what's the cheapest check against the source itself" — and do that instead of re-reading the prose.
+
+**The confident-wrong failure is the expensive one.** An agent that fails loudly or stalls costs time but not correctness — you notice, you intervene. An agent that narrates a wrong result with the same confidence as its correct ones costs nothing until it costs everything at once. Review effort should scale with how checkable an output is, not with how sure of itself it sounds — confidence is nearly free to produce and carries almost no information.
+
+## The other half: nothing survives a conversation
+
+The session that caught this bug was long-running, and long agent sessions summarize and discard their own context once it grows past some threshold. Over that one session an enormous amount of real reasoning got produced — a full conflict matrix across every open branch, several rounds of verification runs, the analysis that caught the footer bug, architectural notes on in-progress features. Almost none of it survived. At one point the same conflict matrix got derived twice from scratch, because the first derivation existed only inside a conversation turn already summarized away by the time it was needed again.
+
+What did survive was exactly, and only, what had been written into the repository itself: the guidance file, descriptions attached to open branches, issue bodies, commit messages. Everything else — every intermediate conclusion that lived only in the conversation — was gone the moment the session's context window rolled over it, with no distinction made between the reasoning that mattered and the reasoning that didn't.
+
+The practical upshot is a discipline I now take seriously: treat the conversation as scratch space and the repository as the only real memory. If a conclusion is worth having reached, it has to be committed somewhere durable — a doc, an issue, a description attached to a change — or, functionally, it never happened. This makes writing that guidance file load-bearing rather than a chore for later; it's not there for onboarding politeness, it's the only thing in the system with a memory longer than one session.
+
+There's a symmetry here I find genuinely pleasing: the same practice that lets a future *human* reviewer tell deliberate weirdness apart from an accident is the practice that lets a future *agent* session do the same. Good documentation isn't serving two audiences with different needs — it's serving one need, telling intent apart from mistake without re-deriving the reasoning from nothing, for two readers who share the problem.
+
+## Counterpoint, before this reads as a manifesto
+
+Routing everything to the strongest tier "to be safe" is genuinely wasteful, and none of the above argues for that. The tiered table is still a good idea; it's incomplete, not wrong — it needs a verification line item next to the routing decision, not a wholesale abandonment of routing.
+
+The cheap agent's failure was also partly a dispatch error, not purely a model-capability limitation, and I'd rather own that than not. The task was described as a rebase. What it actually was, once the real conflict showed up, was an adjudication between two intentional changes to the same file — a different task dispatched under the wrong label. Some of the blame sits with whoever wrote the prompt: the orchestrating session, acting on my behalf, and by extension me.
+
+Verification isn't free either. Every check costs something, and "always double-check everything" isn't a budget, it's the absence of one — it moves the waste from routing into verification instead of eliminating it. The honest version is a budget with two line items: spend less on the model, spend some of the savings on a specific, cheap, targeted check, and stop there. Plenty of tasks really are mechanical enough that the cheap tier handles them correctly every time — a version bump, a straightforward lockfile conflict, a rename that's already fully specified. This isn't an argument that cheap tiers are useless. It's an argument that they're useless *unverified* where being wrong is expensive.
+
+## A checklist, and the one habit that matters most
+
+Before routing a task to a cheap tier, I now ask two questions instead of one: how bad is it if this is wrong (blast radius), and how cheaply can I confirm it was done right (checkability). Small on both axes is a good candidate for the cheap tier, unsupervised. Small blast radius but expensive to verify deserves a step up. Real blast radius gets a strong model and a verification step no matter how trivial the diff looks — diff size was never the thing that mattered.
+
+If I had to keep exactly one habit out of all this, it wouldn't be the routing table. It would be: write your conclusions somewhere they survive. The table only works because it's written down where the next session can find it. The bug only got caught because checking against the file, not the report, was already a reflex. Both are the same lesson in different clothes — nothing you didn't write down is actually known.
+
+<!--
+EDITING NOTES — delete this block before publishing.
+
+Drafted in the horror_movie_season repo and moved here. Written for readers with no
+access to that repository, so every bug and change is described in prose rather than
+linked. The counterpoint section in each post is deliberate and load-bearing.
+
+- Body is as drafted; no known staleness against the current codebase.
+
+imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+-->
