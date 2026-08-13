@@ -42,15 +42,21 @@ I've significantly evolved the base theme with these improvements:
 | No version management | **asdf + pnpm setup** | Consistent development environment |
 | Basic deployment | **GitHub Actions + Vercel ready** | Automated CI/CD pipeline |
 | Ghost migration | **Complete CMS migration** | Preserved content and SEO |
-| Security baseline | **Regular security updates** | Astro 4.16.19 with latest patches |
+| Security baseline | **Regular dependency updates** | Astro 5 with current patches |
 
 ## 🛠️ Development Setup
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (managed via asdf)
-- [pnpm](https://pnpm.io/) (managed via asdf)
-- [asdf](https://asdf-vm.com/) for version management
+- [Node.js](https://nodejs.org/) **22.x** (managed via asdf)
+- [pnpm](https://pnpm.io/) 10.23.0 (managed via asdf)
+- [asdf](https://asdf-vm.com/) for version management — versions are pinned in `.tool-versions`
+
+> **Node 22 is required, not just recommended.** On Node 18, pnpm silently
+> skips the platform-specific `@oxc-parser` native bindings, producing an
+> install that looks fine (`pnpm install` exits 0) but fails later during the
+> build with `Cannot find module '@oxc-parser/binding-linux-x64-gnu'`. See
+> [CLAUDE.md](CLAUDE.md) for the full explanation.
 
 ### Installation
 
@@ -80,11 +86,17 @@ Based on the original Brutal theme with our enhancements:
 | Command | Action | Notes |
 |---------|--------|-------|
 | `pnpm run dev` | Start local dev server at `localhost:4321` | Enhanced with TypeScript support |
-| `pnpm run build` | Build production site to `./dist/` | Includes OG image generation |
+| `pnpm run build` | Build production site to `./dist/` | Runs `astro check` first — type errors fail the build |
 | `pnpm run preview` | Preview build locally before deploying | Test production build |
 | `pnpm run astro` | Run Astro CLI commands | Full CLI access |
-| `pnpm run astro --help` | Get help using the Astro CLI | Documentation |
-| `pnpm run new-post` | Create a new blog post with frontmatter | Interactive script for content creation |
+| `pnpm run astro:check` | Type-check without building | Faster iteration loop |
+| `pnpm run lint` / `lint:fix` | ESLint | `:fix` writes fixes |
+| `pnpm run format` / `format:check` | Prettier | `format:check` is read-only |
+| `pnpm run check` / `check:fix` | `astro check` + lint + format | Full pre-commit sweep |
+| `pnpm new:post` | Create a new blog post with frontmatter | Interactive, or pass `--title`; `--help` for flags |
+
+A full build takes roughly 70-110 seconds and emits ~215 pages, including a
+generated OG image per post.
 
 ## 📁 Project Structure
 
@@ -164,7 +176,7 @@ Following the base theme's structure with our enhancements:
 - **Image Optimization** - Automatic WebP conversion and optimization with Sharp
 - **TypeScript** - Full type safety with zero errors/warnings
 - **Comprehensive Analytics** - Umami Analytics + Vercel Speed Insights
-- **Automated Deployment** - GitHub Actions + Vercel CI/CD
+- **Automated Deployment** - Vercel Git integration, with GitHub Actions as a build gate
 - **Content Migration** - Complete Ghost CMS to Astro migration
 - **Build Optimization** - Clean build with 0 errors, 0 warnings, optimized dependencies
 
@@ -188,7 +200,8 @@ These colors are used in:
 Use the interactive blog post creation tool:
 
 ```bash
-pnpm run new-post
+pnpm new:post                              # interactive
+pnpm new:post --title "My Post" --draft    # non-interactive; --help for all flags
 ```
 
 This script will prompt you for:
@@ -219,20 +232,45 @@ Blog posts are written in Markdown and stored in `src/content/blog/YYYY/MM/`. Ea
 
 This project is regularly updated to address security vulnerabilities:
 
-- **Astro 4.16.19** - Latest stable version with security fixes
-- **Regular dependency updates** - Automated security patches
-- **Static site** - No server-side vulnerabilities
-- **Audit workflow** - Regular security scanning
+- **Astro 5** - Kept current with upstream releases
+- **Regular dependency updates** - Applied manually via `chore:` commits
+- **Static site** - No server-side code, so no server-side vulnerabilities
+- **No build-time network calls** - The build depends only on vendored assets
 
 ## 🚀 Deployment
 
-### GitHub Actions + Vercel
+### Vercel owns deployment
 
-The site is designed to be deployed as a static site using:
+**Vercel's Git integration deploys this site.** It is connected directly to the
+GitHub repository, builds on every push to `main`, and publishes to
+`ephbaum.dev`. Nothing in `.github/` deploys anything.
 
-1. **GitHub Actions** - Automated CI/CD pipeline
-2. **Vercel** - Fast, global CDN with edge functions
-3. **Custom Domain** - `ephbaum.dev`
+#### **Vercel Configuration**
+- ✅ **Vercel Project** - Connected to the GitHub repository
+- ✅ **Custom Domain** - `ephbaum.dev` with automatic SSL
+- ✅ **Build Configuration** - `vercel.json`, with Astro framework detection
+- ✅ **Automatic Deployments** - Every push to `main` goes to production
+- ✅ **Preview Deployments** - Every pull request gets its own preview URL
+
+#### **GitHub Actions is a build gate, not a deploy path**
+
+`.github/workflows/ci.yml` installs dependencies and runs `pnpm run build`
+(`astro check && astro build`) on pushes and pull requests to `main`. That's
+all it does. If a change doesn't build, it fails here before Vercel picks it up.
+
+An earlier version of this workflow also deployed to Vercel via
+`amondnet/vercel-action`. That was removed: it duplicated what Vercel's Git
+integration already does, and the action pinned a Vercel CLI version that the
+API no longer accepts. The `VERCEL_TOKEN` / `VERCEL_ORG_ID` /
+`VERCEL_PROJECT_ID` repository secrets are no longer read by any workflow.
+
+#### **Preview Deployments**
+When you open a pull request, Vercel automatically:
+- 🚀 **Builds and deploys** your changes to a unique preview URL
+- 🔗 **Comments on the PR** with the preview deployment link
+- 🧪 **Provides an isolated testing** environment identical to production
+- 👥 **Enables collaboration** - reviewers can test changes live before merging
+- 🗑️ **Auto-cleans** - preview deployments are removed when the PR is closed
 
 ### Build Process
 
@@ -240,34 +278,7 @@ The site is designed to be deployed as a static site using:
 pnpm run build
 ```
 
-This generates optimized static files in the `dist/` directory, ready for deployment.
-
-### 🛠️ Deployment Setup
-
-The site is currently deployed using:
-
-#### **Vercel Configuration**
-- ✅ **Vercel Project** - Connected to GitHub repository
-- ✅ **Custom Domain** - `ephbaum.dev` with automatic SSL
-- ✅ **Build Configuration** - `vercel.json` with Astro framework detection
-- ✅ **Automatic Deployments** - Deploys on every push to `main` branch
-
-#### **GitHub Actions Workflow**
-- ✅ **Workflow File** - `.github/workflows/deploy-vercel.yml`
-- ✅ **GitHub Secrets** configured:
-  - `VERCEL_TOKEN` - Vercel authentication token
-  - `VERCEL_ORG_ID` - Vercel organization ID
-  - `VERCEL_PROJECT_ID` - Vercel project ID
-- ✅ **Automated Process** - Builds and deploys on push to `main`
-- ✅ **Preview Deployments** - Automatic preview URLs for pull requests
-
-#### **Preview Deployments**
-When you create a pull request, Vercel automatically:
-- 🚀 **Builds and deploys** your changes to a unique preview URL
-- 🔗 **Comments on the PR** with the preview deployment link
-- 🧪 **Provides isolated testing** environment identical to production
-- 👥 **Enables collaboration** - reviewers can test changes live before merging
-- 🗑️ **Auto-cleanup** - preview deployments are removed when PR is closed
+This generates optimized static files in the `dist/` directory.
 
 ### 🔒 Security Considerations
 
@@ -288,22 +299,24 @@ When you create a pull request, Vercel automatically:
 
 ```mermaid
 graph TD
-    A[Push to main] --> B[GitHub Actions]
-    C[Create Pull Request] --> B
-    B --> D[Install dependencies]
-    D --> E[Build Astro site]
-    E --> F{Deployment Type}
-    F -->|Main branch| G[Deploy to Production]
-    F -->|PR branch| H[Deploy Preview]
-    G --> I[Live at ephbaum.dev]
-    H --> J[Preview URL in PR comment]
+    A[Push to main] --> B[GitHub Actions: ci.yml]
+    C[Open Pull Request] --> B
+    B --> D[pnpm install --frozen-lockfile]
+    D --> E[pnpm run build<br/>astro check && astro build]
+    E --> F{Build passes?}
+    F -->|No| G[Red check, stop]
+    F -->|Yes| H[Green check]
+
+    A --> I[Vercel Git integration]
+    C --> I
+    I --> J{Branch}
+    J -->|main| K[Production: ephbaum.dev]
+    J -->|PR branch| L[Preview URL in PR comment]
 ```
 
-**Automated Process:**
-1. **Code Push/PR** → Triggers GitHub Actions
-2. **Build** → `npm ci` → `npm run build`
-3. **Deploy** → Deploy to Vercel using Vercel Action
-4. **Result** → Production site at `ephbaum.dev` OR preview URL for PRs
+The two tracks run independently: GitHub Actions verifies the build, Vercel
+performs the deploy. A red CI check does not block a Vercel deploy on its own —
+add branch protection if you want that guarantee.
 
 ## 📊 Analytics & Performance Monitoring
 
@@ -375,7 +388,7 @@ You may not reproduce, distribute, or use the blog content without explicit writ
 
 ## 📋 Documentation
 
-- **Project Status**: [PROJECT_STATUS.md](PROJECT_STATUS.md) - Comprehensive project overview
+- **Agent / contributor guide**: [CLAUDE.md](CLAUDE.md) - Toolchain requirements, conventions, and the constraints that bite
 - **Analytics Setup**: [ANALYTICS_EVENTS.md](ANALYTICS_EVENTS.md) - Complete analytics implementation guide
 - **Umami Configuration**: [UMAMI_SETUP.md](UMAMI_SETUP.md) - Umami technical setup
 - **Theme Documentation**: [BRUTAL_THEME_README.md](BRUTAL_THEME_README.md) - Base theme information
