@@ -25,7 +25,6 @@
     "check:fix": "astro check && pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.2.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@eliancodes/brutal-ui": "^0.2.6",

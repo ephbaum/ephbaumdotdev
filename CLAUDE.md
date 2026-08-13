@@ -148,16 +148,20 @@ a faster loop.
 Changing the OG templates re-renders ~215 PNGs, so image-heavy changes are slow
 to verify. Check output in `dist/v1/generate/og/`.
 
-**Two Astro 7 defaults are deliberately overridden** in `astro.config.ts`, both
-to keep rendered output stable rather than out of preference:
+**This site runs Astro 7's defaults**, including Sätteri as the Markdown
+processor and `compressHTML: 'jsx'`. Both were checked against the old
+remark/rehype pipeline when upgrading from Astro 5, across all 215 built pages:
 
-- `compressHTML: true` — Astro 7 defaults to `'jsx'`, which strips whitespace
-  between inline elements and visibly reflows this theme.
-- `markdown.processor: unified()` — Astro 7 defaults to Sätteri. The posts came
-  out of Ghost and were authored against remark/rehype, which is also what
-  `shikiConfig` feeds.
+- `shikiConfig` is honoured by Sätteri — code blocks come out byte-identical,
+  same `catppuccin-macchiato` theme and wrapping.
+- Heading IDs, in-page anchors, and image sets are unchanged, so the sidebar
+  table of contents and every deep link still resolve.
+- Visible text differs on three posts, all curly-quote direction, and four posts
+  encode `&` in query strings differently (`&#x26;` vs `&amp;` — same URL).
 
-Dropping either is a content-rendering decision, not a config cleanup.
+Don't reintroduce `@astrojs/markdown-remark` to pin the old pipeline without a
+concrete rendering bug to point at; staying on the defaults is what keeps this
+site upgradeable.
 
 ## Deployment
 
