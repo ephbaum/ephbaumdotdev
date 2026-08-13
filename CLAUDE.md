@@ -4,7 +4,7 @@ Guidance for AI coding agents working in this repository.
 
 ## What this is
 
-A personal blog — static **Astro 5** site, deployed on **Vercel** at
+A personal blog — static **Astro 7** site, deployed on **Vercel** at
 [ephbaum.dev](https://ephbaum.dev). Built on the
 [Brutal](https://github.com/eliancodes/brutal) neobrutalist theme, heavily
 modified. Content was migrated from Ghost CMS.
@@ -92,7 +92,7 @@ Posts live at `src/content/blog/YYYY/MM/YYYY-MM-DD-slug.md`. Prefer
 `pnpm new:post` over writing the file by hand — it generates the frontmatter
 and the correct directory depth.
 
-The collection schema (`src/content/config.ts`) enforces `title`, `author`,
+The collection schema (`src/content.config.ts`) enforces `title`, `author`,
 `tags`, `description`, `pubDate`, and `imgUrl`. `imgUrl` uses Astro's `image()`
 helper, so **it must be a relative path that resolves to a real file** — a
 missing or misspelled path fails content sync and therefore the whole build.
@@ -103,11 +103,21 @@ From `src/content/blog/YYYY/MM/`, `../../../../` resolves to `src/`:
 
 ```yaml
 imgUrl: '../../../../assets/img/2026/01/photo.jpg'
-layout: '../../../../layouts/BlogPost.astro'
 ```
 
-Note `legacy.collections: true` in `astro.config.ts` — this collection uses the
-pre-Astro-5 content API. Don't "modernize" it without checking every consumer.
+**`slug` frontmatter decides the URL.** Posts are filed under `YYYY/MM/` but
+served flat, at `/blog/<slug>/`. Astro 6 removed the legacy collections API that
+made `slug` a reserved override, so `src/content.config.ts` rebuilds it in the
+glob loader's `generateId`. Change that function and every post URL moves.
+
+**`layout` frontmatter is inert.** Legacy collections applied it automatically;
+the content layer does not. `src/pages/blog/[slug].astro` now imports
+`BlogPost.astro` and wraps `<Content />` explicitly. The key is still present in
+existing posts, and `pnpm new:post` still writes it, but nothing reads it.
+
+**Sort posts explicitly.** The content layer orders entries by `id` — the flat
+slug — so the `.reverse()` that used to yield newest-first (via path order) is
+now reverse-alphabetical. Use `getPostsNewestFirst()` from `@utils/posts`.
 
 ### Where images go
 
@@ -137,6 +147,17 @@ a faster loop.
 **OG images are generated at build time** by satori + resvg for every post.
 Changing the OG templates re-renders ~215 PNGs, so image-heavy changes are slow
 to verify. Check output in `dist/v1/generate/og/`.
+
+**Two Astro 7 defaults are deliberately overridden** in `astro.config.ts`, both
+to keep rendered output stable rather than out of preference:
+
+- `compressHTML: true` — Astro 7 defaults to `'jsx'`, which strips whitespace
+  between inline elements and visibly reflows this theme.
+- `markdown.processor: unified()` — Astro 7 defaults to Sätteri. The posts came
+  out of Ghost and were authored against remark/rehype, which is also what
+  `shikiConfig` feeds.
+
+Dropping either is a content-rendering decision, not a config cleanup.
 
 ## Deployment
 

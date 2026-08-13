@@ -19,11 +19,11 @@ const { post } = Astro.props;
 >
   <div class="flex justify-end my-4">
     <Button
-      href={`/blog/${post.slug}/`}
+      href={`/blog/${post.id}/`}
       data-brutal-button
       data-brutal-hover
       data-analytics-blog-post
-      data-post-slug={post.slug}
+      data-post-slug={post.id}
       data-post-title={post.data.title}
       data-post-date={post.data.pubDate}
       data-post-tags={JSON.stringify(post.data.tags)}

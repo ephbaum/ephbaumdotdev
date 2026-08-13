@@ -1,11 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import BlogPost from '@layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map((blogpost) => ({
-    params: { slug: blogpost.slug },
+    params: { slug: blogpost.id },
     props: { blogpost },
   }));
 }
@@ -15,7 +16,15 @@ interface Props {
 }
 
 const { blogpost } = Astro.props;
-const { Content } = await blogpost.render();
+const { Content, headings } = await render(blogpost);
+
+// The content layer does not honour the `layout` frontmatter key that legacy
+// collections applied automatically, so the layout is applied explicitly. It
+// expects the frontmatter shape the markdown layout used to receive, which
+// printed the publication date exactly as authored.
+const content = { ...blogpost.data, pubDate: blogpost.data.pubDateRaw };
 ---
 
-<Content />
+<BlogPost content={content} headings={headings}>
+  <Content />
+</BlogPost>
