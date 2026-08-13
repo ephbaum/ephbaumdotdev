@@ -3,22 +3,22 @@ title: "A Stricter Validator Is a Delete Statement"
 postSlug: a-stricter-validator-is-a-delete-statement
 slug: a-stricter-validator-is-a-delete-statement
 pubDate: 08/13/2026 9:45 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
 tags:
+  - firebase
   - firestore
   - distributed-systems
   - data-integrity
-  - firebase
-  - postmortem
+  - architecture
 description: "How a second, stricter implementation of the same rule turned normal-looking hardening into badge-deleting data loss in a solo-developer app."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-I run a small app called Horror Movie Season, where people log the horror movies they watch in October, build watch streaks, and earn badges — a three-day streak, a seven-day streak, a themed badge for a week of vampire movies, a challenge for thirty-one films in one October. It's a SvelteKit static site on top of Firebase: Auth, Firestore, Cloud Functions. The browser writes straight to the database, no backend API in between for normal writes.
+[Horror Movie Season](https://horrormovieseason.com) hands out badges — a three-day streak, a seven-day streak, a themed badge for a week of vampire movies, a challenge for thirty-one films in one October. I wrote about [building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/) last year. The detail I glossed over then is the one this post turns on: the browser writes straight to Firestore, with no backend API in between for normal writes.
 
 That last part is what makes this story possible. Because the browser is the one writing, award badges are granted optimistically, client-side, the instant you qualify — no spinner, no round trip. And because I don't trust the browser with the final word, a Cloud Function trigger fires on every write to a movie document and re-validates that user's awards against a second, independent implementation of the same rules.
 
@@ -111,5 +111,6 @@ linked. The counterpoint section in each post is deliberate and load-bearing.
 - "There's an unmerged branch that fixes this properly" is stale — the fix has merged. Shift to past tense.
 - The fix-order argument (producer, then repair, then strictness) still holds and is the durable part of the post.
 
-imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
+are still to come.
 -->

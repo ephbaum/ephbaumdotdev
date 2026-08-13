@@ -3,22 +3,22 @@ title: "Document Your Constraints, Not Your Code"
 postSlug: document-your-constraints-not-your-code
 slug: document-your-constraints-not-your-code
 pubDate: 08/13/2026 9:00 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
 tags:
-  - software-engineering
-  - documentation
   - firebase
-  - side-projects
+  - documentation
+  - software-engineering
   - ai-agents
+  - solo-dev
 description: "What survives a refactor isn't a comment explaining what the code does — it's a paragraph explaining what forced it to look that way."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-I maintain a small web app called Horror Movie Season by myself. It's a static SvelteKit site backed by Firebase — auth, a Firestore database, a bit of storage, a handful of Cloud Functions — and it lets people log the horror movies they watch every October, track a watch streak, earn a few badge-style awards, and optionally make a profile public. Nothing about the domain is complicated. What's complicated, the way it always is, is the accumulated residue of decisions made under constraints no longer visible anywhere except in my head.
+I maintain [Horror Movie Season](https://horrormovieseason.com) by myself — the SvelteKit-and-Firebase app I wrote about [building last year](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/). Nothing about the domain is complicated: you log horror movies, it counts streaks, it hands out badges. What's complicated, the way it always is, is the accumulated residue of decisions made under constraints no longer visible anywhere except in my head.
 
 Or they were only in my head, until I started writing them down somewhere specific. This post is about that habit, why it matters more than the usual "keep your comments and docs current" advice, and where it can go wrong.
 
@@ -77,5 +77,6 @@ linked. The counterpoint section in each post is deliberate and load-bearing.
 
 - Body is as drafted; no known staleness against the current codebase.
 
-imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
+are still to come.
 -->

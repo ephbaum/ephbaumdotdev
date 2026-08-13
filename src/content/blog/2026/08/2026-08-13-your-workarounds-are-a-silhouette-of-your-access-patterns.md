@@ -3,22 +3,22 @@ title: "Your Workarounds Are a Silhouette of Your Access Patterns"
 postSlug: your-workarounds-are-a-silhouette-of-your-access-patterns
 slug: your-workarounds-are-a-silhouette-of-your-access-patterns
 pubDate: 08/13/2026 9:15 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
 tags:
+  - firebase
   - firestore
   - security-rules
   - architecture
-  - solo-dev
   - nosql
 description: "A solo dev's field notes from a browser-to-database app: three concessions to a document database's authorization model, and what they have in common."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-I've been building a small app for logging horror movies watched in October — watch streaks, award badges, public profiles you can opt into. It's a static SvelteKit site with no backend to speak of: Firebase Auth, Firestore, Storage, and a couple of Cloud Functions that only exist because two things need a hidden API key. Everything else is the browser talking straight to the database. There's no server process sitting between them deciding what's allowed — that job belongs entirely to a declarative rules file, about sixty lines long, that Firestore evaluates on every read and write.
+[Horror Movie Season](https://horrormovieseason.com) — watch streaks, award badges, public profiles you can opt into — has a static SvelteKit front end and no backend to speak of. I covered that architecture when I [wrote about building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/); this post is about a consequence of it I understated at the time. Firebase Auth, Firestore, Storage, and a couple of Cloud Functions that only exist because two things need a hidden API key. Everything else is the browser talking straight to the database. There's no server process sitting between them deciding what's allowed — that job belongs entirely to a declarative rules file, about sixty lines long, that Firestore evaluates on every read and write.
 
 That architecture is the whole story of this post. When authorization lives in rules instead of in server code, the database's opinions about *what a rule can even talk about* become your application's opinions too. And over the life of this project I've written three distinct workarounds to route around those opinions. For a while I filed them mentally under "things Firestore makes annoying." Then I noticed they don't scatter randomly across the codebase. They all sit at the same seam.
 
@@ -61,5 +61,6 @@ linked. The counterpoint section in each post is deliberate and load-bearing.
 
 - The third workaround describes client/server award logic "kept in sync by hand". That is no longer true — both sides now call one implementation in `shared/awards`. Reword to past tense, or point at the consolidation as the resolution.
 
-imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
+are still to come.
 -->

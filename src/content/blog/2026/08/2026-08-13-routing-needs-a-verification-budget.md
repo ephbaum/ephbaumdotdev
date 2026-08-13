@@ -3,21 +3,22 @@ title: "Routing Needs a Verification Budget"
 postSlug: routing-needs-a-verification-budget
 slug: routing-needs-a-verification-budget
 pubDate: 08/13/2026 10:00 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
 tags:
+  - ai
+  - llm
   - ai-agents
   - model-routing
-  - software-engineering
   - solo-dev
 description: "A cheap agent confidently misreported a merge conflict resolution as someone else's change. The project's own docs had predicted exactly this failure. Notes on model routing, blast radius, and why conversations are not memory."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-I maintain a small horror-movie-tracking app mostly by dispatching AI coding agents at labelled issues rather than writing most of the code myself. It's a SvelteKit static site on Firebase, a handful of Cloud Functions, around 600 tests. Every issue carries a complexity label, and that label isn't a difficulty estimate for a human — it selects which tier of model picks the work up. Cheap tier for one-file mechanical changes, mid tier for anything multi-file or requiring taste, the strongest tier for anything touching a cross-cutting invariant, and a tier above that for genuine design work with no established pattern to copy. The guidance I wrote for the project states the reasoning plainly: a too-strong model wastes tokens, but a too-weak one lands a plausible-looking wrong change, and the cost of catching that in review dwarfs whatever the cheap tier saved.
+I maintain [Horror Movie Season](https://horrormovieseason.com) mostly by dispatching AI coding agents at labelled issues rather than writing most of the code myself — the approach I described when I [wrote about building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/), pushed a good deal further since. The project carries around 600 tests, and I write comparatively few of them by hand. Every issue carries a complexity label, and that label isn't a difficulty estimate for a human — it selects which tier of model picks the work up. Cheap tier for one-file mechanical changes, mid tier for anything multi-file or requiring taste, the strongest tier for anything touching a cross-cutting invariant, and a tier above that for genuine design work with no established pattern to copy. The guidance I wrote for the project states the reasoning plainly: a too-strong model wastes tokens, but a too-weak one lands a plausible-looking wrong change, and the cost of catching that in review dwarfs whatever the cheap tier saved.
 
 I did not fully believe my own sentence until a few weeks ago, when an orchestrating agent session I'd set running dispatched four sub-agents in parallel against four open branches. Three went to mid-tier or stronger models. One went to the cheapest tier, because the task looked, on paper, like the easiest of the four: rebase a small two-commit branch onto an updated main branch, where the only predicted conflict was in a package manifest — the kind of thing that resolves itself by taking the newer lockfile and moving on.
 
@@ -80,5 +81,6 @@ linked. The counterpoint section in each post is deliberate and load-bearing.
 
 - Body is as drafted; no known staleness against the current codebase.
 
-imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
+are still to come.
 -->

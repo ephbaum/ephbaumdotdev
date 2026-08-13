@@ -3,21 +3,22 @@ title: "The Parity Test Is the Bug"
 postSlug: the-parity-test-is-the-bug
 slug: the-parity-test-is-the-bug
 pubDate: 08/13/2026 9:30 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
 tags:
+  - firebase
   - testing
   - architecture
-  - firebase
   - technical-debt
+  - software-engineering
 description: "When a test suite's job is proving two copies of a function agree, it's reporting a packaging problem, not providing safety — a case study from a solo-developer app."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
-I run a small app called Horror Movie Season — you log the horror movies you watch in October, it tracks your watch streak, and it hands out badges: a three-day streak, a full 31-day run, five vampire movies in a week. I'm the only developer. Recently I spent a while fixing a bug in how those badges get their evidence attached, and the fix included something I want to talk about separately from the bug itself: a fixture file whose entire purpose is proving that two functions, living in two different parts of the codebase, compute the same answer.
+[Horror Movie Season](https://horrormovieseason.com) hands out badges: a three-day streak, a full 31-day run, five vampire movies in a week. I'm the only developer on it, and I wrote about [how it got built](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/) last year. Recently I spent a while fixing a bug in how those badges get their evidence attached, and the fix included something I want to talk about separately from the bug itself: a fixture file whose entire purpose is proving that two functions, living in two different parts of the codebase, compute the same answer.
 
 That file is a good idea. It's also a symptom. Both things are true, and figuring out which one matters more is the actual question.
 
@@ -85,5 +86,6 @@ linked. The counterpoint section in each post is deliberate and load-bearing.
 - "The fix I actually shipped landed in a branch I haven't merged yet" is stale; it merged.
 - The ledger section prices consolidation as hypothetical future work. It happened — `shared/` compiles into both deploy targets. That is a stronger ending than the draft has: the post predicted the tipping point and then hit it.
 
-imgUrl/ogImage are the placeholder avatar. Swap in a real image before publishing.
+imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
+are still to come.
 -->
