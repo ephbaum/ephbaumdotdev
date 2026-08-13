@@ -13,12 +13,18 @@ fi
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 
 # --- Node version -----------------------------------------------------------
-# This repo requires Node 22. On Node 18, pnpm silently skips the platform
-# specific @oxc-parser native bindings; the install still exits 0 and the
-# failure only appears later as an unrelated-looking `astro check` crash.
+# Required version is pinned in .tool-versions, not hardcoded here — this is
+# just a check that the sandbox's Node actually matches the pin, since this
+# script only runs where .tool-versions isn't guaranteed to be self-enforcing
+# (see the CLAUDE_CODE_REMOTE guard above). On Node 18, pnpm silently skips
+# the platform-specific @oxc-parser native bindings; the install still exits
+# 0 and the failure only appears later as an unrelated-looking `astro check`
+# crash.
+REQUIRED_NODE_MAJOR="$(awk '$1 == "nodejs" { split($2, v, "."); print v[1] }' .tool-versions 2>/dev/null)"
+REQUIRED_NODE_MAJOR="${REQUIRED_NODE_MAJOR:-22}"
 NODE_MAJOR="$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)"
-if [ "$NODE_MAJOR" -lt 22 ]; then
-  echo "WARNING: Node $(node --version 2>/dev/null || echo 'not found') detected; this repo requires Node 22."
+if [ "$NODE_MAJOR" -lt "$REQUIRED_NODE_MAJOR" ]; then
+  echo "WARNING: Node $(node --version 2>/dev/null || echo 'not found') detected; .tool-versions requires Node $REQUIRED_NODE_MAJOR."
   echo "         Builds may fail with \"Cannot find module '@oxc-parser/binding-*'\"."
 fi
 
@@ -36,15 +42,19 @@ echo "Installing dependencies with pnpm..."
 if ! pnpm install --frozen-lockfile; then
   echo "WARNING: --frozen-lockfile failed (lockfile may be out of sync with package.json)."
   echo "         Falling back to 'pnpm install'."
-  pnpm install
+  if ! pnpm install; then
+    echo "WARNING: fallback 'pnpm install' also failed. Continuing session anyway; node_modules may be incomplete." >&2
+  fi
 fi
 
 # --- Sanity check -----------------------------------------------------------
 # Confirm the native bindings actually landed. This is the specific failure
 # mode that has broken this repo's builds before.
+oxc_ok=1
 if [ -z "$(ls -A node_modules/@oxc-parser 2>/dev/null)" ]; then
-  echo "WARNING: node_modules/@oxc-parser is missing or empty."
-  echo "         'pnpm run build' will fail. Check the Node version (needs 22)."
+  echo "WARNING: node_modules/@oxc-parser is missing or empty." >&2
+  echo "         'pnpm run build' will fail. Check the Node version (needs $REQUIRED_NODE_MAJOR)." >&2
+  oxc_ok=0
 else
   echo "oxc-parser native bindings present."
 fi
@@ -52,5 +62,10 @@ fi
 # Generate Astro's content collection types so type-aware tooling works before
 # the first build.
 pnpm exec astro sync >/dev/null 2>&1 || true
+
+if [ "$oxc_ok" -eq 0 ]; then
+  echo "Session setup finished with warnings; see above. 'pnpm run build' will likely fail." >&2
+  exit 1
+fi
 
 echo "Session setup complete."
