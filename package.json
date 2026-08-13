@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
-    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/logos": "^1.2.12",
     "@iconify-json/uil": "^1.2.3",
     "@resvg/resvg-js": "^2.6.2",
     "@typescript-eslint/parser": "^6.21.0",
