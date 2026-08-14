@@ -31,11 +31,12 @@
     "@unocss/astro": "^66.7.5",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^5.18.0",
+    "astro": "^7.2.1",
     "astro-font": "^1.2.0",
     "satori": "^0.29.0",
     "satori-html": "^0.3.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
@@ -53,7 +54,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.35.3",
     "unocss": "^66.7.5",
-    "vite": "^6.4.1"
+    "vite": "^8.2.1"
   },
   "overrides": {
     "@vercel/analytics": {

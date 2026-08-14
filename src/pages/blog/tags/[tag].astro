@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '@layouts/Default.astro';
 import BlogList from '@components/blog/BlogList.astro';
 import { Button } from '@eliancodes/brutal-ui';
+import { getPostsNewestFirst } from '@utils/posts';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog').then((collection) => collection.reverse());
+  const allPosts = await getPostsNewestFirst();
 
   const tags: string[] = [];
 
