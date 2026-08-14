@@ -359,17 +359,11 @@ function startDiscoMode() {
   }, 200);
 
   // Track disco mode activation
-  if (window.umami) {
-    try {
-      if (typeof window.umami.track === 'function') {
-        window.umami.track('disco_mode_activated', {
-          action: 'activate_disco_mode',
-          component: 'color_system'
-        });
-      }
-    } catch (error) {
-      console.warn('Umami tracking failed:', error);
-    }
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('disco_mode_activated', {
+      action: 'activate_disco_mode',
+      component: 'color_system'
+    });
   }
 }
 
@@ -388,17 +382,11 @@ function stopDiscoMode() {
   }
 
   // Track disco mode deactivation
-  if (window.umami) {
-    try {
-      if (typeof window.umami.track === 'function') {
-        window.umami.track('disco_mode_deactivated', {
-          action: 'deactivate_disco_mode',
-          component: 'color_system'
-        });
-      }
-    } catch (error) {
-      console.warn('Umami tracking failed:', error);
-    }
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('disco_mode_deactivated', {
+      action: 'deactivate_disco_mode',
+      component: 'color_system'
+    });
   }
 }
 
