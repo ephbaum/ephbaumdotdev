@@ -7,12 +7,18 @@
   "printWidth": 100,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-astro"],
+  "plugins": ["prettier-plugin-astro", "./scripts/prettier-plugin-straight-quotes.mjs"],
   "overrides": [
     {
       "files": "*.astro",
       "options": {
         "parser": "astro"
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "parser": "straight-quotes-markdown"
       }
     }
   ]

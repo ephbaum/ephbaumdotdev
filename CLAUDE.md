@@ -12,6 +12,17 @@ modified. Content was migrated from Ghost CMS.
 Package manager is **pnpm** (`packageManager` is pinned in `package.json`).
 Never use npm or yarn here — they will produce a lockfile the CI does not accept.
 
+## Working conventions
+
+Before adding a new script + npm command + CI step for some check, look for an
+extension point in the tool already doing that job — a plugin API, a parser
+override, a lint rule — and use that instead. See
+`scripts/prettier-plugin-straight-quotes.mjs` for the shape this takes here: a
+real Prettier plugin, not a script chained on with `&&`.
+
+Keep comments and doc prose here as short as the neighboring entries. State the
+rule and the one non-obvious reason; skip the backstory.
+
 ## Required toolchain
 
 **Use Node 22.** This is not a style preference, it is a correctness
@@ -50,9 +61,8 @@ ls node_modules/@oxc-parser/    # must NOT be empty
 | `pnpm run preview` | Serve the production build locally |
 | `pnpm run astro:check` | Type-check only, no build |
 | `pnpm run lint` / `lint:fix` | ESLint |
-| `pnpm run format` / `format:check` | Prettier |
-| `pnpm run quotes:check` / `quotes:fix` | Curly quotes in Markdown — report, or straighten in place |
-| `pnpm run check` | `astro check` + lint + format check + quote check |
+| `pnpm run format` / `format:check` | Prettier, plus straightening curly quotes in Markdown |
+| `pnpm run check` | `astro check` + lint + format check |
 | `pnpm run check:fix` | Same, but writes fixes |
 | `pnpm new:post` | Scaffold a blog post (interactive, or `--title "..."`; `--help` for flags) |
 
@@ -128,28 +138,13 @@ Markdown source is ASCII-quoted. `'` and `"`, never `‘ ’ “ ”`.
 
 <!-- straight-quotes:on -->
 
-This is enforced — `pnpm run check` fails on curly quotes, and so does CI. Run
-`pnpm run quotes:fix` (also the first step of `pnpm run check:fix`) to
-straighten them.
+Enforced by `pnpm run format` / `format:check` directly: `scripts/prettier-plugin-straight-quotes.mjs`
+is a real Prettier plugin for `*.md`, not the real Markdown parser — it only
+touches quote characters, leaving wrapping, headings, and lists alone. Exempt
+a region with `<!-- straight-quotes:off -->` / `-on -->`.
 
-The rule exists because the writing side of this blog has moved through a Ghost
-web editor on macOS and Joplin on iOS, both of which substitute curly quotes
-silently. They render identically, so they only ever surface later as a diff
-touching a character nobody typed. Prettier does not normalise prose
-punctuation, so nothing else in the toolchain catches them.
-
-Only quote characters are coerced. Dashes, ellipses, guillemets (`« » ‹ ›`) and
-prime marks (`′ ″`) are left alone — deliberate punctuation or units, not editor
-substitutions.
-
-A file that genuinely needs the banned characters — this section, say — can
-exempt a region by wrapping it in `<!-- straight-quotes:off -->` and
-`<!-- straight-quotes:on -->` comments.
-
-Note this governs **source**, not output: the Markdown processor still applies
-typographic quotes when rendering, so the published HTML has curly quotes by
-design. Straightening the source changed nothing in the built output — verified
-across all 215 pages.
+This governs source only — the Markdown processor still renders typographic
+quotes, so published HTML is unaffected.
 
 ### Where images go
 
