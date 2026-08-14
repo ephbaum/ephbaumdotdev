@@ -1,166 +1,22 @@
 # Analytics Event Tracking Plan
 
-This document outlines the custom events we track for comprehensive analytics on ephbaum.dev using Umami Analytics.
+This document outlines the custom events tracked on ephbaum.dev using Umami
+Analytics.
 
-## Current Implementation
+## Status
 
-### ✅ All Events Implemented
+Nine events fire from real code paths, all listed below. This inventory was
+derived by grepping `trackEvent(` and `umami.track(` across `src/` and
+`public/`, then reading each call site — not by trusting event counts from
+elsewhere, since at least one event here used to be dispatched with a
+variable name (`eventName`) that a literal-string grep would have missed.
+That call site (`color_scheme_initialized` / `color_scheme_applied` in
+`applyAllColors()`) has since been removed entirely — see below.
 
-#### Color Palette Button Click
-- **Event Name**: `color_palette_click`
-- **Trigger**: When user clicks the color palette button
-- **Data Properties**:
-  ```javascript
-  {
-    action: "change_colors",
-    component: "color_palette_button"
-  }
-  ```
+## Event Tracking Function
 
-#### Color Scheme Applied
-- **Event Name**: `color_scheme_applied`
-- **Trigger**: When color scheme is applied to the site
-- **Data Properties**:
-  ```javascript
-  {
-    action: "apply_colors",
-    component: "color_system",
-    colors: {
-      primary: "#ff6b6b",
-      secondary: "#4ecdc4", 
-      accent: "#45b7d1",
-      hover: "#96ceb4"
-    }
-  }
-  ```
-
-#### Color Scheme Initialized
-- **Event Name**: `color_scheme_initialized`
-- **Trigger**: When color scheme is loaded/applied on page load
-- **Data Properties**:
-  ```javascript
-  {
-    action: "initialize_colors",
-    component: "color_system",
-    colors: {
-      primary: "#ff6b6b",
-      secondary: "#4ecdc4", 
-      accent: "#45b7d1",
-      hover: "#96ceb4"
-    },
-    source: "page_load", // or "user_interaction", "local_storage"
-    page_url: "/blog/migrating-from-ghost-cms-to-astro/"
-  }
-  ```
-
-### 1. Blog Post Interactions
-
-#### Blog Post Click
-- **Event Name**: `blog_post_click`
-- **Trigger**: When user clicks on a blog post title or "Read More" link
-- **Data Properties**:
-  ```javascript
-  {
-    action: "view_post",
-    component: "blog_post_link",
-    post_slug: "migrating-from-ghost-cms-to-astro",
-    post_title: "Migrating from Ghost CMS to Astro",
-    post_date: "2024-01-15",
-    post_tags: ["astro", "migration", "ghost-cms"]
-  }
-  ```
-
-#### Blog Post Tag Click
-- **Event Name**: `blog_tag_click`
-- **Trigger**: When user clicks on a tag link
-- **Data Properties**:
-  ```javascript
-  {
-    action: "filter_by_tag",
-    component: "blog_tag_link",
-    tag_name: "astro",
-    tag_url: "/blog/tags/astro/",
-    source_page: "blog_index" // or "blog_post" or "tag_page"
-  }
-  ```
-
-### 2. Navigation Events
-
-#### Menu Navigation
-- **Event Name**: `menu_navigation`
-- **Trigger**: When user clicks on main navigation items
-- **Data Properties**:
-  ```javascript
-  {
-    action: "navigate",
-    component: "main_navigation",
-    destination: "blog", // or "about", "home", etc.
-    destination_url: "/blog/"
-  }
-  ```
-
-#### Footer Link Click
-- **Event Name**: `footer_link_click`
-- **Trigger**: When user clicks on footer links
-- **Data Properties**:
-  ```javascript
-  {
-    action: "click_footer_link",
-    component: "footer",
-    link_type: "social", // or "external", "internal"
-    link_destination: "github",
-    link_url: "https://github.com/ephbaum"
-  }
-  ```
-
-### 3. Content Engagement
-
-#### External Link Click
-- **Event Name**: `external_link_click`
-- **Trigger**: When user clicks links that go off-site
-- **Data Properties**:
-  ```javascript
-  {
-    action: "click_external_link",
-    component: "content_link",
-    destination_domain: "github.com",
-    destination_url: "https://github.com/ephbaum/ephbaumdotdev",
-    source_context: "blog_post" // or "about", "footer", etc.
-  }
-  ```
-
-#### RSS Feed Click
-- **Event Name**: `rss_feed_click`
-- **Trigger**: When user clicks on RSS feed link
-- **Data Properties**:
-  ```javascript
-  {
-    action: "subscribe_rss",
-    component: "rss_link",
-    feed_url: "https://ephbaum.dev/blog.xml"
-  }
-  ```
-
-### 4. Search & Discovery
-
-#### Search Query (if implemented)
-- **Event Name**: `search_query`
-- **Trigger**: When user performs a search
-- **Data Properties**:
-  ```javascript
-  {
-    action: "search",
-    component: "search_box",
-    query: "astro migration",
-    results_count: 5,
-    search_type: "blog_posts"
-  }
-  ```
-
-## Implementation Notes
-
-### Event Tracking Function
-Centralized tracking function using Umami Analytics only:
+All nine events route through one function, `trackEvent()` in
+`public/analytics.js`:
 
 ```javascript
 function trackEvent(eventName, properties = {}) {
@@ -180,92 +36,126 @@ function trackEvent(eventName, properties = {}) {
 }
 ```
 
-### Implementation Status
+It is exposed as `window.trackEvent` and is genuinely the single route to
+Umami now: `public/analytics.js` is the only file left in the codebase that
+calls `window.umami.track` directly. Every call site below calls
+`window.trackEvent(eventName, properties)`, guarded with
+`typeof window.trackEvent === 'function'` so a call before `analytics.js`
+has run is a no-op instead of a throw. `trackEvent()` merges in `timestamp`,
+`page_url`, and `page_title` automatically — those three fields are on every
+event below in addition to the properties listed.
 
-1. **✅ High Priority** (Completed):
-   - Blog post clicks
-   - Tag clicks
-   - External link clicks
+`public/analytics.js` is loaded synchronously in `<head>` (via
+`BaseHead.astro`), before any body script, so in practice `window.trackEvent`
+is always defined by the time a user can trigger one of these.
 
-2. **✅ Medium Priority** (Completed):
-   - Menu navigation
-   - Footer link clicks
-   - RSS feed clicks
+## Events
 
-3. **✅ Low Priority** (Completed):
-   - Color scheme initialization
-   - Color palette interactions
+### Blog Interactions
 
-4. **⏳ Future** (Not Implemented):
-   - Search queries (when search is implemented)
+#### `blog_post_click`
+- **Trigger**: User clicks a blog post link (`[data-analytics-blog-post]`)
+- **Source**: `src/components/blog/BlogSummaryCard.astro`
+- **Properties**: `action: "view_post"`, `component: "blog_post_link"`,
+  `post_slug`, `post_title`, `post_date`, `post_tags` (array)
 
-### Data Considerations
+#### `blog_tag_click`
+- **Trigger**: User clicks a tag link (`[data-analytics-blog-tag]`)
+- **Source**: `src/components/blog/BlogSummaryCard.astro`
+- **Properties**: `action: "filter_by_tag"`, `component: "blog_tag_link"`,
+  `tag_name`, `tag_url`, `source_page`
+
+### Navigation & Links
+
+#### `menu_navigation`
+- **Trigger**: User clicks a main nav item (`[data-analytics-menu-nav]`)
+- **Source**: `src/components/layout/BaseNavigation.astro`
+- **Properties**: `action: "navigate"`, `component: "main_navigation"`,
+  `destination`, `destination_url`
+
+#### `external_link_click`
+- **Trigger**: User clicks a link marked as external
+  (`[data-analytics-external-link]`)
+- **Source**: `src/components/layout/BaseNavigation.astro`
+- **Properties**: `action: "click_external_link"`, `component: "content_link"`,
+  `destination_domain`, `destination_url`, `source_context`
+
+#### `footer_link_click`
+- **Trigger**: User clicks a footer link (`[data-analytics-footer-link]`)
+- **Source**: `src/components/layout/BaseFooter.astro`
+- **Properties**: `action: "click_footer_link"`, `component: "footer"`,
+  `link_type`, `link_destination`, `link_url`
+
+#### `rss_feed_click`
+- **Trigger**: User clicks the RSS feed link (`[data-analytics-rss-feed]`)
+- **Source**: `src/components/layout/BaseHead.astro`
+- **Properties**: `action: "subscribe_rss"`, `component: "rss_link"`,
+  `feed_url`
+
+### Color System
+
+#### `color_palette_click`
+- **Trigger**: User clicks the palette button, and disco mode is not active
+  (a click while disco is running stops disco instead — see below, and does
+  not also fire this event)
+- **Source**: `src/components/ColorChangeButton.astro`
+- **Properties**: `action: "change_colors"`, `component: "color_palette_button"`
+
+This is the only colour-scheme event fired by a click. There is no separate
+"applied" event: colours repaint synchronously in the same handler, so an
+applied-event at that site would share this one's trigger and timing without
+adding information.
+
+#### `disco_mode_activated`
+- **Trigger**: Disco mode starts — 5 palette-button clicks within 1 second,
+  or the Konami code
+- **Source**: `public/global-color-system.js`, `startDiscoMode()`
+- **Properties**: `action: "activate_disco_mode"`, `component: "color_system"`
+
+#### `disco_mode_deactivated`
+- **Trigger**: Disco mode stops — palette button clicked again, or the
+  Konami code toggled while active
+- **Source**: `public/global-color-system.js`, `stopDiscoMode()`
+- **Properties**: `action: "deactivate_disco_mode"`, `component: "color_system"`
+
+One event per activation/deactivation, regardless of how long disco mode
+runs. While active, colours repaint every 200ms via `applyAllColors()`, but
+`applyAllColors()` is paint-only and fires no event of its own — it used to
+(`color_scheme_applied`, once per repaint), which meant a 30-second disco run
+produced roughly 150 spurious events. Fixed in #42.
+
+### Removed
+
+#### `color_scheme_initialized` (removed, #42)
+Used to fire unconditionally from `applyAllColors()` on every page load. It
+carried no information a pageview doesn't already have, and roughly doubled
+baseline event volume across all traffic. Not relocated — deleted outright,
+per #42.
+
+#### `color_scheme_applied` (removed from the render path, #42)
+Used to fire from `applyAllColors()` on every repaint, including every 200ms
+disco tick. `applyAllColors()` is now paint-only. The one legitimate
+"user changed the colours" signal is `color_palette_click` above; disco
+start/stop are `disco_mode_activated` / `disco_mode_deactivated`.
+
+#### `search_query` (removed, #41)
+Documented here previously as "if implemented," but no search feature exists
+in this codebase — `grep -rn "search_query" src/ public/` returns nothing.
+Search is tracked separately as issue #43; that feature will add its own
+tracking when it ships.
+
+## Data Considerations
 
 - **Privacy**: No personal data, only behavioral analytics
-- **Performance**: Events should be lightweight and non-blocking
-- **Reliability**: Use try-catch blocks and graceful degradation
-- **Consistency**: Standardize event naming and property structure
-
-### Testing
-
-For each event:
-1. Verify it fires in browser console
-2. Check Umami dashboard for data
-3. Test with ad blockers enabled/disabled
-4. Test on mobile devices
-5. Verify event data includes all expected properties
+- **Performance**: Events are lightweight and fire only on user action —
+  see the color-system removals above for what "on user action" is meant to
+  rule out
+- **Reliability**: `trackEvent()` guards on `window.umami` and wraps the call
+  in try/catch; every call site additionally guards on
+  `typeof window.trackEvent === 'function'`
 
 ## Current Analytics Setup
 
-- **Umami Analytics**: Privacy-focused analytics with comprehensive custom event tracking
-- **Vercel Speed Insights**: Performance monitoring and Core Web Vitals tracking
-- **Cost-effective**: Umami-only for custom events, Speed Insights for performance
-- **Privacy-first**: No cookies, GDPR compliant, no cross-site tracking
-- **Comprehensive**: All user interactions and performance metrics tracked
-
-## Implemented Events Summary
-
-All events are now fully implemented and working with Umami Analytics:
-
-### ✅ Blog Interactions
-- `blog_post_click` - When users click "Read post" buttons
-- `blog_tag_click` - When users click on tag links
-
-### ✅ Navigation & Links
-- `menu_navigation` - When users click main navigation items
-- `footer_link_click` - When users click footer links
-- `external_link_click` - When users click external/social links
-- `rss_feed_click` - When users click RSS feed links
-
-### ✅ Color System
-- `color_palette_click` - When users click the color palette button
-- `color_scheme_applied` - When color schemes are applied
-- `color_scheme_initialized` - When colors are loaded on page load
-
-### 📊 Event Data Structure
-Each event includes:
-- **Timestamp**: When the event occurred
-- **Page Context**: Current URL and page title
-- **Event-specific Data**: Relevant metadata (post titles, tags, URLs, etc.)
-- **Component Information**: Which UI element was interacted with
-- **Action Details**: What the user did
-
-All events are sent to your Umami dashboard for comprehensive analytics insights!
-
-## Performance Monitoring
-
-### Vercel Speed Insights
-- **Core Web Vitals**: Tracks LCP, FID, CLS, and other performance metrics
-- **Real User Monitoring**: Collects performance data from actual users
-- **Production Only**: Automatically enabled when deployed to Vercel
-- **Privacy Compliant**: No personal data collected, only performance metrics
-- **Dashboard**: View performance data in your Vercel project dashboard
-
-### Performance Metrics Tracked
-- **Largest Contentful Paint (LCP)**: Loading performance
-- **First Input Delay (FID)**: Interactivity
-- **Cumulative Layout Shift (CLS)**: Visual stability
-- **First Contentful Paint (FCP)**: Perceived loading speed
-- **Time to First Byte (TTFB)**: Server response time
-
-Speed Insights provides valuable performance data to help optimize your site's user experience!
+- **Umami Analytics**: Privacy-focused, cookie-free custom event tracking
+- **Vercel Speed Insights**: Performance monitoring and Core Web Vitals,
+  production only
