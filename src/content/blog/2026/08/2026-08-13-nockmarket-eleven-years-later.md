@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 
 ## — or — the repo was never the project
 
+![Candlestick stock chart on a dark screen](../../../../assets/img/2026/08/austin-hervias-VLpWpv3oDB4-unsplash.jpg)
+
+*Photo by [Austin Hervias](https://unsplash.com/@ahervias77?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/candlestick-stock-chart-on-dark-screen-VLpWpv3oDB4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
+
 In April of 2014 I worked through _Jump Start Node.js_, a SitePoint book by Don Nguyen, and came out the other side with a thing called Nockmarket: a fake stock exchange bolted onto a portfolio app. A limit order book, five invented tickers, a signup form, a chat room. You could watch synthetic prices tick, buy some, and talk to whoever else happened to be connected at the same time — which, realistically, was nobody.
 
 It ran on Node 0.8.8. The `package.json` also pinned npm to `1.1.49`, which tells you roughly everything about the era.
