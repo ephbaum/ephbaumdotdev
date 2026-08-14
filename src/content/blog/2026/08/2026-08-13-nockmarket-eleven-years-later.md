@@ -3,8 +3,8 @@ title: "Nockmarket, Eleven Years Later"
 postSlug: nockmarket-eleven-years-later
 slug: nockmarket-eleven-years-later
 pubDate: 08/13/2026 4:54 AM
-imgUrl: "../../../../assets/img/ephbaum_avatar_800_400.png"
-ogImage: "../../../../assets/img/ephbaum_avatar_800_400.png"
+imgUrl: "../../../../assets/img/2026/08/austin-hervias-VLpWpv3oDB4-unsplash.jpg"
+ogImage: "../../../../assets/img/2026/08/austin-hervias-VLpWpv3oDB4-unsplash.jpg"
 author: Eph Baum (w/ Claude)
 featured: false
 draft: true
