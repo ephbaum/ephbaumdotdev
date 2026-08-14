@@ -49,6 +49,8 @@ const tags: string[] = Array.isArray(content?.tags) ? content.tags : [];
   <p class="published-color text-opacity-50 text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
   </p>
+  <slot />
+  <p class="author-color">Written by {content.author}</p>
   {
     tags.length > 0 && (
       <ul class="not-prose flex flex-wrap gap-2 items-center list-none p-0 mt-4">
@@ -71,8 +73,6 @@ const tags: string[] = Array.isArray(content?.tags) ? content.tags : [];
       </ul>
     )
   }
-  <slot />
-  <p class="author-color">Written by {content.author}</p>
   <div class="mt-6">
     <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   </div>
