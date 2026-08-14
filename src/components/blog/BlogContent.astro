@@ -1,11 +1,16 @@
 ---
-import { Button } from '@eliancodes/brutal-ui';
+import { Button, Pill } from '@eliancodes/brutal-ui';
 
 interface Props {
   content: any;
 }
 
 const { content } = Astro.props;
+
+const tags: string[] = Array.isArray(content?.tags) ? content.tags : [];
+
+// The article is `w-full` below `md`. It was a fixed `w-sm` (24rem), which is
+// wider than a 375px phone, so every post scrolled sideways.
 ---
 
 <style>
@@ -38,12 +43,34 @@ const { content } = Astro.props;
   }
 </style>
 
-<article class="prose-slate prose w-sm md:w-prose poppins">
+<article class="prose-slate prose w-full md:w-prose poppins">
   <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   <h1 class="mt-8 text-2xl md:text-4xl">{content.title}</h1>
   <p class="published-color text-opacity-50 text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
   </p>
+  {
+    tags.length > 0 && (
+      <ul class="not-prose flex flex-wrap gap-2 items-center list-none p-0 mt-4">
+        {tags.map((tag) => (
+          <li class="max-w-full break-words">
+            <a
+              class="sanchez"
+              href={`/blog/tags/${tag.toLowerCase()}/`}
+              data-analytics-blog-tag
+              data-tag-name={tag}
+              data-tag-url={`/blog/tags/${tag.toLowerCase()}/`}
+              data-source-page="blog_post"
+            >
+              <Pill data-brutal-pill data-brutal-hover>
+                {tag}
+              </Pill>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
   <slot />
   <p class="author-color">Written by {content.author}</p>
   <div class="mt-6">
