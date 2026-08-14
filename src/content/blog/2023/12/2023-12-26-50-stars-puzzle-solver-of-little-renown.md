@@ -40,11 +40,11 @@ This year, though, I managed to keep up quite well- even landing on the top 1,00
 
 ![My personal times for each of AoC 2023](../../../../assets/img/2023/12/Screenshot-2023-12-26-213721.png)
 
-I even found some time to work on different solutions in different languages on some of the “easier” days.
+I even found some time to work on different solutions in different languages on some of the "easier" days.
 
-I even found some time to work on different solutions in different languages on some of the “easier” days. Early on, I did most of my solutions in JavaScript but eventually switched to focusing on getting more comfortable with Python, as it's just a much easier language to work with for these sorts of puzzles. I also found myself spending a bit more time with Rust and even managed to convert a couple of solutions to Elixir. I did none of them in PHP, despite it being (or perhaps _because_ it is) the language of my day job.
+I even found some time to work on different solutions in different languages on some of the "easier" days. Early on, I did most of my solutions in JavaScript but eventually switched to focusing on getting more comfortable with Python, as it's just a much easier language to work with for these sorts of puzzles. I also found myself spending a bit more time with Rust and even managed to convert a couple of solutions to Elixir. I did none of them in PHP, despite it being (or perhaps _because_ it is) the language of my day job.
 
-I feel good about getting all 50 stars this season, even if I didn't solve every puzzle “on my own,” as it were. I'm sure some purists might look down on my methods, solutions, or whatever - but I still did it, and I feel accomplished.
+I feel good about getting all 50 stars this season, even if I didn't solve every puzzle "on my own," as it were. I'm sure some purists might look down on my methods, solutions, or whatever - but I still did it, and I feel accomplished.
 
 I'm certainly an imposter, as I've long admitted, but I'm a capable imposter all the same.
 

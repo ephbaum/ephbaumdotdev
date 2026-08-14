@@ -12,6 +12,17 @@ modified. Content was migrated from Ghost CMS.
 Package manager is **pnpm** (`packageManager` is pinned in `package.json`).
 Never use npm or yarn here — they will produce a lockfile the CI does not accept.
 
+## Working conventions
+
+Before adding a new script + npm command + CI step for some check, look for an
+extension point in the tool already doing that job — a plugin API, a parser
+override, a lint rule — and use that instead. See
+`scripts/prettier-plugin-straight-quotes.mjs` for the shape this takes here: a
+real Prettier plugin, not a script chained on with `&&`.
+
+Keep comments and doc prose here as short as the neighboring entries. State the
+rule and the one non-obvious reason; skip the backstory.
+
 ## Required toolchain
 
 **Use Node 22.** This is not a style preference, it is a correctness
@@ -50,7 +61,7 @@ ls node_modules/@oxc-parser/    # must NOT be empty
 | `pnpm run preview` | Serve the production build locally |
 | `pnpm run astro:check` | Type-check only, no build |
 | `pnpm run lint` / `lint:fix` | ESLint |
-| `pnpm run format` / `format:check` | Prettier |
+| `pnpm run format` / `format:check` | Prettier, plus straightening curly quotes in Markdown |
 | `pnpm run check` | `astro check` + lint + format check |
 | `pnpm run check:fix` | Same, but writes fixes |
 | `pnpm new:post` | Scaffold a blog post (interactive, or `--title "..."`; `--help` for flags) |
@@ -118,6 +129,22 @@ existing posts, and `pnpm new:post` still writes it, but nothing reads it.
 **Sort posts explicitly.** The content layer orders entries by `id` — the flat
 slug — so the `.reverse()` that used to yield newest-first (via path order) is
 now reverse-alphabetical. Use `getPostsNewestFirst()` from `@utils/posts`.
+
+### Straight quotes only
+
+<!-- straight-quotes:off -->
+
+Markdown source is ASCII-quoted. `'` and `"`, never `‘ ’ “ ”`.
+
+<!-- straight-quotes:on -->
+
+Enforced by `pnpm run format` / `format:check` directly: `scripts/prettier-plugin-straight-quotes.mjs`
+is a real Prettier plugin for `*.md`, not the real Markdown parser — it only
+touches quote characters, leaving wrapping, headings, and lists alone. Exempt
+a region with `<!-- straight-quotes:off -->` / `-on -->`.
+
+This governs source only — the Markdown processor still renders typographic
+quotes, so published HTML is unaffected.
 
 ### Where images go
 

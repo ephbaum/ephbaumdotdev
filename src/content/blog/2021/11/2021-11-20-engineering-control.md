@@ -19,7 +19,7 @@ layout: ../../../../layouts/BlogPost.astro
 
 ![Featured Image](../../../../assets/img/2021/11/9b625f1245821e93366e89f7dcd44ef7feecd36d.jpeg)
 
-It's interesting to me to think about my job as “Engineering Manager” and the words “Engineering” and “Management”.
+It's interesting to me to think about my job as "Engineering Manager" and the words "Engineering" and "Management".
 
 Then I think about what might it mean to engineer management?
 
