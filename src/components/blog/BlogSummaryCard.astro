@@ -32,14 +32,14 @@ const { post } = Astro.props;
     </Button>
   </div>
 
-  <div class="hidden sm:inline-block">
+  <div class="hidden sm:block">
     <p class="poppins mt-2">tags:</p>
-    <div class="flex justify-between items-start">
-      <ul class="flex gap-4 mt-2 flex-wrap justify-center">
+    <div class="flex flex-wrap gap-2 justify-between items-start">
+      <ul class="flex gap-4 mt-2 flex-wrap justify-center min-w-0">
         {
           post.data.tags.map((tag) => {
             return (
-              <li class="whitespace-nowrap">
+              <li class="max-w-full break-words">
                 <a
                   class="sanchez"
                   href={`/blog/tags/${tag.toLowerCase()}/`}
@@ -60,7 +60,7 @@ const { post } = Astro.props;
       {
         post.data.draft && (
           <span
-            class="bg-green rounded-full border-2 py-1 px-4 text-sm border-black card-shadow"
+            class="bg-green rounded-full border-2 py-1 px-4 text-sm border-black card-shadow mt-2 shrink-0"
             data-brutal-draft
           >
             Draft
