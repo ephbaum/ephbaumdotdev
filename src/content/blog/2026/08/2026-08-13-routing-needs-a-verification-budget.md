@@ -14,7 +14,7 @@ tags:
   - ai-agents
   - model-routing
   - solo-dev
-description: "A cheap agent confidently misreported a merge conflict resolution as someone else's change. The project's own docs had predicted exactly this failure. Notes on model routing, blast radius, and why conversations are not memory."
+description: "A cheap agent confidently misreported a merge conflict resolution as someone else's change. The project's own docs had predicted exactly this failure. Notes on model routing, blast radius, and what a verification budget actually buys you."
 layout: ../../../../layouts/BlogPost.astro
 ---
 
@@ -48,16 +48,6 @@ A few things fell out of watching this happen that generalize past this one proj
 
 **The confident-wrong failure is the expensive one.** An agent that fails loudly or stalls costs time but not correctness — you notice, you intervene. An agent that narrates a wrong result with the same confidence as its correct ones costs nothing until it costs everything at once. Review effort should scale with how checkable an output is, not with how sure of itself it sounds — confidence is nearly free to produce and carries almost no information.
 
-## The other half: nothing survives a conversation
-
-The session that caught this bug was long-running, and long agent sessions summarize and discard their own context once it grows past some threshold. Over that one session an enormous amount of real reasoning got produced — a full conflict matrix across every open branch, several rounds of verification runs, the analysis that caught the footer bug, architectural notes on in-progress features. Almost none of it survived. At one point the same conflict matrix got derived twice from scratch, because the first derivation existed only inside a conversation turn already summarized away by the time it was needed again.
-
-What did survive was exactly, and only, what had been written into the repository itself: the guidance file, descriptions attached to open branches, issue bodies, commit messages. Everything else — every intermediate conclusion that lived only in the conversation — was gone the moment the session's context window rolled over it, with no distinction made between the reasoning that mattered and the reasoning that didn't.
-
-The practical upshot is a discipline I now take seriously: treat the conversation as scratch space and the repository as the only real memory. If a conclusion is worth having reached, it has to be committed somewhere durable — a doc, an issue, a description attached to a change — or, functionally, it never happened. This makes writing that guidance file load-bearing rather than a chore for later; it's not there for onboarding politeness, it's the only thing in the system with a memory longer than one session.
-
-There's a symmetry here I find genuinely pleasing: the same practice that lets a future *human* reviewer tell deliberate weirdness apart from an accident is the practice that lets a future *agent* session do the same. Good documentation isn't serving two audiences with different needs — it's serving one need, telling intent apart from mistake without re-deriving the reasoning from nothing, for two readers who share the problem.
-
 ## Counterpoint, before this reads as a manifesto
 
 Routing everything to the strongest tier "to be safe" is genuinely wasteful, and none of the above argues for that. The tiered table is still a good idea; it's incomplete, not wrong — it needs a verification line item next to the routing decision, not a wholesale abandonment of routing.
@@ -70,7 +60,7 @@ Verification isn't free either. Every check costs something, and "always double-
 
 Before routing a task to a cheap tier, I now ask two questions instead of one: how bad is it if this is wrong (blast radius), and how cheaply can I confirm it was done right (checkability). Small on both axes is a good candidate for the cheap tier, unsupervised. Small blast radius but expensive to verify deserves a step up. Real blast radius gets a strong model and a verification step no matter how trivial the diff looks — diff size was never the thing that mattered.
 
-If I had to keep exactly one habit out of all this, it wouldn't be the routing table. It would be: write your conclusions somewhere they survive. The table only works because it's written down where the next session can find it. The bug only got caught because checking against the file, not the report, was already a reflex. Both are the same lesson in different clothes — nothing you didn't write down is actually known.
+If I had to keep exactly one habit out of all this, it's the two-question checklist above, applied before the routing decision gets made rather than after a wrong report is already sitting in front of me. Diff size was never the thing that mattered — blast radius and checkability were the whole game the entire time, and the routing table only saves money once something is actually asking those two questions on its way past.
 
 <!--
 EDITING NOTES — delete this block before publishing.
@@ -80,6 +70,11 @@ access to that repository, so every bug and change is described in prose rather 
 linked. The counterpoint section in each post is deliberate and load-bearing.
 
 - Body is as drafted; no known staleness against the current codebase.
+- Originally carried a second thesis in a section called "The other half: nothing survives
+  a conversation," covering how the same orchestrating session lost most of its own
+  reasoning to context summarization. That's been cut and expanded into its own post,
+  "Conversations Are Not Memory" (2026-08-13-conversations-are-not-memory.md). The closing
+  checklist section was reworded to no longer depend on it.
 
 imgUrl/ogImage reuse the homepage screenshot from the intro post. Per-post images
 are still to come.
