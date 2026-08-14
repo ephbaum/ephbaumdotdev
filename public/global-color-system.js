@@ -328,6 +328,11 @@ function applyFooterColors() {
 }
 
 // Main function to apply all color changes
+// Paints only — no analytics here. This runs on every repaint (initial load,
+// SPA navigation, and every 200ms disco tick), so it is the wrong place to
+// fire events for "the user did something." See ColorChangeButton.astro for
+// the click-driven color_palette_click event, and startDiscoMode/stopDiscoMode
+// below for disco start/stop events.
 function applyAllColors() {
   initializeColors();
   applyMainBackgroundColors();
@@ -336,58 +341,6 @@ function applyAllColors() {
   applyFooterColors();
   applyHoverEffects();
   applySpecialElementColors();
-
-  // Track color application with analytics
-  if (typeof window !== 'undefined') {
-    // Determine if this is the initial load or a color change
-    const isInitialLoad = !window.colorSchemeInitialized;
-    const eventName = isInitialLoad ? 'color_scheme_initialized' : 'color_scheme_applied';
-    const action = isInitialLoad ? 'initialize_colors' : 'apply_colors';
-    const source = isInitialLoad ? 'page_load' : 'user_interaction';
-
-    // Mark as initialized after first load
-    if (isInitialLoad) {
-      window.colorSchemeInitialized = true;
-    }
-
-    // Track with Umami Analytics
-    if (window.umami) {
-      try {
-        // Try newer API first (umami.track)
-        if (typeof window.umami.track === 'function') {
-          window.umami.track(eventName, {
-            action: action,
-            component: 'color_system',
-            colors: currentColors ? {
-              primary: currentColors.primary,
-              secondary: currentColors.secondary,
-              accent: currentColors.accent,
-              hover: currentColors.hover
-            } : null,
-            source: source,
-            page_url: window.location.pathname
-          });
-        }
-        // Fallback to older API (umami as function)
-        else if (typeof window.umami === 'function') {
-          window.umami(eventName, {
-            action: action,
-            component: 'color_system',
-            colors: currentColors ? {
-              primary: currentColors.primary,
-              secondary: currentColors.secondary,
-              accent: currentColors.accent,
-              hover: currentColors.hover
-            } : null,
-            source: source,
-            page_url: window.location.pathname
-          });
-        }
-      } catch (error) {
-        console.warn('Umami tracking failed:', error);
-      }
-    }
-  }
 }
 
 // Disco mode functions
