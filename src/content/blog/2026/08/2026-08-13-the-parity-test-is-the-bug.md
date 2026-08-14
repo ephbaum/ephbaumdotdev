@@ -3,8 +3,8 @@ title: "The Parity Test Is the Bug"
 postSlug: the-parity-test-is-the-bug
 slug: the-parity-test-is-the-bug
 pubDate: 08/13/2026 9:30 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_four.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_four.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_4.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_4.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 [Horror Movie Season](https://horrormovieseason.com) hands out badges: a three-day streak, a full 31-day run, five vampire movies in a week. I'm the only developer on it, and I wrote about [how it got built](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/) last year. A while back I spent some time fixing a bug in how those badges get their evidence attached, and the fix included something I wanted to talk about separately from the bug itself: a fixture file whose entire purpose was proving that two functions, living in two different parts of the codebase, computed the same answer.
 
 That file was a good idea. It was also a symptom. Both things were true, and working out which one mattered more is what this post is about — including what happened when I eventually acted on the answer.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_4.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## Two copies of the same brain
 

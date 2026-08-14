@@ -3,8 +3,8 @@ title: "Routing Needs a Verification Budget"
 postSlug: routing-needs-a-verification-budget
 slug: routing-needs-a-verification-budget
 pubDate: 08/13/2026 10:00 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_three.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_three.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_3.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_3.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 I maintain [Horror Movie Season](https://horrormovieseason.com) mostly by dispatching AI coding agents at labelled issues rather than writing most of the code myself — the approach I described when I [wrote about building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/), pushed a good deal further since. The project carries around 600 tests, and I write comparatively few of them by hand. Every issue carries a complexity label, and that label isn't a difficulty estimate for a human — it selects which tier of model picks the work up. Cheap tier for one-file mechanical changes, mid tier for anything multi-file or requiring taste, the strongest tier for anything touching a cross-cutting invariant, and a tier above that for genuine design work with no established pattern to copy. The guidance I wrote for the project states the reasoning plainly: a too-strong model wastes tokens, but a too-weak one lands a plausible-looking wrong change, and the cost of catching that in review dwarfs whatever the cheap tier saved.
 
 I did not fully believe my own sentence until a few weeks ago, when an orchestrating agent session I'd set running dispatched four sub-agents in parallel against four open branches. Three went to mid-tier or stronger models. One went to the cheapest tier, because the task looked, on paper, like the easiest of the four: rebase a small two-commit branch onto an updated main branch, where the only predicted conflict was in a package manifest — the kind of thing that resolves itself by taking the newer lockfile and moving on.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_3.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## What actually happened
 

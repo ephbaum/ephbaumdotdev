@@ -3,8 +3,8 @@ title: "Conversations Are Not Memory"
 postSlug: conversations-are-not-memory
 slug: conversations-are-not-memory
 pubDate: 08/13/2026 10:15 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_six.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_six.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_6.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_6.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 I maintain [Horror Movie Season](https://horrormovieseason.com) mostly by dispatching AI coding agents at labelled issues, an approach I described when I [wrote about building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/). A while back I had an orchestrating agent session running for hours, managing several open branches at once — checking which ones conflicted with each other, dispatching sub-agents to resolve what it found, verifying the results. It was, by a wide margin, the most productive single session I'd run against that project. It's also the session that taught me the productivity was mostly an illusion, because almost none of what it figured out was still there by the time it mattered.
 
 This isn't about which model got which task, which is its own story. It's about a narrower, easier-to-miss problem: a long-running agent session doesn't just run out of tokens eventually — it actively discards its own history well before that, and it discards good reasoning exactly as readily as bad.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_6.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## What a context window actually throws away
 

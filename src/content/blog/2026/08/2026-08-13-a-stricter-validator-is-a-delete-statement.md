@@ -3,8 +3,8 @@ title: "A Stricter Validator Is a Delete Statement"
 postSlug: a-stricter-validator-is-a-delete-statement
 slug: a-stricter-validator-is-a-delete-statement
 pubDate: 08/13/2026 9:45 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_one.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_one.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_1.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_1.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -23,6 +23,10 @@ layout: ../../../../layouts/BlogPost.astro
 That last part is what makes this story possible. Because the browser is the one writing, award badges are granted optimistically, client-side, the instant you qualify — no spinner, no round trip. And because I don't trust the browser with the final word, a Cloud Function trigger fires on every write to a movie document and re-validates that user's awards. For a long stretch, it did that against a second, independent implementation of the same rules.
 
 Two implementations of one rule, running on different machines, one of them holding delete authority over the other's output. That sentence is the whole postmortem. Everything below is just what happens when you don't notice you've built it.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_1.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## The trigger, and the sleep that should have worried me
 

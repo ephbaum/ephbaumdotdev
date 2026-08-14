@@ -3,8 +3,8 @@ title: "Your Workarounds Are a Silhouette of Your Access Patterns"
 postSlug: your-workarounds-are-a-silhouette-of-your-access-patterns
 slug: your-workarounds-are-a-silhouette-of-your-access-patterns
 pubDate: 08/13/2026 9:15 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_five.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_five.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_5.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_5.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 [Horror Movie Season](https://horrormovieseason.com) — watch streaks, award badges, public profiles you can opt into — has a static SvelteKit front end and no backend to speak of. I covered that architecture when I [wrote about building it](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/); this post is about a consequence of it I understated at the time. Firebase Auth, Firestore, Storage, and a couple of Cloud Functions that only exist because two things need a hidden API key. Everything else is the browser talking straight to the database. There's no server process sitting between them deciding what's allowed — that job belongs entirely to a declarative rules file, about sixty lines long, that Firestore evaluates on every read and write.
 
 That architecture is the whole story of this post. When authorization lives in rules instead of in server code, the database's opinions about *what a rule can even talk about* become your application's opinions too. And over the life of this project I've written three distinct workarounds to route around those opinions. For a while I filed them mentally under "things Firestore makes annoying." Then I noticed they don't scatter randomly across the codebase. They all sit at the same seam.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_5.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## The pattern, once you see it
 

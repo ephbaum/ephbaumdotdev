@@ -3,8 +3,8 @@ title: "Document Your Constraints, Not Your Code"
 postSlug: document-your-constraints-not-your-code
 slug: document-your-constraints-not-your-code
 pubDate: 08/13/2026 9:00 AM
-imgUrl: "../../../../assets/img/2026/08/horror_movie_season_two.png"
-ogImage: "../../../../assets/img/2026/08/horror_movie_season_two.png"
+imgUrl: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_2.png"
+ogImage: "../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_2.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
@@ -21,6 +21,10 @@ layout: ../../../../layouts/BlogPost.astro
 I maintain [Horror Movie Season](https://horrormovieseason.com) by myself — the SvelteKit-and-Firebase app I wrote about [building last year](/blog/building-horror-movie-season-a-journey-in-ai-augmented-development/). Nothing about the domain is complicated: you log horror movies, it counts streaks, it hands out badges. What's complicated, the way it always is, is the accumulated residue of decisions made under constraints no longer visible anywhere except in my head.
 
 Or they were only in my head, until I started writing them down somewhere specific. This post is about that habit, why it matters more than the usual "keep your comments and docs current" advice, and where it can go wrong.
+
+![A group of boxes with text on them](../../../../assets/img/2026/08/bruno-guerrero-hSHhJojpo4A-unsplash_slice_2.png)
+
+*Photo by [Bruno Guerrero](https://unsplash.com/@pray4bokeh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-boxes-with-text-on-them-hSHhJojpo4A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 ## The advice everyone gives, and why it's incomplete
 
