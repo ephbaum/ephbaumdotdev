@@ -3,8 +3,8 @@ title: "The Parity Test Is the Bug"
 postSlug: the-parity-test-is-the-bug
 slug: the-parity-test-is-the-bug
 pubDate: 08/13/2026 9:30 AM
-imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
-ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+imgUrl: "../../../../assets/img/2026/08/horror_movie_season_four.png"
+ogImage: "../../../../assets/img/2026/08/horror_movie_season_four.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true

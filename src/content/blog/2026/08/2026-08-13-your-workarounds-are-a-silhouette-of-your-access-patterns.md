@@ -3,8 +3,8 @@ title: "Your Workarounds Are a Silhouette of Your Access Patterns"
 postSlug: your-workarounds-are-a-silhouette-of-your-access-patterns
 slug: your-workarounds-are-a-silhouette-of-your-access-patterns
 pubDate: 08/13/2026 9:15 AM
-imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
-ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+imgUrl: "../../../../assets/img/2026/08/horror_movie_season_five.png"
+ogImage: "../../../../assets/img/2026/08/horror_movie_season_five.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true

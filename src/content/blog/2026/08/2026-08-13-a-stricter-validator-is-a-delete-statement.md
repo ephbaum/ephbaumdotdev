@@ -3,8 +3,8 @@ title: "A Stricter Validator Is a Delete Statement"
 postSlug: a-stricter-validator-is-a-delete-statement
 slug: a-stricter-validator-is-a-delete-statement
 pubDate: 08/13/2026 9:45 AM
-imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
-ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+imgUrl: "../../../../assets/img/2026/08/horror_movie_season_one.png"
+ogImage: "../../../../assets/img/2026/08/horror_movie_season_one.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true

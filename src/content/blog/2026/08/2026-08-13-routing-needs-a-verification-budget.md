@@ -3,8 +3,8 @@ title: "Routing Needs a Verification Budget"
 postSlug: routing-needs-a-verification-budget
 slug: routing-needs-a-verification-budget
 pubDate: 08/13/2026 10:00 AM
-imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
-ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+imgUrl: "../../../../assets/img/2026/08/horror_movie_season_three.png"
+ogImage: "../../../../assets/img/2026/08/horror_movie_season_three.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true

@@ -3,8 +3,8 @@ title: "Document Your Constraints, Not Your Code"
 postSlug: document-your-constraints-not-your-code
 slug: document-your-constraints-not-your-code
 pubDate: 08/13/2026 9:00 AM
-imgUrl: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
-ogImage: "../../../../assets/img/2025/10/horror-movie-season-homepage.png"
+imgUrl: "../../../../assets/img/2026/08/horror_movie_season_two.png"
+ogImage: "../../../../assets/img/2026/08/horror_movie_season_two.png"
 author: Eph Baum (feat. Claude)
 featured: false
 draft: true
