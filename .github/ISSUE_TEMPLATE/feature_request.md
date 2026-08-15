@@ -1,7 +1,7 @@
 ---
 name: Feature request (Story)
 about: Suggest an idea for this blog
-title: ''
+title: 'story: '
 labels: enhancement
 assignees: ephbaum
 
