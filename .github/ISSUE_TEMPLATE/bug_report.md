@@ -1,7 +1,7 @@
 ---
 name: Bug report
-about: Create a report to help improve Brutal
-title: ''
+about: Create a report to help improve this blog
+title: 'bug: '
 labels: bug
 assignees: ephbaum 
 

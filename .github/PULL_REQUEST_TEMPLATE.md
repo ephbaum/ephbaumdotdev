@@ -1,6 +1,10 @@
+<!-- Please use conventional commit PR title -->
+
 ## 📝 What's This PR About?
 
-**Type of Change:** (Select one)
+<!-- Select one, remove the others -->
+
+**Type of Change:**
 - [ ] 📖 **New Blog Post** - Adding new content/article
 - [ ] 🎨 **Design/UI Change** - Visual updates, styling, layout changes
 - [ ] ⚙️ **Feature Addition** - New functionality or capabilities
@@ -10,7 +14,7 @@
 
 ## 📋 Description
 
-<!-- Describe what this PR does. Be specific and concise. -->
+<!-- Describe what this PR does. Be specific and concise. Remove irrelevant section(s and freestyle) -->
 
 ### For Blog Posts:
 - **Title:** [Post title]
