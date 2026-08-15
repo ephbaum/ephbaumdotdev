@@ -101,10 +101,15 @@ is always defined by the time a user can trigger one of these.
 - **Source**: `src/components/ColorChangeButton.astro`
 - **Properties**: `action: "change_colors"`, `component: "color_palette_button"`
 
-This is the only colour-scheme event fired by a click. There is no separate
-"applied" event: colours repaint synchronously in the same handler, so an
-applied-event at that site would share this one's trigger and timing without
-adding information.
+There is no separate "applied" event: colours repaint synchronously in the
+same handler, so an applied-event at that site would share this one's trigger
+and timing without adding information.
+
+One click can still produce two events. The fifth click of a rapid sequence
+starts disco *and* falls through to `color_palette_click`, because the handler
+fires it unconditionally after `trackColorButtonClick()`. So that click emits
+both `disco_mode_activated` and `color_palette_click`. The click that *stops*
+disco returns early and emits only `disco_mode_deactivated`.
 
 #### `disco_mode_activated`
 - **Trigger**: Disco mode starts — 5 palette-button clicks within 1 second,
