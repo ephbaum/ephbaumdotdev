@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getPublishedPosts } from '@utils/posts';
 
 export async function GET(context) {
-  const blog = await getCollection('blog');
+  const blog = await getPublishedPosts();
   return rss({
     title: 'eph baum dot dev',
     description:

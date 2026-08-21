@@ -1,10 +1,10 @@
 import { Resvg, type ResvgRenderOptions } from '@resvg/resvg-js';
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { html as toReactElement } from 'satori-html';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { getPublishedPosts } from '@utils/posts';
 
 // Read the OG font from the local filesystem so the build never depends on a
 // third-party host being reachable at build time.
@@ -39,7 +39,7 @@ const colors = [
   '#ffbf00', // amber
 ];
 
-const posts = await getCollection('blog');
+const posts = await getPublishedPosts();
 
 export function getStaticPaths() {
   return posts.map((post) => ({

@@ -1,11 +1,16 @@
 ---
-import { Button } from '@eliancodes/brutal-ui';
+import { Button, Pill } from '@eliancodes/brutal-ui';
 
 interface Props {
   content: any;
 }
 
 const { content } = Astro.props;
+
+const tags: string[] = Array.isArray(content?.tags) ? content.tags : [];
+
+// The article is `w-full` below `md`. It was a fixed `w-sm` (24rem), which is
+// wider than a 375px phone, so every post scrolled sideways.
 ---
 
 <style>
@@ -38,7 +43,7 @@ const { content } = Astro.props;
   }
 </style>
 
-<article class="prose-slate prose w-sm md:w-prose poppins">
+<article class="prose-slate prose w-full md:w-prose poppins">
   <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   <h1 class="mt-8 text-2xl md:text-4xl">{content.title}</h1>
   <p class="published-color text-opacity-50 text-sm md:text-base">
@@ -46,6 +51,34 @@ const { content } = Astro.props;
   </p>
   <slot />
   <p class="author-color">Written by {content.author}</p>
+  {
+    tags.length > 0 && (
+      // The click listener for these lives in BlogSummaryCard's component
+      // script, which reaches them because BlogPost always renders
+      // RecentBlogPosts. Drop that and blog_tag_click stops firing here.
+      <ul
+        class="not-prose flex flex-wrap gap-2 items-center list-none p-0 mt-4"
+        aria-label={`Tags for ${content.title}`}
+      >
+        {tags.map((tag) => (
+          <li class="max-w-full break-words">
+            <a
+              class="sanchez"
+              href={`/blog/tags/${tag.toLowerCase()}/`}
+              data-analytics-blog-tag
+              data-tag-name={tag}
+              data-tag-url={`/blog/tags/${tag.toLowerCase()}/`}
+              data-source-page="blog_post"
+            >
+              <Pill data-brutal-pill data-brutal-hover>
+                {tag}
+              </Pill>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
   <div class="mt-6">
     <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
   </div>

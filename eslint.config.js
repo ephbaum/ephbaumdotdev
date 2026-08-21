@@ -13,7 +13,9 @@ export default [
   {
     // Formerly .eslintignore. node_modules is ignored by default in flat
     // config; the rest still has to be named explicitly.
-    ignores: ['dist/', '.astro/', 'public/', '.vercel/', 'pnpm-lock.yaml'],
+    // `.claude/` holds agent worktrees — full checkouts of this repo, `dist/`
+    // and all. Without it, linting the repo lints every nested copy too.
+    ignores: ['dist/', '.astro/', 'public/', '.vercel/', '.claude/', 'pnpm-lock.yaml'],
   },
 
   js.configs.recommended,
