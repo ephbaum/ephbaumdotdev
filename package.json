@@ -45,7 +45,7 @@
     "@iconify-json/uil": "^1.2.3",
     "@resvg/resvg-js": "^2.6.2",
     "@typescript-eslint/parser": "^8.66.0",
-    "@unocss/reset": "^66.7.5",
+    "@unocss/reset": "^66.10.2",
     "eslint": "^9.8.0",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
