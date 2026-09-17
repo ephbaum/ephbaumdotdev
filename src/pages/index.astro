@@ -53,27 +53,23 @@ const builtWith = [
       </div>
       <div class="col-span-2">
         <Card data-brutal-card>
-          <h3
-            class="text-lg md:text-xl lg:text-2xl mb-4 dm-serif flex flex-wrap items-center gap-2"
-          >
-            <span class="whitespace-nowrap"
-              >Made with <span class="i-uil-heart w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 inline-block"
-              ></span></span
-            >
+          <h3 class="text-lg md:text-xl lg:text-2xl mb-4 dm-serif flex flex-wrap items-center gap-2">
+            <span class="whitespace-nowrap">
+              Made with{' '}
+              <span class="i-uil-heart w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 inline-block"></span>
+            </span>
             <span>using:</span>
           </h3>
           <ul class="flex gap-4 flex-wrap">
-            {
-              builtWith.map((item) => (
-                <li>
-                  <Pill data-brutal-pill data-brutal-hover>
-                    <a class="sanchez" href={item.url} target="_blank" title={`Go to ${item.name}`}>
-                      {item.name}
-                    </a>
-                  </Pill>
-                </li>
-              ))
-            }
+            {builtWith.map((item) => (
+              <li>
+                <Pill data-brutal-pill data-brutal-hover>
+                  <a class="sanchez" href={item.url} target="_blank" title={`Go to ${item.name}`}>
+                    {item.name}
+                  </a>
+                </Pill>
+              </li>
+            ))}
           </ul>
         </Card>
       </div>

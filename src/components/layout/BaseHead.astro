@@ -56,31 +56,24 @@ const { title, description, ogImage } = Astro.props;
   <ClientRouter />
 
   <!-- Umami Analytics -->
-  {
-    import.meta.env.PUBLIC_UMAMI_WEBSITE_ID && (
-      <script
-        is:inline
-        defer
-        src={import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'}
-        data-website-id={import.meta.env.PUBLIC_UMAMI_WEBSITE_ID}
-      />
-    )
-  }
+  {import.meta.env.PUBLIC_UMAMI_WEBSITE_ID && (
+    <script
+      is:inline
+      defer
+      src={import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'}
+      data-website-id={import.meta.env.PUBLIC_UMAMI_WEBSITE_ID}
+    ></script>
+  )}
 
   <!-- Analytics Tracking Function -->
   <script src="/analytics.js" is:inline></script>
-
   <!-- Contrast Utilities -->
   <script src="/contrast-utils.js" is:inline></script>
-
   <!-- Vercel Speed Insights -->
-  {
-    import.meta.env.MODE === 'production' && (
-      <script>
-        import {injectSpeedInsights} from '@vercel/speed-insights'; injectSpeedInsights();
-      </script>
-    )
-  }
+  {import.meta.env.MODE === 'production' && <script>
+    import { injectSpeedInsights } from '@vercel/speed-insights';
+    injectSpeedInsights();
+  </script>}
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -101,6 +94,5 @@ const { title, description, ogImage } = Astro.props;
       });
     });
   </script>
-
   <slot />
 </head>

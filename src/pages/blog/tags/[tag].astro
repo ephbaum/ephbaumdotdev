@@ -44,7 +44,9 @@ const { tag, blogposts } = Astro.props;
 >
   <main id="tag-main-content" class="p-6 grid gap-4">
     <div>
-      <Button href="/blog/" data-brutal-button data-brutal-hover>&larr; Back to blog</Button>
+      <Button href="/blog/" data-brutal-button data-brutal-hover>
+        &larr; Back to blog
+      </Button>
     </div>
     <BlogList posts={blogposts} />
   </main>
