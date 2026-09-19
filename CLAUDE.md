@@ -23,6 +23,13 @@ real Prettier plugin, not a script chained on with `&&`.
 Keep comments and doc prose here as short as the neighboring entries. State the
 rule and the one non-obvious reason; skip the backstory.
 
+Close `<script>` and `<style>` explicitly — `<script …></script>`, never
+`<script … />`. A self-closing one inside a `{cond && …}` expression that is
+long enough to wrap makes prettier-plugin-astro 1.0.1 emit output that fails its
+own `format:check`; a second `pnpm run format` converges. So if `check:fix`
+leaves CI red on an `.astro` file it just rewrote, run it again — that is this,
+not a stale cache.
+
 ## Required toolchain
 
 **Use Node 22.** This is not a style preference, it is a correctness
