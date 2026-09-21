@@ -53,42 +53,38 @@ const { pageTitle } = Astro.props;
   <nav class="hidden md:inline-block">
     <h2 class="hidden">Navigation</h2>
     <ul class="flex gap-3 md:gap-4 lg:gap-6 poppins">
-      {
-        navigationItems.map((item) => (
-          <li>
-            <a
-              class="hover:underline transition-all duration-150 ease-in-out"
-              href={item.url}
-              title={item.title}
-              data-analytics-menu-nav
-              data-destination={item.name.toLowerCase()}
-              data-destination-url={item.url}
-            >
-              <div class:list={[item.icon, 'w-6 h-6']} />
-            </a>
-          </li>
-        ))
-      }
-      {
-        socialIcons.map((item) => (
-          <li>
-            <a
-              href={item.url}
-              class="hover:underline transition-all duration-150 ease-in-out"
-              target="_blank"
-              title={item.title}
-              data-analytics-external-link
-              data-destination-domain={
-                item.url.startsWith('http') ? new URL(item.url).hostname : 'internal'
-              }
-              data-destination-url={item.url}
-              data-source-context="header"
-            >
-              <div class:list={[item.icon, 'w-6 h-6']} />
-            </a>
-          </li>
-        ))
-      }
+      {navigationItems.map((item) => (
+        <li>
+          <a
+            class="hover:underline transition-all duration-150 ease-in-out"
+            href={item.url}
+            title={item.title}
+            data-analytics-menu-nav
+            data-destination={item.name.toLowerCase()}
+            data-destination-url={item.url}
+          >
+            <div class:list={[item.icon, 'w-6 h-6']} />
+          </a>
+        </li>
+      ))}
+      {socialIcons.map((item) => (
+        <li>
+          <a
+            href={item.url}
+            class="hover:underline transition-all duration-150 ease-in-out"
+            target="_blank"
+            title={item.title}
+            data-analytics-external-link
+            data-destination-domain={
+              item.url.startsWith('http') ? new URL(item.url).hostname : 'internal'
+            }
+            data-destination-url={item.url}
+            data-source-context="header"
+          >
+            <div class:list={[item.icon, 'w-6 h-6']} />
+          </a>
+        </li>
+      ))}
       <li>
         <ColorChangeButton />
       </li>

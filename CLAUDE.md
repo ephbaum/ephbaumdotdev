@@ -23,6 +23,16 @@ real Prettier plugin, not a script chained on with `&&`.
 Keep comments and doc prose here as short as the neighboring entries. State the
 rule and the one non-obvious reason; skip the backstory.
 
+Two prettier-plugin-astro 1.0.x formatting bugs to write around. Close
+`<script>` and `<style>` explicitly — `<script …></script>`, never
+`<script … />`: a self-closing one inside a `{cond && …}` expression long enough
+to wrap makes the plugin emit output that fails its own `format:check`, so if
+`check:fix` leaves CI red on a file it just rewrote, run it again rather than
+hunting a stale cache. And keep multi-line `/* … */` comments out of `<style>`
+blocks — those gain two spaces of indentation every run and never converge, so
+`format:check` can never pass (upstream issue 487, open as of 1.0.1). Single-line
+`/* … */` is fine.
+
 ## Required toolchain
 
 **Use Node 22.** This is not a style preference, it is a correctness

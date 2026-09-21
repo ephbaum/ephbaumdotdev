@@ -36,37 +36,33 @@ const { post } = Astro.props;
     <p class="poppins mt-2">tags:</p>
     <div class="flex flex-wrap gap-2 justify-between items-start">
       <ul class="flex gap-4 mt-2 flex-wrap justify-center min-w-0">
-        {
-          post.data.tags.map((tag) => {
-            return (
-              <li class="max-w-full break-words">
-                <a
-                  class="sanchez"
-                  href={`/blog/tags/${tag.toLowerCase()}/`}
-                  data-analytics-blog-tag
-                  data-tag-name={tag}
-                  data-tag-url={`/blog/tags/${tag.toLowerCase()}/`}
-                  data-source-page="blog_index"
-                >
-                  <Pill data-brutal-pill data-brutal-hover>
-                    {tag}
-                  </Pill>
-                </a>
-              </li>
-            );
-          })
-        }
+        {post.data.tags.map((tag) => {
+          return (
+            <li class="max-w-full break-words">
+              <a
+                class="sanchez"
+                href={`/blog/tags/${tag.toLowerCase()}/`}
+                data-analytics-blog-tag
+                data-tag-name={tag}
+                data-tag-url={`/blog/tags/${tag.toLowerCase()}/`}
+                data-source-page="blog_index"
+              >
+                <Pill data-brutal-pill data-brutal-hover>
+                  {tag}
+                </Pill>
+              </a>
+            </li>
+          );
+        })}
       </ul>
-      {
-        post.data.draft && (
-          <span
-            class="bg-green rounded-full border-2 py-1 px-4 text-sm border-black card-shadow mt-2 shrink-0"
-            data-brutal-draft
-          >
-            Draft
-          </span>
-        )
-      }
+      {post.data.draft && (
+        <span
+          class="bg-green rounded-full border-2 py-1 px-4 text-sm border-black card-shadow mt-2 shrink-0"
+          data-brutal-draft
+        >
+          Draft
+        </span>
+      )}
     </div>
   </div>
 </SummaryCard>
