@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # `pnpm run build` is `astro check && astro build`, which never invokes
+      # `pnpm run build` is type-check + `astro build`, which never invokes
       # ESLint or Prettier. Without these two steps a change that breaks
       # linting outright — an ESLint major that orphans the config file, say —
       # still reports a green build.

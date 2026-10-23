@@ -12,17 +12,17 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "pnpm run astro:check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "new:post": "node scripts/new-post.js",
-    "astro:check": "astro check",
+    "astro:check": "astro sync && astro-check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "astro check && pnpm run lint && pnpm run format:check",
-    "check:fix": "astro check && pnpm run lint:fix && pnpm run format"
+    "check": "pnpm run astro:check && pnpm run lint && pnpm run format:check",
+    "check:fix": "pnpm run astro:check && pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

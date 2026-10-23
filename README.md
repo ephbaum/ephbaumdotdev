@@ -86,13 +86,13 @@ Based on the original Brutal theme with our enhancements:
 | Command | Action | Notes |
 |---------|--------|-------|
 | `pnpm run dev` | Start local dev server at `localhost:4321` | Enhanced with TypeScript support |
-| `pnpm run build` | Build production site to `./dist/` | Runs `astro check` first — type errors fail the build |
+| `pnpm run build` | Build production site to `./dist/` | Runs `astro:check` first — type errors fail the build |
 | `pnpm run preview` | Preview build locally before deploying | Test production build |
 | `pnpm run astro` | Run Astro CLI commands | Full CLI access |
 | `pnpm run astro:check` | Type-check without building | Faster iteration loop |
 | `pnpm run lint` / `lint:fix` | ESLint | `:fix` writes fixes |
 | `pnpm run format` / `format:check` | Prettier | `format:check` is read-only |
-| `pnpm run check` / `check:fix` | `astro check` + lint + format | Full pre-commit sweep |
+| `pnpm run check` / `check:fix` | `astro:check` + lint + format | Full pre-commit sweep |
 | `pnpm new:post` | Create a new blog post with frontmatter | Interactive, or pass `--title`; `--help` for flags |
 
 A full build takes roughly 70-110 seconds and emits ~215 pages, including a
@@ -255,7 +255,7 @@ GitHub repository, builds on every push to `main`, and publishes to
 #### **GitHub Actions is a build gate, not a deploy path**
 
 `.github/workflows/ci.yml` installs dependencies and runs `pnpm run build`
-(`astro check && astro build`) on pushes and pull requests to `main`. That's
+(type-check, then `astro build`) on pushes and pull requests to `main`. That's
 all it does. If a change doesn't build, it fails here before Vercel picks it up.
 
 An earlier version of this workflow also deployed to Vercel via
@@ -302,7 +302,7 @@ graph TD
     A[Push to main] --> B[GitHub Actions: ci.yml]
     C[Open Pull Request] --> B
     B --> D[pnpm install --frozen-lockfile]
-    D --> E[pnpm run build<br/>astro check && astro build]
+    D --> E[pnpm run build<br/>astro sync, astro-check, astro build]
     E --> F{Build passes?}
     F -->|No| G[Red check, stop]
     F -->|Yes| H[Green check]
