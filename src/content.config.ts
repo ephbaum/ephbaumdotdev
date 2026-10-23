@@ -1,8 +1,9 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-// Astro 7 deprecates the `z` re-export from `astro:content` and no longer ships
-// it as a namespace, so `z.ZodType` has to come from zod directly.
-import { z } from 'zod';
+// Astro 7 deprecates the `z` re-export from `astro:content`. Take it from
+// `astro/zod`, not `zod`: a second zod copy makes `tsc` compare the two type
+// trees structurally, which exhausts the heap and OOMs `astro check`.
+import { z } from 'astro/zod';
 import type { ImageMetadata } from 'astro';
 
 // Posts live at src/content/blog/YYYY/MM/YYYY-MM-DD-slug.md, but their public
