@@ -39,7 +39,7 @@ Cannot find module '@oxc-parser/binding-linux-x64-gnu'
 ```
 
 Because that happens inside Astro's content-collection sync, the visible
-symptom is `astro check` aborting about two seconds in — which reads like a
+symptom is `astro sync` aborting about two seconds in — which reads like a
 config or content error, not a dependency error.
 
 Quick check that your install is intact:
@@ -57,12 +57,12 @@ ls node_modules/@oxc-parser/    # must NOT be empty
 |---|---|
 | `pnpm install --frozen-lockfile` | Install exactly what the lockfile specifies |
 | `pnpm run dev` | Dev server at `localhost:4321` |
-| `pnpm run build` | **`astro check && astro build`** — type errors fail the build |
+| `pnpm run build` | **`astro:check` then `astro build`** — type errors fail the build |
 | `pnpm run preview` | Serve the production build locally |
 | `pnpm run astro:check` | Type-check only, no build |
 | `pnpm run lint` / `lint:fix` | ESLint |
 | `pnpm run format` / `format:check` | Prettier, plus straightening curly quotes in Markdown |
-| `pnpm run check` | `astro check` + lint + format check |
+| `pnpm run check` | `astro:check` + lint + format check |
 | `pnpm run check:fix` | Same, but writes fixes |
 | `pnpm new:post` | Scaffold a blog post (interactive, or `--title "..."`; `--help` for flags) |
 
@@ -167,9 +167,12 @@ font from a third-party demo host at module scope, which made every production
 build depend on an unrelated service's uptime. Fonts now come from
 `public/fonts/`. Don't reintroduce build-time fetches — vendor the asset.
 
-**`astro check` gates the build.** `pnpm run build` runs it first, so a type
-error anywhere blocks deployment. Run `pnpm run astro:check` while iterating for
-a faster loop.
+**Type-checking gates the build.** `pnpm run build` runs `astro:check` first, so
+a type error anywhere blocks deployment. That script is `astro sync && astro-check`,
+not `astro check`: when `@astrojs/check` fails to import, `astro check` logs an
+error and still exits 0, so a broken install silently skips type-checking.
+`astro-check` crashes instead. Keep the `astro sync` — without it a fresh checkout
+reports false errors.
 
 **OG images are generated at build time** by satori + resvg for every post.
 Changing the OG templates re-renders ~215 PNGs, so image-heavy changes are slow

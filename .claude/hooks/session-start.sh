@@ -18,7 +18,7 @@ cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 # script only runs where .tool-versions isn't guaranteed to be self-enforcing
 # (see the CLAUDE_CODE_REMOTE guard above). On Node 18, pnpm silently skips
 # the platform-specific @oxc-parser native bindings; the install still exits
-# 0 and the failure only appears later as an unrelated-looking `astro check`
+# 0 and the failure only appears later as an unrelated-looking `astro sync`
 # crash.
 REQUIRED_NODE_MAJOR="$(awk '$1 == "nodejs" { split($2, v, "."); print v[1] }' .tool-versions 2>/dev/null)"
 REQUIRED_NODE_MAJOR="${REQUIRED_NODE_MAJOR:-22}"
