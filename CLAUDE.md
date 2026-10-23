@@ -204,6 +204,12 @@ anything.
 Vercel picks it up. It deliberately does not deploy; a previous version tried to
 and produced a second, competing deploy path.
 
+Vercel's `installCommand` deletes `node_modules` before a frozen install. Vercel
+restores `node_modules` from its build cache, and pnpm keeps a record there of
+optional packages it skipped; when a lockfile change makes one of those
+required, an incremental install still skips it. That left `@emnapi/runtime`
+missing after Astro 7.4, so `@astrojs/check` could not load.
+
 If you touch `vercel.json`, remember this is a **static multi-page** site that
 emits real per-route HTML — not an SPA. It does not want a catch-all rewrite to
 `/index.html`.
