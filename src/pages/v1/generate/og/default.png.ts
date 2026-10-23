@@ -44,18 +44,20 @@ export const GET: APIRoute = async () => {
   // Pick a random color for each request (will be same after build)
   const bgColor = colors[Math.floor(Math.random() * colors.length)];
 
+  // satori 0.63 defaults to content-box and sizes <p> margins in em; both are
+  // pinned here to keep the layout satori 0.33 produced.
   const html = toReactElement(`
-  <div style="background-color: ${bgColor}; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
-    <div style="display:flex; position: relative; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
+  <div style="background-color: ${bgColor}; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%; box-sizing: border-box;">
+    <div style="display:flex; position: relative; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1)); box-sizing: border-box;">
       <img src="${logoBase64}" style="position: absolute; top: -2rem; right: -2rem; width: 150px; height: 150px;" />
-      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-right: 11rem;">
+      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-right: 11rem; box-sizing: border-box;">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">  
-          <p style="font-size: 48px;">eph baum dot dev</p>
-          <p style="font-size: 38px;">Eph Words</p>
-          <p style="font-size: 38px;">A blog about tech and engineering</p>
+          <p style="font-size: 48px; margin: 1rem 0;">eph baum dot dev</p>
+          <p style="font-size: 38px; margin: 1rem 0;">Eph Words</p>
+          <p style="font-size: 38px; margin: 1rem 0;">A blog about tech and engineering</p>
         </div>
         <div style="display: flex;">
-          <p style="font-size: 32px">${link}</p>
+          <p style="font-size: 32px; margin: 1rem 0;">${link}</p>
         </div>
       </div>
     </div>
