@@ -30,7 +30,7 @@
     "@eliancodes/brutal-ui": "^0.2.6",
     "@unocss/astro": "^66.11.0",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
+    "@vercel/speed-insights": "^2.1.0",
     "astro": "^7.4.1",
     "astro-font": "^1.2.0",
     "satori": "^0.63.2",
