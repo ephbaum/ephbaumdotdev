@@ -73,8 +73,8 @@ src/
 │   ├── home/         Homepage sections
 │   └── layout/       BaseHead, navigation, footer
 ├── content/
-│   ├── config.ts     Content collection schema (Zod)
 │   └── blog/YYYY/MM/ Posts, foldered by year and month
+├── content.config.ts Content collection schema (Zod)
 ├── layouts/          Default.astro, BlogPost.astro
 ├── pages/            File-based routing
 │   ├── blog/         Listing, [slug], tags/[tag]
