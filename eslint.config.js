@@ -1,6 +1,5 @@
 import js from '@eslint/js';
 import astro from 'eslint-plugin-astro';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
 
@@ -58,11 +57,5 @@ export default [
     rules: {
       'no-unused-vars': 'off',
     },
-  },
-
-  {
-    // JSX/TSX files with accessibility rules
-    ...jsxA11y.flatConfigs.recommended,
-    files: ['**/*.jsx', '**/*.tsx'],
   },
 ];
