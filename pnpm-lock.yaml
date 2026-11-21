@@ -17,9 +17,6 @@ importers:
       '@unocss/astro':
         specifier: ^66.13.0
         version: 66.13.0(astro@7.4.13(@types/node@24.10.1)(esbuild@0.28.2)(jiti@2.6.1)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.6)(vite@8.3.8(@types/node@24.10.1)(esbuild@0.28.2)(jiti@2.6.1)(yaml@2.9.1))
-      '@vercel/analytics':
-        specifier: ^2.0.1
-        version: 2.0.1
       '@vercel/speed-insights':
         specifier: ^2.1.0
         version: 2.1.0
@@ -35,9 +32,6 @@ importers:
       satori-html:
         specifier: ^0.3.2
         version: 0.3.2
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.12
@@ -90,9 +84,9 @@ importers:
       sharp:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@24.10.1)
-      vite:
-        specifier: ^8.3.8
-        version: 8.3.8(@types/node@24.10.1)(esbuild@0.28.2)(jiti@2.6.1)(yaml@2.9.1)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
 packages:
 
@@ -1226,35 +1220,6 @@ packages:
     resolution: {integrity: sha512-sYlPyHJTS9y/5goaBmN/AxdQwmLuN4VBK3hbaB/dcbjHaJr/EXNCSmRgkyt8WwaC6DS4PegCzgQ+7bucoPgD7w==}
     peerDependencies:
       vite: ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0 || ^8.0.0-0
-
-  '@vercel/analytics@2.0.1':
-    resolution: {integrity: sha512-MTQG6V9qQrt1tsDeF+2Uoo5aPjqbVPys1xvnIftXSJYG2SrwXRHnqEvVoYID7BTruDz4lCd2Z7rM1BdkUehk2g==}
-    peerDependencies:
-      '@remix-run/react': ^2
-      '@sveltejs/kit': ^1 || ^2
-      next: '>= 13'
-      nuxt: '>= 3'
-      react: ^18 || ^19 || ^19.0.0-rc
-      svelte: '>= 4'
-      vue: ^3
-      vue-router: ^4
-    peerDependenciesMeta:
-      '@remix-run/react':
-        optional: true
-      '@sveltejs/kit':
-        optional: true
-      next:
-        optional: true
-      nuxt:
-        optional: true
-      react:
-        optional: true
-      svelte:
-        optional: true
-      vue:
-        optional: true
-      vue-router:
-        optional: true
 
   '@vercel/speed-insights@2.1.0':
     resolution: {integrity: sha512-tkDiIEjjmlwPpTFnOK14hBhsRLMo5yoCeK2Er3AHWlL7WTzHgFSyItps3TOW0HukErUlYlaUeHiVLCyfiE4WAA==}
@@ -3887,8 +3852,6 @@ snapshots:
       - cac
       - ocache
       - srvx
-
-  '@vercel/analytics@2.0.1': {}
 
   '@vercel/speed-insights@2.1.0': {}
 

@@ -217,8 +217,8 @@ emits real per-route HTML — not an SPA. It does not want a catch-all rewrite t
 ## Analytics
 
 Umami (via `PUBLIC_UMAMI_WEBSITE_ID` / `PUBLIC_UMAMI_SCRIPT_URL`, both optional
-— the script only loads when the ID is set) plus Vercel Analytics and Speed
-Insights. Event catalogue in `ANALYTICS_EVENTS.md`, setup in `UMAMI_SETUP.md`.
+— the script only loads when the ID is set) plus Vercel Speed Insights. Event
+catalogue in `ANALYTICS_EVENTS.md`, setup in `UMAMI_SETUP.md`.
 
 ## Licensing
 
