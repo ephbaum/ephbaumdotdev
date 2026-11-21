@@ -1,6 +1,8 @@
 # Analytics Integration
 
-This blog uses dual analytics systems for comprehensive website insights: Umami Cloud and Vercel Web Analytics.
+This blog uses Umami Cloud for analytics and custom events. Vercel Speed Insights
+(`@vercel/speed-insights`) is loaded separately for Core Web Vitals; Vercel Web
+Analytics is not wired up.
 
 ## Current Configuration
 
@@ -11,16 +13,9 @@ This blog uses dual analytics systems for comprehensive website insights: Umami 
 - **Data Retention**: Extended retention period
 - **Dashboard**: External Umami dashboard
 
-### Vercel Web Analytics
-- **Provider**: Vercel Web Analytics
-- **Script Loading**: Automatic injection via @vercel/analytics
-- **Privacy**: No cookies, GDPR compliant
-- **Data Retention**: 30 days (free tier)
-- **Dashboard**: Built into Vercel project dashboard
-
 ## How It Works
 
-Both analytics systems are integrated in `BaseHead.astro`:
+Umami is integrated in `BaseHead.astro`:
 
 ### Umami Cloud Integration
 ```astro
@@ -35,14 +30,6 @@ Both analytics systems are integrated in `BaseHead.astro`:
 }
 ```
 
-### Vercel Analytics Integration
-```astro
-<script>
-  import { inject } from "@vercel/analytics";
-  inject();
-</script>
-```
-
 ## Environment Variables
 
 ### Umami Cloud
@@ -50,12 +37,6 @@ The Umami script only loads when `PUBLIC_UMAMI_WEBSITE_ID` is set in the environ
 - **Local development**: No Umami tracking (unless explicitly enabled)
 - **Production**: Umami enabled via Vercel environment variables
 - **Staging/Preview**: Can be configured per environment as needed
-
-### Vercel Analytics
-Vercel Analytics automatically loads when deployed to Vercel:
-- **Local development**: No Vercel analytics tracking
-- **Production**: Automatically enabled on Vercel deployments
-- **Preview deployments**: Enabled on Vercel preview URLs
 
 ## Dashboard Access
 
@@ -68,22 +49,13 @@ Analytics data is available in the Umami Cloud dashboard. The integration tracks
 - Geographic data (country level)
 - Extended data retention
 
-### Vercel Analytics Dashboard
-Analytics data is available in the Vercel project dashboard under the "Analytics" tab. The integration tracks:
-- Page views
-- Unique visitors
-- Performance metrics
-- Deployment-related insights
-- Custom events (color palette interactions)
-- 30-day data retention (free tier)
-
 ### Custom Event Tracking
-Both analytics systems track custom events for user interactions:
+Umami tracks custom events for user interactions:
 - **Color Palette Clicks**: When users click the color palette button
 - **Color Scheme Applications**: When new color schemes are applied to the site
 - **Event Data**: Includes action type, component, and color information
 
-Both systems provide anonymized and privacy-focused data collection.
+Data collection is anonymized and privacy-focused.
 
 ## Features
 
@@ -95,17 +67,9 @@ Both systems provide anonymized and privacy-focused data collection.
 - ✅ **No tracking**: Respects user privacy with no cross-site tracking
 - ✅ **Free forever**: No usage limits
 
-### Vercel Analytics
-- ✅ **Privacy-focused**: No cookies, GDPR compliant
-- ✅ **Built-in**: Integrated with Vercel dashboard
-- ✅ **Performance insights**: Deployment and performance metrics
-- ✅ **Free tier**: Up to 50k events/month
-- ✅ **Real-time**: Immediate data availability
-- ✅ **Redundancy**: Backup analytics system
-
 ## 🔧 Technical Implementation
 
-Both analytics systems are implemented in `src/components/layout/BaseHead.astro`:
+Umami is implemented in `src/components/layout/BaseHead.astro`:
 
 ### Umami Cloud Integration
 ```astro
@@ -124,21 +88,10 @@ Both analytics systems are implemented in `src/components/layout/BaseHead.astro`
 }
 ```
 
-### Vercel Analytics Integration
-```astro
-<!-- Vercel Analytics -->
-<script>
-  import { inject } from "@vercel/analytics";
-  inject();
-</script>
-```
-
 ### Key Features:
-- **Dual Analytics**: Both systems run simultaneously for comprehensive insights
 - **Conditional Loading**: Umami only loads when environment variables are set
 - **Environment-based**: Uses Astro's `import.meta.env` for Umami configuration
-- **Performance Optimized**: Both use non-blocking loading strategies
-- **Redundancy**: Backup analytics system ensures data continuity
+- **Performance Optimized**: Deferred, non-blocking script loading
 - **Custom Events**: Tracks user interactions like color palette usage
 
 ### Custom Event Tracking Implementation
@@ -146,13 +99,13 @@ The color palette system includes custom event tracking:
 
 ```javascript
 // Track color palette button clicks
-window.va.track('color_palette_click', {
+window.trackEvent('color_palette_click', {
   action: 'change_colors',
   component: 'color_palette_button'
 });
 
 // Track color scheme applications
-window.va.track('color_scheme_applied', {
+window.trackEvent('color_scheme_applied', {
   action: 'apply_colors',
   component: 'color_system',
   colors: {
@@ -164,8 +117,6 @@ window.va.track('color_scheme_applied', {
 });
 ```
 
-Both Vercel Analytics and Umami Analytics receive the same event data for comprehensive tracking.
-
 ## Troubleshooting
 
 ### Umami Cloud Issues
@@ -174,13 +125,7 @@ Both Vercel Analytics and Umami Analytics receive the same event data for compre
 - **Custom instance**: Make sure `PUBLIC_UMAMI_SCRIPT_URL` points to your self-hosted instance
 - **Build errors**: Verify environment variables are properly set in both local and production environments
 
-### Vercel Analytics Issues
-- **No data in Vercel dashboard**: Ensure Web Analytics is enabled in your Vercel project settings
-- **Analytics not showing**: Check that you're viewing the correct project in Vercel dashboard
-- **Build errors**: Verify `@vercel/analytics` package is properly installed
-- **Preview deployments**: Analytics should work automatically on Vercel preview URLs
-
 ### General Issues
-- **Both systems not working**: Check browser console for JavaScript errors
-- **Performance concerns**: Both systems are designed to be lightweight and non-blocking
-- **Privacy compliance**: Both systems are GDPR compliant and don't use cookies
+- **Not working**: Check browser console for JavaScript errors
+- **Performance concerns**: The script is designed to be lightweight and non-blocking
+- **Privacy compliance**: Umami is GDPR compliant and don't use cookies

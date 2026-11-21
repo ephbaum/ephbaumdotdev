@@ -1,7 +1,11 @@
-import { defineConfig, presetIcons, presetTypography } from 'unocss';
+import type { UserConfig } from '@unocss/core';
+import presetIcons from '@unocss/preset-icons';
+import presetTypography from '@unocss/preset-typography';
 import presetWind3 from '@unocss/preset-wind3';
 
-export default defineConfig({
+// Presets are imported individually: the `unocss` meta-package's entry
+// re-exports every transformer, which loads oxc-parser's native bindings.
+export default {
   presets: [
     presetWind3(),
     presetIcons({
@@ -120,4 +124,4 @@ export default defineConfig({
     'hover:text-sky',
     'hover:text-amber',
   ],
-});
+} satisfies UserConfig;

@@ -48,15 +48,9 @@ I've significantly evolved the base theme with these improvements:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) **22.x** (managed via asdf)
+- [Node.js](https://nodejs.org/) **22.23.4+** (managed via asdf; required by Astro 7.4)
 - [pnpm](https://pnpm.io/) 10.23.0 (managed via asdf)
 - [asdf](https://asdf-vm.com/) for version management — versions are pinned in `.tool-versions`
-
-> **Node 22 is required, not just recommended.** On Node 18, pnpm silently
-> skips the platform-specific `@oxc-parser` native bindings, producing an
-> install that looks fine (`pnpm install` exits 0) but fails later during the
-> build with `Cannot find module '@oxc-parser/binding-linux-x64-gnu'`. See
-> [CLAUDE.md](CLAUDE.md) for the full explanation.
 
 ### Installation
 

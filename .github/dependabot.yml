@@ -5,9 +5,17 @@ updates:
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 15
+    # One PR and one lockfile per week instead of a dozen that conflict with
+    # each other. Majors still arrive alone.
+    groups:
+      npm-minor-patch:
+        update-types: ['minor', 'patch']
 
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 10
+    groups:
+      actions:
+        patterns: ['*']
