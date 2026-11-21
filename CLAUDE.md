@@ -25,28 +25,18 @@ rule and the one non-obvious reason; skip the backstory.
 
 ## Required toolchain
 
-**Use Node 22.** This is not a style preference, it is a correctness
-requirement, and getting it wrong fails in a way that looks like something else.
+**Use Node 22.23.4 or later.** Astro 7.4 declares it in `engines`, and pnpm
+only warns on an engine mismatch, so an older Node installs without
+complaint.
 
-On Node 18, pnpm silently skips the platform-specific `@oxc-parser` native
-bindings when resolving `oxc-parser`'s optional dependencies. Optional
-dependencies fail quietly, so `pnpm install --frozen-lockfile` still exits 0 —
-the tree is just two packages short. Nothing complains until unocss loads
-`uno.config.ts` through jiti, at which point the build dies with:
-
-```
-Cannot find module '@oxc-parser/binding-linux-x64-gnu'
-```
-
-Because that happens inside Astro's content-collection sync, the visible
-symptom is `astro sync` aborting about two seconds in — which reads like a
-config or content error, not a dependency error.
-
-Quick check that your install is intact:
+The toolchain ships native code as per-platform optional dependencies
+(sharp, resvg, Astro's compiler, rolldown, lightningcss), and optional
+dependencies fail quietly: an install can exit 0 a package short. Quick check
+that your install is intact:
 
 ```bash
-node --version                  # expect v22.x
-ls node_modules/@oxc-parser/    # must NOT be empty
+node --version             # expect v22.23.4 or later
+pnpm exec astro sync       # must succeed
 ```
 
 `.tool-versions` pins both `nodejs` and `pnpm` for asdf/mise users.
@@ -77,6 +67,7 @@ src/
 ├── assets/img/       Images processed by Astro (optimized, WebP-converted)
 ├── components/
 │   ├── blog/         Blog listing, content, sidebar
+│   ├── brutal/       Button, Card, Pill — vendored from brutal-ui (MIT)
 │   ├── errors/       404
 │   ├── generic/      Shared components (incl. LocalFont.astro)
 │   ├── home/         Homepage sections
@@ -94,6 +85,9 @@ public/
 ├── fonts/            .ttf files read at build time via readFileSync
 └── img/              Served as-is, no processing
 ```
+
+pnpm uses its default isolated linker, so import only packages declared in
+`package.json`.
 
 TypeScript path aliases: `@components/*`, `@layouts/*`, `@pages/*`, `@assets/*`.
 
