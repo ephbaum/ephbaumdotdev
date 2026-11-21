@@ -27,7 +27,6 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.6",
-    "@eliancodes/brutal-ui": "^0.2.6",
     "@unocss/astro": "^66.13.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.1.0",
