@@ -12,7 +12,7 @@ This is a heavily modified version of the [Brutal](https://github.com/eliancodes
 
 - **[Astro](https://astro.build/)** - Static site generator with optimized asset pipeline
 - **[UnoCSS](https://unocss.dev/)** - Atomic CSS engine with `@unocss/preset-wind3` (Tailwind v3 compatible)
-- **[Brutal UI](https://github.com/eliancodes/brutal-ui)** - Brutalist design system
+- **Brutal UI** - Button, Card and Pill, vendored from [brutal-ui](https://github.com/eliancodes/brutal-ui) into `src/components/brutal/`
 - **[TypeScript](https://www.typescriptlang.org/)** - Full type safety
 - **[pnpm](https://pnpm.io/)** v10.23.0 - Fast, disk space efficient package manager
 - **[asdf](https://asdf-vm.com/)** - Version management for Node.js and pnpm
